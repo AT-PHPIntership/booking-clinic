@@ -7,7 +7,9 @@
 @section('content')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">List Clinic Types</h1>
+    <a href="{{ route('admin.clinic-types.create') }}" class="btn btn-sm btn-outline-secondary">Add</a>
   </div>
+  @include('admin.layouts.partials.block-flash')
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
