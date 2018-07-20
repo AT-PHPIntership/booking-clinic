@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Booking Clinic - Login Admin Panel</title>
-  <script src="asset('app.js')"></script>
   <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
   <link href="{{ asset('css/admin/signin.css') }}" rel="stylesheet">
 </head>
