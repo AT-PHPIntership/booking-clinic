@@ -34,6 +34,18 @@ jobs:
           key: composer-{{ checksum "composer.json" }}
           paths:
             - vendor
+      # NPM
+      - restore_cache:
+          name: Restore node modules cache
+          keys:
+          - node_modules-{{ checksum "package.json" }}
+          - node_modules-
+      - run: npm install
+      - save_cache:
+          name: store node module cache
+          key: node_modules-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       
       # - run: php artisan migrate
       # run tests!
