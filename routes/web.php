@@ -12,10 +12,12 @@
 */
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/dashboard', function() {
+    Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
-    Route::get('/login', function() {
+
+    Route::get('/login', function () {
         return view('admin.login');
     });
+
 });
