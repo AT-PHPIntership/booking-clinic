@@ -49,6 +49,7 @@ jobs:
       
       # - run: php artisan migrate
       # run tests!
+      - run: php artisan key:generate
       - run: ./vendor/bin/phpcs -n --standard=phpcs.xml
       - run: ./vendor/bin/phpmd app text phpmd.xml
       - run: ./vendor/bin/phpunit -d memory_limit=-1 tests
