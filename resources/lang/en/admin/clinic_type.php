@@ -1,4 +1,5 @@
 <?php
+
 return [
     'index' => [
         'title' => 'Clinic types',
