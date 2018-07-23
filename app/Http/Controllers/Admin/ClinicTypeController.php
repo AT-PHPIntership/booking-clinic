@@ -40,6 +40,6 @@ class ClinicTypeController extends Controller
     public function store(ClinicTypeRequest $request)
     {
         ClinicType::create($request->all());
-        return redirect()->route('admin.clinic-types.index')->with(['flashType'=>'success', 'flashMessage' =>'A new clinic type is added']);
+        return redirect()->route('admin.clinic-types.index')->with(['flashType'=>'success', 'flashMessage' => __('admin/clinic_type.store.success')]);
     }
 }

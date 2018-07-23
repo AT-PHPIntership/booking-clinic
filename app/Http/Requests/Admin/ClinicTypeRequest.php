@@ -25,17 +25,4 @@ class ClinicTypeRequest extends FormRequest
             'name' => 'required|unique:clinic_types,name',
         ];
     }
-
-     /**
-     * Get the validation messages that apply to the request.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'name.required' => 'Please enter name of clinic type',
-            'name.unique' => 'The name of clinic type is existed'
-        ];
-    }
 }
