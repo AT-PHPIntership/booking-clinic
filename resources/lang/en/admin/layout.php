@@ -17,6 +17,7 @@ return [
     ],
     'btn' => [
         'add' => 'Add',
-        'reset' => 'Reset'
+        'reset' => 'Reset',
+        'update' => 'Update'
     ]
 ];

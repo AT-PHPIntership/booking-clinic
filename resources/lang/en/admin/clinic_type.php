@@ -2,29 +2,38 @@
 
 return [
     'index' => [
-        'title' => 'Clinic types',
+        'title' => 'Clinic type',
         'heading' => 'List clinic types',
         'add' => 'Add',
         'name' => 'name',
         'created_at' => 'created_at',
-        'edit' => 'edit'
+        'edit' => 'edit',
+        'delete' => 'delete'
+
     ],
     'create' => [
-        'title' => 'Create clinic type',
+        'title' => 'Clinic type',
+        'heading' => 'Create clinic type',
         'name' => 'Name',
         'placeholder' => 'Please enter clinic type',
         'add' => 'Add',
         'reset' => 'Reset'
     ],
     'edit' => [
-        'title' => 'Edit clinic type',
+        'title' => 'Clinic type',
+        'heading' => 'Edit clinic type',
         'update' => 'Update'
     ],
     'store' => [
         'success' => 'A new clinic type is added'
     ],
     'update' => [
-        'success' => 'A clinic type is updated',
-        'error' => 'A clinic type isn\'t updated '
+        'success' => 'Clinic type is updated',
+    ],
+    'delete' => [
+        'del' => 'Delete',
+        'confirm' => 'Are you sure?',
+        'success' => 'Clinic type is deleted',
+        'error' => 'Delete clinic failed'
     ]
 ];
