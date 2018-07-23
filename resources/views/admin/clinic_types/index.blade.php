@@ -17,6 +17,7 @@
           <th>#</th>
           <th>{{ __('admin/clinic_type.index.name') }}</th>
           <th>{{ __('admin/clinic_type.index.created_at') }}</th>
+          <th>{{ __('admin/clinic_type.index.edit') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,9 @@
             <td>{{ $type->id }}</td>
             <td>{{ $type->name }}</td>
             <td>{{ $type->created_at }}</td>
+            <td>
+              <a href="{{ route('admin.clinic-types.edit', $type->id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-edit"></i></a>
+            </td>
           </tr>
         @endforeach
       </tbody>
