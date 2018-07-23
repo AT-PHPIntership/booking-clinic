@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
+    use Notifiable;
      /**
      * The table associated with the model.
      *
@@ -18,7 +21,7 @@ class Admin extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'email'];
+    protected $fillable = ['name', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.

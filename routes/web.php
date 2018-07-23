@@ -11,13 +11,19 @@
 |
 */
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
 
-    Route::get('/login', function () {
-        return view('admin.login');
+    
+    // Route::get('/login', function () {
+        //     return view('admin.login');
+        // });
+    Route::view('/dashboard1', 'admin.dashboard')->middleware('auth');
+    // Route::get('/dashboard1', 'Auth\RegisterController@showRegistrationForm');
+    Auth::routes();
     });
 
-});
+
+Route::get('/home', 'HomeController@index')->name('home');
