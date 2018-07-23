@@ -1,5 +1,5 @@
-@if ($message = Session::get('flashMessage'))
+@if (Session::has('flashMessage'))
 <div class="alert alert-{{ Session::get('flashType') }}">
-  <p>{{ $message }}</p>
+  <p>{{ Session::get('flashMessage') }}</p>
 </div>
 @endif

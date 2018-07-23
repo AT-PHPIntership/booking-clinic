@@ -4,14 +4,18 @@
 @endsection
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Add Clinic Type</h1>
+  <h1 class="h2">Add clinic type</h1>
 </div>
-@include('admin.layouts.partials.block-error')
 <form action="{{ route('admin.clinic-types.store') }}" method="POST" class="col-md-6">
   @csrf
   <div class="form-group">
     <label>Name</label>
-  <input type="text"class="form-control" name="name" placeholder="Please Enter Clinic Name" value="{{ old('name') }}"/>
+    <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Please Enter Clinic Type" name="name" value="{{ old('name') }}">
+    @if ($errors->has('name'))
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $errors->first('name') }}</strong>
+      </span>
+    @endif
   </div>
   <hr class="mb-4">
   <div class="form-group">

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\ClinicType;
-use App\Http\Requests\ClinicTypeRequest;
+use App\Http\Requests\Admin\ClinicTypeRequest;
 
 class ClinicTypeController extends Controller
 {
