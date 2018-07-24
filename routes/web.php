@@ -12,6 +12,15 @@
 */
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function() {
-    Route::view('dashboard', 'admin.dashboard')->name('dashboard');
-    Route::resource('clinic-types', 'ClinicTypeController');
+
+    Route::group(['middleware' => 'auth:web-admin'], function () {
+        Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+        Route::resource('clinic-types', 'ClinicTypeController');
+    });
+
+    Auth::routes();
+
 });
+
+
+Route::get('/home', 'HomeController@index')->name('home');
