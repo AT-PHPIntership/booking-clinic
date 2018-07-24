@@ -15,7 +15,7 @@ class ClinicController extends Controller
      */
     public function index()
     {
-        $clinics = Clinic::all();
-        return view('admin.clinics.index', compact('clinics'));
+        $clinics = Clinic::with('clinicType')->paginate();
+        return view('admin.clinics.index')->with('clinics', $clinics);
     }
 }

@@ -3,15 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Clinic extends Model
 {
-     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'clinics';
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -23,12 +19,19 @@ class Clinic extends Model
     ];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
      * Get the clinic type of the clinic.
      *
      *  @return array
      */
     public function clinicType()
     {
-        return $this->belongsTo('App\ClinicType', 'clinic_type_id', 'id');
+        return $this->belongsTo('App\ClinicType');
     }
 }

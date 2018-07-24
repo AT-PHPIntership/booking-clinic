@@ -4,6 +4,8 @@ return [
     'index' => [
         'title' => 'Clinic',
         'heading' => 'List clinic',
+    ],
+    'fields' => [
         'name' => 'name',
         'email' => 'email',
         'phone' => 'phone',

@@ -9,6 +9,6 @@ $factory->define(App\Clinic::class, function (Faker $faker) {
         'phone' => $faker->tollFreePhoneNumber,
         'address' => $faker->address,
         'description' => $faker->text,
-        'clinic_type_id' => $faker->numberBetween($min = 1, $max = 7)
+        'clinic_type_id' => App\ClinicType::pluck('id')->random()
     ];
 });

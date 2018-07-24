@@ -22,7 +22,7 @@ class CreateClinicsTable extends Migration
             $table->text('description')->nullable();
             $table->unsignedInteger('clinic_type_id');
             $table->foreign('clinic_type_id')
-                ->references('id')->on('clinic_types')->onDelete('no action');
+                ->references('id')->on('clinic_types');
             $table->softDeletes();
             $table->timestamps();
         });
