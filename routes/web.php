@@ -17,4 +17,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::resource('users', 'UserController')->only([
         'index', 'show'
     ]);
+    Route::resource('clinics', 'ClinicController');
 });
