@@ -55,9 +55,9 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into a response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * 
+     * @param \Illuminate\Http\Request                 $request   request
+     * @param \Illuminate\Auth\AuthenticationException $exception exception
+     *
      * @return \Illuminate\Http\Response
      */
     protected function unauthenticated($request, AuthenticationException $exception)
