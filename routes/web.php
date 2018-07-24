@@ -14,4 +14,7 @@
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function() {
     Route::view('dashboard', 'admin.dashboard')->name('dashboard');
     Route::resource('clinic-types', 'ClinicTypeController');
+    Route::resource('users', 'UserController')->only([
+        'index', 'show'
+    ]);
 });
