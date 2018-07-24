@@ -62,6 +62,7 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
+        unset($exception);
         $pathToRedirect = 'login';
         if ($request->is('admin/*')) {
             $pathToRedirect = 'admin.login';

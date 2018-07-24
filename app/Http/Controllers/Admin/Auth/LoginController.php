@@ -69,6 +69,7 @@ class LoginController extends Controller
      */
     protected function loggedOut(Request $request)
     {
+        unset($request);
         return redirect('admin/login');
     }
 }
