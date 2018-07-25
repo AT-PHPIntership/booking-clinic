@@ -14,7 +14,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.clinics.index')}}">
           <span data-feather="map-pin"></span>
           @lang('admin/layout.sidebar.clinics')
         </a>
