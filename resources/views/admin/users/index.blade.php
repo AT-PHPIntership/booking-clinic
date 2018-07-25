@@ -29,11 +29,7 @@
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            @if ($user->gender === App\User::GENDER_MALE)
-              <td>@lang('admin/user.fields.gender_type.male')</td>
-            @else
-              <td>@lang('admin/user.fields.gender_type.female')</td>
-            @endif
+            <td>{{ $user->gender_string }}</td>
             <td>{{ $user->dob }}</td>
             <td>{{ $user->phone }}</td>
             <td>{{ $user->address }}</td>

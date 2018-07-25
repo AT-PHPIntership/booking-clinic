@@ -28,9 +28,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user->gender = $user->gender === User::GENDER_MALE
-            ? __('admin/user.fields.gender_type.male')
-            : __('admin/user.fields.gender_type.female');
         return view('admin.users.show', compact('user'));
     }
 }

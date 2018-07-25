@@ -24,7 +24,7 @@
     <div class="form-group row">
       <label for="gender" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.gender')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->gender }}">
+        <input type="text" readonly class="form-control-plaintext" value="{{ $user->gender_string }}">
       </div>
     </div>
     <div class="form-group row">
