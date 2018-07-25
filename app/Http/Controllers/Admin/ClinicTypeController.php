@@ -67,12 +67,7 @@ class ClinicTypeController extends Controller
      */
     public function update(ClinicTypeRequest $request, ClinicType $clinicType)
     {
-        try {
-            $clinicType->update($request->all());
-        } catch (\Exception $e) {
-            session()->flash('flashType', 'danger');
-            session()->flash('flashMessage', __('admin/clinic_type.update.error'));
-        }
+        $clinicType->update($request->all());
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin/clinic_type.update.success'));
         return redirect()->route('admin.clinic-types.index');

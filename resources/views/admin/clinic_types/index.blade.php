@@ -11,7 +11,7 @@
   </div>
   @include('admin.layouts.partials.block-flash')
   <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-striped table-sm text-nowrap">
       <thead>
         <tr>
           <th>#</th>
