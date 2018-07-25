@@ -1,8 +1,14 @@
 <?php
 
 return [
-    'title' => 'Users',
-    'heading' => 'List users',
+    'index' => [
+        'title' => 'Users',
+        'heading' => 'List users',
+    ],
+    'show' => [
+        'title' => 'User detail',
+        'heading' => 'User id :id',
+    ],
     'fields' => [
         'name' => 'name',
         'email' => 'email',

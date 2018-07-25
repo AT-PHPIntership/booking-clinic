@@ -18,4 +18,16 @@ class UserController extends Controller
         $users = User::paginate();
         return view('admin.users.index', compact('users'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\User $user user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        return view('admin.users.show', compact('user'));
+    }
 }
