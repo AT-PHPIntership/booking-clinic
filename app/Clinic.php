@@ -15,7 +15,7 @@ class Clinic extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'address', 'description', 'clinic_type'
+        'name', 'email', 'phone', 'address', 'description', 'clinic_type_id'
     ];
 
     /**
@@ -32,6 +32,6 @@ class Clinic extends Model
      */
     public function clinicType()
     {
-        return $this->belongsTo('App\ClinicType');
+        return $this->belongsTo(ClinicType::class);
     }
 }
