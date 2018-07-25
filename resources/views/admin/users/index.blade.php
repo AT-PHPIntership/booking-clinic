@@ -9,7 +9,7 @@
     <h1 class="h2">@lang('admin/user.index.heading')</h1>
   </div>
   <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-striped table-sm text-nowrap">
       <thead>
         <tr>
           <th>#</th>
@@ -39,6 +39,8 @@
         @endforeach
       </tbody>
     </table>
+  </div>
+  <div class="d-flex justify-content-center mt-2">
     {{ $users->links() }}
   </div>
 @endsection

@@ -6,6 +6,9 @@
 @section('content')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">{{ __('admin/clinic.index.heading') }}</h1>
+    <a href="{{ route('admin.clinics.create') }}" class="btn btn-outline-primary">
+      <i class="fas fa-plus"> {{ __('admin/layout.btn.add') }}</i>
+    </a>
   </div>
   @include('admin.layouts.partials.block-flash')
   <div class="table-responsive">

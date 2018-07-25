@@ -12,4 +12,11 @@ return [
         'clinics' => 'Clinics',
         'users' => 'Users',
     ],
+    'message' => [
+        'success' => 'Add new item successfully'
+    ],
+    'btn' => [
+        'add' => 'Add',
+        'reset' => 'Reset'
+    ]
 ];
