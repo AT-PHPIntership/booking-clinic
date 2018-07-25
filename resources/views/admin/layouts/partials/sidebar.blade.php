@@ -4,25 +4,25 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.dashboard') }}">
           <span data-feather="home"></span>
-          Dashboard
+          @lang('admin/layout.sidebar.dashboard')
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.clinic-types.index') }}">
           <span data-feather="file"></span>
-          Clinic Types
+          @lang('admin/layout.sidebar.clinic_types')
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.clinics.index')}}">
           <span data-feather="map-pin"></span>
-          Clinics
+          @lang('admin/layout.sidebar.clinics')
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.users.index') }}">
           <span data-feather="users"></span>
-          Users
+          @lang('admin/layout.sidebar.users')
         </a>
       </li>
     </ul>

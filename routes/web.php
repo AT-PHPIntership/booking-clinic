@@ -16,6 +16,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Route::group(['middleware' => 'auth:web-admin'], function () {
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
         Route::resource('clinic-types', 'ClinicTypeController');
+        Route::resource('users', 'UserController')->only([
+            'index', 'show'
+            ]);
+        Route::resource('clinics', 'ClinicController');
     });
 
     Auth::routes();

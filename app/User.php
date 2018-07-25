@@ -9,6 +9,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public const GENDER_FEMALE = 0;
+    public const GENDER_MALE = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,4 +29,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the user's gender string.
+     *
+     * @return string
+     */
+    public function getGenderStringAttribute()
+    {
+        return $this->gender === User::GENDER_MALE
+            ? __('admin/user.fields.gender_type.male')
+            : __('admin/user.fields.gender_type.female');
+    }
 }
