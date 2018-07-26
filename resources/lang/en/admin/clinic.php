@@ -4,6 +4,8 @@ return [
     'index' => [
         'title' => 'Clinic',
         'heading' => 'List clinics',
+        'edit' => 'Edit',
+        'delete' => 'Delete'
     ],
     'create' => [
         'title' => 'Clinic',
@@ -11,16 +13,27 @@ return [
         'add' => 'Add',
         'reset' => 'Reset'
     ],
+    'edit' => [
+        'title' => 'Clinic',
+        'heading' => 'Update a clinic',
+        'edit' => 'Edit',
+    ],
+    'store' => [
+        'success' => 'A new clinic is added'
+    ],
+    'update' => [
+        'success' => 'The clinic has been updated',
+    ],
     'fields' => [
-        'name' => 'name',
-        'email' => 'email',
-        'phone' => 'phone',
-        'address' => 'address',
-        'description' => 'description',
-        'lat' => 'latitude',
-        'lng' => 'longitude',
-        'created_at' => 'created at',
-        'updated_at' => 'updated at',
-        'clinic_type' => 'clinic type'
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone',
+        'address' => 'Address',
+        'description' => 'Description',
+        'lat' => 'Latitude',
+        'lng' => 'Longitude',
+        'created_at' => 'Created at',
+        'updated_at' => 'Updated at',
+        'clinic_type' => 'Clinic Type'
     ]
 ];

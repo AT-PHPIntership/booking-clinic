@@ -43,7 +43,36 @@ class ClinicController extends Controller
     {
         Clinic::create($request->all());
         session()->flash('flashType', 'success');
-        session()->flash('flashMessage', __('admin/layout.message.success'));
+        session()->flash('flashMessage', __('admin/clinic.store.success'));
+        return redirect()->route('admin.clinics.index');
+    }
+
+    /**
+     * Show the form for editting a new resource.
+     *
+     * @param \App\Clinic $clinic clinic
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Clinic $clinic)
+    {
+        $clinicTypes = ClinicType::all();
+        return view('admin.clinics.edit', compact('clinic', 'clinicTypes'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Requests\ClinicRequest $request request
+     * @param \App\Clinic                             $clinic  clinic
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ClinicRequest $request, Clinic $clinic)
+    {
+        $clinic->update($request->all());
+        session()->flash('flashType', 'success');
+        session()->flash('flashMessage', __('admin/clinic.update.success'));
         return redirect()->route('admin.clinics.index');
     }
 }

@@ -18,22 +18,22 @@
           <th>#</th>
           <th>{{ __('admin/clinic.fields.clinic_type') }}</th>
           <th>{{ __('admin/clinic.fields.name') }}</th>
-          <th>{{ __('admin/clinic.fields.email') }}</th>
-          <th>{{ __('admin/clinic.fields.phone') }}</th>
           <th>{{ __('admin/clinic.fields.address') }}</th>
-          <th>{{ __('admin/clinic.fields.created_at') }}</th>
+          <th>{{ __('admin/clinic.fields.phone') }}</th>
+          <th>{{ __('admin/clinic.index.edit') }}</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($clinics as $clinic)
+        @foreach($clinics as $key=>$clinic)
           <tr>
             <td>{{ $clinic->id }}</td>
             <td>{{ $clinic->clinicType->name }}</td>
             <td>{{ $clinic->name }}</td>
-            <td>{{ $clinic->email }}</td>
-            <td>{{ $clinic->phone }}</td>
             <td>{{ $clinic->address }}</td>
-            <td>{{ $clinic->created_at }}</td>
+            <td>{{ $clinic->phone }}</td>
+            <td>
+              <a href="{{ route('admin.clinics.edit', $clinic->id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-edit"></i></a>
+            </td>
           </tr>
         @endforeach
       </tbody>
