@@ -18,6 +18,7 @@ class ListClinicTypeTest extends DuskTestCase
     public function test_it_can_list_clinic_types()
     {
         $admin = factory(\App\Admin::class)->create();
+        dd($admin);
         $this->browse(function (Browser $browser) use ($admin){
             $browser->loginAs($admin, 'web-admin')
                 ->visit(new ListClinicType);
