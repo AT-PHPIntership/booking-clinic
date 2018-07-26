@@ -72,4 +72,24 @@ class ClinicTypeController extends Controller
         session()->flash('flashMessage', __('admin/clinic_type.update.success'));
         return redirect()->route('admin.clinic-types.index');
     }
+
+    /**
+     * Delete a resource.
+     *
+     * @param \App\ClinicType $clinicType clinicType
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(ClinicType $clinicType)
+    {
+        if ($clinicType->clinics()->count()) {
+            session()->flash('flashType', 'danger');
+            session()->flash('flashMessage', __('admin/clinic_type.delete.error'));
+        } else {
+            $clinicType->delete();
+            session()->flash('flashType', 'success');
+            session()->flash('flashMessage', __('admin/clinic_type.delete.success'));
+        }
+        return redirect()->route('admin.clinic-types.index');
+    }
 }

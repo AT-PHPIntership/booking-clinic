@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">{{ __('admin/clinic_type.create.title') }}</h1>
+  <h1 class="h2">{{ __('admin/clinic_type.create.heading') }}</h1>
 </div>
 <form action="{{ route('admin.clinic-types.store') }}" method="POST" class="col-md-6">
   @csrf
