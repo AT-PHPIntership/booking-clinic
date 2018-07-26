@@ -24,7 +24,8 @@ class ListClinicType extends Page
      */
     public function assert(Browser $browser)
     {
-        $browser->assertPathIs($this->url());
+        $browser->assertPathIs($this->url())
+            ->assertSee('List');
     }
 
     /**
