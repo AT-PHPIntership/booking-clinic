@@ -39,7 +39,7 @@
                 if(query_value !== ''){
                     $.ajax({
                         type: "POST",
-                        url: "/search/",
+                        url: "/admin/clinic-types/search/",
                         data: { query: query_value}, //this can be more complex if needed
                         cache: false,
                         success: function(data){

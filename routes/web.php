@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
         Route::resource('clinic-types', 'ClinicTypeController', ['parameters' => [
             'clinic-types' => 'clinicType']
         ]);
+        Route::post('clinic-types', ['as' => 'search', 'uses' => 'ClinicTypeController@search']);
         Route::resource('users', 'UserController')->only([
             'index', 'show'
         ]);

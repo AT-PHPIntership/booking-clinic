@@ -92,4 +92,13 @@ class ClinicTypeController extends Controller
         }
         return redirect()->route('admin.clinic-types.index');
     }
+    public function search()
+    {
+        $data= Input::all();
+
+        $query = $data['query'];
+        //this is where magic happerns, change it to fit your needs.
+        $output = DB::table('clinic_types')->where('name', 'LIKE', '%'.$query.'%')->get();
+        return Response::json(['result'   => $output]);
+    }
 }
