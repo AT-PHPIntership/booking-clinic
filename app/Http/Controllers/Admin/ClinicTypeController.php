@@ -40,6 +40,36 @@ class ClinicTypeController extends Controller
     public function store(ClinicTypeRequest $request)
     {
         ClinicType::create($request->all());
-        return redirect()->route('admin.clinic-types.index')->with(['flashType'=>'success', 'flashMessage' => __('admin/clinic_type.store.success')]);
+        session()->flash('flashType', 'success');
+        session()->flash('flashMessage', __('admin/clinic_type.store.success'));
+        return redirect()->route('admin.clinic-types.index');
+    }
+
+    /**
+     * Show the form for editting a new resource.
+     *
+     * @param \App\ClinicType $clinicType clinicType
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(ClinicType $clinicType)
+    {
+        return view('admin.clinic_types.edit')->with('type', $clinicType);
+    }
+
+    /**
+     * Update a resource was editted.
+     *
+     * @param \App\Http\Admin\Requests\ClinicTypeRequest $request    request
+     * @param \App\ClinicType                            $clinicType clinicType
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ClinicTypeRequest $request, ClinicType $clinicType)
+    {
+        $clinicType->update($request->all());
+        session()->flash('flashType', 'success');
+        session()->flash('flashMessage', __('admin/clinic_type.update.success'));
+        return redirect()->route('admin.clinic-types.index');
     }
 }

@@ -21,8 +21,13 @@ class ClinicTypeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|unique:clinic_types,name',
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return ['name' => 'required|unique:clinic_types,name'];
+                break;
+            case 'PUT':
+                return ['name' => 'required|unique:clinic_types,name,' . $this->clinicType->id];
+                break;
+        }
     }
 }
