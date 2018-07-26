@@ -34,6 +34,6 @@ return [
         'del' => 'Delete',
         'confirm' => 'Are you sure?',
         'success' => 'Clinic type is deleted',
-        'error' => 'Delete clinic failed'
+        'error' => 'Can\'t delete this clinic type now. Some clinics still related to this type.<br>Try to remove them first'
     ]
 ];
