@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ClinicRequest;
 use App\Clinic;
 use App\ClinicType;
-use App\Image;
 
 class ClinicController extends Controller
 {

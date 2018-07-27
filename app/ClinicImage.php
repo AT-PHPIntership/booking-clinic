@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class ClinicImage extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,6 @@ class Image extends Model
      * @var array
      */
     protected $fillable = ['path', 'clinic_id'];
-
     /**
      * Get the clinic of image.
      *

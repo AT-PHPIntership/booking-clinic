@@ -42,7 +42,7 @@ class Clinic extends Model
      */
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(ClinicImage::class);
     }
 
     /**
@@ -57,7 +57,7 @@ class Clinic extends Model
         foreach ($images as $image) {
             $extension = $image->getClientOriginalExtension();
             $file = $image->move('storage/', uniqid('img_') . '.' . $extension);
-            $image = new Image(['path' => $file->getPathname()]);
+            $image = new ClinicImage(['path' => $file->getPathname()]);
             $this->images()->save($image);
         }
     }
