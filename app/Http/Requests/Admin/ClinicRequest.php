@@ -39,7 +39,8 @@ class ClinicRequest extends FormRequest
             'description' => 'nullable|string',
             'lat' => 'nullable|numeric|min:-90|max:90',
             'lng' => 'nullable|numeric|min:-180|max:180',
-            'clinic_type_id' => 'required|exists:clinic_types,id'
+            'clinic_type_id' => 'required|exists:clinic_types,id',
+            'images.*' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
     }
 }

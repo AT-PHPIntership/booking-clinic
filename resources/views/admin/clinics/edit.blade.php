@@ -39,7 +39,7 @@
   </div>
   <div class="form-group">
     <label>@lang('admin/clinic.fields.description')</label>
-    <input type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ $clinic->description }}">
+    <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ $clinic->description }}</textarea>
     @if ($errors->has('description'))
       <span class="invalid-feedback" role="alert">
         <strong>{{ $errors->first('description') }}</strong>

@@ -34,4 +34,31 @@ class Clinic extends Model
     {
         return $this->belongsTo(ClinicType::class);
     }
+
+    /**
+     * Get the images for the clinic type.
+     *
+     *  @return array
+     */
+    public function images()
+    {
+        return $this->hasMany(ClinicImage::class);
+    }
+
+    /**
+     * Upload images for clinic.
+     *
+     *  @param array $images images
+     *
+     *  @return void
+     */
+    public function uploadImage($images)
+    {
+        foreach ($images as $image) {
+            $extension = $image->getClientOriginalExtension();
+            $file = $image->move('storage/', uniqid('img_') . '.' . $extension);
+            $image = new ClinicImage(['path' => $file->getPathname()]);
+            $this->images()->save($image);
+        }
+    }
 }

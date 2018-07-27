@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">@lang('admin/clinic.create.heading')</h1>
 </div>
-<form action="{{ route('admin.clinics.store') }}" method="POST" class="col-md-6">
+<form class="col-md-6" action="{{ route('admin.clinics.store') }}" method="POST" enctype="multipart/form-data">
   @csrf
   <div class="form-group">
     <label>@lang('admin/clinic.fields.clinic_type')</label>
@@ -34,7 +34,7 @@
   </div>
   <div class="form-group">
     <label>@lang('admin/clinic.fields.description')</label>
-    <input type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ old('description') }}">
+    <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description">{{ old('description') }}</textarea>
     @if ($errors->has('description'))
       <span class="invalid-feedback" role="alert">
         <strong>{{ $errors->first('description') }}</strong>
@@ -86,6 +86,15 @@
         </span>
       @endif
     </div>
+  </div>
+  <div class="form-group">
+    <label>@lang('admin/clinic.fields.image')</label>
+    <input type="file" class ="form-control{{ $errors->has('images.*') ? ' is-invalid' : '' }}" name="images[]" multiple>
+    @if ($errors->has('images.*'))
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $errors->first('images.*') }}</strong>
+     </span>
+    @endif
   </div>
 
   <hr class="mb-4">
