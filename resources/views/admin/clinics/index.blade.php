@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($clinics as $key=>$clinic)
+        @foreach($clinics as $clinic)
           <tr>
             <td>{{ $clinic->id }}</td>
             <td>{{ $clinic->clinicType->name }}</td>

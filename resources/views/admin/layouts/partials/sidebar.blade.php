@@ -2,7 +2,7 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-      <a class="nav-link{{ Request::route()->getName() === 'admin.dashboard' ? ' active' : '' }}" href="{{ route('admin.dashboard') }}">
+        <a class="nav-link{{ Request::route()->getName() === 'admin.dashboard' ? ' active' : '' }}" href="{{ route('admin.dashboard') }}">
           <span data-feather="home"></span>
           @lang('admin/layout.sidebar.dashboard')
         </a>

@@ -61,7 +61,7 @@ class ClinicController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Update a resource was editted.
      *
      * @param \Illuminate\Http\Requests\ClinicRequest $request request
      * @param \App\Clinic                             $clinic  clinic
