@@ -6,7 +6,7 @@ $factory->define(App\Clinic::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->tollFreePhoneNumber,
+        'phone' => preg_replace('/[^0-9.]+/', '', \Faker\Factory::create('vi_VN')->phoneNumber),
         'address' => $faker->address,
         'description' => $faker->text,
         'lat' => $faker->latitude($min = -90, $max = 90),
