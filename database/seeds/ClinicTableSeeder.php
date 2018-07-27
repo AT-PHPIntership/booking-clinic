@@ -11,6 +11,8 @@ class ClinicTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Clinic::class, 20)->create();
+        factory(App\Clinic::class, 20)->create()->each(function ($u) {
+            $u->images()->saveMany(factory(App\Image::class, 3)->make());
+        });
     }
 }

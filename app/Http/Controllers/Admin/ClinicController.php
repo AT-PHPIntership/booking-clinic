@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ClinicRequest;
 use App\Clinic;
 use App\ClinicType;
+use App\Image;
 
 class ClinicController extends Controller
 {
@@ -41,7 +42,12 @@ class ClinicController extends Controller
      */
     public function store(ClinicRequest $request)
     {
-        Clinic::create($request->all());
+        $clinic = Clinic::create($request->all());
+
+        if ($request->hasFile('images')) {
+            $clinic->uploadImage($request->images);
+        }
+
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin/clinic.store.success'));
         return redirect()->route('admin.clinics.index');
