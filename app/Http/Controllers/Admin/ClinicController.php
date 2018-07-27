@@ -83,7 +83,7 @@ class ClinicController extends Controller
 
     /**
      * Delete a resource was editted.
-     *
+     * 
      * @param \App\Clinic $clinic clinic
      *
      * @return \Illuminate\Http\Response
@@ -94,5 +94,17 @@ class ClinicController extends Controller
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin/clinic.delete.success'));
         return redirect()->back();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Clinic $clinic clinic
+     * 
+     * @return void
+     */
+    public function show(Clinic $clinic)
+    {
+        return view('admin.clinics.show', compact('clinic'));
     }
 }
