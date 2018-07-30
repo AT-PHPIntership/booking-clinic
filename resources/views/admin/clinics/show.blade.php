@@ -61,6 +61,4 @@
   
 @endsection
 
-@section('additional_js')
-  @include('layouts.partials.google_map')
-@endsection  
+@include('layouts.partials.google_map')
