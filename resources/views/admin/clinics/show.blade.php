@@ -52,8 +52,11 @@
       </div>
     </div>
     <div class="col-sm-4">
-      @include('layouts.partials.google_map');
+      @include('layouts.partials.google_map')
     </div>
+  </div>
+  <div class="row" style="width:500px;height:500px">
+      @include('layouts.partials.carousel', ['images' => $clinic->images])
   </div>
   
 @endsection  
