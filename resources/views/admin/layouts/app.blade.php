@@ -28,5 +28,6 @@
     <script>
       feather.replace()
     </script>
+    @yield('additional_js')
   </body>
 </html>

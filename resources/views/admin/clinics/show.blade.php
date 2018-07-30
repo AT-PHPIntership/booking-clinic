@@ -52,11 +52,15 @@
       </div>
     </div>
     <div class="col-sm-4">
-      @include('layouts.partials.google_map')
+      <div id="googleMap" style="width:100%;height:400px;" data-lat="{{ $clinic->lat }}" data-lng="{{ $clinic->lng }}" title="{{ $clinic->address }}"></div>
     </div>
   </div>
   <div class="row" style="width:500px;height:500px">
-      @include('layouts.partials.carousel', ['images' => $clinic->images])
+    @include('layouts.partials.carousel', ['images' => $clinic->images])
   </div>
   
+@endsection
+
+@section('additional_js')
+  @include('layouts.partials.google_map')
 @endsection  
