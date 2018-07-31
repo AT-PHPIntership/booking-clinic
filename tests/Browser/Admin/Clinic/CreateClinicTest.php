@@ -46,11 +46,11 @@ class CreateClinicTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test it add new clinic fail invalid email
+     * A Dusk test it can not add clinic with invalid email
      *
      * @return void
      */
-    public function test_it_add_new_clinic_fail_invalid_email()
+    public function test_it_can_not_add_clinic_with_invalid_email()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
@@ -66,11 +66,11 @@ class CreateClinicTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test it add new clinic fail unique email
+     * A Dusk test it can not add clinic with existed email
      *
      * @return void
      */
-    public function test_it_add_new_clinic_fail_unique_email()
+    public function test_it_can_not_add_clinic_with_existed_email()
     {
         $clinic = factory(Clinic::class)->create(['email' => 'johndoe@gmail.com']);
         $this->browse(function (Browser $browser) use ($clinic) {
@@ -87,11 +87,11 @@ class CreateClinicTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test it add new clinic fail empty value
+     * A Dusk test it can not add clinic with empty data
      *
      * @return void
      */
-    public function test_it_add_new_clinic_fail_empty_value()
+    public function test_it_can_not_add_clinic_with_empty_data()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
@@ -132,11 +132,11 @@ class CreateClinicTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test it add new clinic fail invalid image
+     * A Dusk test it can not add clinic with invalid image
      *
      * @return void
      */
-    public function test_it_add_new_clinic_fail_invalid_image()
+    public function test_it_can_not_add_clinic_with_invalid_image()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
