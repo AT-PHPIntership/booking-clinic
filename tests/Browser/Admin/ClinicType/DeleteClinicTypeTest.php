@@ -6,6 +6,7 @@ use Tests\AdminDuskTestCase;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Admin\ClinicType\ListClinicType;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\ClinicType;
 
 class DeleteClinicTypeTest extends AdminDuskTestCase
 {
@@ -16,19 +17,19 @@ class DeleteClinicTypeTest extends AdminDuskTestCase
      *
      * @return void
      */
-    public function test_delete_clinic_type_has_clinics()
+    public function test_it_can_not_delete_clinic_types()
     {
-        factory(\App\ClinicType::class)
+        factory(ClinicType::class)
            ->create()
            ->each(function ($u) {
                 $u->clinics()->save(factory(\App\Clinic::class)->make());
             });
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
-            ->visit(new ListClinicType)
-            ->press('@deleteButton')
-            ->acceptDialog()
-            ->assertSee('Can\'t delete this clinic type now. Some clinics still related to this type.');
+                ->visit(new ListClinicType)
+                ->press('@deleteButton')
+                ->acceptDialog()
+                ->assertSee('Can\'t delete this clinic type now. Some clinics still related to this type.');
         });
     }
 
@@ -37,15 +38,15 @@ class DeleteClinicTypeTest extends AdminDuskTestCase
      *
      * @return void
      */
-    public function test_delete_clinic_type_has_not_clinics()
+    public function test_it_can_delete_clinic_types()
     {
-        factory(\App\ClinicType::class)->create();
+        factory(ClinicType::class)->create();
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
-            ->visit(new ListClinicType)
-            ->press('@deleteButton')
-            ->acceptDialog()
-            ->assertSee('Clinic type is deleted');
+                ->visit(new ListClinicType)
+                ->press('@deleteButton')
+                ->acceptDialog()
+                ->assertSee('Clinic type is deleted');
         });
     }
 }

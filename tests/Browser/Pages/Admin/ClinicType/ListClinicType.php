@@ -41,7 +41,7 @@ class ListClinicType extends BasePage
     {
         return [
             '@clinicTypes' => 'table > tbody > tr',
-            '@deleteButton' => "table > tbody > tr:nth-child(1) > td:nth-child(5) > form > button",
+            '@deleteButton' => 'table > tbody > tr > td > form > .btn-outline-danger',
         ];
     }
 }

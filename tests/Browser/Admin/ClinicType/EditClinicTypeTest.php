@@ -6,17 +6,19 @@ use Tests\AdminDuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\Browser\Pages\Admin\ClinicType\EditClinicType;
+use App\ClinicType;
 
 class EditClinicTypeTest extends AdminDuskTestCase
 {
     use DatabaseMigrations;
+
     public function setUp()
     {
         parent::setUp();
-        factory(\App\ClinicType::class)->create([
+        factory(ClinicType::class)->create([
             'name' => 'Đa khoa'
         ]);
-        factory(\App\ClinicType::class)->create([
+        factory(ClinicType::class)->create([
             'name' => 'Nội khoa'
         ]);
     }
@@ -26,11 +28,11 @@ class EditClinicTypeTest extends AdminDuskTestCase
      *
      * @return void
      */
-    public function test_edit_clinic_type()
+    public function test_it_can_edit_clinic_type()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin,'web-admin')
-            ->visit(new EditClinicType(\App\ClinicType::find(1)))
+            ->visit(new EditClinicType(ClinicType::find(1)))
             ->type('name', 'Ngoại Khoa')
             ->press('Update')
             ->assertSee('List clinic types')
@@ -57,11 +59,11 @@ class EditClinicTypeTest extends AdminDuskTestCase
      * @param string message
      * @dataProvider list_test_case_validate_input_edit_clinic_type
      */
-    public function test_validate_input_edit_clinic_type($name, $input, $message)
+    public function test_it_can_not_edit_clinic_type($name, $input, $message)
     {
         $this->browse(function (Browser $browser) use($name, $input, $message) {
             $browser->loginAs($this->admin, 'web-admin')
-            ->visit(new EditClinicType(\App\ClinicType::find(2)))
+            ->visit(new EditClinicType(ClinicType::find(2)))
             ->type($name, $input)
             ->press('Update')
             ->assertSee($message);

@@ -7,10 +7,12 @@ use Laravel\Dusk\Browser;
 class EditClinicType extends BasePage
 {
     protected $clinicType;
+
     public function __construct(\App\ClinicType $clinicType )
     {
         $this->clinicType = $clinicType;
     }
+
     /**
      * Get the URL for the page.
      *

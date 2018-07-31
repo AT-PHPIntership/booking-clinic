@@ -10,13 +10,10 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 abstract class AdminDuskTestCase extends DuskTestCase
 {
     protected $admin;
+
     public function setUp()
     {
         parent::setUp();
-        if(\App\Admin::count()) {
-            $this->admin = \App\Admin::first();
-        } else {
-            $this->admin = factory(\App\Admin::class)->create();
-        }
+        $this->admin = factory(\App\Admin::class)->create();
     }
 }

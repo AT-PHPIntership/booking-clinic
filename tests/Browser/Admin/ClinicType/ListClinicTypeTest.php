@@ -10,6 +10,7 @@ use Tests\Browser\Pages\Admin\ClinicType\ListClinicType;
 class ListClinicTypeTest extends AdminDuskTestCase
 {
     use DatabaseMigrations;
+
     const NUM_RECORD = 20;
 
     /**
@@ -17,27 +18,27 @@ class ListClinicTypeTest extends AdminDuskTestCase
      *
      * @return void
      */
-    public function test_list_clinic_types_with_num_records()
+    public function test_it_can_show_all_clinic_types()
     {
         factory(\App\ClinicType::class, self::NUM_RECORD)->create();
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
                 ->visit(new ListClinicType);
-        $this->assertEquals(self::NUM_RECORD, count($browser->elements('@clinicTypes')));
+            $this->assertEquals(self::NUM_RECORD, count($browser->elements('@clinicTypes')));
         });
     }
 
     /**
-     * Test list clinic types with 0 record.
+     * Test it can show clinic types with empty
      *
      * @return void
      */
-    public function test_list_clinic_types_with_no_records()
+    public function test_it_can_show_clinic_types_with_empty()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
                 ->visit(new ListClinicType);
-        $this->assertEquals(0, count($browser->elements('@clinicTypes')));
+            $this->assertEquals(0, count($browser->elements('@clinicTypes')));
         });
     }
 }
