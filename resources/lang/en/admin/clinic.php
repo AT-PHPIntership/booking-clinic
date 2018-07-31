@@ -24,6 +24,10 @@ return [
     'update' => [
         'success' => 'The clinic has been updated',
     ],
+    'delete' => [
+        'confirm' => 'Are you sure?',
+        'success' => 'The clinic has been deleted'
+    ],
     'fields' => [
         'name' => 'Name',
         'email' => 'Email',

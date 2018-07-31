@@ -21,6 +21,7 @@
           <th>{{ __('admin/clinic.fields.address') }}</th>
           <th>{{ __('admin/clinic.fields.phone') }}</th>
           <th>{{ __('admin/clinic.index.edit') }}</th>
+          <th>{{ __('admin/clinic.index.delete') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -33,6 +34,15 @@
             <td>{{ $clinic->phone }}</td>
             <td>
               <a href="{{ route('admin.clinics.edit', $clinic->id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-edit"></i></a>
+            </td>
+            <td>
+              <form action="{{ route('admin.clinics.destroy', $clinic->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('{{ __('admin/clinic.delete.confirm') }}')">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
             </td>
           </tr>
         @endforeach
