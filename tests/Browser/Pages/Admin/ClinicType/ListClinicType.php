@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Browser\Pages\Admin;
-
+namespace Tests\Browser\Pages\Admin\ClinicType;
+use Laravel\Dusk\Page as BasePage;
 use Laravel\Dusk\Browser;
 
-class ListClinicType extends Page
+class ListClinicType extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -25,7 +25,11 @@ class ListClinicType extends Page
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-            ->assertSee('List');
+            ->assertSee('List')
+            ->assertSee('created_at')
+            ->assertSee('edit')
+            ->assertSee('delete')
+            ->assertSee('Add');
     }
 
     /**
@@ -36,6 +40,8 @@ class ListClinicType extends Page
     public function elements()
     {
         return [
+            '@clinicTypes' => 'table > tbody > tr',
+            '@deleteButton' => 'table > tbody > tr > td > form > .btn-outline-danger',
         ];
     }
 }
