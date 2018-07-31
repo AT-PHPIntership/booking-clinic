@@ -12,7 +12,7 @@
   </div>
   @include('admin.layouts.partials.block-flash')
   <div class="table-responsive">
-    <table class="table table-striped table-sm text-nowrap">
+    <table id="list-data" class="table table-striped table-sm text-nowrap">
       <thead>
         <tr>
           <th>#</th>
@@ -22,7 +22,7 @@
           <th>{{ __('admin/clinic.fields.phone') }}</th>
           <th>{{ __('admin/clinic.index.edit') }}</th>
           <th>{{ __('admin/clinic.index.delete') }}</th>
-          <th></th>
+          <th>{{ __('admin/clinic.index.detail') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -45,7 +45,11 @@
                 </button>
               </form>
             </td>
-            <td><a href="{{ route('admin.clinics.show', $clinic->id) }}">{{ __('admin/layout.btn.detail')}}</a></td>
+            <td>
+              <a href="{{ route('admin.clinics.show', $clinic->id) }}" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-info-circle"></i>
+              </a>
+            </td>
           </tr>
         @endforeach
       </tbody>
@@ -55,3 +59,4 @@
     {{ $clinics->links() }}
   </div>
 @endsection
+@include('layouts.partials.data_table')

@@ -9,7 +9,7 @@
     <h1 class="h2">@lang('admin/user.index.heading')</h1>
   </div>
   <div class="table-responsive">
-    <table class="table table-striped table-sm text-nowrap">
+    <table class="table table-striped table-sm text-nowrap" id="list-data">
       <thead>
         <tr>
           <th>#</th>
@@ -18,9 +18,7 @@
           <th>@lang('admin/user.fields.gender')</th>
           <th>@lang('admin/user.fields.dob')</th>
           <th>@lang('admin/user.fields.phone')</th>
-          <th>@lang('admin/user.fields.address')</th>
-          <th>@lang('admin/user.fields.created_at')</th>
-          <th></th>
+          <th>@lang('admin/user.fields.detail')</th>
         </tr>
       </thead>
       <tbody>
@@ -32,9 +30,11 @@
             <td>{{ $user->gender_string }}</td>
             <td>{{ $user->dob }}</td>
             <td>{{ $user->phone }}</td>
-            <td>{{ $user->address }}</td>
-            <td>{{ $user->created_at }}</td>
-            <td><a href="{{ route('admin.users.show', $user->id) }}">detail</a></td>
+            <td>
+              <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-info-circle"></i>
+              </a>
+            </td>
           </tr>
         @endforeach
       </tbody>
@@ -44,3 +44,4 @@
     {{ $users->links() }}
   </div>
 @endsection
+@include('layouts.partials.data_table')

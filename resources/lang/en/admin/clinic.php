@@ -5,7 +5,8 @@ return [
         'title' => 'Clinic',
         'heading' => 'List clinics',
         'edit' => 'Edit',
-        'delete' => 'Delete'
+        'delete' => 'Delete',
+        'detail' => 'Detail'
     ],
     'create' => [
         'title' => 'Clinic',

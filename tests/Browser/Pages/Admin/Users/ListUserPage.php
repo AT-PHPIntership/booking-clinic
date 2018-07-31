@@ -31,9 +31,7 @@ class ListUserPage extends BasePage
             ->assertSee('List users')
             ->assertSee('name')
             ->assertSee('email')
-            ->assertSee('gender')
-            ->assertSee('address')
-            ->assertSee('created_at');
+            ->assertSee('gender');
     }
 
     /**
