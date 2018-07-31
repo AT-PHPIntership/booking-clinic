@@ -80,4 +80,19 @@ class ClinicController extends Controller
         session()->flash('flashMessage', __('admin/clinic.update.success'));
         return redirect()->route('admin.clinics.index');
     }
+
+    /**
+     * Delete a resource was editted.
+     *
+     * @param \App\Clinic $clinic clinic
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Clinic $clinic)
+    {
+        $clinic->delete();
+        session()->flash('flashType', 'success');
+        session()->flash('flashMessage', __('admin/clinic.delete.success'));
+        return redirect()->back();
+    }
 }
