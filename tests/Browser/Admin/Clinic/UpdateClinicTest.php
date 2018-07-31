@@ -20,8 +20,7 @@ class UpdateClinicTest extends DuskTestCase
     {
         parent::setUp();
         factory(ClinicType::class, 5)->create();
-        $clinics = factory(Clinic::class, 20)->create();
-        $clinics->find(2)->update(['email' => 'john@gmail.com']);
+        factory(Clinic::class, 20)->create();
         $this->admin = factory(Admin::class)->create();
     }
 
@@ -77,6 +76,7 @@ class UpdateClinicTest extends DuskTestCase
      */
     public function test_it_can_not_update_clinic($name, $input, $message)
     {
+        Clinic::find(2)->update(['email' => 'john@gmail.com']);
         $this->browse(function (Browser $browser) use ($name, $input, $message) {
             $browser->loginAs($this->admin, 'web-admin')
                     ->visit(new UpdateClinicPage(Clinic::find(1)))
