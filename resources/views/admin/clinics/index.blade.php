@@ -22,6 +22,7 @@
           <th>{{ __('admin/clinic.fields.phone') }}</th>
           <th>{{ __('admin/clinic.index.edit') }}</th>
           <th>{{ __('admin/clinic.index.delete') }}</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +45,7 @@
                 </button>
               </form>
             </td>
+            <td><a href="{{ route('admin.clinics.show', $clinic->id) }}">{{ __('admin/layout.btn.detail')}}</a></td>
           </tr>
         @endforeach
       </tbody>

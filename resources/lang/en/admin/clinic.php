@@ -28,6 +28,10 @@ return [
         'confirm' => 'Are you sure?',
         'success' => 'The clinic has been deleted'
     ],
+    'show' => [
+        'title' => 'Clinic detail',
+        'heading' => 'Clinic id :id',
+    ],
     'fields' => [
         'name' => 'Name',
         'email' => 'Email',

@@ -18,6 +18,7 @@ return [
     'btn' => [
         'add' => 'Add',
         'reset' => 'Reset',
-        'update' => 'Update'
+        'update' => 'Update',
+        'detail' => 'Detail'
     ]
 ];
