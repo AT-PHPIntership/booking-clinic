@@ -46,6 +46,16 @@ class Clinic extends Model
     }
 
     /**
+     * Get list appointments of clinic
+     *
+     *  @return array
+     */
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    /**
      * Upload images for clinic.
      *
      *  @param array $images images

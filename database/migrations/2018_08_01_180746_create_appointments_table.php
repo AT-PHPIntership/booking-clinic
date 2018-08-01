@@ -15,15 +15,15 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description')->nullable();
-            $table->integer('status')->default(0);
+            $table->text('description')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->unsignedInteger('clinic_id');
             $table->unsignedInteger('user_id');
             $table->foreign('clinic_id')
-                ->reference('id')->on('clinics');
+                ->references('id')->on('clinics');
             $table->foreign('user_id')
-                ->reference('id')->on('users');
-            $table->timestamps('book_time');
+                ->references('id')->on('users');
+            $table->timestamp('book_time');
             $table->timestamps();
             $table->softDeletes();
         });
