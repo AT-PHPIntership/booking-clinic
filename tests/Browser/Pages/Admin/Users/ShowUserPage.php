@@ -37,12 +37,12 @@ class ShowUserPage extends BasePage
         $browser->assertPathIs($this->url())
                 ->assertTitleContains(__('admin/user.show.title'))
                 ->assertSee('User id ' . $this->userId)
-                ->assertSee('name')
-                ->assertSee('email')
-                ->assertSee('gender')
-                ->assertSee('day of birth')
-                ->assertSee('phone number')
-                ->assertSee('address');
+                ->assertSee('Name')
+                ->assertSee('Email')
+                ->assertSee('Gender')
+                ->assertSee('Day of Birth')
+                ->assertSee('Phone Number')
+                ->assertSee('Address');
     }
 
     /**

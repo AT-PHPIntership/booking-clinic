@@ -29,11 +29,11 @@ class ListUserPage extends BasePage
     {
         $browser->assertPathIs($this->url())
             ->assertSee('List users')
-            ->assertSee('name')
-            ->assertSee('email')
-            ->assertSee('gender')
-            ->assertSee('address')
-            ->assertSee('created_at');
+            ->assertSee('Name')
+            ->assertSee('Email')
+            ->assertSee('Gender')
+            ->assertSee('Address')
+            ->assertSee('Created At');
     }
 
     /**
