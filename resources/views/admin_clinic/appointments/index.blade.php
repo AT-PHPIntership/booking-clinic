@@ -10,7 +10,9 @@
   </div>
   @include('admin_clinic.layouts.partials.block-flash')
   <div class="table-responsive">
-    <form action="" method="post">
+    <form action="{{ route('appointments.updateMany')}}" method="post">
+        @csrf
+        @method('PATCH')
       <table class="table table-striped table-sm text-nowrap">
         <thead>
           <tr>
@@ -30,7 +32,7 @@
               <td>{{ $appointment->book_time }}</td>
               <td>{{ $appointment->created_at }}</td>
               <td>
-                  <select class="status custom-select d-block w-100 text-body font-weight-bold" required>
+                  <select class="status custom-select d-block w-100 text-body font-weight-bold" required name="status[]">
                   @foreach (App\Appointment::STATUS as $key=>$item)
                     @if ($item == $appointment->status )
                       <option value="{{ $key }}" selected>{{$item}}</option>
@@ -39,6 +41,7 @@
                     @endif
                   @endforeach
                 </select>
+                <input type="hidden" name="id[]" value="{{ $appointment->id}}">
               </td>
             </tr>
           @endforeach
@@ -46,7 +49,7 @@
 
         </tbody>
       </table>
-    <input type="button" class="btn btn-primary" value="Update">
+    <input type="submit" class="btn btn-primary" value="Update">
     </form>
   </div>
   <div class="d-flex justify-content-center mt-2">

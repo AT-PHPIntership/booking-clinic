@@ -31,6 +31,7 @@ Route::view('test', 'admin_clinic.dashboard');
 Route::group(['prefix' => 'test', 'namespace' => 'AdminClinic'], function () {
     Route::resource('appointments', 'AppointmentController')
     ->only(['index', 'show', 'edit']);
+    Route::patch('appointments', 'AppointmentController@updatemany')->name('appointments.updateMany');
 });
 
 
