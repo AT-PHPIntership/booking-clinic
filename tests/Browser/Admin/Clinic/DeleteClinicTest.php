@@ -2,29 +2,28 @@
 
 namespace Tests\Browser\Admin\Clinic;
 
-use Tests\DuskTestCase;
+use Tests\AdminDuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\Browser\Pages\Admin\Clinic\ListClinicPage;
-use App\Admin;
 use App\Clinic;
 use App\ClinicType;
 use App\ClinicImage;
 
-class DeleteClinicTest extends DuskTestCase
+class DeleteClinicTest extends AdminDuskTestCase
 {
     use DatabaseMigrations;
-
-    public $admin;
     
+    public const NUMBER_CLINIC_TYPE_CREATE = 5;
+    public const NUMBER_CLINIC_CREATE = 5;
+
     public function setUp()
     {
         parent::setUp();
-        factory(ClinicType::class, 5)->create();
-        factory(Clinic::class, 5)->create()->each(function ($clinic) {
+        factory(ClinicType::class, self::NUMBER_CLINIC_TYPE_CREATE)->create();
+        factory(Clinic::class, self::NUMBER_CLINIC_CREATE)->create()->each(function ($clinic) {
             $clinic->images()->save(factory(ClinicImage::class)->make());
         });
-        $this->admin = factory(Admin::class)->create();
     }
 
     /**
@@ -36,10 +35,10 @@ class DeleteClinicTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin, 'web-admin')
-                    ->visit(new ListClinicPage)
-                    ->press('@deleteButton')
-                    ->acceptDialog()
-                    ->assertSee( __('admin/clinic.delete.success'));
+                ->visit(new ListClinicPage)
+                ->press('@deleteButton')
+                ->acceptDialog()
+                ->assertSee( __('admin/clinic.delete.success') );
         });
     }
 }
