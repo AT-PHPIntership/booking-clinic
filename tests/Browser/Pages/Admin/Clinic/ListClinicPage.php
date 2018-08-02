@@ -42,7 +42,7 @@ class ListClinicPage extends BasePage
     public function elements()
     {
         return [
-            '@deleteButton' => 'tbody tr:first-child td form button.btn-outline-danger',
+            '@deleteButtonFirstClinic' => 'tbody tr:first-child td form button.btn-outline-danger',
         ];
     }
 }
