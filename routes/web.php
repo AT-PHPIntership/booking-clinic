@@ -28,5 +28,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 
 });
 Route::view('test', 'admin_clinic.dashboard');
+Route::group(['prefix' => 'test', 'namespace' => 'AdminClinic'], function () {
+    Route::resource('appointments', 'AppointmentController')
+    ->only(['index', 'show', 'edit']);
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');

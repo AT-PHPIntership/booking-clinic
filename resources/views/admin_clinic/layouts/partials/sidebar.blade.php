@@ -14,7 +14,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link{{ checkRouteActive() }}" href="#">
+        <a class="nav-link{{ checkRouteActive() }}" href="{{ route('appointments.index')}}">
           <span data-feather="book-open"></span>
           @lang('admin_clinic/layout.sidebar.appointments')
         </a>
