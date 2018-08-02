@@ -9,11 +9,11 @@ use App\User;
 class ShowUserPage extends BasePage
 {
 
-    private $userId;
+    private $user;
 
-    public function __construct($userId)
+    public function __construct($user)
     {
-        $this->userId = $userId;
+        $this->user = $user;
     }
 
     /**
@@ -23,7 +23,7 @@ class ShowUserPage extends BasePage
      */
     public function url()
     {
-        return '/admin/users/' . $this->userId;
+        return '/admin/users/' . $this->user->id;
     }
 
     /**
@@ -35,14 +35,22 @@ class ShowUserPage extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                ->assertTitleContains(__('admin/user.show.title'))
-                ->assertSee('User id ' . $this->userId)
-                ->assertSee('Name')
-                ->assertSee('Email')
-                ->assertSee('Gender')
-                ->assertSee('Day of Birth')
-                ->assertSee('Phone Number')
-                ->assertSee('Address');
+            ->assertTitleContains(__('admin/user.show.title'))
+            ->assertSee('User id ' . $this->user->id)
+            ->assertSee('Name')
+            ->assertSee('Email')
+            ->assertSee('Gender')
+            ->assertSee('Day of Birth')
+            ->assertSee('Phone Number')
+            ->assertSee('Address')
+            ->assertSee('Created At')
+            ->assertValue('@email', $this->user->email)
+            ->assertValue('@name', $this->user->name)
+            ->assertValue('@gender', $this->user->gender_string)
+            ->assertValue('@dob', $this->user->dob)
+            ->assertValue('@phone', $this->user->phone)
+            ->assertValue('@address', $this->user->address)
+            ->assertValue('@createdAt', $this->user->created_at);
     }
 
     /**
@@ -53,7 +61,13 @@ class ShowUserPage extends BasePage
     public function elements()
     {
         return [
-            '@element' => '#selector',
+            '@email' => 'input[name="email"]',
+            '@name' => 'input[name="name"]',
+            '@gender' => 'input[name="gender"]',
+            '@dob' => 'input[name="dob"]',
+            '@phone' => 'input[name="phone"]',
+            '@address' => 'input[name="address"]',
+            '@createdAt' => 'input[name="created-at"]',
         ];
     }
 }

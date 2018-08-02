@@ -48,13 +48,13 @@
     <div class="form-group row">
       <label for="created_at" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.created_at')</label>
       <div class="col-sm-10">
-        <input type="text" name="created_at" readonly class="form-control-plaintext" value="{{ $user->created_at }}">
+        <input type="text" name="created-at" readonly class="form-control-plaintext" value="{{ $user->created_at }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="updated_at" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.updated_at')</label>
       <div class="col-sm-10">
-        <input type="text" name="updated_at" readonly class="form-control-plaintext" value="{{ $user->updated_at }}">
+        <input type="text" name="updated-at" readonly class="form-control-plaintext" value="{{ $user->updated_at }}">
       </div>
     </div>
   </div>

@@ -2,19 +2,19 @@
 
 namespace Tests\Browser\Admin\Users;
 
-use Tests\DuskTestCase;
+use Tests\AdminDuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\Browser\Pages\Admin\Users\ShowUserPage;
 use App\User;
 use App\Admin;
 
-class ShowUserTest extends DuskTestCase
+class ShowUserTest extends AdminDuskTestCase
 {
 
     use DatabaseMigrations;
 
-    public $admin;
+    private const NUMBER_USER_CREATE = 20;
 
     /**
      * Override function setUp() for seeding
@@ -24,9 +24,7 @@ class ShowUserTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
-        factory(User::class, 20)->create();
-        $admin = factory(Admin::class)->create();
-        $this->admin = $admin;
+        factory(User::class, self::NUMBER_USER_CREATE)->create();
     }
 
     /**
@@ -39,13 +37,8 @@ class ShowUserTest extends DuskTestCase
         $user = User::all()->random();
         $this->browse(function (Browser $browser) use ($user){
             $browser->loginAs($this->admin, 'web-admin')
-                    ->visit(new ShowUserPage($user->id))
-                    ->assertValue('input[name="email"]', $user->email)
-                    ->assertValue('input[name="name"]', $user->name)
-                    ->assertValue('input[name="gender"]', $user->gender_string)
-                    ->assertValue('input[name="dob"]', $user->dob)
-                    ->assertValue('input[name="phone"]', $user->phone)
-                    ->assertValue('input[name="address"]', preg_replace('~[\r\n]+~', '', $user->address));
+                    ->visit(new ShowUserPage($user));
+                    
         });
     }
 
