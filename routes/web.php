@@ -27,6 +27,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Auth::routes();
 
 });
-Route::view('test', 'admin_clinic.dashboard');
+
+Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin.', 'namespace' => 'AdminClinic'], function() {
+    Route::view('dashboard', 'admin_clinic.dashboard')->name('admin_clinic.dashboard');
+    Route::resource('appointments', 'AppointmentController')
+    ->only(['index', 'show', 'edit', 'update']);
+    Route::patch('appointments', 'AppointmentController@updateListAppointments')->name('appointments.update_list_appointments');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/admin', 'AdminClinic\AppointmentController@aa');
