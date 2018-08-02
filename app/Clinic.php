@@ -46,6 +46,16 @@ class Clinic extends Model
     }
 
     /**
+     * Get the admin associated with the clinic.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
+    /**
      * Upload images for clinic.
      *
      *  @param array $images images

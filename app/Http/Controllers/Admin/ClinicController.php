@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ClinicRequest;
 use App\Clinic;
 use App\ClinicType;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegisterClinic;
 
 class ClinicController extends Controller
 {
@@ -46,6 +48,8 @@ class ClinicController extends Controller
         if ($request->hasFile('images')) {
             $clinic->uploadImage($request->images);
         }
+
+        Mail::to($clinic)->send(new RegisterClinic($clinic));
 
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin/clinic.store.success'));

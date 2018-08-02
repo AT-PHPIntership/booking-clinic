@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Clinic;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -50,18 +52,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:255|unique:admins',
+            'email' => 'required|string|email|max:255|unique:admins',
             'password' => 'required|string|min:6|confirmed',
+            'clinic_id' => 'required|integer',
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new Admin instance after a valid registration.
      *
      * @param array $data data
      *
-     * @return \App\User
+     * @return \App\Admin
      */
     protected function create(array $data)
     {
@@ -69,6 +72,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'clinic_id' => $data['clinic_id']
         ]);
     }
 
@@ -79,6 +83,29 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('admin.auth.register');
+        if (!request()->has('q')) {
+            return abort(404);
+        }
+
+        $query = request()->query('q');
+        $query = decrypt($query);
+        parse_str($query, $data);
+        $clinic = Clinic::findOrFail($data['clinic_id']);
+
+        if ($clinic->admin()->count()) {
+            return abort(404);
+        }
+
+        return view('admin.auth.register', compact('clinic'));
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('web-admin');
     }
 }
