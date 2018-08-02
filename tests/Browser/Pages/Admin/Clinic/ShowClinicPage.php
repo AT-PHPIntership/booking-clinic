@@ -7,11 +7,11 @@ use Laravel\Dusk\Page as BasePage;
 
 class ShowClinicPage extends BasePage
 {
-    protected $id;
+    protected $clinic;
 
-    public function __construct($id)
+    public function __construct(\App\Clinic $clinic)
     {
-        $this->id = $id;
+        $this->clinic = $clinic;
     }
 
     /**
@@ -21,7 +21,7 @@ class ShowClinicPage extends BasePage
      */
     public function url()
     {
-        return '/admin/clinics/' . $this->id;
+        return '/admin/clinics/' . $this->clinic->id;
     }
 
     /**
@@ -33,13 +33,20 @@ class ShowClinicPage extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-            ->assertSee('Clinic id ' . $this->id)
+            ->assertSee('Clinic id ' . $this->clinic->id)
             ->assertSee('Clinic Type')
             ->assertSee('Name')
             ->assertSee('Address')
             ->assertSee('Phone')
             ->assertSee('Description')
-            ->assertSee('Created at');
+            ->assertSee('Created at')
+            ->assertValue('@clinicType', $this->clinic->clinicType->name)
+            ->assertValue('@name', $this->clinic->name)
+            ->assertValue('@phone', $this->clinic->phone)
+            ->assertValue('@address', $this->clinic->address)
+            ->assertValue('@createdAt', $this->clinic->created_at->toFormattedDateString())
+            ->assertSee($this->clinic->email)
+            ->assertSee($this->clinic->description);
     }
 
     /**
@@ -50,7 +57,11 @@ class ShowClinicPage extends BasePage
     public function elements()
     {
         return [
-            '@element' => '#selector',
+            '@clinicType' => 'input[name="clinic-type"]',
+            '@name' => 'input[name="name"]',
+            '@phone' => 'input[name="phone"]',
+            '@address' => 'input[name="address"]',
+            '@createdAt' => 'input[name="created-at"]',
         ];
     }
 }

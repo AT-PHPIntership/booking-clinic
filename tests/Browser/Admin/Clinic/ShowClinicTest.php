@@ -14,8 +14,8 @@ class ShowClinicTest extends AdminDuskTestCase
 {
     use DatabaseMigrations;
 
-    public const NUMBER_CLINIC_TYPE_CREATE = 5;
-    public const NUMBER_CLINIC_CREATE = 20;
+    private const NUMBER_CLINIC_TYPE_CREATE = 5;
+    private const NUMBER_CLINIC_CREATE = 20;
 
     /**
      * A Dusk test it can show detail clinic
@@ -30,14 +30,7 @@ class ShowClinicTest extends AdminDuskTestCase
 
         $this->browse(function (Browser $browser) use ($clinic) {
             $browser->loginAs($this->admin, 'web-admin')
-                ->visit(new ShowClinicPage($clinic->id))
-                ->assertValue('input[name="clinic_type"]', $clinic->clinicType->name)
-                ->assertValue('input[name="name"]', $clinic->name)
-                ->assertValue('input[name="phone"]', $clinic->phone)
-                ->assertValue('input[name="address"]', $clinic->address)
-                ->assertValue('input[name="created_at"]', $clinic->created_at->toFormattedDateString())
-                ->assertSee($clinic->email)
-                ->assertSee($clinic->description);
+                ->visit(new ShowClinicPage($clinic));
         });
     }
 

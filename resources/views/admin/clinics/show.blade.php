@@ -19,7 +19,7 @@
       <div class="form-group row">
         <label for="clinicTypeName" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/clinic.fields.clinic_type')</label>
         <div class="col-sm-10">
-          <input type="text" name="clinic_type" readonly class="form-control-plaintext" value="{{ $clinic->clinicType->name }}">
+          <input type="text" name="clinic-type" readonly class="form-control-plaintext" value="{{ $clinic->clinicType->name }}">
         </div>
       </div>
       <div class="form-group row">
@@ -49,7 +49,7 @@
       <div class="form-group row">
         <label for="created_at" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/clinic.fields.created_at')</label>
         <div class="col-sm-10">
-          <input type="text" name="created_at" readonly class="form-control-plaintext" value="{{ $clinic->created_at->toFormattedDateString() }}">
+          <input type="text" name="created-at" readonly class="form-control-plaintext" value="{{ $clinic->created_at->toFormattedDateString() }}">
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@
       <div id="googleMap" style="width:100%;height:400px;" data-lat="{{ $clinic->lat }}" data-lng="{{ $clinic->lng }}" title="{{ $clinic->address }}"></div>
     </div>
   </div>
-  <div class="row" style="width:500px;">
+  <div class="row" style="width:500px;height:500px">
     @include('layouts.partials.carousel', ['images' => $clinic->images])
   </div>
 
