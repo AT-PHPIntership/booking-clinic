@@ -7,7 +7,6 @@ use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\Browser\Pages\Admin\Users\ShowUserPage;
 use App\User;
-use App\Admin;
 
 class ShowUserTest extends AdminDuskTestCase
 {
@@ -37,8 +36,7 @@ class ShowUserTest extends AdminDuskTestCase
         $user = User::all()->random();
         $this->browse(function (Browser $browser) use ($user){
             $browser->loginAs($this->admin, 'web-admin')
-                    ->visit(new ShowUserPage($user));
-                    
+                ->visit(new ShowUserPage($user));
         });
     }
 
@@ -51,8 +49,8 @@ class ShowUserTest extends AdminDuskTestCase
     {
         $this->browse(function (Browser $browser){
             $browser->loginAs($this->admin, 'web-admin')
-                    ->visit('/admin/users/50')
-                    ->assertSee('Sorry, the page you are looking for could not be found.');
+                ->visit('/admin/users/50')
+                ->assertSee('Sorry, the page you are looking for could not be found.');
         });
     }
 }
