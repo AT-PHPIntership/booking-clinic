@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin_clinic.', 'namespace' =
     Route::group(['middleware' => ['auth:web-admin', 'clinic.admin']], function() {
         Route::view('dashboard', 'admin_clinic.dashboard')->name('admin_clinic.dashboard');
         Route::resource('appointments', 'AppointmentController')
-            ->only(['index', 'show', 'edit', 'update']);
+            ->only(['index', 'show', 'update']);
     });
 });
 
