@@ -10,12 +10,13 @@ class AppointmentController extends Controller
 {
     public function index()
     {
-        $appointments = Appointment::where('clinic_id','=', 14)->with('user')->paginate(1);
+        $appointments = Appointment::where('clinic_id','=', 14)->with('user')->paginate();
         return view('admin_clinic.appointments.index', compact('appointments'));
     }
 
     public function updatemany(Request $request)
     {
+        dd($request->all());
 
     }
 }
