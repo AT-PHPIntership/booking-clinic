@@ -36,3 +36,4 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin_clinic.', 'namespace' =
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
