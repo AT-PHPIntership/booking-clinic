@@ -20,7 +20,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'gender' => $faker->boolean(),
         'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'phone' => $faker->tollFreePhoneNumber(),
-        'address' => $faker->address(),
+        'address' => preg_replace('~[\r\n]+~', '', $faker->address),
         'password' => bcrypt('secret'),
         'remember_token' => str_random(10),
     ];

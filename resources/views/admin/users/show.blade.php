@@ -12,49 +12,49 @@
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.name')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->name }}">
+        <input type="text" name="name" readonly class="form-control-plaintext" value="{{ $user->name }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="email" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.email')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->email }}">
+        <input type="text" name="email" readonly class="form-control-plaintext" value="{{ $user->email }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="gender" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.gender')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->gender_string }}">
+        <input type="text" name="gender" readonly class="form-control-plaintext" value="{{ $user->gender_string }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.dob')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->dob }}">
+        <input type="text" name="dob" readonly class="form-control-plaintext" value="{{ $user->dob }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="phone" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.phone')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->phone }}">
+        <input type="text" name="phone" readonly class="form-control-plaintext" value="{{ $user->phone }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="address" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.address')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->address }}">
+        <input type="text" name="address" readonly class="form-control-plaintext" value="{{ $user->address }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="created_at" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.created_at')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->created_at }}">
+        <input type="text" name="created-at" readonly class="form-control-plaintext" value="{{ $user->created_at }}">
       </div>
     </div>
     <div class="form-group row">
       <label for="updated_at" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/user.fields.updated_at')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $user->updated_at }}">
+        <input type="text" name="updated-at" readonly class="form-control-plaintext" value="{{ $user->updated_at }}">
       </div>
     </div>
   </div>
