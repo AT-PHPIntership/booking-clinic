@@ -27,6 +27,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
     Auth::routes();
 
 });
-
+Route::view('test', 'admin_clinic.dashboard');
 
 Route::get('/home', 'HomeController@index')->name('home');
