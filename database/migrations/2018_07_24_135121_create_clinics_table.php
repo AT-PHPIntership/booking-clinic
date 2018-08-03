@@ -22,6 +22,7 @@ class CreateClinicsTable extends Migration
             $table->text('description')->nullable();
             $table->decimal('lat', 8, 6)->nullable();
             $table->decimal('lng', 9, 6)->nullable();
+            $table->string('slug');
             $table->unsignedInteger('clinic_type_id');
             $table->foreign('clinic_type_id')
                 ->references('id')->on('clinic_types');
