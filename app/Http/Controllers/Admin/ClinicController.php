@@ -44,7 +44,9 @@ class ClinicController extends Controller
      */
     public function store(ClinicRequest $request)
     {
-        $clinic = Clinic::create($request->all());
+        $data = $request->all();
+        $data['slug'] = str_slug($data['name']);
+        $clinic = Clinic::create($data);
 
         if ($request->hasFile('images')) {
             $clinic->uploadImage($request->images);
@@ -80,7 +82,10 @@ class ClinicController extends Controller
      */
     public function update(ClinicRequest $request, Clinic $clinic)
     {
-        $clinic->update($request->all());
+        $data = $request->all();
+        $data['slug'] = str_slug($data['name']);
+        $clinic->update($data);
+
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin/clinic.update.success'));
         return redirect()->route('admin.clinics.index');

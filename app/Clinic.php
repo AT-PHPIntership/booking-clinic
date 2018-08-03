@@ -15,7 +15,7 @@ class Clinic extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'address', 'description', 'clinic_type_id', 'lat', 'lng'
+        'name', 'email', 'phone', 'address', 'description', 'clinic_type_id', 'lat', 'lng', 'slug'
     ];
 
     /**
@@ -48,11 +48,21 @@ class Clinic extends Model
     /**
      * Get the admin associated with the clinic.
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function admin()
     {
         return $this->hasOne(Admin::class);
+    }
+
+    /**
+     * Get list appointments of clinic
+     *
+     *  @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
     }
 
     /**
