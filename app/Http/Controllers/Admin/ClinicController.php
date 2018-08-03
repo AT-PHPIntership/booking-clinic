@@ -9,6 +9,7 @@ use App\Clinic;
 use App\ClinicType;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterClinic;
+use App\Jobs\SendRegisterEmailAdmin;
 
 class ClinicController extends Controller
 {
@@ -49,7 +50,7 @@ class ClinicController extends Controller
             $clinic->uploadImage($request->images);
         }
 
-        Mail::to($clinic)->send(new RegisterClinic($clinic));
+        SendRegisterEmailAdmin::dispatch($clinic)->onQueue('emails');
 
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin/clinic.store.success'));
