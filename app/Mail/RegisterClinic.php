@@ -38,6 +38,6 @@ class RegisterClinic extends Mailable
         $query = http_build_query($data);
         $this->clinic->query = encrypt($query);
 
-        return $this->view('mails.register_clinic');
+        return $this->view('mails.' . \App::getLocale() . '.register_clinic');
     }
 }
