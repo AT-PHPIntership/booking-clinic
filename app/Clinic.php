@@ -15,7 +15,7 @@ class Clinic extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'address', 'description', 'clinic_type_id', 'lat', 'lng'
+        'name', 'email', 'phone', 'address', 'description', 'clinic_type_id', 'lat', 'lng', 'slug'
     ];
 
     /**

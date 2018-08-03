@@ -43,6 +43,7 @@ return [
         'created_at' => 'Created at',
         'updated_at' => 'Updated at',
         'clinic_type' => 'Clinic Type',
-        'image' => 'Image'
+        'image' => 'Image',
+        'slug' => 'Slug',
     ]
 ];

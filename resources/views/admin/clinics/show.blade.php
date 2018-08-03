@@ -47,6 +47,12 @@
         </div>
       </div>
       <div class="form-group row">
+        <label for="slug" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/clinic.fields.slug')</label>
+        <div class="col-sm-10">
+            <input type="text" name="slug" readonly class="form-control-plaintext" value="{{ $clinic->slug }}">
+        </div>
+      </div>
+      <div class="form-group row">
         <label for="created_at" class="col-sm-2 col-form-label font-weight-bold">@lang('admin/clinic.fields.created_at')</label>
         <div class="col-sm-10">
           <input type="text" name="created-at" readonly class="form-control-plaintext" value="{{ $clinic->created_at->toFormattedDateString() }}">
