@@ -9,6 +9,9 @@ class Admin extends Authenticatable
 {
     use Notifiable;
 
+    public const CLINIC_ADMIN = 0;
+    public const SUPER_ADMIN = 1;
+
      /**
      * The table associated with the model.
      *
@@ -21,7 +24,7 @@ class Admin extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'clinic_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -29,4 +32,14 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * Get the clinic that owns the admin.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function clinic()
+    {
+        return $this->belongsTo(Clinic::class);
+    }
 }

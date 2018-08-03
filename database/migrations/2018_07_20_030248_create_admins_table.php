@@ -18,6 +18,8 @@ class CreateAdminsTable extends Migration
             $table->string('name', 100)->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('role')->unsigned()->default(App\Admin::CLINIC_ADMIN);
+            $table->integer('clinic_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

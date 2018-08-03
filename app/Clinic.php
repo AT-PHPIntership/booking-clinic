@@ -46,9 +46,19 @@ class Clinic extends Model
     }
 
     /**
+     * Get the admin associated with the clinic.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
+    /**
      * Get list appointments of clinic
      *
-     *  @return array
+     *  @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function appointments()
     {
