@@ -42,4 +42,7 @@ class AppointmentController extends Controller
         session()->flash('flashMessage', __('admin_clinic/appointment.update.success'));
         return redirect()->back();
     }
+    public function edit(Clinic $clinic, Appointment $appointment) {
+        return view('admin_clinic.appointments.edit', compact('appointment'));
+    }
 }

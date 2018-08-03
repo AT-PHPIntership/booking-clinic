@@ -21,6 +21,7 @@
             <th>@lang('admin_clinic/appointment.fields.created_at')</th>
             <th>@lang('admin_clinic/appointment.fields.book_time')</th>
             <th>@lang('admin_clinic/appointment.fields.status')</th>
+            <th>@lang('admin_clinic/appointment.fields.detail')</th>
             <th></th>
           </tr>
         </thead>
@@ -43,6 +44,12 @@
                 </select>
                 <input type="hidden" name="id[]" value="{{ $appointment->id}}">
               </td>
+              <td>
+                <a href="{{ route('admin.appointments.edit', [$clinic->id, $appointment->id]) }}" class="btn btn-outline-primary">
+                  <i class="fas fa-info-circle"></i>
+                </a>
+              </td>
+
             </tr>
           @endforeach
         </tbody>
