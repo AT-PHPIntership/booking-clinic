@@ -1,7 +1,7 @@
 @extends('admin_clinic.layouts.app')
 
 @section('title')
-  @lang('admin_clinic/user.index.title')
+  @lang('admin_clinic/appointment.index.title')
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
   </div>
   @include('admin_clinic.layouts.partials.block-flash')
   <div class="table-responsive">
-    <form action="{{ route('appointments.updateMany')}}" method="post">
+    <form action="{{ route('admin.appointments.update_list_appointments', $clinic->id)}}" method="post">
         @csrf
         @method('PATCH')
       <table class="table table-striped table-sm text-nowrap">
@@ -32,7 +32,7 @@
               <td>{{ $appointment->book_time }}</td>
               <td>{{ $appointment->created_at }}</td>
               <td>
-                  <select class="status custom-select d-block w-100 text-body font-weight-bold" required name="status[]">
+                  <select class="custom-select d-block w-100 text-body font-weight-bold status-select" required name="status[]">
                   @foreach (App\Appointment::STATUS as $key=>$item)
                     @if ($item == $appointment->status )
                       <option value="{{ $key }}" selected>{{$item}}</option>
@@ -45,8 +45,6 @@
               </td>
             </tr>
           @endforeach
-
-
         </tbody>
       </table>
     <input type="submit" class="btn btn-primary" value="Update">

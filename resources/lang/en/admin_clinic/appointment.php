@@ -16,4 +16,7 @@ return [
         'updated_at' => 'updated_at',
         'status' => 'status'
     ],
+    'update' => [
+        'success' => 'List appointments is updated'
+    ]
 ];
