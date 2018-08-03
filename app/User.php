@@ -41,4 +41,13 @@ class User extends Authenticatable
             ? __('admin/user.fields.gender_type.male')
             : __('admin/user.fields.gender_type.female');
     }
+    /**
+     * Get list appointments of user
+     *
+     *  @return array
+     */
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }
