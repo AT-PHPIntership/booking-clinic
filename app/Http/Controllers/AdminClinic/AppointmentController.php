@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Appointment;
 use App\Clinic;
+use App\Jobs\SendAppointmentConfirmationEmail;
 
 class AppointmentController extends Controller
 {
@@ -55,6 +56,7 @@ class AppointmentController extends Controller
         $clinic = Clinic::where('slug', '=', $slug)->first();
         if ($clinic->id == $appointment->clinic->id) {
             $appointment->update(['status' => $request->status]);
+            SendAppointmentConfirmationEmail::dispatch($appointment->user->email)->onQueue('emails');
             return response()->json(200);
         }
         return response()->json(500);

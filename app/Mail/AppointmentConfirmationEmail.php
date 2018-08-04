@@ -10,15 +10,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class AppointmentConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +29,6 @@ class AppointmentConfirmationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.appointment_confirmation')->with('user', $user);
     }
 }
