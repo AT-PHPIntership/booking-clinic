@@ -25,6 +25,23 @@ class AppointmentController extends Controller
     }
 
     /**
+     * Display appointment of clinic edit page .
+     *
+     * @param String           $slug        slug
+     * @param \App\Appointment $appointment appointment
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($slug, Appointment $appointment)
+    {
+        $clinic = Clinic::where('slug', '=', $slug)->firstOrFail();
+        if ($clinic->id == $appointment->clinic->id) {
+            return view('admin_clinic.appointments.edit', compact(['slug', 'appointment']));
+        }
+        return abort(404);
+    }
+
+    /**
      * Update a status in list appointmennts of clinic.
      *
      * @param \Illuminate\Http\Requests $request     request

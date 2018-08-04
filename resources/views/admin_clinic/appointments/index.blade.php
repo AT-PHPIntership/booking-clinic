@@ -17,6 +17,7 @@
             <th>@lang('admin_clinic/appointment.fields.user_name')</th>
             <th>@lang('admin_clinic/appointment.fields.created_at')</th>
             <th>@lang('admin_clinic/appointment.fields.book_time')</th>
+            <th>@lang('admin_clinic/appointment.fields.detail')</th>
             <th>@lang('admin_clinic/appointment.fields.status')</th>
           </tr>
         </thead>
@@ -28,6 +29,12 @@
               <td>{{ $appointment->user->name }}</td>
               <td>{{ $appointment->book_time }}</td>
               <td>{{ $appointment->created_at }}</td>
+              <td>{{ $appointment->created_at }}</td>
+              <td>
+                <a href="{{ route('admin.appointments.edit', [$clinic->slug, $appointment->id]) }}" class="btn btn-outline-primary">
+                  <i class="fas fa-info-circle"></i>
+                </a>
+              </td>
               <td class="container">
                   <select id="appointment-{{$appointment->id}}" class="col-md-4 d-inline custom-select text-body font-weight-bold status-select"
                     required name="status">
