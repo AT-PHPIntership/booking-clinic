@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Appointment;
 use App\Clinic;
 use App\Jobs\SendAppointmentConfirmationEmail;
+use App\Mail\AppointmentConfirmationEmail;
 
 class AppointmentController extends Controller
 {
@@ -56,9 +57,13 @@ class AppointmentController extends Controller
         $clinic = Clinic::where('slug', '=', $slug)->first();
         if ($clinic->id == $appointment->clinic->id) {
             $appointment->update(['status' => $request->status]);
-            SendAppointmentConfirmationEmail::dispatch($appointment->user->email)->onQueue('emails');
-            return response()->json(200);
+            try {
+                SendAppointmentConfirmationEmail::dispatch($appointment->user)->onQueue('emails')->delay(now()->addMinutes(1));
+                return response()->json(200);
+            } catch (\Exception $e) {
+                return response()->json($e, 400);
+            }
         }
-        return response()->json(500);
+        return response()->json(400);
     }
 }

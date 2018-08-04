@@ -17,7 +17,7 @@ class AppointmentConfirmationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct(\App\User $user)
     {
         $this->user = $user;
     }
@@ -29,6 +29,6 @@ class AppointmentConfirmationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.appointment_confirmation')->with('user', $user);
+        return $this->view('mails.en.appointment_confirmation')->with('user', $this->user);
     }
 }

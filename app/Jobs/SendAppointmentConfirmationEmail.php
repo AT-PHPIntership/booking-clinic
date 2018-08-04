@@ -7,6 +7,8 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppointmentConfirmationEmail;
 
 class SendAppointmentConfirmationEmail implements ShouldQueue
 {
@@ -30,8 +32,8 @@ class SendAppointmentConfirmationEmail implements ShouldQueue
      */
     public function handle()
     {
-        sleep(20);
+        // sleep(10);
         $email = new AppointmentConfirmationEmail($this->user);
-        Mail::to($this->user->email)->sned($email);
+        Mail::to($this->user->email)->send($email);
     }
 }

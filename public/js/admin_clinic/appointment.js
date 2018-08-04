@@ -33,7 +33,7 @@ $(document).ready(function() {
       ele.after('<div class="d-inline alert alert-success status-flash">Success</div>');
       ele.next().fadeOut('slow');
     })
-    .fail(function (e) {
-      alert(e.status)});
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      console.log(JSON.stringify(jqXHR.responseJSON.xdebug_message))});
     });
 });
