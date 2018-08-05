@@ -32,6 +32,6 @@ class AppointmentConfirmationEmail extends Mailable
     public function build()
     {
         return $this->from($this->appointment->clinic->email)
-            ->view('mails.en.appointment_confirmation')->with('appointment', $this->appointment);
+            ->markdown('mails.en.appointment_confirmation')->with('appointment', $this->appointment);
     }
 }

@@ -1,7 +1,12 @@
-<h1>{{ config('app.name') }}</h1>
-<strong>Greeting!</strong>
-<p>Hello {{$appointment->user->name}}</p>
-<p>Your appointment # {{ $appointment->id }} book in
-  {{ $appointment->book_time->day . '/' . $appointment->book_time->month . '/' . $appointment->book_time->year }}
-  on {{ $appointment->book_time->hour . ':' . $appointment->book_time->hour . ':' . $appointment->book_time->second }} is {{$appointment->status}} </p>
-<em>From {{ $appointment->clinic->name }} clinic</em>
+@component('mail::message')
+# Clinic confirms appointment email
+
+**Hello** {{$appointment->user->name}}. Your appointment **#{{ $appointment->id }}** booked in **{{ $appointment->book_time->format('Y-m-d')}}** on **{{ $appointment->book_time->format('H:i:s')}}** is **{{$appointment->status}}**
+
+@component('mail::panel')
+{{ $appointment->description}}
+@endcomponent
+
+*From {{ $appointment->clinic->name }} clinic*
+
+@endcomponent
