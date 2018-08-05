@@ -13,16 +13,18 @@ use App\Mail\AppointmentConfirmationEmail;
 class SendAppointmentConfirmationEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $user;
+    // public $user;
+    // public $clinic;
+    public $appointment;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($appointment)
     {
-        $this->user = $user;
+        $this->appointment = $appointment;
     }
 
     /**
@@ -33,7 +35,7 @@ class SendAppointmentConfirmationEmail implements ShouldQueue
     public function handle()
     {
         // sleep(10);
-        $email = new AppointmentConfirmationEmail($this->user);
-        Mail::to($this->user->email)->send($email);
+        $email = new AppointmentConfirmationEmail($this->appointment);
+        Mail::to($this->appointment->user->email)->send($email);
     }
 }

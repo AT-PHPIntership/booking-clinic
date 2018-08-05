@@ -58,7 +58,7 @@ class AppointmentController extends Controller
         if ($clinic->id == $appointment->clinic->id) {
             $appointment->update(['status' => $request->status]);
             try {
-                SendAppointmentConfirmationEmail::dispatch($appointment->user)->onQueue('emails')->delay(now()->addMinutes(1));
+                SendAppointmentConfirmationEmail::dispatch($appointment)->delay(now()->addMinutes(5)); //>onQueue('emails')
                 return response()->json(200);
             } catch (\Exception $e) {
                 return response()->json($e, 400);
