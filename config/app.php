@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
 
         /*
@@ -211,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
 
     ],
 
