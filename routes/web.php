@@ -29,9 +29,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 });
 
 Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin.', 'namespace' => 'AdminClinic'], function() {
-    Route::view('dashboard', 'admin_clinic.dashboard')->name('admin_clinic.dashboard');
+    Route::resource('dashboard', 'DashboardController')
+        ->only(['index', 'update']);
     Route::resource('appointments', 'AppointmentController')
-    ->only(['index', 'show', 'edit', 'update']);
+        ->only(['index', 'show', 'edit', 'update']);
 });
 
 
