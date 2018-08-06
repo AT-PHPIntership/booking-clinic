@@ -32,6 +32,11 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin_clinic.', 'namespace' =
         Route::view('dashboard', 'admin_clinic.dashboard')->name('admin_clinic.dashboard');
         Route::resource('appointments', 'AppointmentController')
             ->only(['index', 'show', 'edit', 'update']);
+        Route::group(['prefix' => 'profile', 'as' => 'profile.'], function() {
+            Route::get('/', 'ProfileController@show')->name('show');
+            Route::get('edit', 'ProfileController@edit')->name('edit');
+            Route::put('/', 'ProfileController@update')->name('update');
+        });    
     });
 });
 
