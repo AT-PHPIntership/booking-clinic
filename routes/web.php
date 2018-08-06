@@ -37,3 +37,5 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin.', 'namespace' => 'Admi
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/admin', 'AdminClinic\AppointmentController@aa');
+
+Route::get('events', 'AdminClinic\EventController@index');
