@@ -86,7 +86,7 @@ class Clinic extends Model
      * Delete images path for clinic
      *
      * @param array $deletedImageId deletedImageId
-     * 
+     *
      * @return void
      */
     public function deleteImage($deletedImageId)

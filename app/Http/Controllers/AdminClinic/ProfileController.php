@@ -25,8 +25,6 @@ class ProfileController extends BaseController
     /**
      * Show the form for editting a new resource.
      *
-     * @param string $slug slug
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit()
@@ -40,7 +38,6 @@ class ProfileController extends BaseController
      * Update a resource was editted.
      *
      * @param \App\Http\Requests\AdminClinic\ClinicRequest $request request
-     * @param \App\Clinic                                  $clinic  clinic
      *
      * @return \Illuminate\Http\Response
      */
@@ -55,7 +52,7 @@ class ProfileController extends BaseController
         $deletedImageIdUnique = array_unique(explode(",", $deletedImageIdRetrieved));
         $deletedImageId = array_filter($deletedImageIdUnique, 'is_numeric');
 
-        if (count($deletedImageId)){
+        if (count($deletedImageId)) {
             $clinic->deleteImage($deletedImageId);
         }
         
@@ -67,5 +64,4 @@ class ProfileController extends BaseController
         session()->flash('flashMessage', __('admin_clinic/profile.update.success.clinic'));
         return redirect()->route('admin_clinic.profile.show', $clinic->slug);
     }
-
 }
