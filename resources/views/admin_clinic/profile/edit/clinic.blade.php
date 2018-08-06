@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">@lang('admin_clinic/profile.edit.clinic.heading')</h1>
 </div>
-<form action="{{ route('admin.profile.update', $clinic->slug) }}" method="POST" class="col-md-12" enctype="multipart/form-data">
+<form action="{{ route('admin_clinic.profile.update', $clinic->slug) }}" method="POST" class="col-md-12" enctype="multipart/form-data">
   @csrf
   @method('PUT')
   <div class="col-md-6">

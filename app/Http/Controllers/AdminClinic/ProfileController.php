@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\AdminClinic;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminClinic\BaseController;
 use App\Http\Requests\AdminClinic\ClinicRequest;
 use App\Clinic;
 use App\ClinicType;
 use App\ClinicImage;
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show()
     {
-        $clinic = Clinic::where('slug', '=', $slug)->firstOrFail();
+        $clinic = $this->clinic;
         return view('admin_clinic.profile.show', compact('clinic'));
     }
 
@@ -29,9 +29,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit()
     {
-        $clinic = Clinic::where('slug', $slug)->firstOrFail();
+        $clinic = $this->clinic;
         $clinicTypes = ClinicType::all();
         return view('admin_clinic.profile.edit.clinic', compact('clinic', 'clinicTypes'));
     }
@@ -44,11 +44,11 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(ClinicRequest $request, $slug)
+    public function update(ClinicRequest $request)
     {
         $data = $request->all();
         $data['slug'] = str_slug($data['name']);
-        $clinic = Clinic::where('slug', $slug)->firstOrFail();
+        $clinic = $this->clinic;
         $clinic->update($data);
 
         $deletedImageIdRetrieved = $data['image_deleted'];
@@ -65,7 +65,7 @@ class ProfileController extends Controller
 
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin_clinic/profile.update.success.clinic'));
-        return redirect()->route('admin.profile.show', $clinic->slug);
+        return redirect()->route('admin_clinic.profile.show', $clinic->slug);
     }
 
 }
