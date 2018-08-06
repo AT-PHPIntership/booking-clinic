@@ -42,4 +42,24 @@ class Admin extends Authenticatable
     {
         return $this->belongsTo(Clinic::class);
     }
+
+    /**
+     * Return true if user is super admin
+     *
+     * @return boolean
+     */
+    public function isSuperAdmin()
+    {
+        return $this->role == self::SUPER_ADMIN;
+    }
+
+    /**
+     * Return true if user is clinic admin
+     *
+     * @return boolean
+     */
+    public function isClinicAdmin()
+    {
+        return $this->role == self::CLINIC_ADMIN;
+    }
 }

@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-use App\Admin;
 
-class AdminMiddleware
+class ClinicAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -19,8 +18,11 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         $user = Auth::guard('web-admin')->user();
-        if (Auth::check() && $user && $user->isSuperAdmin()) {
-            return $next($request);
+        if (Auth::check() && $user && $user->isClinicAdmin()) {
+            if ($request->slug === $user->clinic->slug) {
+                return $next($request);
+            }
+            return redirect('admin/' . $user->clinic->slug . '/dashboard');
         }
         return redirect('home');
     }

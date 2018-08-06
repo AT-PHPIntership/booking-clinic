@@ -24,13 +24,6 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/admin/dashboard';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -71,5 +64,19 @@ class LoginController extends Controller
     {
         unset($request);
         return redirect('admin/login');
+    }
+
+    /**
+     * Return redirect path after login
+     *
+     * @return string
+     */
+    protected function redirectTo()
+    {
+        $user = Auth::guard('web-admin')->user();
+
+        return $user->isClinicAdmin()
+            ? '/admin/' . $user->clinic->slug . '/dashboard'
+            : '/admin/dashboard';
     }
 }
