@@ -10,6 +10,12 @@ class Appointment extends Model
     use SoftDeletes;
 
     public const STATUS = ['Pending', 'Confirmed', 'Success', 'Cancel'];
+    public const COLOR = [
+        'Pending' => '#ffc107',
+        'Confirmed' => '#007bff',
+        'Success' => '#28a745',
+        'Cancel' =>'#dc3545'
+    ];
 
     /**
      * The attributes that are mass assignable.
