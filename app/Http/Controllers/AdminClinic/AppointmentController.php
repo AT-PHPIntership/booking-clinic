@@ -3,25 +3,22 @@
 namespace App\Http\Controllers\AdminClinic;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminClinic\BaseController;
 use App\Appointment;
 use App\Clinic;
 
-class AppointmentController extends Controller
+class AppointmentController extends BaseController
 {
 
     /**
      * Display a listing of appointment of clinic.
      *
-     * @param String $slug slug
-     *
      * @return \Illuminate\Http\Response
      */
-    public function index($slug)
+    public function index()
     {
-        $clinic = Clinic::where('slug', $slug)->firstOrFail();
-        $appointments = $clinic->appointments()->latest()->with('user')->paginate();
-        return view('admin_clinic.appointments.index', compact(['appointments', 'clinic']));
+        $appointments = $this->clinic->appointments()->latest()->with('user')->paginate();
+        return view('admin_clinic.appointments.index', ['appointments' => $appointments, 'clinic' => $this->clinic]);
     }
 
     /**
@@ -35,11 +32,11 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $slug, Appointment $appointment)
     {
-        $clinic = Clinic::where('slug', $slug)->first();
-        if ($clinic->id == $appointment->clinic->id) {
+        if ($this->clinic->id == $appointment->clinic->id) {
             $appointment->update(['status' => $request->status]);
             return response()->json(200);
         }
+        unset($slug);
         return response()->json(500);
     }
 }
