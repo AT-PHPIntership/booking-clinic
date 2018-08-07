@@ -39,7 +39,6 @@
                     @endif
                   @endforeach
                 </select>
-                <input type="hidden" name="id[]" value="{{ $appointment->id}}">
               </td>
             </tr>
           @endforeach

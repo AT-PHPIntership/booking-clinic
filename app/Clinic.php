@@ -91,6 +91,6 @@ class Clinic extends Model
      */
     public function deleteImage($deletedImageId)
     {
-        $images = $this->images()->whereIn('id', $deletedImageId)->delete();
+        $this->images()->whereIn('id', $deletedImageId)->delete();
     }
 }

@@ -15,7 +15,7 @@
     <div class="form-group">
       <label>@lang('admin_clinic/profile.fields.clinic.clinic_type')</label>
       <select class="form-control{{ $errors->has('clinic_type_id') ? ' is-invalid' : '' }}" name="clinic_type_id">
-        @foreach($clinicTypes as $type)
+        @foreach ($clinicTypes as $type)
           @if ($type->id === $clinic->clinicType->id)
             <option value="{{ $type->id }}" selected>{{ $type->name }}</option>
           @else

@@ -18,8 +18,7 @@ class ProfileController extends BaseController
      */
     public function show()
     {
-        $clinic = $this->clinic;
-        return view('admin_clinic.profile.show', compact('clinic'));
+        return view('admin_clinic.profile.show', ['clinic' => $this->clinic]);
     }
 
     /**
@@ -29,9 +28,8 @@ class ProfileController extends BaseController
      */
     public function edit()
     {
-        $clinic = $this->clinic;
         $clinicTypes = ClinicType::all();
-        return view('admin_clinic.profile.edit.clinic', compact('clinic', 'clinicTypes'));
+        return view('admin_clinic.profile.edit.clinic', compact('clinicTypes'))->with(['clinic' => $this->clinic]);
     }
 
     /**
