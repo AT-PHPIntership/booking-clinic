@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdminClinic\BaseController;
 use App\Clinic;
 use App\Appointment;
-
 class DashboardController extends BaseController
 {
     /**
