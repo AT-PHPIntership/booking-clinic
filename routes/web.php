@@ -36,9 +36,10 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin_clinic.', 'namespace' =
             Route::get('/', 'ProfileController@show')->name('show');
             Route::get('edit', 'ProfileController@edit')->name('edit');
             Route::put('/', 'ProfileController@update')->name('update');
+            Route::get('admin/edit', 'ProfileController@editAdmin')->name('admin.edit');
+            Route::put('admin', 'ProfileController@updateAdmin')->name('admin.update');
         });    
     });
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-

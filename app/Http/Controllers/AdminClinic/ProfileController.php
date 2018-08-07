@@ -5,9 +5,11 @@ namespace App\Http\Controllers\AdminClinic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AdminClinic\BaseController;
 use App\Http\Requests\AdminClinic\ClinicRequest;
+use App\Http\Requests\AdminClinic\ProfileAdminRequest;
 use App\Clinic;
 use App\ClinicType;
 use App\ClinicImage;
+use Hash;
 
 class ProfileController extends BaseController
 {
@@ -61,5 +63,34 @@ class ProfileController extends BaseController
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin_clinic/profile.update.success.clinic'));
         return redirect()->route('admin_clinic.profile.show', $clinic->slug);
+    }
+
+    /**
+     * Show the form for editting a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editAdmin()
+    {
+        return view('admin_clinic.profile.edit.admin');
+    }
+
+    /**
+     * Update a resource was editted.
+     *
+     * @param \App\Http\Requests\AdminClinic\ProfileAdminRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAdmin(ProfileAdminRequest $request)
+    {
+        $admin = $this->clinic->admin;
+        $admin->fill([
+            'password' => Hash::make($request->input('password'))
+        ])->save();
+
+        session()->flash('flashType', 'success');
+        session()->flash('flashMessage', __('admin_clinic/profile.update.success.admin'));
+        return redirect()->route('admin_clinic.profile.show', $this->clinic->slug);
     }
 }

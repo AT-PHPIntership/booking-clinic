@@ -12,6 +12,9 @@ return [
         ],
         'admin' => [
             'heading' => 'Update admin information',
+            'section' => [
+                'password' => 'Change password',
+            ],
         ]
     ],
     'fields' => [

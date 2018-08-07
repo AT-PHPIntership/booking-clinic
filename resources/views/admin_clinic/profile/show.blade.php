@@ -13,8 +13,8 @@
         <i class="fas fa-edit"></i>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href=" {{ route('admin_clinic.profile.edit', $clinic->slug) }} "><i class="fas fa-home"> Clinic</i></a>
-        <a class="dropdown-item" href="#"><i class="fas fa-user"> Admin</i></a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.profile.edit', $clinic->slug) }}"><i class="fas fa-home"> Clinic</i></a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.profile.admin.edit', $clinic->slug) }}"><i class="fas fa-user"> Admin</i></a>
       </div>
     </div>
     </div>
