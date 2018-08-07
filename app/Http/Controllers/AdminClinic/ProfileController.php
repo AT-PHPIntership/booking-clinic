@@ -48,8 +48,8 @@ class ProfileController extends BaseController
         $clinic = $this->clinic;
         $clinic->update($data);
 
-        $deletedImageIdRetrieved = $data['image_deleted'];
-        $deletedImageIdUnique = array_unique(explode(",", $deletedImageIdRetrieved));
+        $delImgIdRetrieved = $data['image_deleted'];
+        $deletedImageIdUnique = array_unique(explode(",", $delImgIdRetrieved));
         $deletedImageId = array_filter($deletedImageIdUnique, 'is_numeric');
 
         if (count($deletedImageId)) {
