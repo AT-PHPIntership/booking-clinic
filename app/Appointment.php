@@ -9,7 +9,7 @@ class Appointment extends Model
 {
     use SoftDeletes;
 
-    public const STATUS = ['Pending', 'Confirmed', 'Success', 'Cancel'];
+    public const STATUS = ['Pending', 'Confirmed', 'Completed', 'Cancel'];
 
     /**
      * The attributes that are mass assignable.
@@ -57,5 +57,15 @@ class Appointment extends Model
     public function getStatusAttribute($status)
     {
         return Appointment::STATUS[$status];
+    }
+
+    /**
+     * Get the examination associated with the appointment.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function examination()
+    {
+        return $this->hasOne(Examination::class);
     }
 }
