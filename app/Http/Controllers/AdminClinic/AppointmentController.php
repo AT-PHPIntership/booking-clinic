@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdminClinic\BaseController;
 use App\Appointment;
 use App\Clinic;
-use App\Jobs\SendAppointmentConfirmationEmail;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\AppointmentConfirmationEmail;
 
 class AppointmentController extends BaseController
@@ -52,7 +52,10 @@ class AppointmentController extends BaseController
     {
         if ($this->clinic->id == $appointment->clinic->id) {
             $appointment->update(['status' => $request->status]);
-            SendAppointmentConfirmationEmail::dispatch($appointment)->delay(now()->addMinutes(5))->onQueue('emails');
+            $message = (new AppointmentConfirmationEmail($appointment))
+                ->onQueue('emails');
+            Mail::to($appointment->user->email)
+                ->queue($message);
             return response()->json(200);
         }
         unset($slug);
