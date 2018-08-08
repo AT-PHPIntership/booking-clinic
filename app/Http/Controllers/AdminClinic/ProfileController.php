@@ -10,6 +10,8 @@ use App\Clinic;
 use App\ClinicType;
 use App\ClinicImage;
 use Hash;
+use Validator;
+use \Illuminate\Http\Response;
 
 class ProfileController extends BaseController
 {
@@ -76,13 +78,13 @@ class ProfileController extends BaseController
     }
 
     /**
-     * Update a resource was editted.
+     * Update password of clinic admin.
      *
      * @param \App\Http\Requests\AdminClinic\ProfileAdminRequest $request request
      *
      * @return \Illuminate\Http\Response
      */
-    public function updateAdmin(ProfileAdminRequest $request)
+    public function updateAdminPassword(ProfileAdminRequest $request)
     {
         $admin = $this->clinic->admin;
         $admin->fill([
@@ -90,7 +92,31 @@ class ProfileController extends BaseController
         ])->save();
 
         session()->flash('flashType', 'success');
-        session()->flash('flashMessage', __('admin_clinic/profile.update.success.admin'));
+        session()->flash('flashMessage', __('admin_clinic/profile.update.success.admin.password'));
         return redirect()->route('admin_clinic.profile.show', $this->clinic->slug);
+    }
+
+    /**
+     * Update username of clinic admin
+     *
+     * @param Request $request
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAdminName(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=> $validator->errors()], Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+        $admin = $this->clinic->admin;
+        $admin->fill([
+            'name' => $request->get('name')
+        ])->save();
+        return response()->json(['message' => __('admin_clinic/profile.update.success.admin.name')], Response::HTTP_OK);
     }
 }

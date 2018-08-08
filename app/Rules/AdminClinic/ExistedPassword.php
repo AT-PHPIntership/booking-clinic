@@ -39,6 +39,6 @@ class ExistedPassword implements Rule
      */
     public function message()
     {
-        return 'The current password isn\'t correct';
+        return __('admin_clinic/profile.update.error.password');
     }
 }

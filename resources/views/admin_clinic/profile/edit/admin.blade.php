@@ -22,7 +22,7 @@
                 <label for="password_current" class="col-md-4 col-form-label text-md-right">{{ __('admin_clinic/profile.fields.admin.current_password') }}</label>
 
                 <div class="col-md-6">
-                  <input id="password_current" type="password" class="form-control{{ $errors->has('password_current') ? ' is-invalid' : '' }}" name="password_current" >
+                  <input id="password_current" type="password" class="form-control{{ $errors->has('password_current') ? ' is-invalid' : '' }}" name="password_current" autofocus>
 
                   @if ($errors->has('password_current'))
                     <span class="invalid-feedback" role="alert">
@@ -65,6 +65,40 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">{{ __('admin_clinic/profile.edit.admin.section.adminname') }}</div>
+
+        <div class="card-body">
+          <div class="form-group row">
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('admin_clinic/profile.fields.admin.name') }}</label>
+
+            <div class="col-md-6">
+              <input type="text" id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" data-slug="{{ request()->slug }}" required>
+
+              <span class="invalid-feedback d-none" role="alert">
+                <strong></strong>
+              </span>
+
+            </div>
+          </div>
+          <div class="form-group row mb-0">
+            <div class="col-md-6 offset-md-4">
+              <button id="change_name" class="btn btn-primary">
+                {{ __('admin_clinic/layout.btn.update') }}
+              </button>
+              <div class="circle-loader d-none" id="loader-icon">
+                <div class="checkmark draw"></div>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 @endsection
+
+@include("admin_clinic.layouts.partials.change_username")
