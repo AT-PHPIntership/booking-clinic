@@ -28,6 +28,7 @@ class ExistedPassword implements Rule
      */
     public function passes($attribute, $value)
     {
+        unset($attribute);
         $user = Auth::guard('web-admin')->user();
         return Hash::check($value, $user->password);
     }
