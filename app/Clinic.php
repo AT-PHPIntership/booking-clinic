@@ -81,4 +81,16 @@ class Clinic extends Model
             $this->images()->save($image);
         }
     }
+
+    /**
+     * Delete images path for clinic
+     *
+     * @param array $deletedImageId deletedImageId
+     *
+     * @return void
+     */
+    public function deleteImage($deletedImageId)
+    {
+        $this->images()->whereIn('id', $deletedImageId)->delete();
+    }
 }

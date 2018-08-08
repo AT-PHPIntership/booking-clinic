@@ -14,7 +14,9 @@ return [
         'created_at' => 'created_at',
         'book_time' => 'book_time',
         'updated_at' => 'updated_at',
-        'status' => 'status'
+        'status' => 'status',
+        'detail' => 'detail',
+        'description' => 'description'
     ],
     'update' => [
         'success' => 'List appointments is updated'
