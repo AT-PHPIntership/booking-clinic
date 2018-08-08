@@ -22,9 +22,9 @@
         </thead>
         <tbody>
           <input id="slug" type="hidden" name="slug" value="{{ $clinic->slug }}">
-          @foreach($appointments as $appointment)
+          @foreach($appointments as $key => $appointment)
             <tr>
-              <td>{{ $appointment->id }}</td>
+              <td>{{ generateIndex($appointments, $key) }}</td>
               <td>{{ $appointment->user->name }}</td>
               <td>{{ $appointment->book_time }}</td>
               <td>{{ $appointment->created_at }}</td>

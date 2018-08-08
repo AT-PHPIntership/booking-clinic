@@ -26,9 +26,9 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($clinics as $clinic)
+        @foreach($clinics as $key => $clinic)
           <tr>
-            <td>{{ $clinic->id }}</td>
+            <td>{{ generateIndex($clinics, $key) }}</td>
             <td>{{ $clinic->clinicType->name }}</td>
             <td>{{ $clinic->name }}</td>
             <td>{{ $clinic->address }}</td>
