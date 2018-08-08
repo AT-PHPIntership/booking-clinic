@@ -38,6 +38,7 @@ class CreateClinicTest extends DuskTestCase
                     ->type('name', 'John Doe')
                     ->type('email', 'johndoe@gmail.com')
                     ->type('phone', '0123456789')
+                    ->type('address', '87 Richardson St. New City, NY 10956')
                     ->press('Add')
                     ->assertPathIs('/admin/clinics')
                     ->assertSee('A new clinic is added');
@@ -59,6 +60,7 @@ class CreateClinicTest extends DuskTestCase
                     ->type('name', 'John Doe')
                     ->type('email', 'johndoe%gmail.com')
                     ->type('phone', '0123456789')
+                    ->type('address', '87 Richardson St. New City, NY 10956')
                     ->press('Add')
                     ->assertSee('The email must be a valid email address');
             $this->assertDatabaseMissing('clinics', ['name' => 'John Doe']);
@@ -80,6 +82,7 @@ class CreateClinicTest extends DuskTestCase
                     ->type('name', 'John Doe')
                     ->type('email', $clinic->email)
                     ->type('phone', '0123456789')
+                    ->type('address', '87 Richardson St. New City, NY 10956')
                     ->press('Add')
                     ->assertSee('The email has already been taken');
             $this->assertDatabaseMissing('clinics', ['name' => 'John Doe']);
@@ -100,10 +103,12 @@ class CreateClinicTest extends DuskTestCase
                     ->type('name', '')
                     ->type('email', '')
                     ->type('phone', '')
+                    ->type('address', '')
                     ->press('Add')
                     ->assertSee('The name field is required')
                     ->assertSee('The email field is required')
-                    ->assertSee('The phone field is required');
+                    ->assertSee('The phone field is required')
+                    ->assertSee('The address field is required');
             $this->assertDatabaseMissing('clinics', ['name' => '']);
         });
     }
@@ -122,6 +127,7 @@ class CreateClinicTest extends DuskTestCase
                     ->type('name', 'John Doe')
                     ->type('email', 'johndoe@gmail.com')
                     ->type('phone', '0123456789')
+                    ->type('address', '87 Richardson St. New City, NY 10956')
                     ->attach('images[]', __DIR__.'/stuff/avatar.png')
                     ->press('Add')
                     ->assertPathIs('/admin/clinics')
@@ -145,6 +151,7 @@ class CreateClinicTest extends DuskTestCase
                     ->type('name', 'John Doe')
                     ->type('email', 'johndoe@gmail.com')
                     ->type('phone', '0123456789')
+                    ->type('address', '87 Richardson St. New City, NY 10956')
                     ->attach('images[]', __DIR__.'/stuff/doc.txt')
                     ->press('Add')
                     ->assertSee('The images.0 must be an image');
