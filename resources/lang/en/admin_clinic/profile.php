@@ -47,7 +47,7 @@ return [
             'admin' => [
                 'password' => 'The admin information has been updated.',
                 'name' => 'The admin name has been updated',
-            ]    
+            ]
         ],
         'error' => [
             'password' => 'The current password isn\'t correct',

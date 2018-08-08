@@ -99,8 +99,8 @@ class ProfileController extends BaseController
     /**
      * Update username of clinic admin
      *
-     * @param Request $request
-     * 
+     * @param Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function updateAdminName(Request $request)
