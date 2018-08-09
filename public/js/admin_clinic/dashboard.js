@@ -17,77 +17,55 @@ $(document).ready(function() {
   $('.status-pending').each(function() {
     $(this).css("background-color", '#ffc107');
   });
+
   var slug = $("#slug").val();
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+    }
+  });
 
-    $(".accept").click(function(e) {
-      var ele = $(this);
-      var appointmentId = ele.attr('id').substring(7);
-      var status = '1';
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
-        }
-      });
-      e.preventDefault();
-      var doneStatus = function() {
+  // handle accept button
+  $(".accept").click(function(e) {
+    var ele = $(this);
+    var appointmentId = ele.attr('id').substring(7);
+    var status = '1';
+    e.preventDefault();
+    var doneStatus = function() {
 
-        // Remove 2 button and hide appointment is changed status
-        ele.closest("tr").addClass("delete");
-        // if (value == '.accept') {
-          ele.prev().css("background-color", '#007bff').val(CONFIRMED).next().next().remove();
-        // } else {
-        //   ele.prev().prev().css("background-color", '#dc3545').val(CANCEL).next().remove();
-        // }
-        ele.remove();
-        $(".delete").fadeOut(3000);
-      };
-      // if (value == '.cancel') {
-      //   $.confirm({
-      //     title: 'Appointments!',
-      //     theme: 'dark',
-      //     content: 'Do you want cancel this appointment!',
-      //     buttons: {
-      //       confirm: function () {
-      //         updateStatus(slug, appointmentId, status, doneStatus);
-      //       },
-      //       cancel: function () {},
-      //     }
-      //   });
-      //   }
-      // else
-      updateStatus(slug, appointmentId, status, doneStatus);
+      // Remove 2 button and hide appointment is changed status
+      ele.closest("tr").addClass("delete");
+      ele.prev().css("background-color", '#007bff').val(CONFIRMED).next().next().remove();
+      ele.remove();
+      $(".delete").fadeOut(3000);
+    };
+    updateStatus(slug, appointmentId, status, doneStatus);
+  });
+
+  // handle cancel button
+  $(".cancel").click(function(e) {
+    var ele = $(this);
+    var appointmentId = ele.attr('id').substring(7);
+    var status = '0';
+    $.confirm({
+      title: 'Appointments!',
+      theme: 'dark',
+      content: 'Do you want cancel this appointment!',
+      buttons: {
+        confirm: function() {
+          updateStatus(slug, appointmentId, status, doneStatus);
+        },
+        cancel: function() {},
+      }
     });
+    e.preventDefault();
+    var doneStatus = function() {
 
-    $(".cancel").click(function(e) {
-      var ele = $(this);
-      var appointmentId = ele.attr('id').substring(7);
-      var status = '0';
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
-        }
-      });
-      $.confirm({
-        title: 'Appointments!',
-        theme: 'dark',
-        content: 'Do you want cancel this appointment!',
-        buttons: {
-          confirm: function () {
-            updateStatus(slug, appointmentId, status, doneStatus);
-          },
-          cancel: function () {},
-        }
-      });
-      e.preventDefault();
-      var doneStatus = function() {
-        // Remove 2 button and hide appointment is changed status
-        ele.closest("tr").addClass("delete");
-        ele.prev().prev().css("background-color", '#dc3545').val(CANCEL).next().remove();
-        ele.remove();
-        $(".delete").fadeOut(3000);
-        debugger;
-
-      };
-    });
-
+      // Remove 2 button and hide appointment is changed status
+      ele.closest("tr").addClass("delete");
+      ele.prev().prev().css("background-color", '#dc3545').val(CANCEL).next().remove();
+      ele.remove();
+      $(".delete").fadeOut(3000);
+    };
+  });
 });
