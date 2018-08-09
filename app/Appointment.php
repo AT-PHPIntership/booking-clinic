@@ -9,7 +9,12 @@ class Appointment extends Model
 {
     use SoftDeletes;
 
-    public const STATUS = ['Pending', 'Confirmed', 'Success', 'Cancel'];
+    public const STATUS = [
+        'Pending' => 0,
+        'Confirmed' => 1,
+        'Completed' => 2,
+        'Cancel' => 3
+    ];
     public const COLOR = [
         'Pending' => '#ffc107',
         'Confirmed' => '#007bff',
@@ -62,7 +67,7 @@ class Appointment extends Model
      */
     public function getStatusAttribute($status)
     {
-        return Appointment::STATUS[$status];
+        return array_search($status, Appointment::STATUS);
     }
 
     /**
