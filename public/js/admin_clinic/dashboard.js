@@ -1,18 +1,6 @@
 const CONFIRMED = 'Confirmed';
 const CANCEL = 'Cancel';
 
-function updateStatus(slug, appointmentId, status, callback) {
-  $.ajax({
-    url: '/admin/' + slug + '/appointments/' + appointmentId,
-    type: 'PATCH',
-    cache: false,
-    data: {status: status},
-  })
-  .done(function (res) {
-    callback();
-  });
-};
-
 $(document).ready(function() {
   $('.status-pending').each(function() {
     $(this).css("background-color", '#ffc107');

@@ -1,8 +1,5 @@
 $(document).ready(function() {
 
-  $(".status-select").each(function() {
-    $(this).css("background-color", statusColor[$(this).val()]);
-  });
   $(".status-select").change(function(e) {
     e.preventDefault();
     var ele = $(this);
