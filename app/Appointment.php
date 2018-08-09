@@ -79,4 +79,28 @@ class Appointment extends Model
     {
         return $this->hasOne(Examination::class);
     }
+
+    /**
+     * Get list appointments not pending
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query query
+     * @param mixed $status status
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeNotPending($query)
+    {
+        return $query->where('status', '<>', self::STATUS['Pending']);
+    }
+
+    /**
+     * Scope a query to group appointments by status .
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query query
+
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('status', self::STATUS[$status]);
+    }
 }

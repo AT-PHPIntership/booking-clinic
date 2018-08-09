@@ -15,13 +15,12 @@ class DashboardController extends BaseController
      */
     public function index()
     {
-        $status = Appointment::STATUS;
-        $appointments = $this->clinic->appointments()->where('status', $status['Pending'])->latest()->with('user')->paginate();
+        $appointments = $this->clinic->appointments()->status('Pending')->latest()->with('user')->paginate();
         $count = [
-            'countPending' => $this->clinic->appointments()->where('status', $status['Pending'])->count(),
-            'countConfirmed' => $this->clinic->appointments()->where('status', $status['Confirmed'])->count(),
-            'countCompleted' => $this->clinic->appointments()->where('status', $status['Completed'])->count(),
-            'countCancel' =>$this->clinic->appointments()->where('status', $status['Cancel'])->count(),
+            'countPending' => $this->clinic->appointments()->status('Pending')->count(),
+            'countConfirmed' => $this->clinic->appointments()->status('Confirmed')->count(),
+            'countCompleted' => $this->clinic->appointments()->status('Completed')->count(),
+            'countCancel' =>$this->clinic->appointments()->status('Cancel')->count(),
         ];
         return view('admin_clinic.dashboard', ['appointments' => $appointments, 'clinic' => $this->clinic, 'count' => $count]);
     }
