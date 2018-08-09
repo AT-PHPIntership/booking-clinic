@@ -37,26 +37,30 @@
     <div class="form-group row">
       <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.fields.status')</label>
       <input id="slug" type="hidden" name="slug" value="{{ $slug }}">
-      <select id="appointment-{{ $appointment->id }}" class="col-md-3 d-inline custom-select text-body font-weight-bold status-select"
-          required name="status">
-        @php
-          $status = App\Appointment::STATUS
-        @endphp
+      <div class="col-sm-10">
+        <select id="appointment-{{ $appointment->id }}" class="col-md-3 d-inline custom-select text-body font-weight-bold status-select"
+            required name="status">
+            @php
+            $status = App\Appointment::STATUS
+            @endphp
 
-        {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
-        @if ($appointment->status == 'Confirmed')
-          <option value="{{ $status['Confirmed'] }}" selected>@lang('admin_clinic/appointment.status.confirmed')</option>
-          <option value="{{ $status['Cancel'] }}">@lang('admin_clinic/appointment.status.cancel')</option>
-        @else
-          <option value="{{ $status[$appointment->status] }}" selected>{{ $appointment->status }}</option>
-        @endif
-      </select>
+            {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
+            @if ($appointment->status == 'Confirmed')
+            <option value="{{ $status['Confirmed'] }}" selected>@lang('admin_clinic/appointment.status.confirmed')</option>
+            <option value="{{ $status['Cancel'] }}">@lang('admin_clinic/appointment.status.cancel')</option>
+            @else
+            <option value="{{ $status[$appointment->status] }}" selected>{{ $appointment->status }}</option>
+            @endif
+        </select>
+      </div>
     </div>
     <div class="form-group row">
-        <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.examination')</label>
-      @if ($appointment->status == 'Confirmed')
-        <button id="create-examination"class="btn btn-primary">Add examination</button>
-      @endif
+      <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.examination')</label>
+      <div class="col-sm-10">
+        @if ($appointment->status == 'Confirmed')
+          <button id="create-examination"class="btn btn-primary col-md-3 text-body font-weight-bold">Add examination</button>
+        @endif
+      </div>
     </div>
   </div>
 @endsection
