@@ -72,7 +72,7 @@ class ProfileController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function editAdmin()
+    public function editAccount()
     {
         return view('admin_clinic.profile.edit.admin');
     }
@@ -84,12 +84,11 @@ class ProfileController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function updateAdminPassword(ProfileAdminRequest $request)
+    public function updateAccountPassword(ProfileAdminRequest $request)
     {
-        $admin = $this->clinic->admin;
-        $admin->fill([
+        $this->clinic->admin->update([
             'password' => Hash::make($request->input('password'))
-        ])->save();
+        ]);
 
         session()->flash('flashType', 'success');
         session()->flash('flashMessage', __('admin_clinic/profile.update.success.admin.password'));
@@ -103,7 +102,7 @@ class ProfileController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function updateAdminName(Request $request)
+    public function updateAccountName(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255'
@@ -113,10 +112,9 @@ class ProfileController extends BaseController
             return response()->json(['error'=> $validator->errors()], Response::HTTP_NOT_ACCEPTABLE);
         }
 
-        $admin = $this->clinic->admin;
-        $admin->fill([
+        $this->clinic->admin->update([
             'name' => $request->get('name')
-        ])->save();
+        ]);
         return response()->json(['message' => __('admin_clinic/profile.update.success.admin.name')], Response::HTTP_OK);
     }
 }

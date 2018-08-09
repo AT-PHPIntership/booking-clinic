@@ -4,6 +4,10 @@ return [
     'show' => [
         'title' => 'Profile',
         'heading' => 'Clinic detail',
+        'link_to_edit' => [
+            'clinic' => 'Clinic',
+            'account' => 'Admin',
+        ]
     ],
     'edit' => [
         'clinic' => [

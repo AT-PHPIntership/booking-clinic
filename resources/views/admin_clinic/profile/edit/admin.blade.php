@@ -16,7 +16,7 @@
         <div class="card-header">{{ __('admin_clinic/profile.edit.admin.section.password') }}</div>
       
         <div class="card-body">
-          <form method="POST" action="{{ route('admin_clinic.profile.admin.update', request()->slug) }}" aria-label="{{ __('admin/register.register') }}">
+          <form method="POST" action="{{ route('admin_clinic.profile.account.update', request()->slug) }}" aria-label="{{ __('admin/register.register') }}">
             @csrf
             @method('PUT')
               <div class="form-group row">

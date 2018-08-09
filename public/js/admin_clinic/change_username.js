@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
     e.preventDefault();
     $.ajax({
-      url: '/admin/' + slug + '/profile/admin',
+      url: '/admin/' + slug + '/profile/account',
       type: 'PATCH',
       cache: false,
       data: {name: name},
