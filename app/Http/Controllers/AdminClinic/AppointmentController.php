@@ -20,7 +20,7 @@ class AppointmentController extends BaseController
     public function index()
     {
         $appointments = $this->clinic->appointments()
-            ->where('status', '<>', 0)
+            ->where('status', '<>', Appointment::STATUS['Pending'])
             ->latest()
             ->with('user')
             ->paginate();

@@ -37,13 +37,16 @@
               </td>
               <td class="container">
                 <select id="appointment-{{ $appointment->id }}" class="col-md-4 d-inline custom-select text-body font-weight-bold status-select" required name="status">
-                  
+                  @php
+                    $status = App\Appointment::STATUS;
+                  @endphp
+
                   {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
-                  @if ($appointment->status == App\Appointment::STATUS[1])
-                    <option value="1" selected>{{ $appointment->status }}</option>
-                    <option value="3" >{{ App\Appointment::STATUS[3] }}</option>
+                  @if ($appointment->status == 'Confirmed')
+                    <option value="{{ $status['Confirmed'] }}" selected>@lang('admin_clinic/appointment.status.confirmed')</option>
+                    <option value="{{ $status['Cancel'] }}">@lang('admin_clinic/appointment.status.cancel')</option>
                   @else
-                    <option value="{{ array_search($appointment->status, App\Appointment::STATUS)}}" selected>{{ $appointment->status }}</option>
+                    <option value="{{ $status[$appointment->status] }}" selected>{{ $appointment->status }}</option>
                   @endif
                 </select>
               </td>

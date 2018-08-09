@@ -55,8 +55,8 @@
         </div>
       </div>
   </div>
-  <input id="count" type="hidden" name="count" data-pending="{{ $count[0] }}" data-confirmed="{{ $count[1] }}"
-    data-completed="{{ $count[2] }}" data-cancel="{{ $count[3] }}">
+  <input id="count" type="hidden" name="count" data-pending="{{ $count['countPending'] }}" data-confirmed="{{ $count['countConfirmed'] }}"
+    data-completed="{{ $count['countCompleted'] }}" data-cancel="{{ $count['countCancel'] }}">
   <div class="table-responsive">
     <table class="table table-striped table-sm text-nowrap">
       <thead>
@@ -79,10 +79,10 @@
             <td class="container">
               <input type="text" class="col-md-4 d-inline form-control text-body font-weight-bold status-pending"
                 readonly name="status" value="{{ $appointment->status }}">
-              <button id="accept-{{ $appointment->id }}" class="btn btn-outline-success accept" title="{{ __('admin_clinic/dashboard.confirm') }}">
+              <button id="accept-{{ $appointment->id }}" class="btn btn-outline-success accept" title="@lang('admin_clinic/dashboard.confirm')">
                 <i class="fas fa-check"></i>
               </button>
-              <button id="cancel-{{ $appointment->id }}" class="btn btn-outline-danger cancel" title="{{ __('admin_clinic/dashboard.cancel') }}">
+              <button id="cancel-{{ $appointment->id }}" class="btn btn-outline-danger cancel" title="@lang('admin_clinic/dashboard.cancel')">
                 <i class="fas fa-times"></i>
               </button>
             </td>
