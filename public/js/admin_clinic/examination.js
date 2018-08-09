@@ -2,26 +2,30 @@ $(document).ready(function() {
 
     $("#create-examination").click(function(e) {
       $.confirm({
-
-        title: 'Prompt!',
-        content: '' +
-        '<form action="" class="formName">' +
-        '<div class="form-group">' +
-        '<label>Enter something here</label>' +
-        '<input type="text" placeholder="Your name" class="name form-control" required />' +
-        '</div>' +
+        columnClass: 'col-md-8',
+        title: '<div class="h2">Examination patient ' + $("#user-name").val() + '</div>',
+        content: '<form action="" class="formName">' +
+          '<div class="form-group">' +
+            '<label>Diagnostic</label>' +
+            '<input type="text" placeholder="Diagnostic" name="diagnostic" class="name form-control" required />' +
+          '</div>' +
+          '<div class="form-group">' +
+            '<label>Result</label>' +
+            '<textarea class="form-control" name="result" required></textarea>' +
+          '</div>' +
         '</form>',
         buttons: {
           formSubmit: {
             text: 'Submit',
             btnClass: 'btn-blue',
             action: function () {
-              var name = this.$content.find('.name').val();
-              if(!name){
-                $.alert('provide a valid name');
-                return false;
-              }
-              $.alert('Your name is ' + name);
+              var diagnostic = this.$content.find('input[name="diagnostic"]').val();
+              var result = this.$content.find('textarea[name="result"]').val();
+            //   if(!name){
+            //     $.alert('provide a valid name');
+            //     return false;
+            //   }
+              console.log(result);
             }
           },
           cancel: function () {

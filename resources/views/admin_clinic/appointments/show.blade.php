@@ -13,7 +13,7 @@
     <div class="form-group row">
       <label for="name" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.fields.user_name')</label>
       <div class="col-sm-10">
-        <input type="text" readonly class="form-control-plaintext" value="{{ $appointment->user->name }}">
+        <input id="user-name" type="text" readonly class="form-control-plaintext" value="{{ $appointment->user->name }}">
       </div>
     </div>
     <div class="form-group row">
