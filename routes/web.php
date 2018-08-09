@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin_clinic.', 'namespace' =
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
         Route::resource('appointments', 'AppointmentController')
             ->only(['index', 'show', 'edit', 'update']);
+        Route::post('examinations', 'ExaminationController@store')->name('examinations.store');
         Route::get('calendar', 'CalendarController@index')->name('calendar');
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function() {
             Route::get('/', 'ProfileController@show')->name('show');

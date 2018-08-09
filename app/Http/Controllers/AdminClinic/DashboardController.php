@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdminClinic\BaseController;
 use App\Clinic;
 use App\Appointment;
-
 class DashboardController extends BaseController
+
 {
     /**
      * Display a listing of appointment of clinic.
@@ -16,7 +16,6 @@ class DashboardController extends BaseController
      */
     public function index()
     {
-
         $appointments = $this->clinic->appointments()->status(Appointment::STATUS_PENDING)->latest()->with('user')->paginate();
         $count = [
             'countPending' => $this->clinic->appointments()->status(Appointment::STATUS_PENDING)->count(),

@@ -2,6 +2,7 @@ $(document).ready(function() {
   $('.status-pending').each(function() {
     $(this).css("background-color", '#ffc107');
   });
+  $('[data-toggle="tooltip"]').tooltip();
 
   var slug = $("#slug").val();
   $.ajaxSetup({

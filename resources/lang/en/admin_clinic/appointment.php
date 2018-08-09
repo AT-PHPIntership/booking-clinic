@@ -24,5 +24,6 @@ return [
     ],
     'update' => [
         'success' => 'List appointments is updated'
-    ]
+    ],
+    'examination' => 'examination'
 ];

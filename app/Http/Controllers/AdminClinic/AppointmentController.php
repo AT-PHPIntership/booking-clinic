@@ -24,7 +24,7 @@ class AppointmentController extends BaseController
             ->latest()
             ->with('user')
             ->paginate();
-        return view('admin_clinic.appointments.index', [ 'appointments' => $appointments, 'clinic' => $this->clinic,]);
+        return view('admin_clinic.appointments.index', ['appointments' => $appointments, 'clinic' => $this->clinic]);
     }
 
     /**
