@@ -4,7 +4,4 @@ $(document).ready(function() {
   $(".status-select").each(function() {
     $(this).css("background-color",statusColor[$(this).val()]);
   });
-  $(".status-select").click(function() {
-    $(this).css("background-color",statusColor[$(this).val()]);
-  });
 });
