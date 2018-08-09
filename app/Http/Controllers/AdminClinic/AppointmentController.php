@@ -19,7 +19,11 @@ class AppointmentController extends BaseController
      */
     public function index()
     {
-        $appointments = $this->clinic->appointments()->latest()->with('user')->paginate();
+        $appointments = $this->clinic->appointments()
+            ->where('status', '<>', 0)
+            ->latest()
+            ->with('user')
+            ->paginate();
         return view('admin_clinic.appointments.index', ['appointments' => $appointments, 'clinic' => $this->clinic]);
     }
 

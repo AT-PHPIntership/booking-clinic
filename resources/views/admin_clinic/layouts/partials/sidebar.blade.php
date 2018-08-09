@@ -2,7 +2,7 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link{{ checkRouteActive(route('admin_clinic.dashboard', request('slug'))) }}" href="{{ route('admin_clinic.dashboard', request('slug')) }}">
+        <a class="nav-link{{ checkRouteActive(route('admin_clinic.dashboard.index', request('slug'))) }}" href="{{ route('admin_clinic.dashboard.index', request('slug')) }}">
           <span data-feather="home"></span>
           @lang('admin_clinic/layout.sidebar.dashboard')
         </a>

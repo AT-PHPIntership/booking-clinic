@@ -39,13 +39,14 @@
       <input id="slug" type="hidden" name="slug" value="{{ $slug }}">
       <select id="appointment-{{ $appointment->id }}" class="col-md-4 d-inline custom-select text-body font-weight-bold status-select"
           required name="status">
-      @foreach (App\Appointment::STATUS as $key => $status)
-        @if ($status == $appointment->status )
-          <option value="{{ $key }}" selected>{{ $status }}</option>
+
+        {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
+        @if ($appointment->status == App\Appointment::STATUS[1])
+          <option value="1" selected>{{ $appointment->status }}</option>
+          <option value="3" >{{ App\Appointment::STATUS[3] }}</option>
         @else
-          <option value="{{ $key }}">{{ $status }}</option>
+          <option value="{{ array_search($appointment->status, App\Appointment::STATUS) }}" selected>{{ $appointment->status }}</option>
         @endif
-      @endforeach
       </select>
     </div>
   </div>

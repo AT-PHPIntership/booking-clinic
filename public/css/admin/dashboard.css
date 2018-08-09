@@ -113,3 +113,35 @@ body {
   .status-select option {
       background-color: white;
   }
+
+   /*
+   * Dashboard css
+   */
+
+  .card-body-icon {
+    position: absolute;
+    z-index: 0;
+    top: -1.25rem;
+    right: -1rem;
+    opacity: 0.4;
+    font-size: 5rem;
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  .donut-chart-label {
+    top: 65%;
+    left: 50%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+  .donut-chart-value {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .donut-chart-title {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
