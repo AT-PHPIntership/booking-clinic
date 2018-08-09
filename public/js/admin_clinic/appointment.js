@@ -1,11 +1,14 @@
 $(document).ready(function() {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   $(".status-select").each(function() {
     $(this).css("background-color", statusColor[$(this).val()]);
   });
 >>>>>>> admin show dashboard
+=======
+>>>>>>> doing
   $(".status-select").change(function(e) {
     e.preventDefault();
     var ele = $(this);

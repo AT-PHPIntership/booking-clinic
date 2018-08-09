@@ -52,7 +52,10 @@
         @endif
       </select>
     </div>
+    <div class="form-group">
+        <button id="create-examination"class="btn btn-primary">Add</button>
+    </div>
   </div>
 @endsection
 
-@include('layouts.partials.appointment')
+@include('layouts.partials.examination')
