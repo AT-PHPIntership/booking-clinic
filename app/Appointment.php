@@ -64,4 +64,14 @@ class Appointment extends Model
     {
         return Appointment::STATUS[$status];
     }
+
+    /**
+     * Get the examination associated with the appointment.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function examination()
+    {
+        return $this->hasOne(Examination::class);
+    }
 }
