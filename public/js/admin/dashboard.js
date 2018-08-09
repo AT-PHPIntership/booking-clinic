@@ -1,6 +1,6 @@
 var statusColor = ['#ffc107', '#007bff', '#28a745', '#dc3545'];
 
-function updateStatus(slug, appointmentId, status, callback) {
+function updateAppointmentStatus(slug, appointmentId, status, callback) {
     $.ajax({
       url: '/admin/' + slug + '/appointments/' + appointmentId,
       type: 'PATCH',
@@ -11,6 +11,10 @@ function updateStatus(slug, appointmentId, status, callback) {
       callback();
     });
   };
+
+$(".status-select").click(function() {
+$(this).css("background-color",statusColor[$(this).val()]);
+});
 
 $(document).ready(function() {
   $("#flash").delay(3000).slideUp();

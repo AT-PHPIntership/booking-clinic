@@ -36,7 +36,7 @@
     </div>
     <div class="form-group container">
       <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.fields.status')</label>
-      <input type="hidden" data-slug="{{ $slug }}" data-appointmentId="{{ $appointment->id }}">
+      <input id="slug" type="hidden" name="slug" value="{{ $slug }}">
       <select id="appointment-{{ $appointment->id }}" class="col-md-4 d-inline custom-select text-body font-weight-bold status-select"
           required name="status">
         @php

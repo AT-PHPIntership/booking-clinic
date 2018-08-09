@@ -27,21 +27,24 @@ $(document).ready(function() {
       ele.remove();
       $(".delete").fadeOut(3000);
     };
-    updateStatus(slug, appointmentId, status, doneStatus);
+    updateAppointmentStatus(slug, appointmentId, status, doneStatus);
   });
 
   // handle cancel button
   $(".cancel").click(function(e) {
     var ele = $(this);
     var appointmentId = ele.attr('id').substring(7);
-    var status = '0';
+    var status = '3';
     $.confirm({
       title: 'Appointments!',
       theme: 'dark',
       content: 'Do you want cancel this appointment!',
       buttons: {
-        confirm: function() {
-          updateStatus(slug, appointmentId, status, doneStatus);
+        confirm: {
+          btnClass: 'btn-blue',
+          action: function() {
+          updateAppointmentStatus(slug, appointmentId, status, doneStatus);
+          }
         },
         cancel: function() {},
       }
