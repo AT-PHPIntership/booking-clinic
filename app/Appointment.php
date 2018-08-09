@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
 class Appointment extends Model
 {
@@ -73,5 +74,24 @@ class Appointment extends Model
     public function examination()
     {
         return $this->hasOne(Examination::class);
+    }
+
+    /**
+     * Filter the appointment.
+     *
+     * @param mixed                    $query   query
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return void
+     */
+    public function scopeFilter($query, Request $request)
+    {
+        if ($request->has('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->has('from') && $request->has('to')) {
+            $query->whereBetween('book_time', [$request->from, $request->to]);
+        }
     }
 }

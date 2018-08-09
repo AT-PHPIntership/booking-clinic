@@ -4,6 +4,14 @@ return [
     'index' => [
         'title' => 'Appointments',
         'heading' => 'List appointments',
+        'search' => 'Search',
+        'filter' => 'Filter status',
+        'status' => [
+            'all' => 'All',
+            'confirmed' => 'Confirmed',
+            'success' => 'Success',
+            'cancel' => 'Cancel',
+        ],
     ],
     'show' => [
         'title' => 'Appointment detail',
