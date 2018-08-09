@@ -26,13 +26,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/admin/dashboard';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -107,5 +100,19 @@ class RegisterController extends Controller
     protected function guard()
     {
         return Auth::guard('web-admin');
+    }
+
+    /**
+     * Return redirect path after register
+     *
+     * @return string
+     */
+    protected function redirectTo()
+    {
+        $user = Auth::guard('web-admin')->user();
+
+        return $user->isClinicAdmin()
+            ? '/admin/' . $user->clinic->slug . '/dashboard'
+            : '/admin/dashboard';
     }
 }
