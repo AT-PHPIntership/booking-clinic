@@ -1,15 +1,7 @@
 const CONFIRMED = 'Confirmed';
 const CANCEL = 'Cancel';
 
-function callAjax(slug, appointmentId, status, ele, value) { 
-  $.ajax({
-    url: '/admin/' + slug + '/appointments/' + appointmentId,
-    type: 'PATCH',
-    cache: false,
-    data: {status: status},
-  })
-  .done(function (res) {
-
+function updateStatusDone(ele, value) {
     // Remove 2 button and hide appointment is changed status
     ele.closest("tr").addClass("delete");
     if (value == '.accept') {
@@ -19,6 +11,17 @@ function callAjax(slug, appointmentId, status, ele, value) {
     }
     ele.remove();
     $(".delete").fadeOut(3000);
+}
+
+function updateStatus(slug, appointmentId, status, ele, value) {
+  $.ajax({
+    url: '/admin/' + slug + '/appointments/' + appointmentId,
+    type: 'PATCH',
+    cache: false,
+    data: {status: status},
+  })
+  .done(function (res) {
+    updateStatusDone(ele, value);
   });
 };
 
@@ -45,13 +48,13 @@ $(document).ready(function() {
           content: 'Do you want cancel this appointment!',
           buttons: {
             confirm: function () {
-              callAjax(slug, appointmentId, status, ele, value);
+              updateStatus(slug, appointmentId, status, ele, value);
             },
             cancel: function () {},
           }
         });
         }
-      else callAjax(slug, appointmentId, status, ele, value);
+      else updateStatus(slug, appointmentId, status, ele, value);
     });
   })
 });
