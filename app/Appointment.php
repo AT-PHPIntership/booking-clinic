@@ -103,4 +103,17 @@ class Appointment extends Model
     {
         return $query->where('status', self::STATUS[$status]);
     }
+
+    /**
+     * Scope a query to check appointmentStatus.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query query
+
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function isStatus($status)
+    {
+        return $this->status == $status;
+    }
+
 }

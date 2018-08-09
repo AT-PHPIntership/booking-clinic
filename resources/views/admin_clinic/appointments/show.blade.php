@@ -34,10 +34,10 @@
         <textarea class="form-control-plaintext" rows="3" disabled>{{ $appointment->description }}</textarea>
       </div>
     </div>
-    <div class="form-group container">
+    <div class="form-group row">
       <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.fields.status')</label>
       <input id="slug" type="hidden" name="slug" value="{{ $slug }}">
-      <select id="appointment-{{ $appointment->id }}" class="col-md-4 d-inline custom-select text-body font-weight-bold status-select"
+      <select id="appointment-{{ $appointment->id }}" class="col-md-3 d-inline custom-select text-body font-weight-bold status-select"
           required name="status">
         @php
           $status = App\Appointment::STATUS
@@ -52,8 +52,11 @@
         @endif
       </select>
     </div>
-    <div class="form-group">
-        <button id="create-examination"class="btn btn-primary">Add</button>
+    <div class="form-group row">
+        <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.examination')</label>
+      @if ($appointment->status == 'Confirmed')
+        <button id="create-examination"class="btn btn-primary">Add examination</button>
+      @endif
     </div>
   </div>
 @endsection

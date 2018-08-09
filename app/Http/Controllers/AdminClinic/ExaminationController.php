@@ -19,13 +19,18 @@ class ExaminationController extends BaseController
      */
     public function store(Request $request, $slug)
     {
-        $status = Appointment::STATUS;
-        if ($this->clinic->id == $appointment->id and $status[$appointment->status] == $status['Pending']) {
-            $data = $request->all();
-            $data['appointment_id'] = $appointment->id;
-            \App\Examination::create($data);
-            $appointment->update(['status' => $status['Completed']]);
-            return response()->json(204);
+        $appointment = Appointment::findOrFail($request->appointmentId);
+        if ($this->clinic->id == $appointment->clinic->id and $appointment->isStatus('Confirmed')) {
+            try{
+                $data = $request->all();
+                $data['appointment_id'] = $appointment->id;
+                \App\Examination::create($data);
+                $appointment->update(['status' => Appointment::STATUS['Completed']]);
+                return response()->json( \App\Examination::latest()->first(), 200);
+            } catch(\Exception $e) {
+                return response()->json($e, 200);
+            }
+
         }
         unset($slug);
         return response()->json(400);
