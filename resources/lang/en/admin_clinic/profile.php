@@ -4,6 +4,10 @@ return [
     'show' => [
         'title' => 'Profile',
         'heading' => 'Clinic detail',
+        'link_to_edit' => [
+            'clinic' => 'Clinic',
+            'account' => 'Admin',
+        ]
     ],
     'edit' => [
         'clinic' => [
@@ -12,6 +16,10 @@ return [
         ],
         'admin' => [
             'heading' => 'Update admin information',
+            'section' => [
+                'password' => 'Change Password',
+                'adminname' => 'Change Admin Name',
+            ],
         ]
     ],
     'fields' => [
@@ -32,14 +40,21 @@ return [
         'admin' => [
             'current_password' => 'Current password',
             'new_password' => 'New password',
-            'confirm_password' => 'Confirm password'
+            'confirm_password' => 'Confirm password',
+            'name' => 'Name',
         ]
 
     ],
     'update' => [
         'success' => [
             'clinic' => 'The clinic information has been updated.',
-            'admin' => 'The admin information has been updated.',
+            'admin' => [
+                'password' => 'The admin information has been updated.',
+                'name' => 'The admin name has been updated',
+            ]
+        ],
+        'error' => [
+            'password' => 'The current password isn\'t correct',
         ]
     ],
 ];
