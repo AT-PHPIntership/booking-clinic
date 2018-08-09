@@ -83,10 +83,10 @@
             <td class="container">
               <input type="text" class="col-md-4 d-inline form-control text-body font-weight-bold status-pending"
                 readonly name="status" value="{{ $appointment->status }}">
-              <button id="accept-{{ $appointment->id }}" class="btn btn-outline-success accept" title="@lang('admin_clinic/dashboard.confirm')">
+              <button id="accept-{{ $appointment->id }}" class="btn btn-outline-success accept">
                 <i class="fas fa-check"></i>
               </button>
-              <button id="cancel-{{ $appointment->id }}" class="btn btn-outline-danger cancel" title="@lang('admin_clinic/dashboard.cancel')">
+              <button id="cancel-{{ $appointment->id }}" class="btn btn-outline-danger cancel">
                 <i class="fas fa-times"></i>
               </button>
             </td>

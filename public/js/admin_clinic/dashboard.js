@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.status-pending').each(function() {
-    $(this).css("background-color", '#ffc107');
+    $(this).css("background-color", STATUS_COLOR[STATUS_PENDING]);
   });
 
   var slug = $("#slug").val();
@@ -12,48 +12,32 @@ $(document).ready(function() {
 
   // handle accept button
   $(".accept").click(function(e) {
-    var ele = $(this);
-    var appointmentId = ele.attr('id').substring(7);
-    var status = '1';
     e.preventDefault();
-    var doneStatus = function() {
-
-      // Remove 2 button and hide appointment is changed status
-      ele.closest("tr").addClass("delete");
-      ele.prev().css("background-color", '#007bff').val(CONFIRMED).next().next().remove();
-      ele.remove();
-      $(".delete").fadeOut(3000);
-    };
-    updateAppointmentStatus(slug, appointmentId, status, doneStatus);
+    let ele = $(this);
+    let appointmentId = ele.attr('id').substring(7);
+    let status = STATUS_CONFIRMED;
+    updateAppointmentStatus(slug, appointmentId, status, updateAppointmentStatusWithAccept, ele);
   });
 
   // handle cancel button
   $(".cancel").click(function(e) {
-    var ele = $(this);
-    var appointmentId = ele.attr('id').substring(7);
-    var status = '3';
+    e.preventDefault();
+    let ele = $(this);
+    let appointmentId = ele.attr('id').substring(7);
+    let status = STATUS_CANCEL;
     $.confirm({
-      title: 'Appointments!',
+      title: Lang.get('admin_clinic/appointment.index.title'),
       theme: 'dark',
-      content: 'Do you want cancel this appointment!',
+      content: Lang.get('admin_clinic/appointment.cancel'),
       buttons: {
         confirm: {
           btnClass: 'btn-blue',
           action: function() {
-          updateAppointmentStatus(slug, appointmentId, status, doneStatus);
+          updateAppointmentStatus(slug, appointmentId, status, updateAppointmentStatusWithCancel, ele);
           }
         },
         cancel: function() {},
       }
     });
-    e.preventDefault();
-    var doneStatus = function() {
-
-      // Remove 2 button and hide appointment is changed status
-      ele.closest("tr").addClass("delete");
-      ele.prev().prev().css("background-color", '#dc3545').val(CANCEL).next().remove();
-      ele.remove();
-      $(".delete").fadeOut(3000);
-    };
   });
 });

@@ -32,5 +32,14 @@ return [
     ],
     'update' => [
         'success' => 'List appointments is updated'
-    ]
+    ],
+    'examination' => [
+        'heading' =>'examination',
+        'show' => 'Show examination',
+        'diagnostic' => 'Diagnostic',
+        'result' => 'Result',
+        'created_at' => 'Created at'
+    ],
+    'cancel' => 'Do you want cancel this appointment!',
+    'result' => 'Status is updated'
 ];
