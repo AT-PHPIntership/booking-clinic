@@ -1,44 +1,3 @@
-const COMPLETED = 'Completed'
-
-function showExamination(userName, res) {
-    // debugger;
-    return `<a class="btn btn-success col-md-3 text-body font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Show examination
-            </a>
-            <div class="collapse" id="collapseExample">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h2 class="h2">Examination  ${userName}</h2>
-                </div>
-                <div class="form-group">
-                    <label>Diagnostic</label>
-                    <input type="text" name="diagnostic" class="name form-control" value="${res.diagnostic}" readonly />
-                </div>
-                <div class="form-group">
-                    <label>Result</label>
-                    <textarea class="form-control" name="result" readonly>${res.result}</textarea>
-                </div>
-                <div class="form-group">
-                    <label>Created at</label>
-                    <input type="text" name="created_at" class="name form-control" value="${res.created_at}" readonly />
-                </div>
-            </div>`;
-}
-function aa(userName, res, callback)
-{
-    return callback(userName, res);
-}
-function formCreateExamination() {
-    return `<form action="" class="formName">
-                <div class="form-group">
-                    <label>Diagnostic</label>
-                    <input type="text" placeholder="Diagnostic" name="diagnostic" class="name form-control" required />
-                </div>
-                <div class="form-group">
-                    <label>Result</label>
-                    <textarea class="form-control" name="result" required></textarea>
-                </div>
-            </form>`;
-}
 $(document).ready(function() {
 
     $("#create-examination").click(function(e) {
@@ -75,8 +34,8 @@ $(document).ready(function() {
                         select.css("background-color", "#28a745");
                         select.children().remove();
                         select.append('<option value="2" selected>' + COMPLETED + '</option>')
-                        ele.after(aa(userName, res, showExamination));
-                        debugger;
+                        var data = {userName: userName, res: res};
+                        ele.after(showExamination(data, formExamination));
                         ele.remove();
                       };
                       createExamination(slug, data, doneStatus);

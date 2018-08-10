@@ -1,4 +1,7 @@
-var statusColor = ['#ffc107', '#007bff', '#28a745', '#dc3545'];
+const STATUS_COLOR = ['#ffc107', '#007bff', '#28a745', '#dc3545'];
+const COMPLETED = 'Completed'
+const CONFIRMED = 'Confirmed';
+const CANCEL = 'Cancel';
 
 function updateAppointmentStatus(slug, appointmentId, status, callback) {
   $.ajax({
@@ -24,13 +27,14 @@ function createExamination(slug, data, callback) {
   });
 }
 
+
 $(".status-select").click(function() {
-$(this).css("background-color",statusColor[$(this).val()]);
+$(this).css("background-color", STATUS_COLOR[$(this).val()]);
 });
 
 $(document).ready(function() {
   $("#flash").delay(3000).slideUp();
   $(".status-select").each(function() {
-    $(this).css("background-color",statusColor[$(this).val()]);
+    $(this).css("background-color", STATUS_COLOR[$(this).val()]);
   });
 });

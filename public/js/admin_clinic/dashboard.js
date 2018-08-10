@@ -1,6 +1,3 @@
-const CONFIRMED = 'Confirmed';
-const CANCEL = 'Cancel';
-
 $(document).ready(function() {
   $('.status-pending').each(function() {
     $(this).css("background-color", '#ffc107');
