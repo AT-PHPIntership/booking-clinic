@@ -1,6 +1,6 @@
 const STATUS_COLOR = ['#ffc107', '#007bff', '#28a745', '#dc3545'];
-const COMPLETED = 'Completed'
 const CONFIRMED = 'Confirmed';
+const COMPLETED = 'Completed'
 const CANCEL = 'Cancel';
 
 function updateAppointmentStatus(slug, appointmentId, status, callback) {
