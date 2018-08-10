@@ -18,7 +18,7 @@ class Appointment extends Model
     public const COLOR = [
         'Pending' => '#ffc107',
         'Confirmed' => '#007bff',
-        'Success' => '#28a745',
+        'Completed' => '#28a745',
         'Cancel' =>'#dc3545'
     ];
 

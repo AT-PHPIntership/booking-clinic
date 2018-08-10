@@ -26,16 +26,10 @@ $(document).ready(function() {
                     text: 'Submit',
                     btnClass: 'btn-blue',
                     action: function () {
-                        var element = this.$content.find('input[name="diagnostic"]');
-                        var diagnostic = element.val();
+                        var diagnostic = this.$content.find('input[name="diagnostic"]').val();
                         var result = this.$content.find('textarea[name="result"]').val();
                     if(!diagnostic.trim()) {
-                        debugger;
-                        // $.alert('provide a valid name');
-                        element.toggleClass('is-valid');
-                        diagnostic.after('<span class="invalid-feedback" role="alert">\
-                                            <strong>The diagnostic is not null</strong>\
-                                        </span>');
+                        $.alert('provide a valid name');
                         return false;
                     }
 
