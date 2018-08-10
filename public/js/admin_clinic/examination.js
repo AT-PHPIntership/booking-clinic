@@ -67,7 +67,7 @@ $(document).ready(function() {
                                     </div>\
                                     <div class="form-group">\
                                         <label>Created at</label>\
-                                        <textarea class="form-control" name="created_at" readonly>' + res.created_at + '</textarea>\
+                                        <input type="text" name="created_at" class="name form-control" value="' + res.created_at + '" readonly />\
                                     </div>\
                                 </div>');
                         ele.remove();
