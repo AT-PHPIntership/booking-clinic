@@ -26,9 +26,12 @@
         </tr>
       </thead>
       <tbody>
+        @php
+          $index = $clinics->firstItem();
+        @endphp
         @foreach($clinics as $clinic)
           <tr>
-            <td>{{ $clinic->id }}</td>
+            <td>{{ $index++ }}</td>
             <td>{{ $clinic->clinicType->name }}</td>
             <td>{{ $clinic->name }}</td>
             <td>{{ $clinic->address }}</td>

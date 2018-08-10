@@ -1,7 +1,6 @@
 <?php
 
 if (! function_exists('checkRouteActive')) {
-
     /**
      * Check request route name equal a route
      *
@@ -11,6 +10,6 @@ if (! function_exists('checkRouteActive')) {
      */
     function checkRouteActive($route = '#')
     {
-        return Request::route()->getName() === $route ? ' active' : '';
+        return strpos(request()->url(), $route) !== false ? ' active' : '';
     }
 }

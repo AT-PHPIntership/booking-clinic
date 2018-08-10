@@ -86,7 +86,7 @@
 
     </div>
   </div>
-  <div class="row" style="width:500px;height:500px">
+  <div class="row" style="width:500px;">
     @include('layouts.partials.carousel', ['images' => $clinic->images])
   </div>
 @endsection

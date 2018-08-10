@@ -24,9 +24,12 @@
         </tr>
       </thead>
       <tbody>
+        @php
+          $index = $users->firstItem();
+        @endphp
         @foreach($users as $user)
           <tr>
-            <td>{{ $user->id }}</td>
+            <td>{{ $index++ }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->gender_string }}</td>
