@@ -1,6 +1,7 @@
 const COMPLETED = 'Completed'
 
-function showExamination(res, userName) {
+function showExamination(userName, res) {
+    // debugger;
     return `<a class="btn btn-success col-md-3 text-body font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Show examination
             </a>
@@ -21,6 +22,10 @@ function showExamination(res, userName) {
                     <input type="text" name="created_at" class="name form-control" value="${res.created_at}" readonly />
                 </div>
             </div>`;
+}
+function aa(userName, res, callback)
+{
+    return callback(userName, res);
 }
 function formCreateExamination() {
     return `<form action="" class="formName">
@@ -66,11 +71,12 @@ $(document).ready(function() {
                         }
                     });
 
-                    var doneStatus = function (res) {
+                    function doneStatus(res) {
                         select.css("background-color", "#28a745");
                         select.children().remove();
                         select.append('<option value="2" selected>' + COMPLETED + '</option>')
-                        ele.after(showExamination);
+                        ele.after(aa(userName, res, showExamination));
+                        debugger;
                         ele.remove();
                       };
                       createExamination(slug, data, doneStatus);
