@@ -6,7 +6,7 @@ $(document).ready(function() {
     var appointmentId = ele.attr('id').substring(12);
     var slug = $("#slug").val();
     var status = '3';
-    debugger;
+
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
