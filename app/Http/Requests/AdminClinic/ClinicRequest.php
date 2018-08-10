@@ -38,7 +38,7 @@ class ClinicRequest extends FormRequest
             'name' => 'required|string|max:100|unique:clinics,name,' . $id,
             'email' => 'required|string|email|max:255|unique:clinics,email,' . $id,
             'phone' => 'required|numeric|digits_between:8,12',
-            'address' => 'nullable|string|max:255',
+            'address' => 'required|string|max:255',
             'description' => 'nullable|string',
             'lat' => 'nullable|numeric|min:-90|max:90',
             'lng' => 'nullable|numeric|min:-180|max:180',
