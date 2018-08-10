@@ -9,17 +9,21 @@ class Appointment extends Model
 {
     use SoftDeletes;
 
-    public const STATUS = [
-        'Pending' => 0,
-        'Confirmed' => 1,
-        'Completed' => 2,
-        'Cancel' => 3
+    public const STATUS_PENDING = 0;
+    public const STATUS_CONFIRMED = 1;
+    public const STATUS_COMPLETED = 2;
+    public const STATUS_CANCEL = 3;
+    public const STATUS_LABELS = [
+        self::STATUS_PENDING => 'Pending',
+        self::STATUS_CONFIRMED => 'Confirmed',
+        self::STATUS_COMPLETED => 'Completed',
+        self::STATUS_CANCEL => 'Cancel'
     ];
     public const COLOR = [
-        'Pending' => '#ffc107',
-        'Confirmed' => '#007bff',
-        'Completed' => '#28a745',
-        'Cancel' =>'#dc3545'
+        self::STATUS_PENDING => '#ffc107',
+        self::STATUS_CONFIRMED => '#007bff',
+        self::STATUS_COMPLETED => '#28a745',
+        self::STATUS_CANCEL =>'#dc3545'
     ];
 
     /**
@@ -67,7 +71,17 @@ class Appointment extends Model
      */
     public function getStatusAttribute($status)
     {
-        return array_search($status, Appointment::STATUS);
+        return Appointment::STATUS_LABELS[$status];
+    }
+
+    /**
+     * Get the get status code.
+     *
+     * @return string
+     */
+    public function getStatusCodeAttribute()
+    {
+        return array_search($this->status, Appointment::STATUS_LABELS);
     }
 
     /**
@@ -89,7 +103,7 @@ class Appointment extends Model
      */
     public function scopeNotPending($query)
     {
-        return $query->where('status', '<>', self::STATUS['Pending']);
+        return $query->where('status', '<>', self::STATUS_PENDING);
     }
 
     /**
