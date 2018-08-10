@@ -1,6 +1,8 @@
 var COLOR_STATUS = ['#ffc107', '#007bff', '#28a745', '#dc3545'];
 const CONFIRMED = 'Confirmed';
 const CANCEL = 'Cancel';
+
+// admin clinic update appointment status
 function updateAppointmentStatus(slug, appointmentId, status, callback) {
   $.ajax({
     url: '/admin/' + slug + '/appointments/' + appointmentId,

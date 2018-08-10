@@ -40,7 +40,7 @@
       <select id="appointment-{{ $appointment->id }}" class="col-md-4 d-inline custom-select text-body font-weight-bold status-select"
           required name="status">
         @php
-          $status = App\Appointment::STATUS
+          $status = App\Appointment::STATUS_LABELS
         @endphp
 
         {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
