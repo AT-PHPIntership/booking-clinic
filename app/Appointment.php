@@ -8,19 +8,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Appointment extends Model
 {
     use SoftDeletes;
-
-    public const STATUS = [
-        'Pending' => 0,
-        'Confirmed' => 1,
-        'Completed' => 2,
-        'Cancel' => 3
-    ];
+    public const STATUS = ['Pending', 'Confirmed', 'Completed', 'Cancel' ];
     public const COLOR = [
         'Pending' => '#ffc107',
         'Confirmed' => '#007bff',
-        'Success' => '#28a745',
+        'Completed' => '#28a745',
         'Cancel' =>'#dc3545'
     ];
+    public const STATUS_PENDING = 0;
+    public const STATUS_CONFIRMED = 1;
+    public const STATUS_COMPLETED = 2;
+    public const STATUS_CANCEL = 3;
 
     /**
      * The attributes that are mass assignable.
@@ -67,7 +65,17 @@ class Appointment extends Model
      */
     public function getStatusAttribute($status)
     {
-        return array_search($status, Appointment::STATUS);
+        return Appointment::STATUS[$status];
+    }
+
+    /**
+     * Get the get status code.
+     *
+     * @return string
+     */
+    public function getStatusCodeAttribute()
+    {
+        return array_search($this->status, Appointment::STATUS);
     }
 
     /**
@@ -89,7 +97,7 @@ class Appointment extends Model
      */
     public function scopeNotPending($query)
     {
-        return $query->where('status', '<>', self::STATUS['Pending']);
+        return $query->where('status', '<>', self::STATUS_PENDING);
     }
 
      /**
@@ -102,6 +110,6 @@ class Appointment extends Model
      */
     public function scopeStatus($query, $status)
     {
-        return $query->where('status', self::STATUS[$status]);
+        return $query->where('status', $status);
     }
 }
