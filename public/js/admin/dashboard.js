@@ -16,6 +16,7 @@ function updateAppointmentStatus(slug, appointmentId, status, callback) {
 }
 
 function createExamination(slug, data, callback) {
+    // debugger;
   $.ajax({
     url: '/admin/' + slug + '/examinations',
     type: 'POST',

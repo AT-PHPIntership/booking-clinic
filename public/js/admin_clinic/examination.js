@@ -31,6 +31,8 @@ $(document).ready(function() {
                     });
 
                     function doneStatus(res) {
+                        console.log(JSON.stringify(res));
+                        debugger;
                         select.css("background-color", "#28a745");
                         select.children().remove();
                         select.append('<option value="2" selected>' + COMPLETED + '</option>')
