@@ -7,7 +7,7 @@ booked in **{{ $appointment->book_time->format('Y-m-d') }}**
 on **{{ $appointment->book_time->format('H:i:s')}}** is **{{ $appointment->status }}**
 
 {{ $appointment->description }}
-@if ($appointment->status == 'Completed')
+@if ($appointment->status == App\Appointment::STATUS_LABELS[STATUS_COMPLETED])
 @component('mail::panel')
 #Examination Patient {{ $appointment->user->name }}
 

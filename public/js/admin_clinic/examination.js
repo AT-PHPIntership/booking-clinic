@@ -36,7 +36,7 @@ $(document).ready(function() {
                         select.children().remove();
                         select.append('<option value="2" selected>' + COMPLETED + '</option>')
                         var data = {userName: userName, res: res};
-                        ele.after(showExamination(data, formExamination));
+                        ele.after(showExamination(data, formShowExamination));
                         ele.remove();
                       };
                       createExamination(slug, data, doneStatus);

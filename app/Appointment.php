@@ -25,6 +25,7 @@ class Appointment extends Model
         self::STATUS_CANCEL =>'#dc3545'
     ];
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -93,11 +94,11 @@ class Appointment extends Model
         return $this->hasOne(Examination::class);
     }
 
-    /**
+     /**
      * Get list appointments not pending
      *
      * @param \Illuminate\Database\Eloquent\Builder $query query
-     * @param mixed $status status
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeNotPending($query)
@@ -105,28 +106,28 @@ class Appointment extends Model
         return $query->where('status', '<>', self::STATUS_PENDING);
     }
 
-    /**
+     /**
      * Scope a query to group appointments by status .
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query query
+     * @param \Illuminate\Database\Eloquent\Builder $query  query
+     * @param mixed                                 $status status
 
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeStatus($query, $status)
     {
-        return $query->where('status', self::STATUS[$status]);
+        return $query->where('status', self::STATUS_LABELS[$status]);
     }
 
     /**
      * Scope a query to check appointmentStatus.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query query
-
+     * @param mixed $status status
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function isStatus($status)
     {
         return $this->status == $status;
     }
-
 }

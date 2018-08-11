@@ -19,13 +19,13 @@ $(document).ready(function() {
       buttons: {
         confirm: {
           btnClass: 'btn-blue',
-          action: function () {
+          action: function() {
           ele.after('<i class="fa fa-spinner fa-pulse fa-2x fa-fw margin-bottom"></i>')
           var doneStatus = function() {
 
             // delete sync icon and show success message in 2 seconds, remove option Confirmed when chose option Cancel
             ele.next().remove();
-            ele.after('<div class="pr-5 pl-5 d-inline alert alert-success status-flash">The status is uxpdated</div>');
+            ele.after('<div class="pr-5 pl-5 d-inline alert alert-success status-flash">The status is updated</div>');
             ele.next().slideUp(2000);
             setTimeout(function() {
             ele.next().remove();
@@ -35,7 +35,7 @@ $(document).ready(function() {
           updateAppointmentStatus(slug, appointmentId, status, doneStatus)   ;
           },
         },
-        cancel: function () {
+        cancel: function() {
 
           // set right color and value for option Confirmed when cancel select
           ele.css("background-color", "#007bff");

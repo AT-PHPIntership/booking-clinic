@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdminClinic\BaseController;
 use App\Clinic;
 use App\Appointment;
-class DashboardController extends BaseController
 
+class DashboardController extends BaseController
 {
     /**
      * Display a listing of appointment of clinic.

@@ -34,12 +34,11 @@ class ExaminationController extends BaseController
                 Mail::to($appointment->user->email)
                     ->queue($mesage);
                 return response()->json(\App\Examination::latest()->first(), 200);
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 return response()->json($e, 200);
             }
         }
         unset($slug);
         return response()->json(400);
-
     }
 }
