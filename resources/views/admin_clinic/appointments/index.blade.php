@@ -46,8 +46,8 @@
 
                   {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
                   @if ($appointment->status == $status[App\Appointment::STATUS_CONFIRMED])
-                    <option value="{{  App\Appointment::STATUS_CONFIRMED }}" selected>@lang('admin_clinic/appointment.status.confirmed')</option>
-                    <option value="{{  App\Appointment::STATUS_CANCEL }}">@lang('admin_clinic/appointment.status.cancel')</option>
+                    <option value="{{ App\Appointment::STATUS_CONFIRMED }}" selected>@lang('admin_clinic/appointment.status.confirmed')</option>
+                    <option value="{{ App\Appointment::STATUS_CANCEL }}">@lang('admin_clinic/appointment.status.cancel')</option>
                   @else
                     <option value="{{ $appointment->status_code }}" selected>{{ $appointment->status }}</option>
                   @endif

@@ -32,9 +32,9 @@ $(document).ready(function() {
 
                     function doneStatus(res) {
                         console.log(JSON.stringify(res));
-                        select.css("background-color", "#28a745");
+                        select.css("background-color", STATUS_COLOR[STATUS_COMPLETED]);
                         select.children().remove();
-                        select.append('<option value="2" selected>' + COMPLETED + '</option>')
+                        select.append('<option value="2" selected>' +  STATUS_LABELS.STATUS_COMPLETED + '</option>')
                         var data = {userName: userName, res: res};
                         ele.after(showExamination(data, formShowExamination));
                         ele.remove();

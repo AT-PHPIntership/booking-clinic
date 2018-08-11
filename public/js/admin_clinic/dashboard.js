@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.status-pending').each(function() {
-    $(this).css("background-color", '#ffc107');
+    $(this).css("background-color", STATUS_COLOR[STATUS_PENDING]);
   });
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -15,13 +15,13 @@ $(document).ready(function() {
   $(".accept").click(function(e) {
     var ele = $(this);
     var appointmentId = ele.attr('id').substring(7);
-    var status = '1';
+    var status = STATUS_CONFIRMED;
     e.preventDefault();
     var doneStatus = function() {
 
       // Remove 2 button and hide appointment is changed status
       ele.closest("tr").addClass("delete");
-      ele.prev().css("background-color", '#007bff').val(CONFIRMED).next().next().remove();
+      ele.prev().css("background-color", STATUS_COLOR[STATUS_CONFIRMED]).val(STATUS_LABELS.STATUS_CONFIRMED).next().next().remove();
       ele.remove();
       $(".delete").fadeOut(3000);
     };
@@ -32,7 +32,7 @@ $(document).ready(function() {
   $(".cancel").click(function(e) {
     var ele = $(this);
     var appointmentId = ele.attr('id').substring(7);
-    var status = '3';
+    var status = STATUS_CANCEL;
     $.confirm({
       title: 'Appointments!',
       theme: 'dark',
@@ -52,7 +52,8 @@ $(document).ready(function() {
 
       // Remove 2 button and hide appointment is changed status
       ele.closest("tr").addClass("delete");
-      ele.prev().prev().css("background-color", '#dc3545').val(CANCEL).next().remove();
+      ele.prev().prev().css("background-color", STATUS_COLOR[STATUS_CANCEL])
+        .val(STATUS_LABELS.STATUS_CANCEL).next().remove();
       ele.remove();
       $(".delete").fadeOut(3000);
     };

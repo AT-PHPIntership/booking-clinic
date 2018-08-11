@@ -5,7 +5,7 @@ $(document).ready(function() {
     var ele = $(this);
     var appointmentId = ele.attr('id').substring(12);
     var slug = $("#slug").val();
-    var status = '3';
+    var status = STATUS_CANCEL;
 
     $.ajaxSetup({
       headers: {
@@ -38,8 +38,8 @@ $(document).ready(function() {
         cancel: function() {
 
           // set right color and value for option Confirmed when cancel select
-          ele.css("background-color", "#007bff");
-          ele.val("1");
+          ele.css("background-color", STATUS_COLOR[STATUS_CONFIRMED]);
+          ele.val(STATUS_CONFIRMED);
         },
       }
     });

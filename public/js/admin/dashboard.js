@@ -1,7 +1,14 @@
 const STATUS_COLOR = ['#ffc107', '#007bff', '#28a745', '#dc3545'];
-const CONFIRMED = 'Confirmed';
-const COMPLETED = 'Completed'
-const CANCEL = 'Cancel';
+const STATUS_LABELS = {
+    STATUS_PENDING: 'Pending',
+    STATUS_CONFIRMED: 'Confirmed',
+    STATUS_COMPLETED: 'Completed',
+    STATUS_CANCEL: 'Cancel'
+}
+const STATUS_PENDING = 0;
+const STATUS_CONFIRMED = 1;
+const STATUS_COMPLETED = 2
+const STATUS_CANCEL = 3;
 
 // admin clinic update appointment status
 function updateAppointmentStatus(slug, appointmentId, status, callback) {
@@ -16,8 +23,8 @@ function updateAppointmentStatus(slug, appointmentId, status, callback) {
   });
 }
 
+// admin clinic create examiantion for confirmed appointment
 function createExamination(slug, data, callback) {
-    // debugger;
   $.ajax({
     url: '/admin/' + slug + '/examinations',
     type: 'POST',
