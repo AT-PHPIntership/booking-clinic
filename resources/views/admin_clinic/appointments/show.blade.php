@@ -56,7 +56,7 @@
     <div class="form-group row">
       <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.examination')</label>
       <div class="col-sm-10">
-        @if ($appointment->status == 'Confirmed')
+        @if ($appointment->status == $status[App\Appointment::STATUS_CONFIRMED])
           <button id="create-examination"class="btn btn-primary col-md-3 text-body font-weight-bold">Add examination</button>
         @elseif ($appointment->status == 'Completed')
           <a class="btn btn-success col-md-3 text-body font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

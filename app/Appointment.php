@@ -25,7 +25,6 @@ class Appointment extends Model
         self::STATUS_CANCEL =>'#dc3545'
     ];
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -111,7 +110,7 @@ class Appointment extends Model
      *
      * @param \Illuminate\Database\Eloquent\Builder $query  query
      * @param mixed                                 $status status
-
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeStatus($query, $status)

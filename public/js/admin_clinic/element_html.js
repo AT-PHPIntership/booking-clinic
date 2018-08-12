@@ -1,4 +1,5 @@
-function formShowExamination(data) {
+// form show examination detail
+function showExaminationDetail(data) {
     return `<a class="btn btn-success col-md-3 text-body font-weight-bold" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
               Show examination
             </a>
@@ -20,12 +21,15 @@ function formShowExamination(data) {
               </div>
             </div>`;
 }
+
+// show modal examination detail
 function showExamination(data, callback)
 {
   return callback(data);
 }
 
-function formCreateExamination() {
+// form create examination
+function showFormCreateExamination() {
     return `<form action="" class="formName">
               <div class="form-group">
                 <label>Diagnostic</label>
