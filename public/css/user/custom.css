@@ -1,3 +1,57 @@
 /*============================================================================================*/
 /* Your custom styles below */
 /*============================================================================================*/
+
+  /*
+   * Button cancel confirmed or pending appointments
+   */
+
+  .cancel-button {
+    border: 2px solid #e74e84;
+    font-weight: 500;
+    color: #e74e84;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 5px 20px;
+    transition: all .3s ease-in-out;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border-radius: 30px;
+  }
+
+.cancel-button:hover {
+  background-color: #e74e84;
+  color: #fff!important;
+}
+.cancel-button:focus {
+    outline-color: transparent;
+}
+
+  /*
+   * Appointment description
+   */
+
+  .description {
+    overflow: hidden;
+    line-height: 25px;
+    height: 25px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  /*
+   * Appointments status
+   */
+
+  .status {
+    font-weight: 300;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border-radius: 30px;
+  }

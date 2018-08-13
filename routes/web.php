@@ -58,4 +58,5 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
         Route::get('change-password', 'ProfileController@showChangePasswordForm')->name('change_password');
         Route::get('edit', 'ProfileController@showEditProfileForm')->name('edit_profile');
     });
+    Route::resource('appointments', 'AppointmentController')->only(['index', 'show']);
 });
