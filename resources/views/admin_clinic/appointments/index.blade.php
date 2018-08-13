@@ -22,9 +22,11 @@
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to')]) }}">@lang('admin_clinic/appointment.index.status.all')</a>
-        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => App\Appointment::STATUS_CONFIRMED]) }}">@lang('admin_clinic/appointment.index.status.confirmed')</a>
-        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => App\Appointment::STATUS_COMPLETED]) }}">@lang('admin_clinic/appointment.index.status.completed')</a>
-        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => App\Appointment::STATUS_CANCEL]) }}">@lang('admin_clinic/appointment.index.status.cancel')</a>
+        @foreach (App\Appointment::STATUS_LABELS as $key => $status)
+          @if ($key != App\Appointment::STATUS_PENDING)
+            <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => $key]) }}">{{ $status }} </a>
+          @endif
+        @endforeach
       </div>
     </div>
   </div>
