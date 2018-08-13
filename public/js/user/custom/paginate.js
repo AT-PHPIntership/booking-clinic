@@ -78,3 +78,18 @@ function getPreviousPaginatorPage(paginator) {
   }
   return currentPage;
 }
+
+/**
+ * action when click paginate link
+ */
+function clickPaginate() {
+  $(document).on('click', '.page-link', function (e) {
+    e.preventDefault();
+    let nextPageHref = $(this).attr("href");
+    let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
+
+    removeOldPage();
+    history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
+    getAppointments();
+  });
+}
