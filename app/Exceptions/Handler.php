@@ -5,9 +5,12 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
-
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Response;
+use App\Traits\ApiResponser;
 class Handler extends ExceptionHandler
 {
+    use ApiResponser;
     /**
      * A list of the exception types that are not reported.
      *
@@ -49,6 +52,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ValidationException) {
+            return $this->convertValidationExceptionToResponse($exception, $request);
+        }
         return parent::render($request, $exception);
     }
 
@@ -74,5 +80,17 @@ class Handler extends ExceptionHandler
         return $request->expectsJson()
                 ? response()->json(['message' => $exception->getMessage()], Response::HTTP_UNAUTHORIZED)
                 : redirect()->guest(route($pathToRedirect));
+    }
+    /**
+     * Create a response object from the given validation exception.
+     *
+     * @param  \Illuminate\Validation\ValidationException  $e
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
+    {
+        $errors = $e->validator->errors()->getMessages();
+        return$this->errorResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 }
