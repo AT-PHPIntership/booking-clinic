@@ -18,13 +18,13 @@
     </div>
     <div class="dropdown">
       <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ request()->has('status') ? App\Appointment::STATUS[request('status')] : __('admin_clinic/appointment.index.filter') }}
+        {{ request()->has('status') ? App\Appointment::STATUS_LABELS[request('status')] : __('admin_clinic/appointment.index.filter') }}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to')]) }}">@lang('admin_clinic/appointment.index.status.all')</a>
-        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => array_search('Confirmed', App\Appointment::STATUS)]) }}">@lang('admin_clinic/appointment.index.status.confirmed')</a>
-        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => array_search('Success', App\Appointment::STATUS)]) }}">@lang('admin_clinic/appointment.index.status.success')</a>
-        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => array_search('Cancel', App\Appointment::STATUS)]) }}">@lang('admin_clinic/appointment.index.status.cancel')</a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => App\Appointment::STATUS_CONFIRMED]) }}">@lang('admin_clinic/appointment.index.status.confirmed')</a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => App\Appointment::STATUS_COMPLETED]) }}">@lang('admin_clinic/appointment.index.status.completed')</a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => App\Appointment::STATUS_CANCEL]) }}">@lang('admin_clinic/appointment.index.status.cancel')</a>
       </div>
     </div>
   </div>

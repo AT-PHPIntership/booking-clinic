@@ -9,7 +9,7 @@ return [
         'status' => [
             'all' => 'All',
             'confirmed' => 'Confirmed',
-            'success' => 'Success',
+            'completed' => 'Completed',
             'cancel' => 'Cancel',
         ],
     ],
