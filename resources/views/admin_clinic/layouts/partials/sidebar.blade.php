@@ -20,7 +20,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link{{ checkRouteActive() }}" href="#">
+        <a class="nav-link{{ checkRouteActive(route('admin_clinic.profile.show', request('slug'))) }}" href="{{ route('admin_clinic.profile.show', request('slug')) }}">
           <span data-feather="align-justify"></span>
           @lang('admin_clinic/layout.sidebar.profile')
         </a>

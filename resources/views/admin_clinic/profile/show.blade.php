@@ -13,8 +13,8 @@
         <i class="fas fa-edit"></i>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href=" {{ route('admin_clinic.profile.edit', $clinic->slug) }} "><i class="fas fa-home"> Clinic</i></a>
-        <a class="dropdown-item" href="#"><i class="fas fa-user"> Admin</i></a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.profile.edit', $clinic->slug) }}"><i class="fas fa-home"> {{ __('admin_clinic/profile.show.link_to_edit.clinic') }}</i></a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.profile.account.edit', $clinic->slug) }}"><i class="fas fa-user"> {{ __('admin_clinic/profile.show.link_to_edit.account') }}</i></a>
       </div>
     </div>
     </div>
@@ -86,7 +86,7 @@
 
     </div>
   </div>
-  <div class="row" style="width:500px;height:500px">
+  <div class="row" style="width:500px;">
     @include('layouts.partials.carousel', ['images' => $clinic->images])
   </div>
 @endsection

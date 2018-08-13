@@ -9,13 +9,21 @@ use Illuminate\Http\Request;
 class Appointment extends Model
 {
     use SoftDeletes;
-
-    public const STATUS = ['Pending', 'Confirmed', 'Success', 'Cancel'];
+    public const STATUS_PENDING = 0;
+    public const STATUS_CONFIRMED = 1;
+    public const STATUS_COMPLETED = 2;
+    public const STATUS_CANCEL = 3;
+    public const STATUS_LABELS = [
+        self::STATUS_PENDING => 'Pending',
+        self::STATUS_CONFIRMED => 'Confirmed',
+        self::STATUS_COMPLETED => 'Completed',
+        self::STATUS_CANCEL => 'Cancel'
+    ];
     public const COLOR = [
-        'Pending' => '#ffc107',
-        'Confirmed' => '#007bff',
-        'Success' => '#28a745',
-        'Cancel' =>'#dc3545'
+        self::STATUS_PENDING => '#ffc107',
+        self::STATUS_CONFIRMED => '#007bff',
+        self::STATUS_COMPLETED => '#28a745',
+        self::STATUS_CANCEL =>'#dc3545'
     ];
 
     /**
@@ -63,7 +71,17 @@ class Appointment extends Model
      */
     public function getStatusAttribute($status)
     {
-        return Appointment::STATUS[$status];
+        return Appointment::STATUS_LABELS[$status];
+    }
+
+    /**
+     * Get the get status code.
+     *
+     * @return string
+     */
+    public function getStatusCodeAttribute()
+    {
+        return array_search($this->status, Appointment::STATUS_LABELS);
     }
 
     /**
@@ -93,5 +111,30 @@ class Appointment extends Model
         if ($request->has('from') && $request->has('to')) {
             $query->whereBetween('book_time', [$request->from, $request->to]);
         }
+    }
+
+     /**
+     * Get list appointments not pending
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeNotPending($query)
+    {
+        return $query->where('status', '<>', self::STATUS_PENDING);
+    }
+
+     /**
+     * Scope a query to group appointments by status .
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query  query
+     * @param mixed                                 $status status
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('status', $status);
     }
 }

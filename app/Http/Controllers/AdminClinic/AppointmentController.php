@@ -11,7 +11,6 @@ use App\Mail\AppointmentConfirmationEmail;
 
 class AppointmentController extends BaseController
 {
-
     /**
      * Display a listing of appointment of clinic.
      *
@@ -20,6 +19,7 @@ class AppointmentController extends BaseController
     public function index()
     {
         $appointments = $this->clinic->appointments()
+            ->notPending()
             ->filter(request())
             ->latest()
             ->with('user')

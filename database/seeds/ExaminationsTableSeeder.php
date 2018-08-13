@@ -24,7 +24,7 @@ class ExaminationsTableSeeder extends Seeder
         ]);
         factory(Appointment::class, 10)->create([
             'clinic_id' => $clinic->id,
-            'status' => array_search('Completed', Appointment::STATUS)
+            'status' => Appointment::STATUS_COMPLETED
         ])->each(function ($appointment) {
             $exam = factory(App\Examination::class)->make(['appointment_id' => $appointment->id]);
             $appointment->examination()->save($exam);

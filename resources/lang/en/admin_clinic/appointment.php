@@ -26,6 +26,10 @@ return [
         'detail' => 'detail',
         'description' => 'description'
     ],
+    'status' => [
+        'confirmed' => 'Confirmed',
+        'cancel' => 'Cancel'
+    ],
     'update' => [
         'success' => 'List appointments is updated'
     ]

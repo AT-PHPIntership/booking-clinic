@@ -32,7 +32,7 @@ class CalendarController extends BaseController
                 $appointment->book_time->addHour(),
                 null,
                 [
-                    'color' => Appointment::COLOR[$appointment->status],
+                    'color' => Appointment::COLOR[$appointment->status_code],
                     'url' => route('admin_clinic.appointments.show', [$slug, $appointment->id]),
                 ]
             );
