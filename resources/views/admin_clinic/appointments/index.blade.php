@@ -39,16 +39,18 @@
                 </a>
               </td>
               <td class="container">
-                  <select id="appointment-{{ $appointment->id }}"
-                    class="col-md-4 d-inline custom-select text-body font-weight-bold status-select"
-                    required name="status">
-                  @foreach (App\Appointment::STATUS as $key => $status)
-                    @if ($status == $appointment->status)
-                      <option value="{{ $key }}" selected>{{ $status }}</option>
-                    @else
-                      <option value="{{ $key }}">{{ $status }}</option>
-                    @endif
-                  @endforeach
+                <select id="appointment-{{ $appointment->id }}" class="col-md-4 d-inline custom-select text-body font-weight-bold status-select" required name="status">
+                  @php
+                    $status = App\Appointment::STATUS_LABELS;
+                  @endphp
+
+                  {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
+                  @if ($appointment->status == $status[App\Appointment::STATUS_CONFIRMED])
+                    <option value="{{ App\Appointment::STATUS_CONFIRMED }}" selected>@lang('admin_clinic/appointment.status.confirmed')</option>
+                    <option value="{{ App\Appointment::STATUS_CANCEL }}">@lang('admin_clinic/appointment.status.cancel')</option>
+                  @else
+                    <option value="{{ $appointment->status_code }}" selected>{{ $appointment->status }}</option>
+                  @endif
                 </select>
               </td>
             </tr>

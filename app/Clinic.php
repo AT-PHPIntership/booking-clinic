@@ -66,6 +66,16 @@ class Clinic extends Model
     }
 
     /**
+     * Get list user book appointment of clinic
+     *
+     *  @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'appointments');
+    }
+
+    /**
      * Upload images for clinic.
      *
      *  @param array $images images
