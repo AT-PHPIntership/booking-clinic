@@ -8,6 +8,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
+
 class Handler extends ExceptionHandler
 {
     use ApiResponser;
@@ -84,8 +85,9 @@ class Handler extends ExceptionHandler
     /**
      * Create a response object from the given validation exception.
      *
-     * @param  \Illuminate\Validation\ValidationException  $e
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Validation\ValidationException $e       e
+     * @param \Illuminate\Http\Request                   $request request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function convertValidationExceptionToResponse(ValidationException $e, $request)
