@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['namespace' => 'API\User'], function() {
-    Route::apiResource('clinics', 'ClinicTypeController')->only(['index', 'show']);
+    Route::apiResource('clinic-types', 'ClinicTypeController')->only(['index', 'show']);
 });

@@ -101,14 +101,14 @@ trait ApiResponser
 
         $page = LengthAwarePaginator::resolveCurrentPage();
 
-        $prePage = config('define.limit_rows');
+        $perPage = config('define.limit_rows');
         if (request()->has('perpage')) {
-            $prePage = request()->perpage;
+            $perPage = request()->perpage;
         }
 
-        $result = $collection->slice(($page - 1) * $prePage, $prePage);
+        $result = $collection->slice(($page - 1) * $perPage, $perPage);
 
-        $paginated = new LengthAwarePaginator($result->values(), $collection->count(), $prePage, $page, [
+        $paginated = new LengthAwarePaginator($result->values(), $collection->count(), $perPage, $page, [
             'path' => LengthAwarePaginator::resolveCurrentPath()
         ]);
 

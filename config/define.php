@@ -1,4 +1,4 @@
 <?php
 return [
-    'limit_rows' => 5
+    'limit_rows' => 15
 ];
