@@ -103,4 +103,26 @@ class Clinic extends Model
     {
         $this->images()->whereIn('id', $deletedImageId)->delete();
     }
+
+        /**
+     * Scope filter for clinic
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilter($query)
+    {
+        $request = request();
+
+        if ($request->has('clinic_type_id')) {
+            $query->where('clinic_type_id', $request->clinic_type_id);
+        }
+
+        if ($request->has('sort_by')) {
+            $column = $request->sort_by;
+            $order = $request->has('order') ? $request->order : 'ASC';
+            $query->orderBy($column, $order);
+        }
+    }
 }
