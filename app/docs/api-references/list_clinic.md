@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 ## Clinic API
 
+=======
+>>>>>>> api-get-list-clinic
 ### `GET` Clinics
 ```
 /api/clinics
@@ -18,7 +21,11 @@ Get list clinics
 | sort_by | string | Sort by `name`, `email`, `created_at` ... |
 | order | string | Sort order (`ASC`, `DESC`) |
 
+<<<<<<< HEAD
 #### Example
+=======
+##### Example
+>>>>>>> api-get-list-clinic
 | URL | Description |
 |---|---|
 | /api/clinics | Get all clinic |
