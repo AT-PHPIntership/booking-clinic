@@ -1,14 +1,14 @@
 # User
-## `POST` signup user
+## `POST` register user
 ```
-/api/auth/signup
+/api/auth/register
 ```
 Register user
 #### Request Headers
 | Key | Value |
 |---|---|
 |Accept|application/json
-#### Query param
+#### Request Body
 | Key | Value | Description
 |---|---|---|
 |name|text| User name|
@@ -69,7 +69,7 @@ Login user
 | Key | Value |
 |---|---|
 |Accept|application/json
-#### Query param
+#### Request Headers
 | Key | Value | Description
 |---|---|---|
 |name|text| User name|
@@ -79,15 +79,35 @@ Login user
 * _Success_
 ```json
 {
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk3NDA5M2U4ZjRlZDU2ZjBkNDUyMzMyM2Q4NjcxYzE1NDZmZjMyYmEyZmNkNjA3YzZhY2Q5MTM3MTRjOGFjMjI5ODY3NTRiYTdjNDdhZTY0In0.eyJhdWQiOiIxIiwianRpIjoiOTc0MDkzZThmNGVkNTZmMGQ0NTIzMzIzZDg2NzFjMTU0NmZmMzJiYTJmY2Q2MDdjNmFjZDkxMzcxNGM4YWMyMjk4Njc1NGJhN2M0N2FlNjQiLCJpYXQiOjE1MzQyNTUzODMsIm5iZiI6MTUzNDI1NTM4MywiZXhwIjoxNTY1NzkxMzgzLCJzdWIiOiI1NyIsInNjb3BlcyI6W119.IBXB5aiJRSnEI1XrOBajLLNZDklrHbnEeP3mCziF9WW-zXxx2A-HFxp1Tn6nhJh8slUqjUzpYPOpDAXnxH_G93ATGZuQ2H8LcSJeA6bQQOdoMA_UXx3zunzjTU4MtUUmTeMTFOYyF-wuUj37Ipr6zhHd6Bt2ol0fRoOls9zUpcFqS1RaBPuE1CBQVoyS7b4lFsgQVu_gRiYgwHOjLX3CR2ZaUWm0lnpJiykYo9kS96vGo0SPu1snv4ia1YylW07DDDTAqsPRUNE0Y1pyACNb7kzY2WYIoPI_nN9nzHgIVU9_BvLQXKPXclAyOawFGQ-AxSISYP9nK9S65CUuSzKVzRab0yFdiLb02piNbp6UeK1q5vF9-T4Gfu37FUjzbQjd40ySc6LmZRVv1Ypq1hpzbfcO4ccxavf3zRF2LQaz3uTutXtwTNBl2N_1ivKXSrpfzh9Fd6Jz8OGgYiVsS9te1JxUQcMeugUlQN06noBNkSO3WCjJXx7zKkGsz_13lM8HOz28UU-faJnDsr5335e0_skHTeZPzWj-wWV5I26RFZKKEVjdKgLd0yXke2gEzfN7t11ZsJDkzylYUMcjIffxpDeIF9L8E8iuoNqvd_OZLJWDPaISDUeANMNqHhDXemJj6yysLlqrZp436pngeBhHmqgaY8QpShsEv9eOqgu-waQ",
-    "token_type": "Bearer",
-    "expires_at": "2019-08-14 21:03:03"
+    "result": {
+        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQxNzk4MmIxNzRlNjgyMjNlM2ZhNjA3ZmVhMzE4OWNiN2FiMTk0ZjBkZWFlNzFhMDEzNDk5ZTAxNTRkY2Q3ODQzZTg3Njc1MzFkMDE4NDY2In0.eyJhdWQiOiIxIiwianRpIjoiNDE3OTgyYjE3NGU2ODIyM2UzZmE2MDdmZWEzMTg5Y2I3YWIxOTRmMGRlYWU3MWEwMTM0OTllMDE1NGRjZDc4NDNlODc2NzUzMWQwMTg0NjYiLCJpYXQiOjE1MzQ0MTcyNzAsIm5iZiI6MTUzNDQxNzI3MCwiZXhwIjoxNTY1OTUzMjcwLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.xGW27br7z38_Pi8Gb2Bny-mulBGpIoPbFud_vFR6RdmF3mXKTkqDhA6uxtASv3jMCYTkJUoRp5XLJX2JV417sY5PPyx-w-RZuT-W6q272C7sJysGd7mICbLJ-ITEilHBk7du7tSqjQSNRkTLubkl6caQNw3YV_IQFx4r0CfYYRxyNFJSSmLsWM2HLGhJ-ckhi_zqwS-6aCCDf-GudxdAqM39HmpG0RyytkuOh9fAtNrxqI_Q887qQU3gqZj65djA-dP2F06Bckt5N6QYxffmYP_Vc9dRnVu3sFAPMcMIX0DZqFo91QEByX_CkJp4J1eSBZx8hrPUT0CFPd-CN-ZfofSTOYfSXC_RO8DG37_72b9zU4679WQ5JhQu3FcCZzbwf05rmG-bieftxPSLr5oYJAfSzPyLfeDMpS8dHXkK-zZZ-he7HFsBF8Dh8eIWrKdHn_5EqnYr3D0vWffr2qXbgOJ-GN519yKueI3TP_eZHaxRFFmJxIpO1w77Y0Hyl-MwVILY_MQKzHQWorQI6aXXczdRY7hhgQ4CHnRTTeuDrupYhShnEgH30PKW0mj_QPC9G9aY1uzRnK1iGO9D456LOH1TY0gxrNuSnvrC6REOvLe25IpiH5AWOfvLEZ6zmH0AJFsa7F5-Pj-auEdewL9jCjx6TxuoDq5B52wVHFbbGJY",
+        "token_type": "Bearer",
+        "expires_at": "2018-08-23 18:01:10"
+    },
+    "code": 200
 }
 ```
 * _Error_
 ``` json
 {
-    "error": "Unauthorized",
+    "message": "The given data was invalid.",
+    "errors": {
+        "email": [
+            "The email must be a valid email address."
+        ]
+    },
+    "code": 422,
+    "request": {
+        "email": "top2203@gmailcom",
+        "password": "secret",
+        "remember_me": 1
+    }
+}
+```
+* _Fail_
+``` json
+{
+    "error": "Email or password is incorrect",
     "code": 401
 }
 ```

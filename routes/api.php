@@ -19,15 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'API\User'], function() {
     Route::apiResource('clinic-types', 'ClinicTypeController')->only(['index', 'show']);
     Route::apiResource('clinics', 'ClinicController')->only(['index', 'show']);
-});
-Route::group(['namespace'=>'API\User'], function () {
-    Route::apiResource('clinics', 'ClinicTypeController');
-    Route::group(['prefix' => 'auth'], function () {
-        Route::post('login', 'AuthController@login');
-        Route::post('signup', 'AuthController@signup');
-        Route::group(['middleware' => 'auth:api'], function() {
-            Route::get('logout', 'AuthController@logout');
-            Route::get('user', 'AuthController@user');
-          });
+    Route::post('login', 'AuthController@login');
+    Route::post('register', 'AuthController@register');
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::post('logout', 'AuthController@logout');
     });
 });

@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\User\UserRegisterRequest;
 use App\Http\Requests\User\UserLoginRequest;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\User\BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Carbon\Carbon;
 use App\User;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     /**
      * User register
@@ -22,12 +22,14 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function signup(UserRegisterRequest $request)
+    public function register(UserRegisterRequest $request)
     {
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
-        User::create($data);
-        return $this->successResponse(config('define.user.sign_up'), Response::HTTP_CREATED);
+        if (User::create($data)) {
+            return $this->successResponse(User::latest()->first(), Response::HTTP_CREATED);
+        }
+        return $this->errorResponse(__('api/user.login.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -39,23 +41,22 @@ class AuthController extends Controller
      */
     public function login(UserLoginRequest $request)
     {
-
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
-            return $this->errorResponse(config('define.user.unauthorized'), Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponse(__('api/user.login.fail'), Response::HTTP_UNAUTHORIZED);
         }
         $user = $request->user();
-        $tokenResult = $user->createToken(config('define.user.access_token'));
+        $tokenResult = $user->createToken(config('define.access_token'));
         $token = $tokenResult->token;
         if ($request->remember_me) {
             $token->expires_at = Carbon::now()->addWeeks(1);
         }
         $token->save();
-        return response()->json([
+        return $this->successResponse([
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
-        ]);
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -68,6 +69,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
-        return $this->successResponse(config('define.user.log_out'), Response::HTTP_OK);
+        return $this->successResponse(__('api/user.log_out'), Response::HTTP_OK);
     }
 }
