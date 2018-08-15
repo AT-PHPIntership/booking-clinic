@@ -8,7 +8,7 @@ Register user
 | Key | Value |
 |---|---|
 |Accept|application/json
-#### Query param
+#### Request Body
 | Key | Value | Description
 |---|---|---|
 |name|text| User name|
@@ -69,7 +69,7 @@ Login user
 | Key | Value |
 |---|---|
 |Accept|application/json
-#### Query param
+#### Request Headers
 | Key | Value | Description
 |---|---|---|
 |name|text| User name|
