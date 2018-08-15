@@ -68,8 +68,6 @@
                             </ul>
                         </li>
                         <li><span><a href="menu_2/index.html">Menu V2</a></span></li>
-                        <li><span><a href="admin_section/index.html" target="_blank">Admin</a></span></li>
-                        <li><span><a href="https://themeforest.net/item/findoctor-doctors-directory-and-book-online-template/20876478?ref=ansonika">Buy this template</a></span></li>
                     </ul>
                 </nav>
                 <!-- /main-menu -->

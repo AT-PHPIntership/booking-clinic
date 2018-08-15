@@ -7,7 +7,6 @@ return [
         'app_name' => 'FinClinic'
     ],
     'navbar' => [
-
     ],
 
 
