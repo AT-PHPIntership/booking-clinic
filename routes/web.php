@@ -45,3 +45,9 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin_clinic.', 'namespace' =
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('login', 'AuthController@showLoginForm')->name('login');
+    Route::get('register', 'AuthController@showRegisterForm')->name('register');
+});
