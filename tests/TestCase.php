@@ -14,11 +14,6 @@ abstract class TestCase extends BaseTestCase
 
     public function setUp() {
         parent::setUp();
-        // Artisan::call('passport:install');
-        $this->artisan('migrate');
-        $this->artisan('passport:install');
-        // $this->user = factory(\App\User::class)->create();
-        // $this->token =  $this->user->createToken('token')->accessToken;
     }
 
     /**
