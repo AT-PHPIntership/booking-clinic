@@ -8,22 +8,17 @@ use Illuminate\Support\Facades\Artisan;
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
-    public const HEADER_ACCEPT = ['Accept' => 'application/json'];
-    public const HEADER_AUTHORIZATION = ['Authorization' => 'Bear'];
 
     protected $user;
     protected $token;
 
-    /**
-     * Set up TestCase
-     *
-     * @return void
-     */
     public function setUp() {
         parent::setUp();
-        Artisan::call('passport:install');
-        $this->user = factory(\App\User::class)->create();
-        $this->token =$this->user->createToken(__('api/user.access_token'))->accessToken;
+        // Artisan::call('passport:install');
+        $this->artisan('migrate');
+        $this->artisan('passport:install');
+        // $this->user = factory(\App\User::class)->create();
+        // $this->token =  $this->user->createToken('token')->accessToken;
     }
 
     /**
@@ -31,10 +26,11 @@ abstract class TestCase extends BaseTestCase
      *
      * @return json
      */
-    public function sendRequest($method, $url, $data = [], $header = []) {
+    public function sendRequest($method, $url, $data = [], $header = [])
+    {
         if ($header) {
             return $this->json($method, $url, $data, $header);
         }
-        return $this->json($method, $url, $data, [seft::HEADER_ACCEPT, self::HEADER_AUTHORIZATION]);
+        return $this->json($method, $url, $data, ['Accept' => 'application/json', 'Authorization' => 'Bearer '.$this->token]);
     }
 }
