@@ -35,13 +35,9 @@ class UserRegisterTest extends TestCase
             "password_confirmation" => "secret"
 
         ];
-        try {
-        $response = $this->json('POST', 'api/register', $body, ['Accept' => 'application/json']);
-        } catch (\Exception $e) {
-            dd($e);
-        }
+        $response = $this->json('POST', '/api/register', $body, ['Accept' => 'application/json']);
         // dd($response);
-        $response->assertStatus(200)
+        $response->assertStatus(201)
             ->assertJsonStructure($this->json_structure_user_register_success());
     }
 }
