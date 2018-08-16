@@ -22,7 +22,7 @@ class AuthController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function signup(UserRegisterRequest $request)
+    public function register(UserRegisterRequest $request)
     {
         $data = $request->all();
         $data['password'] = Hash::make($request->password);

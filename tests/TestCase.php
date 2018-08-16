@@ -23,9 +23,6 @@ abstract class TestCase extends BaseTestCase
      */
     public function sendRequest($method, $url, $data = [], $header = [])
     {
-        if ($header) {
-            return $this->json($method, $url, $data, $header);
-        }
-        return $this->json($method, $url, $data, ['Accept' => 'application/json', 'Authorization' => 'Bearer '.$this->token]);
+        return $this->json($method, $url, $data, $header);
     }
 }
