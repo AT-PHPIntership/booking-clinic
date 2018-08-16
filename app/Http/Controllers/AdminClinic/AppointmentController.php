@@ -11,7 +11,6 @@ use App\Mail\AppointmentConfirmationEmail;
 
 class AppointmentController extends BaseController
 {
-
     /**
      * Display a listing of appointment of clinic.
      *
@@ -21,10 +20,11 @@ class AppointmentController extends BaseController
     {
         $appointments = $this->clinic->appointments()
             ->notPending()
+            ->filter(request())
             ->latest()
             ->with('user')
             ->paginate();
-        return view('admin_clinic.appointments.index', [ 'appointments' => $appointments, 'clinic' => $this->clinic,]);
+        return view('admin_clinic.appointments.index', ['appointments' => $appointments, 'clinic' => $this->clinic]);
     }
 
     /**
