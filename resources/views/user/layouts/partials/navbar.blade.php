@@ -53,7 +53,7 @@
                 <li><a href="404.html">404 page</a></li>
               </ul>
             </li>
-            <li><span><a href="menu_2/index.html">Menu V2</a></span></li>
+            <li id="js-navbar-user"></li>
           </ul>
         </nav>
         <!-- /main-menu -->

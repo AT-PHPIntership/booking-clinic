@@ -57,6 +57,8 @@
   <script src="{{ asset('js/user/jquery-2.2.4.min.js') }}"></script>
   <script src="{{ asset('js/user/common_scripts.min.js') }}"></script>
   <script src="{{ asset('js/user/functions.js') }}"></script>
+  {{-- CHECK IS USER LOGGED SCRIPTS --}}
+  <script src="{{ asset('js/user/auth/logged.js') }}"></script>
   {{-- DISPLAY CLINICTYPE ON NAVBAR SCRIPTS --}}
   <script src="{{ asset('js/user/clinic_type.js') }}"></script>
   @yield('additional_js')
