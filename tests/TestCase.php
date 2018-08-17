@@ -3,15 +3,18 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Artisan;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
+    use CreatesApplication, DatabaseMigrations;
 
     /**
      * set up function
      */
     public function setUp() {
         parent::setUp();
+        Artisan::call('passport:install');
     }
 }
