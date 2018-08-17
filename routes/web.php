@@ -50,4 +50,5 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('login', 'AuthController@showLoginForm')->name('login');
     Route::get('register', 'AuthController@showRegisterForm')->name('register');
+    Route::resource('clinics', 'ClinicController')->only(['index', 'show']);
 });
