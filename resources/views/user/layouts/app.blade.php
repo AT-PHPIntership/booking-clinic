@@ -24,28 +24,28 @@
   <link href="{{ asset('css/user/menu.css') }}" rel="stylesheet">
   <link href="{{ asset('css/user/vendors.css') }}" rel="stylesheet">
   <link href="{{ asset('css/user/icon_fonts/css/all_icons_min.css') }}" rel="stylesheet">
-  
+
   <!-- YOUR CUSTOM CSS -->
   <link href="{{ asset('css/user/custom.css') }}" rel="stylesheet">
-  
+
 </head>
 
 <body>
-  
+
   <div id="preloader" class="Fixed">
     <div data-loader="circle-side"></div>
   </div>
   <!-- /Preload-->
-  
-  <div id="page">		
+
+  <div id="page">
   @include('user.layouts.partials.navbar')
-  
+
     <main>
       @yield('content')
   </main>
 
   <!-- /main content -->
-  
+
   @include('user.layouts.partials.footer')
   </div>
   <!-- page -->
@@ -57,6 +57,8 @@
   <script src="{{ asset('js/user/jquery-2.2.4.min.js') }}"></script>
   <script src="{{ asset('js/user/common_scripts.min.js') }}"></script>
   <script src="{{ asset('js/user/functions.js') }}"></script>
+  {{-- DISPLAY CLINICTYPE ON NAVBAR SCRIPTS --}}
+  <script src="{{ asset('js/user/clinic_type.js') }}"></script>
   @yield('additional_js')
 </body>
 
