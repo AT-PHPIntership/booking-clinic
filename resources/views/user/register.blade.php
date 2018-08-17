@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="hero_register">
-  <div class="container margin_120_95">			
+  <div class="container margin_120_95">
   <div class="row">
     <div class="col-lg-6">
     <h1>It's time to find you!</h1>
@@ -38,9 +38,12 @@
       <!-- /row -->
       <div class="row">
         <div class="col-lg-12">
-        <div class="form-group">
-          <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-        </div>
+            <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+            <div class="invalid-feedback">
+                    Please choose a username.
+                  </div>
+            </div>
         </div>
       </div>
       <!-- /row -->
@@ -55,7 +58,7 @@
       <div class="row">
         <div class="col-lg-12">
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Confirm Password" required>
+          <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
         </div>
         </div>
       </div>
@@ -75,3 +78,5 @@
 <!-- /hero_register -->
 
 @endsection
+
+@include('user.layouts.partials.register')
