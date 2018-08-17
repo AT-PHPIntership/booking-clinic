@@ -8,10 +8,15 @@ function login(email, password) {
     data: {
       email: email,
       password: password
-    }
+    },
+    beforeSend: function() {
+      $('.invalid-feedback').remove();
+      $('.is-invalid').removeClass('is-invalid');
+      $('#js-error-login').addClass('d-none').html('');
+  },
   })
   .done(loginSuccess)
-  .error(showError);
+  .fail(showError);
 }
 
 function loginSuccess(response) {
@@ -27,14 +32,17 @@ function showError(response) {
       break;
     case 422:
       let data = response.responseJSON;
-      let text = data.message;
-      $.each(data.errors, function(index, error) {
-        text += '\n' + error;
+      $.each(data.errors, function(key, error) {
+        let currentInput = $('#input-' + key);
+        currentInput.addClass('is-invalid');
+        currentInput.after (
+          `<div class="invalid-feedback" role="alert">
+            <strong>${error}</strong>
+          </div>`);
       });
-      alert(text);
       break;
     default:
-      alert('Unknown error!');
+      alert('Unknown error! status code ' + status);
   }
 }
 

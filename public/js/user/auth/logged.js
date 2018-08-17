@@ -1,18 +1,11 @@
-function checkLogged() {
-  const user = JSON.parse(window.localStorage.getItem('user'));
-  if (user) {
-    let html = `<span><a href="#"><strong>${user.name}</strong></a></span>
-                <ul>
-                  <li><a id="btn-logout" href="#">Logout</a></li>
-                </ul>`;
-    $('#js-navbar-user').append(html);
-    $('#btn-logout').click(logout);
-    $('#top_access').hide();
-  }
-}
-
 function checkToken() {
-  const token = window.localStorage.getItem('access_token');
+  const token = getToken();
+
+  if (!token) {
+    checkRoute();
+    return;
+  }
+
   $.ajax({
     headers: {
       Accept: 'application/json',
@@ -22,28 +15,15 @@ function checkToken() {
     type: 'GET'
   })
   .done(function(response) {
-    window.localStorage.setItem('user', JSON.stringify(response));
+    $.when(window.localStorage.setItem('user', JSON.stringify(response)))
+      .then(function() {
+        checkRoute();
+        showUserNavbar();
+      });
   })
   .statusCode(401, function(response) {
     window.localStorage.removeItem('access_token');
     window.localStorage.removeItem('user');
-  })
-}
-
-function logout() {
-  let token = window.localStorage.getItem('access_token');
-  $.ajax({
-    headers: {
-      Accept: 'application/json',
-      Authorization: 'Bearer ' + token
-    },
-    url: '/api/logout',
-    type: 'POST'
-  })
-  .done(function(response) {
-    window.localStorage.removeItem('access_token');
-    window.localStorage.removeItem('user');
-    window.location.replace('/');
   })
 }
 
@@ -53,7 +33,7 @@ function checkRoute() {
     user: ['/profile']
   }
 
-  const user = JSON.parse(window.localStorage.getItem('user'));
+  const user = getUser();
 
   if (user) {
     route.guest.forEach(function(path) {
@@ -70,8 +50,36 @@ function checkRoute() {
   }
 }
 
+function showUserNavbar() {
+  const user = getUser();
+  if (user) {
+    let html = `<span><a href="#"><strong>${user.name}</strong></a></span>
+                <ul>
+                  <li><a id="btn-logout" href="/logout">Logout</a></li>
+                </ul>`;
+    $('#js-navbar-user').append(html);
+    $('#btn-logout').click(logout);
+    $('#top_access').hide();
+  }
+}
+
+function logout() {
+  const token = getToken();
+  $.ajax({
+    headers: {
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    },
+    url: '/api/logout',
+    type: 'POST'
+  })
+  .done(function(response) {
+    window.localStorage.removeItem('access_token');
+    window.localStorage.removeItem('user');
+    window.location.replace('/login');
+  })
+}
+
 $(document).ready(function() {
   checkToken();
-  checkLogged();
-  checkRoute();
 });
