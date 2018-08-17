@@ -96,3 +96,46 @@ Get list clinics
     "code": 200
 }
 ```
+
+### `GET` Clinic
+```
+/api/clinics/{id}
+```
+Get detail clinic
+
+#### Parameter
+| Field | Type | Description |
+|-------|------|-------------|
+| id | Integer | Id of Clinic |
+
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+
+#### Example
+| URL | Description |
+|---|---|
+| /api/clinics/1 | Get clinic with id = 1 |
+
+#### Response
+```json
+{
+    "result": {
+        "id": 1,
+        "name": "Miss Ashly Beahan II",
+        "email": "price.albert@example.net",
+        "phone": "02193934835",
+        "address": "82088 Vivianne StravenueAlejandrinburgh, DE 55195-1910",
+        "description": "Commodi perferendis officiis impedit autem nihil esse. Ea voluptatem tempora nam similique repellat. Unde optio illum molestiae quod qui.",
+        "lat": "-80.779429",
+        "lng": "-95.977483",
+        "slug": "miss-ashly-beahan-ii",
+        "clinic_type_id": 8,
+        "deleted_at": null,
+        "created_at": "2018-08-08 03:38:29",
+        "updated_at": "2018-08-08 03:38:29"
+    },
+    "code": 200
+}
+```

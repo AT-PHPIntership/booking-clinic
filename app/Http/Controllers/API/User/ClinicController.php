@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Clinic;
+use Illuminate\Http\Response;
 
 class ClinicController extends BaseController
 {
@@ -25,5 +26,23 @@ class ClinicController extends BaseController
         $clinics = $this->formatPaginate($clinics);
 
         return $this->showAll($clinics);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param integer $id id
+     *
+     * @return void
+     */
+    public function show($id)
+    {
+        $clinic = Clinic::find($id);
+
+        if ($clinic) {
+            return $this->showOne($clinic);
+        }
+
+        return $this->errorResponse(__('api/clinic.error.404'), Response::HTTP_NOT_FOUND);
     }
 }
