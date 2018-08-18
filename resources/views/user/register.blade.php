@@ -32,6 +32,8 @@
         <div class="col-md-12 ">
         <div class="form-group">
           <input type="text" name="name" class="form-control" placeholder="Name">
+          <div class="invalid-feedback font-weight-bold" role="alert">
+          </div>
         </div>
         </div>
       </div>
@@ -39,19 +41,20 @@
       <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
-            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-            <div class="invalid-feedback">
-                    Please choose a username.
-                  </div>
+              <input type="email" name="email" class="form-control" placeholder="Email Address">
+              <div class="invalid-feedback font-weight-bold" role="alert">
+              </div>
             </div>
         </div>
       </div>
       <!-- /row -->
       <div class="row">
         <div class="col-lg-12">
-        <div class="form-group">
-          <input type="password" name="password" class="form-control" placeholder="Password" required>
-        </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Password">
+            <div class="invalid-feedback font-weight-bold" role="alert">
+            </div>
+          </div>
         </div>
       </div>
       <!-- /row -->

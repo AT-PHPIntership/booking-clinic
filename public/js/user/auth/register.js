@@ -3,13 +3,14 @@ function register(name, email, password, passwordConfirmation) {
       headers: {
         'Accept': 'application/json',
       },
-      url: '/api/register',
+      url: route('api.register'),
       type: 'POST',
       data: {
         name: name,
         email: email,
         password: password,
-        password_confirmation: passwordConfirmation
+        password_confirmation: passwordConfirmation,
+        beforeSend: removeOldErrors
       },
   })
   .done(registerSuccess)
@@ -21,17 +22,19 @@ function registerSuccess(res) {
 }
 
 function registerFail(res) {
-    let message = JSON.parse(res.responseText);
-    let errors = message.errors;
-    $.each(errors, function(key, message) {
-      $(`input[name=${key}]`).after (
-        `<div class="invalid-feedback inline" role="alert">
-            <strong>${message}</strong>
-        </div>`);
+    let errors = JSON.parse(res.responseText).errors;
+    $.each(errors, function(field, message) {
+      let currentInput = $(`input[name=${field}]`);
+      if (field == 'password') $(`input[name=password_confirmation`).addClass('is-invalid');
+      currentInput.addClass('is-invalid');
+      currentInput.next(".invalid-feedback").text(message);
     });
-    debugger;
 }
 
+function removeOldErrors() {
+    $('.invalid-feedback').text(""); //remove errors of last request
+    $('.is-invalid').removeClass('is-invalid');  //remove red border of error input
+}
 $(document).ready(function () {
     $('input[type=submit]').click(function(e) {
       e.preventDefault();
