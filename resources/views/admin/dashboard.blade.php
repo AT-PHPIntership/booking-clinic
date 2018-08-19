@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin.dashboard') }}
+@endsection
+
 @section('title')
   @lang('admin/dashboard.title')
 @endsection
