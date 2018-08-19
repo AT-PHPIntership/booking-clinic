@@ -57,7 +57,7 @@ class ProfileController extends BaseController
         if (count($deletedImageId)) {
             $clinic->deleteImage($deletedImageId);
         }
-        
+
         if ($request->hasFile('images')) {
             $clinic->uploadImage($request->images);
         }

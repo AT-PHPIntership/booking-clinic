@@ -1,5 +1,9 @@
 @extends('admin_clinic.layouts.app')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin_clinic.profile.edit', $clinic) }}
+@endsection
+
 @section('title')
   @lang('admin_clinic/profile.show.title')
 @endsection
@@ -109,11 +113,11 @@
       <div class="img-wrap">
       <span class="close" data-confirm=" {{ __('admin_clinic/profile.edit.clinic.confirm') }}">&times;</span>
       <img src="{{ asset($image->path) }}" alt="..." class="img-thumbnail" style="width:150px;height:150px" data-id=" {{ $image->id }} ">
-      </div>  
+      </div>
     @endforeach
     <input type="hidden" name="image_deleted" value="">
   </div>
-  
+
   <hr class="mb-4">
   <div class="form-group">
     <button type="submit" class="btn btn-primary col-md-1 d-inline mr-3">@lang('admin_clinic/layout.btn.update')</button>
