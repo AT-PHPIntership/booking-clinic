@@ -5,7 +5,7 @@ const last = "Last";
 
 function getClinics() {
   $.ajax({
-    url: "/api/clinics" + getQueryString(),
+    url: route('api.clinics.index') + getQueryString(),
     type: 'GET',
   })
   .done(function (response) {
@@ -46,7 +46,7 @@ function showClinics(data) {
 }
 
 function showPaginateClinics(paginator) {
-  var prefixLink = '/clinics';
+  var prefixLink = "/clinics";
   var paginatorClinic = $('#js-pagination-clinic');
   var firstPage = `<li class="page-item ${disableBtnPagClinic(paginator, first)}"><a class="page-link" href="${prefixLink + getQueryString(paginator.first_page_url)}">${first}</a></li>`;
   var previousPage = `<li class="page-item ${disableBtnPagClinic(paginator, pre)}"><a class="page-link" href="${prefixLink + getQueryString(paginator.prev_page_url, paginator.first_page_url)}">${pre}</a></li>`;
@@ -101,22 +101,22 @@ function disableBtnPagClinic(paginator, typeNav) {
   if (urlParams.has("page")) {
     var page = urlParams.get('page');
     if (page == 1) {
-      if ([first, pre].indexOf(typeNav) >=0) {
+      if ([first, pre].indexOf(typeNav) >= 0) {
         return 'disabled';
       }
     }
     if (page == paginator.last_page) {
-      if ([next, last].indexOf(typeNav) >=0) {
+      if ([next, last].indexOf(typeNav) >= 0) {
         return 'disabled';
       }
     }
     return;
   }
-  if ([first, pre].indexOf(typeNav) >=0) {
+  if ([first, pre].indexOf(typeNav) >= 0) {
     return 'disabled';
   }
   if (paginator.next_page_url == null) {
-    if ([next, last].indexOf(typeNav) >=0) {
+    if ([next, last].indexOf(typeNav) >= 0) {
       return 'disabled';
     }
   }
