@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin.users.index') }}
+@endsection
+
 @section('title')
   @lang('admin/user.index.title')
 @endsection
@@ -18,8 +22,7 @@
           <th>@lang('admin/user.fields.gender')</th>
           <th>@lang('admin/user.fields.dob')</th>
           <th>@lang('admin/user.fields.phone')</th>
-          <th>@lang('admin/user.fields.address')</th>
-          <th>@lang('admin/user.fields.created_at')</th>
+          <th>@lang('admin/user.fields.show')</th>
           <th></th>
         </tr>
       </thead>
@@ -35,9 +38,7 @@
             <td>{{ $user->gender_string }}</td>
             <td>{{ $user->dob }}</td>
             <td>{{ $user->phone }}</td>
-            <td>{{ $user->address }}</td>
-            <td>{{ $user->created_at }}</td>
-            <td><a href="{{ route('admin.users.show', $user->id) }}">detail</a></td>
+            <td><a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-info-circle"></i></a></td>
           </tr>
         @endforeach
       </tbody>

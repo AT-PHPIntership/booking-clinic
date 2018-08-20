@@ -7,7 +7,8 @@ return [
         'app_name' => 'FinClinic'
     ],
     'navbar' => [
-        'clinic_types' => 'Clinic types'
+        'clinic_types' => 'Clinic types',
+        'logout' => 'Logout'
     ],
 
 

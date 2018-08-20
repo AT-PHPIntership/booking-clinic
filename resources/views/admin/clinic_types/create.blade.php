@@ -1,7 +1,13 @@
 @extends('admin.layouts.app')
+
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin.clinic-types.create') }}
+@endsection
+
 @section('title')
   {{ __('admin/clinic_type.create.title') }}
 @endsection
+
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">{{ __('admin/clinic_type.create.heading') }}</h1>

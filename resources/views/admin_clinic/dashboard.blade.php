@@ -1,5 +1,9 @@
 @extends('admin_clinic.layouts.app')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin_clinic.dashboard', $clinic) }}
+@endsection
+
 @section('title')
   @lang('admin_clinic/dashboard.title')
 @endsection

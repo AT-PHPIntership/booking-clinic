@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin.clinics.index') }}
+@endsection
+
 @section('title')
   {{ __('admin/clinic.index.title') }}
 @endsection
@@ -22,6 +26,7 @@
           <th>{{ __('admin/clinic.fields.phone') }}</th>
           <th>{{ __('admin/clinic.index.edit') }}</th>
           <th>{{ __('admin/clinic.index.delete') }}</th>
+          <th>{{ __('admin/clinic.index.show') }}</th>
           <th></th>
         </tr>
       </thead>
@@ -48,7 +53,7 @@
                 </button>
               </form>
             </td>
-            <td><a href="{{ route('admin.clinics.show', $clinic->id) }}">{{ __('admin/layout.btn.detail')}}</a></td>
+            <td><a href="{{ route('admin.clinics.show', $clinic->id) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-info-circle"></i></a></td>
           </tr>
         @endforeach
       </tbody>
