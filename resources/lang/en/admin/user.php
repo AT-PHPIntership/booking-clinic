@@ -22,5 +22,6 @@ return [
             'male' => 'Male',
             'female' => 'Female',
         ],
+        'show' => 'Show'
     ],
 ];

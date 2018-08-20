@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin.clinics.show', $clinic) }}
+@endsection
+
 @section('title')
   @lang('admin/clinic.show.title')
 @endsection

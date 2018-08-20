@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
 
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('admin.clinic-types.index') }}
+@endsection
+
 @section('title')
   {{ __('admin/clinic_type.index.title') }}
 @endsection

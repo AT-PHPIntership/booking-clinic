@@ -17,7 +17,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
         Route::view('dashboard', 'admin.dashboard')->name('dashboard');
         Route::resource('clinic-types', 'ClinicTypeController', ['parameters' => [
             'clinic-types' => 'clinicType']
-        ]);
+        ])->except(['show']);
         Route::resource('users', 'UserController')->only([
             'index', 'show'
         ]);
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin/{slug}', 'as' => 'admin_clinic.', 'namespace' =
             Route::get('account/edit', 'ProfileController@editAccount')->name('account.edit');
             Route::put('account', 'ProfileController@updateAccountPassword')->name('account.update');
             Route::patch('account', 'ProfileController@updateAccountName')->name('account.update');
-        });    
+        });
     });
 });
 
