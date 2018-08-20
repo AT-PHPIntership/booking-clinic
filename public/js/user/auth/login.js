@@ -3,17 +3,13 @@ function login(email, password) {
     headers: {
       'Accept': 'application/json'
     },
-    url: '/api/login',
+    url: route('api.login'),
     type: 'POST',
     data: {
       email: email,
       password: password
     },
-    beforeSend: function() {
-      $('.invalid-feedback').remove();
-      $('.is-invalid').removeClass('is-invalid');
-      $('#js-error-login').addClass('d-none').html('');
-  },
+    beforeSend: clearError,
   })
   .done(loginSuccess)
   .fail(showError);
@@ -32,18 +28,20 @@ function showError(response) {
       break;
     case 422:
       let data = response.responseJSON;
-      $.each(data.errors, function(key, error) {
-        let currentInput = $('#input-' + key);
-        currentInput.addClass('is-invalid');
-        currentInput.after (
-          `<div class="invalid-feedback" role="alert">
-            <strong>${error}</strong>
-          </div>`);
+      $.each(data.errors, function(field, error) {
+        $('#input-' + field).addClass('is-invalid');
+        $('#input-' + field + ' + .invalid-feedback strong').html(error);
       });
       break;
     default:
       alert('Unknown error! status code ' + status);
   }
+}
+
+function clearError() {
+  $('.invalid-feedback strong').html('');
+  $('.is-invalid').removeClass('is-invalid');
+  $('#js-error-login').addClass('d-none').html('');
 }
 
 $(document).ready(function() {

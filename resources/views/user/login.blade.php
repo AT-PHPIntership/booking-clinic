@@ -15,10 +15,16 @@
           </div>
           <div class="box_login last">
             <div class="form-group">
-              <input id="input-email" type="email" class="form-control" placeholder="Your email address">
+              <input id="input-email" type="email" class="form-control" placeholder="@lang('user/login.your_email')">
+              <div class="invalid-feedback" role="alert">
+                <strong></strong>
+              </div>
             </div>
             <div class="form-group">
-              <input id="input-password" type="password" class="form-control" placeholder="Your password">
+              <input id="input-password" type="password" class="form-control" placeholder="@lang('user/login.your_password')">
+              <div class="invalid-feedback" role="alert">
+                <strong></strong>
+              </div>
               <a href="#" class="forgot"><small>@lang('user/login.forgot_password')</small></a>
               <div id="js-error-login" class="alert alert-danger d-none">
               </div>

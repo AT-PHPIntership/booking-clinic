@@ -53,6 +53,7 @@
   <div id="toTop"></div>
   <!-- Back to top button -->
 
+  @routes
   <!-- COMMON SCRIPTS -->
   <script src="{{ asset('js/user/jquery-2.2.4.min.js') }}"></script>
   <script src="{{ asset('js/user/common_scripts.min.js') }}"></script>

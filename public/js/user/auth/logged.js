@@ -11,7 +11,7 @@ function checkToken() {
       Accept: 'application/json',
       Authorization: 'Bearer ' + token
     },
-    url: '/api/user',
+    url: route('api.user'),
     type: 'GET'
   })
   .done(function(response) {
@@ -28,22 +28,22 @@ function checkToken() {
 }
 
 function checkRoute() {
-  const route = {
-    guest: ['/login', '/register'],
-    user: ['/profile']
+  const routes = {
+    guest: [route('user.login'), route('user.register')],
+    user: []
   }
 
   const user = getUser();
 
   if (user) {
-    route.guest.forEach(function(path) {
-      if (window.location.pathname.includes(path)) {
+    routes.guest.forEach(function(path) {
+      if (window.location.href.includes(path)) {
         window.location.replace('/');
       }
     });
   } else {
-    route.user.forEach(function(path) {
-      if (window.location.pathname.includes(path)) {
+    routes.user.forEach(function(path) {
+      if (window.location.href.includes(path)) {
         window.location.replace('/');
       }
     });
@@ -53,11 +53,8 @@ function checkRoute() {
 function showUserNavbar() {
   const user = getUser();
   if (user) {
-    let html = `<span><a href="#"><strong>${user.name}</strong></a></span>
-                <ul>
-                  <li><a id="btn-logout" href="/logout">Logout</a></li>
-                </ul>`;
-    $('#js-navbar-user').append(html);
+    $('#js-navbar-user').removeClass('d-none');
+    $('#js-navbar-user strong').html(user.name);
     $('#btn-logout').click(logout);
     $('#top_access').hide();
   }
@@ -70,13 +67,13 @@ function logout() {
       Accept: 'application/json',
       Authorization: 'Bearer ' + token
     },
-    url: '/api/logout',
+    url: route('api.logout'),
     type: 'POST'
   })
   .done(function(response) {
     window.localStorage.removeItem('access_token');
     window.localStorage.removeItem('user');
-    window.location.replace('/login');
+    window.location.replace('/');
   })
 }
 

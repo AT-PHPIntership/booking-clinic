@@ -53,7 +53,12 @@
                 <li><a href="404.html">404 page</a></li>
               </ul>
             </li>
-            <li id="js-navbar-user"></li>
+            <li id="js-navbar-user" class="d-none">
+              <span><a href="#"><strong></strong></a></span>
+              <ul>
+                <li><a id="btn-logout" href="#">{{ __('user/layout.navbar.logout') }}</a></li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <!-- /main-menu -->

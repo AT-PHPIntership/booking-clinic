@@ -8,4 +8,6 @@ return [
     'forgot_password' => 'Forgot password?',
     'not_have_account' => 'Do not have an account yet?',
     'register_now' => 'Register now!',
+    'your_email' => 'Your email address',
+    'your_password' => 'Your password',
 ];
