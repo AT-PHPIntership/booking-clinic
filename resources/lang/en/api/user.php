@@ -9,5 +9,9 @@ return [
     ],
     'log_out' => [
         'Successfully logged out',
+    ],
+    'change_password' => [
+        'success' => 'Your password is changed',
+        'fail' => 'Change password fail'
     ]
 ];
