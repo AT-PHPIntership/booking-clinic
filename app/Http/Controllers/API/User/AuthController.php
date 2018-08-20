@@ -73,14 +73,20 @@ class AuthController extends BaseController
         return $this->successResponse(__('api/user.log_out'), Response::HTTP_OK);
     }
 
-
+    /**
+     * Change password user
+     *
+     * @param \Illuminate\Http\Requests\User\UserChangePassRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function changePassword(UserChangePassRequest $request)
     {
         $user = $request->user();
         $user->password = Hash::make($request->new_password);
-        if ($user->save())
+        if ($user->save()) {
             return $this->successResponse(__('api/user.change_password.success'), Response::HTTP_OK);
-        return $this->successResponse(__('api/user.change_password.fail'), Response::HTTP_OK);
-
+        }
+        return $this->errorResponse(__('api/user.change_password.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

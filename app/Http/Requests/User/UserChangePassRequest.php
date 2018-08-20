@@ -40,7 +40,13 @@ class UserChangePassRequest extends FormRequest
         ];
     }
 
-    public function messages() {
+    /**
+     * Get the messages rules that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
         return [
             'current_password.regex' => 'Password contain at least one uppercase/lowercase letters and one number'
         ];

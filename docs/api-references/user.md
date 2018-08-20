@@ -1,7 +1,7 @@
 # User
 ## `POST` register user
 ```
-/api/auth/register
+/api/register
 ```
 Register user
 #### Request Headers
@@ -62,14 +62,14 @@ Register user
 
 ## `POST` login user
 ```
-/api/auth/login
+/api/login
 ```
 Login user
 #### Request Headers
 | Key | Value |
 |---|---|
 |Accept|application/json
-#### Request Headers
+#### Request Body
 | Key | Value | Description
 |---|---|---|
 |name|text| User name|
@@ -113,13 +113,13 @@ Login user
 ```
 ## `GET` logout user
 ```
-/api/auth/logout
+/api/logout
 ```
 #### Request Headers
 | Key | Value |
 |---|---|
 |Accept|application/json
-|Authorizatio|Bearer {{token}}
+|Authorization|Bearer {{token}}
 ```json
 {
     "result": "Successfully logged out",
@@ -158,5 +158,28 @@ Get detail user
 ```json
 {
     "message": "Unauthenticated."
+}
+```
+## `PUT` change password user
+```
+/api/password
+```
+change password user
+#### Request Header
+| Key | Value |
+| --- | --- |
+| Accept | application/json |
+| Authorization | Bearer {{token}} |
+#### Request Body
+| Key | Value | Description
+|---|---|---|
+|current_password|text| Current User password|
+|new_password|text| New user password|
+|new_password_confirmation|text| New user password confirmation|
+* _Success_
+```json
+{
+    "result": "Your password is changed",
+    "code": 200
 }
 ```
