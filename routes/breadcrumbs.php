@@ -1,5 +1,6 @@
 <?php
 
+    // ADMIN
     // Dash board
     Breadcrumbs::register('admin.dashboard', function ($breadcrumbs) {
         $breadcrumbs->push(__('admin/breadcrumb.dashboard'), route('admin.dashboard'));
@@ -46,3 +47,42 @@
         $breadcrumbs->parent('admin.users.index');
         $breadcrumbs->push($user->id , route('admin.users.show', $user->id));
     });
+
+    // ADMIN CLINIC
+    // Dashboard
+    Breadcrumbs::register('admin_clinic.dashboard', function ($breadcrumbs, $clinic) {
+        $breadcrumbs->push(__('admin_clinic/breadcrumb.dashboard'), route('admin_clinic.dashboard', $clinic->slug));
+    });
+
+    // Calendar
+    Breadcrumbs::register('admin_clinic.calendar', function ($breadcrumbs, $clinic) {
+        $breadcrumbs->parent('admin_clinic.dashboard', $clinic);
+        $breadcrumbs->push(__('admin_clinic/breadcrumb.calendar'), route('admin_clinic.calendar', $clinic->slug));
+    });
+
+    // Appointments
+    Breadcrumbs::register('admin_clinic.appointments.index', function ($breadcrumbs, $clinic) {
+        $breadcrumbs->parent('admin_clinic.dashboard', $clinic);
+        $breadcrumbs->push(__('admin_clinic/breadcrumb.appointments'), route('admin_clinic.appointments.index', $clinic->slug));
+    });
+    Breadcrumbs::register('admin_clinic.appointments.show', function ($breadcrumbs, $clinic, $appointment) {
+        $breadcrumbs->parent('admin_clinic.appointments.index', $clinic);
+        $breadcrumbs->push($appointment->id, route('admin_clinic.appointments.show', [$clinic->slug, $appointment->id]));
+    });
+
+    // Profile
+    Breadcrumbs::register('admin_clinic.profile.show', function ($breadcrumbs, $clinic) {
+        $breadcrumbs->parent('admin_clinic.dashboard', $clinic);
+        $breadcrumbs->push(__('admin_clinic/breadcrumb.profile'), route('admin_clinic.profile.show', $clinic->slug));
+    });
+    Breadcrumbs::register('admin_clinic.profile.edit', function ($breadcrumbs, $clinic) {
+        $breadcrumbs->parent('admin_clinic.profile.show', $clinic);
+        $breadcrumbs->push(__('admin_clinic/breadcrumb.clinic'), route('admin_clinic.profile.edit', $clinic->slug));
+    });
+    Breadcrumbs::register('admin_clinic.profile.account.edit', function ($breadcrumbs, $clinic) {
+        $breadcrumbs->parent('admin_clinic.profile.show', $clinic);
+        $breadcrumbs->push(__('admin_clinic/breadcrumb.admin'), route('admin_clinic.profile.account.edit', $clinic->slug));
+    });
+
+
+

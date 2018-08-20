@@ -1,5 +1,9 @@
 @extends('admin_clinic.layouts.app')
 
+@section('breadcrumbs')
+  {{ Breadcrumbs::render('admin_clinic.profile.account.edit', request()->user()->clinic) }}
+@endsection
+
 @section('title')
   @lang('admin_clinic/profile.show.title')
 @endsection
@@ -14,7 +18,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">{{ __('admin_clinic/profile.edit.admin.section.password') }}</div>
-      
+
         <div class="card-body">
           <form method="POST" action="{{ route('admin_clinic.profile.account.update', request()->slug) }}" aria-label="{{ __('admin/register.register') }}">
             @csrf
