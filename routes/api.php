@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 Route::group(['as' => 'api.'], function() {
     Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
+        return response()->json($request->user());
     })->name('user');
     Route::group(['namespace' => 'API\User'], function() {
         Route::apiResource('clinic-types', 'ClinicTypeController')->only(['index', 'show']);
