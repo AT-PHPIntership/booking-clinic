@@ -126,3 +126,37 @@ Login user
     "code": 200
 }
 ```
+
+### `GET` User
+```
+/api/user
+```
+Get detail user
+
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+|Authorization|Bearer {{token}}
+
+#### Response
+* _Success_
+```json
+{
+    "id": 1,
+    "name": "Gianni Hauck",
+    "email": "hai@gmail.com",
+    "gender": 1,
+    "dob": "2001-09-19",
+    "phone": "866.503.0711",
+    "address": "9767 Jovanny LocksParkertown, WA 04857",
+    "created_at": "2018-08-17 13:46:20",
+    "updated_at": "2018-08-17 13:50:30"
+}
+```
+* _Fail_
+```json
+{
+    "message": "Unauthenticated."
+}
+```
