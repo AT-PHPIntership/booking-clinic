@@ -1,4 +1,13 @@
+var currentEmail = '';
+var currentPassword = '';
+
+function setEmailPass(email, pass) {
+  currentEmail = email;
+  currentPassword = pass;
+}
+
 function register(name, email, password, passwordConfirmation) {
+  setEmailPass(email, password);
   $.ajax({
       headers: {
         'Accept': 'application/json',
@@ -18,7 +27,7 @@ function register(name, email, password, passwordConfirmation) {
 };
 
 function registerSuccess(res) {
-    window.location.replace('/');
+    login(currentEmail, currentPassword);
 }
 
 function registerFail(res) {

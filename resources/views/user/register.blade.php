@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
-            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('api/user.register.confirm_pass') }}" required>
+            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('api/user.register.confirm_pass') }}">
           </div>
         </div>
       </div>
