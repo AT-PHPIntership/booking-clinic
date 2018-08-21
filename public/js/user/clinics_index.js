@@ -1,7 +1,5 @@
-const first = "First";
-const pre = "Previous";
-const next = "Next";
-const last = "Last";
+const PREFIX_LINK = route('user.clinics.index');
+const PAGE_LANG = Lang.get('user/clinic.index.js.page');
 
 function getClinics() {
   $.ajax({
@@ -16,60 +14,77 @@ function getClinics() {
 }
 
 function showClinics(data) {
-  data.forEach(clinic => {
-    let item =
-    `<div class="col-md-6">
-      <div class="box_list wow fadeIn">
-        <a href="#0" class="wish_bt"></a>
-        <figure>
-          <a href="detail-page.html"><img src="/images/clinic-${Math.floor(Math.random() * 5) + 1}.png" class="img-fluid" alt="" style="object-fit:cover;height:300px">
-            <div class="preview"><span>Read more</span></div>
-          </a>
-        </figure>
-        <div class="wrapper">
-          <small>Psicologist</small>
-          <h3>${clinic.name}</h3>
-
-          <p style="height:76px">${trimDescription(clinic.description)}</p>
-          <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-          <a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="/images/user/badges/badge_1.svg" width="15" height="15" alt=""></a>
-        </div>
-        <ul>
-          <li><a href="#0" onclick="onHtmlClick('Doctors', 0)"><i class="icon_pin_alt"></i>View on map</a></li>
-          <li><a href="https://www.google.com/maps/dir//Assistance+–+Hôpitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/" target="_blank"><i class="icon_pin_alt"></i>Directions</a></li>
-          <li><a href="detail-page.html">Book now</a></li>
-        </ul>
-      </div>
-    </div>`;
-    $('#js-clinic').append(item);
+  renderClinicsHTML(data.length);
+  data.forEach((clinic, index)=>{
+    let clinicItemHTML = $('#js-clinic').find('.clinic-item:nth-child('+ (index + 1) + ')');
+    clinicItemHTML.find('.clinic-name').html(clinic.name);
+    clinicItemHTML.find('.clinic-description').html(trimDescription(clinic.description));
+    clinicItemHTML.find('.clinic-image').attr('src', `/images/clinic-${Math.floor(Math.random() * 5) + 1}.png`);
   });
+
+  $('#js-clinic').toggleClass('d-none');
+}
+
+function renderClinicsHTML(numberOfClinics) {
+  clinicItem = $('#js-clinic').html();
+  for (var i = 0; i < numberOfClinics - 1; i++) {
+    $('#js-clinic').append(clinicItem);
+  }
 }
 
 function showPaginateClinics(paginator) {
-  var prefixLink = route('user.clinics.index');
   var paginatorClinic = $('#js-pagination-clinic');
-  var firstPage = `<li class="page-item ${disableBtnPagClinic(paginator, first)}"><a class="page-link" href="${prefixLink + '?page=1'}">${first}</a></li>`;
-  var previousPage = `<li class="page-item ${disableBtnPagClinic(paginator, pre)}"><a class="page-link" href="${prefixLink + '?page=' + getPreviousPaginatorPage()}">${pre}</a></li>`;
-  var nextPage = `<li class="page-item ${disableBtnPagClinic(paginator, next)}"><a class="page-link" href="${prefixLink + '?page=' + getNextPaginatorPage(paginator)}">${next}</a></li>`;
-  var lastPage = `<li class="page-item ${disableBtnPagClinic(paginator, last)}"><a class="page-link" href="${prefixLink + '?page=' + paginator.last_page }">${last}</a></li>`;
-  paginatorClinic.append(firstPage);
-  paginatorClinic.append(previousPage);
+
+  var firstPageElement = paginatorClinic.find('li:first-child');
+  var previousPageElement = paginatorClinic.find('li:nth-child(2)');
+  var nextPageElement = paginatorClinic.find('li:nth-last-child(2)');
+  var lastPageElement = paginatorClinic.find('li:last-child');
+
+  //set href
+
+  firstPageElement.find('a').attr('href', getPagiURL(1));
+  previousPageElement.find('a').attr('href', getPagiURL(getPreviousPaginatorPage()));
+  nextPageElement.find('a').attr('href', getPagiURL(getNextPaginatorPage(paginator)));
+  lastPageElement.find('a').attr('href', getPagiURL(paginator.last_page));
+
+  var pagIndex = $('#pag-index-clinic');
+  var firstPagIndex = pagIndex.find('li:first-child');
+
+  //clone html index pag and set href
+
   for (var i = 1; i <= paginator.last_page; i++) {
-    if (i === paginator.current_page) {
-      var item = `<li class="page-item disabled active"><a class="page-link" href="${prefixLink + "?page=" + i}">${i}</a></li>`;
-    } else {
-      var item = `<li class="page-item"><a class="page-link" href="${prefixLink + "?page=" + i}">${i}</a></li>`;
+    if (i != 1) {
+      firstPagIndex.clone().appendTo(pagIndex);
     }
-    paginatorClinic.append(item);
+    lastestPagIndexLink = pagIndex.find('li:last-child a');
+    lastestPagIndexLink.attr('href', getPagiURL(i));
+    lastestPagIndexLink.html(i);
   }
-  paginatorClinic.append(nextPage);
-  paginatorClinic.append(lastPage);
+
+  //set active paginate
+  var currentPage = getCurrentPaginatorPage();
+  pagIndex.find(`li:nth-child(${currentPage})`).toggleClass("disabled").toggleClass("active");
+  if (currentPage == 1) {
+    firstPageElement.toggleClass('disabled');
+    previousPageElement.toggleClass('disabled');
+  }
+  if (currentPage == paginator.last_page) {
+    nextPageElement.toggleClass('disabled');
+    lastPageElement.toggleClass('disabled');
+  }
+
+}
+
+function getPagiURL(i) {
+  return PREFIX_LINK + '?' + PAGE_LANG + '=' + i;
 }
 
 function updateNumberClinic(paginator)  {
   $('#js_count_clinic span:first-child').html((paginator.from !=null) ? (paginator.to - paginator.from + 1) : 0);
   $('#js_count_clinic span:nth-child(2)').html(paginator.total);
 }
+
+// misc functions
 
 function trimDescription (str) {
   maxWord = 20;
@@ -92,8 +107,8 @@ function getQueryString() {
 
 function getCurrentPaginatorPage() {
   var urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has("page")) {
-    return urlParams.get('page');
+  if (urlParams.has(PAGE_LANG)) {
+    return urlParams.get(PAGE_LANG);
   }
   return 1;
 }
@@ -112,20 +127,6 @@ function getPreviousPaginatorPage() {
     return currentPage - 1;
   }
   return currentPage;
-}
-
-function disableBtnPagClinic(paginator, typeNav) {
-  if ([first, pre].indexOf(typeNav) >= 0) {
-    if (getCurrentPaginatorPage() == 1) {
-      return 'disabled';
-    }
-  }
-  if ([next, last].indexOf(typeNav) >= 0) {
-    if (getCurrentPaginatorPage() == paginator.last_page) {
-      return 'disabled';
-    }
-  }
-  return '';
 }
 
 $(document).ready(function() {
