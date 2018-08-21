@@ -199,3 +199,60 @@ change password user
     "code": 200
 }
 ```
+## `PATCH` update user profile
+```
+/api/profile
+```
+update user profile
+#### Request Header
+| Key | Value |
+| --- | --- |
+| Accept | application/json |
+| Authorization | Bearer {{token}} |
+#### Request Body
+| Key | Value | Description
+|---|---|---|
+|name|text| User name|
+|gender|number|User gender 0 or 1|
+|dob|date| Date of birth nullable|
+|phone|phone| User phone nullable|
+|address|text| User address nullable|
+* _Success_
+```json
+{
+    "result": {
+        "id": 172,
+        "name": "Hong Quan",
+        "email": "zero6@gmail.com",
+        "gender": 0,
+        "dob": "1995-03-22",
+        "phone": "0968457018",
+        "address": "Da nang",
+        "created_at": "2018-08-21 21:56:50",
+        "updated_at": "2018-08-22 01:43:22"
+    },
+    "code": 200
+}
+```
+* _Error_
+```json
+{
+    "message": "The given data was invalid.",
+    "errors": {
+        "name": [
+            "The name format is invalid."
+        ],
+        "dob": [
+            "The dob does not match the format Y-m-d."
+        ]
+    },
+    "code": 422,
+    "request": {
+        "name": "quan@",
+        "address": "Da nang",
+        "gender": "0",
+        "phone": "0968457018",
+        "dob": "1995-03-222"
+    }
+}
+```
