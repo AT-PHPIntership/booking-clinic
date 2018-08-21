@@ -47,8 +47,6 @@ class UserChangePassRequest extends FormRequest
      */
     public function messages()
     {
-        return [
-            'current_password.regex' => 'Password contain at least one uppercase/lowercase letters and one number'
-        ];
+        return __('api/user.validation');
     }
 }
