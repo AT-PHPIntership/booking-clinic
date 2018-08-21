@@ -34,12 +34,12 @@
         <div class="form-group">
           <label>@lang('user/profile.fields.gender')</label>
           <div class="form-check">
-            <input class="form-check-input " type="radio" name="gender" id="inlineRadio1" value="1" disabled>
-            <label class="form-check-label" for="inlineRadio1">@lang('user/profile.gender.male')</label>
+            <input class="form-check-input " type="radio" name="gender" id="gender-male" value="1" disabled>
+            <label class="form-check-label" for="gender-male">@lang('user/profile.gender.male')</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="0" disabled>
-            <label class="form-check-label" for="inlineRadio2">@lang('user/profile.gender.female')</label>
+            <input class="form-check-input" type="radio" name="gender" id="gender-female" value="0" disabled>
+            <label class="form-check-label" for="gender-female">@lang('user/profile.gender.female')</label>
           </div>
         </div>
       </div>
