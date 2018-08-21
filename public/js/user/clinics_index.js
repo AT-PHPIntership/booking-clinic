@@ -36,7 +36,7 @@ function showClinics(data) {
         </div>
         <ul>
           <li><a href="#0" onclick="onHtmlClick('Doctors', 0)"><i class="icon_pin_alt"></i>View on map</a></li>
-          <li><a href="https://www.google.com/maps/dir//Assistance+–+Hôpitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x0:0xa6a9af76b1e2d899!2sAssistance+–+Hôpitaux+De+Paris!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361" target="_blank"><i class="icon_pin_alt"></i>Directions</a></li>
+          <li><a href="https://www.google.com/maps/dir//Assistance+–+Hôpitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/" target="_blank"><i class="icon_pin_alt"></i>Directions</a></li>
           <li><a href="detail-page.html">Book now</a></li>
         </ul>
       </div>
@@ -46,12 +46,12 @@ function showClinics(data) {
 }
 
 function showPaginateClinics(paginator) {
-  var prefixLink = "/clinics";
+  var prefixLink = route('user.clinics.index');
   var paginatorClinic = $('#js-pagination-clinic');
-  var firstPage = `<li class="page-item ${disableBtnPagClinic(paginator, first)}"><a class="page-link" href="${prefixLink + getQueryString(paginator.first_page_url)}">${first}</a></li>`;
-  var previousPage = `<li class="page-item ${disableBtnPagClinic(paginator, pre)}"><a class="page-link" href="${prefixLink + getQueryString(paginator.prev_page_url, paginator.first_page_url)}">${pre}</a></li>`;
-  var nextPage = `<li class="page-item ${disableBtnPagClinic(paginator, next)}"><a class="page-link" href="${prefixLink + getQueryString(paginator.next_page_url, paginator.last_page_url)}">${next}</a></li>`;
-  var lastPage = `<li class="page-item ${disableBtnPagClinic(paginator, last)}"><a class="page-link" href="${prefixLink + getQueryString(paginator.last_page_url)}">${last}</a></li>`;
+  var firstPage = `<li class="page-item ${disableBtnPagClinic(paginator, first)}"><a class="page-link" href="${prefixLink + '?page=1'}">${first}</a></li>`;
+  var previousPage = `<li class="page-item ${disableBtnPagClinic(paginator, pre)}"><a class="page-link" href="${prefixLink + '?page=' + getPreviousPaginatorPage()}">${pre}</a></li>`;
+  var nextPage = `<li class="page-item ${disableBtnPagClinic(paginator, next)}"><a class="page-link" href="${prefixLink + '?page=' + getNextPaginatorPage(paginator)}">${next}</a></li>`;
+  var lastPage = `<li class="page-item ${disableBtnPagClinic(paginator, last)}"><a class="page-link" href="${prefixLink + '?page=' + paginator.last_page }">${last}</a></li>`;
   paginatorClinic.append(firstPage);
   paginatorClinic.append(previousPage);
   for (var i = 1; i <= paginator.last_page; i++) {
@@ -71,10 +71,6 @@ function updateNumberClinic(paginator)  {
   $('#js_count_clinic span:nth-child(2)').html(paginator.total);
 }
 
-$(document).ready(function() {
-  getClinics();
-});
-
 function trimDescription (str) {
   maxWord = 20;
   numberOfWord = str.trim().split(/\s+/).length;
@@ -86,39 +82,52 @@ function trimDescription (str) {
   return str;
 }
 
-function getQueryString(url = undefined, urlBackup = undefined) {
-  if (url !== undefined) {
-    if (url !=null){
-      return url.substring(url.indexOf('?'));
-    }
-    return urlBackup.substring(urlBackup.indexOf('?'));
-  }
+/**
+ * Get query strings from URL on browser and map them to be params in API.
+ *
+ */
+function getQueryString() {
   return window.location.search;
 }
 
-function disableBtnPagClinic(paginator, typeNav) {
+function getCurrentPaginatorPage() {
   var urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has("page")) {
-    var page = urlParams.get('page');
-    if (page == 1) {
-      if ([first, pre].indexOf(typeNav) >= 0) {
-        return 'disabled';
-      }
-    }
-    if (page == paginator.last_page) {
-      if ([next, last].indexOf(typeNav) >= 0) {
-        return 'disabled';
-      }
-    }
-    return;
+    return urlParams.get('page');
   }
+  return 1;
+}
+
+function getNextPaginatorPage(paginator) {
+  var currentPage = getCurrentPaginatorPage();
+  if (paginator.last_page > currentPage) {
+    return + currentPage + 1;
+  }
+  return currentPage;
+}
+
+function getPreviousPaginatorPage() {
+  var currentPage = getCurrentPaginatorPage();
+  if (currentPage > 1) {
+    return currentPage - 1;
+  }
+  return currentPage;
+}
+
+function disableBtnPagClinic(paginator, typeNav) {
   if ([first, pre].indexOf(typeNav) >= 0) {
-    return 'disabled';
-  }
-  if (paginator.next_page_url == null) {
-    if ([next, last].indexOf(typeNav) >= 0) {
+    if (getCurrentPaginatorPage() == 1) {
       return 'disabled';
     }
   }
-  return;
+  if ([next, last].indexOf(typeNav) >= 0) {
+    if (getCurrentPaginatorPage() == paginator.last_page) {
+      return 'disabled';
+    }
+  }
+  return '';
 }
+
+$(document).ready(function() {
+  getClinics();
+});
