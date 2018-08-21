@@ -9,5 +9,12 @@ return [
     ],
     'log_out' => [
         'Successfully logged out',
+    ],
+    'change_password' => [
+        'success' => 'Your password is changed',
+        'fail' => 'Change password fail'
+    ],
+    "validation" => [
+        "new_password.regex" => "Password contain at least one uppercase/lowercase letters and one number and one special character"
     ]
 ];

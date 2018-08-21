@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\User\UserRegisterRequest;
 use App\Http\Requests\User\UserLoginRequest;
+use App\Http\Requests\User\UserChangePassRequest;
 use App\Http\Controllers\API\User\BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -70,5 +71,22 @@ class AuthController extends BaseController
     {
         $request->user()->token()->revoke();
         return $this->successResponse(__('api/user.log_out'), Response::HTTP_OK);
+    }
+
+    /**
+     * Change password user
+     *
+     * @param \Illuminate\Http\Requests\User\UserChangePassRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(UserChangePassRequest $request)
+    {
+        $user = $request->user();
+        $user->password = Hash::make($request->new_password);
+        if ($user->save()) {
+            return $this->successResponse(__('api/user.change_password.success'), Response::HTTP_OK);
+        }
+        return $this->errorResponse(__('api/user.change_password.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
