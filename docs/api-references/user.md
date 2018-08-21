@@ -115,6 +115,7 @@ Login user
 ```
 /api/logout
 ```
+logout user
 #### Request Headers
 | Key | Value |
 |---|---|
