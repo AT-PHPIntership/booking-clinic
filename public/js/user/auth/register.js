@@ -10,8 +10,8 @@ function register(name, email, password, passwordConfirmation) {
         email: email,
         password: password,
         password_confirmation: passwordConfirmation,
-        beforeSend: removeOldErrors
       },
+      beforeSend: removeOldErrors
   })
   .done(registerSuccess)
   .fail(registerFail);
@@ -22,7 +22,7 @@ function registerSuccess(res) {
 }
 
 function registerFail(res) {
-    let errors = JSON.parse(res.responseText).errors;
+    let errors = res.responseJSON.errors;
     $.each(errors, function(field, message) {
       let currentInput = $(`input[name=${field}]`);
       if (field == 'password') $(`input[name=password_confirmation`).addClass('is-invalid');
