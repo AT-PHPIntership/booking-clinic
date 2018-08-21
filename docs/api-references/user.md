@@ -24,7 +24,17 @@ Register user
 * _Success_
 ```json
 {
-    "result": "Successfully created user!",
+    "result": {
+        "id": 170,
+        "name": "quan1",
+        "email": "quan1@gmail.com",
+        "gender": 0,
+        "dob": null,
+        "phone": null,
+        "address": null,
+        "created_at": "2018-08-21 21:42:10",
+        "updated_at": "2018-08-21 21:42:10"
+    },
     "code": 201
 }
 ```
