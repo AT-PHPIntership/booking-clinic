@@ -33,7 +33,7 @@
               </ul>
             </li>
             <li>
-              <span><a href="#">{{  __('user/layout.navbar.clinic_types') }}</a></span>
+              <span><a href="{{ route('user.clinics.index') }}">{{  __('user/layout.navbar.clinic_types') }}</a></span>
               <ul id="js-clinic-types"></ul>
             </li>
             <li>
