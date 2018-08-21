@@ -21,4 +21,16 @@ class ClinicImage extends Model
     {
         return $this->belongsTo(Clinic::class);
     }
+
+    /**
+     * Get the image path
+     *
+     * @param string $path path
+     *
+     * @return string
+     */
+    public function getPathAttribute($path)
+    {
+        return asset($path);
+    }
 }

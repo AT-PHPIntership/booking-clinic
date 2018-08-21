@@ -36,60 +36,57 @@ Get list clinics
             "current_page": 1,
             "first_page_url": "http://127.0.0.1:8000/api/clinics?page=1",
             "from": 1,
-            "last_page": 18,
-            "last_page_url": "http://127.0.0.1:8000/api/clinics?page=18",
+            "last_page": 51,
+            "last_page_url": "http://127.0.0.1:8000/api/clinics?page=51",
             "next_page_url": "http://127.0.0.1:8000/api/clinics?page=2",
             "path": "http://127.0.0.1:8000/api/clinics",
-            "per_page": "3",
+            "per_page": "1",
             "prev_page_url": null,
-            "to": 3,
-            "total": 52
+            "to": 1,
+            "total": 51
         },
         "data": [
             {
                 "id": 1,
-                "name": "Miss Ashly Beahan II",
-                "email": "price.albert@example.net",
-                "phone": "02193934835",
-                "address": "82088 Vivianne StravenueAlejandrinburgh, DE 55195-1910",
-                "description": "Commodi perferendis officiis impedit autem nihil esse. Ea voluptatem tempora nam similique repellat. Unde optio illum molestiae quod qui.",
-                "lat": "-80.779429",
-                "lng": "-95.977483",
-                "slug": "miss-ashly-beahan-ii",
+                "name": "Virgie Klein II",
+                "email": "macejkovic.max@example.net",
+                "phone": "84594843121",
+                "address": "27365 Aniyah ShoalsNew Martina, SD 46177-3815",
+                "description": "Omnis delectus nulla laudantium veritatis voluptates. Facere iste voluptatem reprehenderit porro voluptate. Ipsum perferendis rerum beatae.",
+                "lat": "-55.345867",
+                "lng": "-52.012190",
+                "slug": "virgie-klein-ii",
                 "clinic_type_id": 8,
                 "deleted_at": null,
-                "created_at": "2018-08-08 03:38:29",
-                "updated_at": "2018-08-08 03:38:29"
-            },
-            {
-                "id": 2,
-                "name": "Natalie Huel IV",
-                "email": "tremblay.aurelio@example.net",
-                "phone": "0366775442",
-                "address": "13071 Christiansen BranchPort Sandyside, DE 00473",
-                "description": "Ut illo labore quibusdam iste ducimus vero qui. Quo vel rerum soluta fugit et eos deserunt. Molestias voluptatum ipsa soluta perspiciatis ab.",
-                "lat": "-42.188129",
-                "lng": "-138.517511",
-                "slug": "natalie-huel-iv",
-                "clinic_type_id": 9,
-                "deleted_at": null,
-                "created_at": "2018-08-08 03:38:29",
-                "updated_at": "2018-08-08 03:38:29"
-            },
-            {
-                "id": 3,
-                "name": "Prof. Cole Ebert V",
-                "email": "shanel.swaniawski@example.org",
-                "phone": "02101415905",
-                "address": "63684 Hintz SpringsLabadiefurt, ND 74008-9941",
-                "description": "A nostrum in voluptas. Aliquam excepturi tenetur at sapiente distinctio sed accusantium. Enim et voluptas minima neque. Provident facere vel mollitia.",
-                "lat": "-82.969071",
-                "lng": "152.940602",
-                "slug": "prof-cole-ebert-v",
-                "clinic_type_id": 10,
-                "deleted_at": null,
-                "created_at": "2018-08-08 03:38:29",
-                "updated_at": "2018-08-08 03:38:29"
+                "created_at": "2018-08-17 13:46:21",
+                "updated_at": "2018-08-17 13:46:21",
+                "images": [
+                    {
+                        "id": 1,
+                        "path": "http://127.0.0.1:8000/images/clinic-2.png",
+                        "clinic_id": 1,
+                        "created_at": "2018-08-17 13:46:22",
+                        "updated_at": "2018-08-17 13:46:22"
+                    },
+                    {
+                        "id": 2,
+                        "path": "http://127.0.0.1:8000/images/clinic-5.png",
+                        "clinic_id": 1,
+                        "created_at": "2018-08-17 13:46:22",
+                        "updated_at": "2018-08-17 13:46:22"
+                    },
+                    {
+                        "id": 3,
+                        "path": "http://127.0.0.1:8000/images/clinic-5.png",
+                        "clinic_id": 1,
+                        "created_at": "2018-08-17 13:46:22",
+                        "updated_at": "2018-08-17 13:46:22"
+                    }
+                ],
+                "clinic_type": {
+                    "id": 8,
+                    "name": "quidem"
+                }
             }
         ]
     },
@@ -119,23 +116,58 @@ Get detail clinic
 | /api/clinics/1 | Get clinic with id = 1 |
 
 #### Response
+* _Success_
 ```json
 {
     "result": {
         "id": 1,
-        "name": "Miss Ashly Beahan II",
-        "email": "price.albert@example.net",
-        "phone": "02193934835",
-        "address": "82088 Vivianne StravenueAlejandrinburgh, DE 55195-1910",
-        "description": "Commodi perferendis officiis impedit autem nihil esse. Ea voluptatem tempora nam similique repellat. Unde optio illum molestiae quod qui.",
-        "lat": "-80.779429",
-        "lng": "-95.977483",
-        "slug": "miss-ashly-beahan-ii",
+        "name": "Virgie Klein II",
+        "email": "macejkovic.max@example.net",
+        "phone": "84594843121",
+        "address": "27365 Aniyah ShoalsNew Martina, SD 46177-3815",
+        "description": "Omnis delectus nulla laudantium veritatis voluptates. Facere iste voluptatem reprehenderit porro voluptate. Ipsum perferendis rerum beatae.",
+        "lat": "-55.345867",
+        "lng": "-52.012190",
+        "slug": "virgie-klein-ii",
         "clinic_type_id": 8,
         "deleted_at": null,
-        "created_at": "2018-08-08 03:38:29",
-        "updated_at": "2018-08-08 03:38:29"
+        "created_at": "2018-08-17 13:46:21",
+        "updated_at": "2018-08-17 13:46:21",
+        "images": [
+            {
+                "id": 1,
+                "path": "http://127.0.0.1:8000/images/clinic-2.png",
+                "clinic_id": 1,
+                "created_at": "2018-08-17 13:46:22",
+                "updated_at": "2018-08-17 13:46:22"
+            },
+            {
+                "id": 2,
+                "path": "http://127.0.0.1:8000/images/clinic-5.png",
+                "clinic_id": 1,
+                "created_at": "2018-08-17 13:46:22",
+                "updated_at": "2018-08-17 13:46:22"
+            },
+            {
+                "id": 3,
+                "path": "http://127.0.0.1:8000/images/clinic-5.png",
+                "clinic_id": 1,
+                "created_at": "2018-08-17 13:46:22",
+                "updated_at": "2018-08-17 13:46:22"
+            }
+        ],
+        "clinic_type": {
+            "id": 8,
+            "name": "quidem"
+        }
     },
     "code": 200
+}
+```
+* _Fail_
+```json
+{
+    "error": "Clinic not found",
+    "code": 404
 }
 ```

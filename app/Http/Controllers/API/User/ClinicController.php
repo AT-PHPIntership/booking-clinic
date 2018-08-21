@@ -22,7 +22,7 @@ class ClinicController extends BaseController
             ? $request->perpage
             : config('define.limit_rows');
 
-        $clinics = Clinic::filter()->paginate($perpage);
+        $clinics = Clinic::filter()->with(['images', 'clinicType:id,name'])->paginate($perpage);
         $clinics = $this->formatPaginate($clinics);
 
         return $this->showAll($clinics);
@@ -37,7 +37,7 @@ class ClinicController extends BaseController
      */
     public function show($id)
     {
-        $clinic = Clinic::find($id);
+        $clinic = Clinic::with(['images', 'clinicType:id,name'])->find($id);
 
         if ($clinic) {
             return $this->showOne($clinic);
