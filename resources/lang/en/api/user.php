@@ -31,5 +31,8 @@ return [
         'email' => 'Email Address',
         'password' => 'Password',
         'confirm_pass' => 'Confirm Password'
+    ],
+    'update' => [
+        'fail' => 'Edit profile fail'
     ]
 ];
