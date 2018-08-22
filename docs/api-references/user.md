@@ -199,7 +199,7 @@ change password user
     "code": 200
 }
 ```
-## `PATCH` update user profile
+## `PUT` update user profile
 ```
 /api/profile
 ```

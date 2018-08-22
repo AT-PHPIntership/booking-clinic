@@ -20,8 +20,8 @@ class ProfileController extends BaseController
     public function update(UserUpdateProfileRequest $request)
     {
         $user = $request->user();
-        if ($user->update($request->except('email'))) {
-            return $this->successResponse(User::orderBy('updated_at', 'desc')->first(), Response::HTTP_OK);
+        if ($user->update($request->except(['email', 'password']))) {
+            return $this->successResponse($user, Response::HTTP_OK);
         }
         return $this->errorResponse(__('api/user.update.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
