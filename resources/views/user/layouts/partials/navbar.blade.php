@@ -56,6 +56,7 @@
             <li id="js-navbar-user" class="d-none">
               <span><a href="#"><strong></strong></a></span>
               <ul>
+                <li><a href="{{ route('user.profile') }}">{{ __('user/layout.navbar.profile') }}</a></li>
                 <li><a id="btn-logout" href="#">{{ __('user/layout.navbar.logout') }}</a></li>
               </ul>
             </li>

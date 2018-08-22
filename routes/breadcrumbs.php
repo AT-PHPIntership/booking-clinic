@@ -84,5 +84,14 @@
         $breadcrumbs->push(__('admin_clinic/breadcrumb.admin'), route('admin_clinic.profile.account.edit', $clinic->slug));
     });
 
+    // USER
+    // Home
+    Breadcrumbs::register('user.home', function ($breadcrumbs) {
+        $breadcrumbs->push(__('user/breadcrumb.home'), route('user.home'));
+    });
 
-
+    // Profile
+    Breadcrumbs::register('user.profile', function ($breadcrumbs) {
+        $breadcrumbs->parent('user.home');
+        $breadcrumbs->push(__('user/breadcrumb.profile'), route('user.profile'));
+    });

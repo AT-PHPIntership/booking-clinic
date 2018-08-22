@@ -8,7 +8,8 @@ return [
     ],
     'navbar' => [
         'clinic_types' => 'Clinic types',
-        'logout' => 'Logout'
+        'logout' => 'Logout',
+        'profile' => 'My profile',
     ],
 
 

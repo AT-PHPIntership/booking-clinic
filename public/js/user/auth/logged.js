@@ -30,7 +30,7 @@ function checkToken() {
 function checkRoute() {
   const routes = {
     guest: [route('user.login'), route('user.register')],
-    user: []
+    user: [route('user.profile')]
   }
 
   const user = getUser();
