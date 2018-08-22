@@ -24,7 +24,22 @@ Register user
 * _Success_
 ```json
 {
-    "result": "Successfully created user!",
+    "result": {
+        "user": {
+            "id": 182,
+            "name": "quan",
+            "email": "quanquan1@gmail.com",
+            "gender": 0,
+            "dob": "1995-03-22",
+            "phone": "0968457018",
+            "address": "Da Nang",
+            "created_at": "2018-08-22 09:22:30",
+            "updated_at": "2018-08-22 09:22:30"
+        },
+        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImYxYjRhYjNmYTVjOWNhMWYwM2JhMjNmN2UyNzQ4MzM1YWYxYTM4MmIzNjVlM2U5Y2ExMmMwZmMxZDc2NzY2NjU4ZDViZTVjOThiNmU1NGIzIn0.eyJhdWQiOiIxIiwianRpIjoiZjFiNGFiM2ZhNWM5Y2ExZjAzYmEyM2Y3ZTI3NDgzMzVhZjFhMzgyYjM2NWUzZTljYTEyYzBmYzFkNzY3NjY2NThkNWJlNWM5OGI2ZTU0YjMiLCJpYXQiOjE1MzQ5MDQ1NTAsIm5iZiI6MTUzNDkwNDU1MCwiZXhwIjoxNTY2NDQwNTUwLCJzdWIiOiIxODIiLCJzY29wZXMiOltdfQ.A61I8qm961bPKDVcLxEy9MIEYcx3rScFV2joTTbkHFxaBy8RNMD2Ot78cmQrdOXmiNt6A_BJU3bO9qKUKjbXidbkljOceDBVS-tDA__yS-xCzG78VvD1b18_Uo7U3Q256T9QALMmmQW7_85HE8xb-_idyXyT-fIo0OSdluVtVD20MrjmRuTjALEvN_nAIcA7S8yeWMY78hrzcgWVaw1rXdawLwLAQB6eZX9jOVcgahzry1JBqEIRN36SUc0v3NH0yAAklYdfHDZceyG25NMzQcL_zVZpUbO7Fi13B3qsumEabw83SuHjEStIc21DptB5emdYwmSRYBgKwxYoaflClJSYZRPmDuqmdpGzb6UKS3MB1lAVDLDHfj7wyWIC0pWgSHK7WUmX1KBY5XwS5UZTHVlndBeNhNZDurZ6IlkPBf2iO9jCbVtGlqb7Uq2cUXug4BsUuW0vz8RhtGSSJzP3XQc5-4Igej_ILvTGST2tbV8tZqmn0C-mqL1-U8a-MbU-YOKRT3Psc3TYYOuiZeCCPv07OukJiWiNB5seQAl9dE8hDpzEXJR60iF_KLd_moe3QcQHNycKD-LhOqHzyYR9VslasGiRz1wDxOM41rWnUUzQzHjd498DKUao_054dKImcb_i4urDVLkwAB1ozeQY4PT881GkRcQlVbrlsG-ydLg",
+        "token_type": "Bearer",
+        "expires_at": "2019-08-22 09:22:30"
+    },
     "code": 201
 }
 ```
@@ -182,5 +197,62 @@ change password user
 {
     "result": "Your password is changed",
     "code": 200
+}
+```
+## `PUT` update user profile
+```
+/api/profile
+```
+update user profile
+#### Request Header
+| Key | Value |
+| --- | --- |
+| Accept | application/json |
+| Authorization | Bearer {{token}} |
+#### Request Body
+| Key | Value | Description
+|---|---|---|
+|name|text| User name|
+|gender|number|User gender 0 or 1|
+|dob|date| Date of birth nullable|
+|phone|phone| User phone nullable|
+|address|text| User address nullable|
+* _Success_
+```json
+{
+    "result": {
+        "id": 172,
+        "name": "Hong Quan",
+        "email": "zero6@gmail.com",
+        "gender": 0,
+        "dob": "1995-03-22",
+        "phone": "0968457018",
+        "address": "Da nang",
+        "created_at": "2018-08-21 21:56:50",
+        "updated_at": "2018-08-22 01:43:22"
+    },
+    "code": 200
+}
+```
+* _Error_
+```json
+{
+    "message": "The given data was invalid.",
+    "errors": {
+        "name": [
+            "The name format is invalid."
+        ],
+        "dob": [
+            "The dob does not match the format Y-m-d."
+        ]
+    },
+    "code": 422,
+    "request": {
+        "name": "quan@",
+        "address": "Da nang",
+        "gender": "0",
+        "phone": "0968457018",
+        "dob": "1995-03-222"
+    }
 }
 ```

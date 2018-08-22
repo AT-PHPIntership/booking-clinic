@@ -23,11 +23,11 @@ function changePasswordSuccess(response) {
 }
 
 function showError(response) {
-    const data = response.responseJSON;
-    $.each(data.errors, function(field, error) {
-      $('input[name=' + field + ']').addClass('is-invalid');
-      $('input[name=' + field + '] + .invalid-feedback').html(error);
-    });
+  const data = response.responseJSON;
+  $.each(data.errors, function(field, error) {
+    $('input[name=' + field + ']').addClass('is-invalid');
+    $('input[name=' + field + '] + .invalid-feedback').html(error);
+  });
 }
 
 function clearError() {

@@ -24,6 +24,7 @@ Route::group(['as' => 'api.'], function() {
         Route::group(['middleware' => 'auth:api'], function() {
             Route::post('logout', 'AuthController@logout')->name('logout');
             Route::put('password', 'AuthController@changePassword')->name('password');
+            Route::put('profile', 'ProfileController@update')->name('update_profile');
         });
     });
 });
