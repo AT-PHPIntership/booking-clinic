@@ -54,5 +54,6 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
     Route::group(['prefix' => 'profile'], function() {
         Route::get('/', 'ProfileController@index')->name('profile');
         Route::get('change-password', 'ProfileController@showChangePasswordForm')->name('change_password');
+        Route::get('edit', 'ProfileController@showEditProfileForm')->name('edit_profile');
     });
 });
