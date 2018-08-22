@@ -16,4 +16,14 @@ class ClinicController extends Controller
     {
         return view('user.clinic.index');
     }
+
+    /**
+     * Display the specified clinic.
+     *
+     * @return void
+     */
+    public function show()
+    {
+        return view('user.clinic.show');
+    }
 }

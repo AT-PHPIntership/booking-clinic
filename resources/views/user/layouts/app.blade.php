@@ -27,6 +27,7 @@
 
   <!-- YOUR CUSTOM CSS -->
   <link href="{{ asset('css/user/custom.css') }}" rel="stylesheet">
+  @yield('additional_css')
 
 </head>
 
@@ -64,8 +65,6 @@
   <script src="{{ asset('js/user/auth/logged.js') }}"></script>
   {{-- DISPLAY CLINICTYPE ON NAVBAR SCRIPTS --}}
   <script src="{{ asset('js/user/clinic_type.js') }}"></script>
-  {{-- TRANSFORM FILE LANG IN JS --}}
-  <script src="{{ asset('js/user/message.js') }}"></script>
   @yield('additional_js')
 </body>
 
