@@ -30,9 +30,9 @@ Register user
             "name": "quan",
             "email": "quanquan1@gmail.com",
             "gender": 0,
-            "dob": null,
-            "phone": null,
-            "address": null,
+            "dob": "1995-03-22",
+            "phone": "0968457018",
+            "address": "Da Nang",
             "created_at": "2018-08-22 09:22:30",
             "updated_at": "2018-08-22 09:22:30"
         },

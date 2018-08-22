@@ -27,8 +27,8 @@ class AuthController extends BaseController
     {
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
-        if (User::create($data)) {
-            $user = User::latest()->first();
+        $user = User::make($data);
+        if ($user->save()) {
             $tokenResult = $user->createToken(config('define.access_token'));
             $token = $tokenResult->token;
             $token->save();
