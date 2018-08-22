@@ -76,43 +76,67 @@ class UserUpdateProfileTest extends TestCase
             'phone' => '0123456781',
             'address' => 'Da Nang',
         ];
-        $response = $this->json('PATCH', '/api/profile', $body);
+        $response = $this->json('PUT', '/api/profile', $body);
         $response->assertStatus(200)
-            ->assertJsonFragment([
-                'name' => 'Top',
-                'email' => 'quan@gmail.com',
-                'gender' => '1',
-                'dob' => '1995-02-22',
-                'phone' => '0123456781',
-                'address' => 'Da Nang',
-            ])
+            ->assertJsonFragment($body)
             ->assertJsonStructure($this->json_structure_user_update_profile_success());
+        $this->assertDatabaseHas('users', $body);
     }
 
-      /**
-     * Test user update profile success.
-     *
-     * @return void
+    /**
+     * list test case validate input update user profile
+     * @param
+     * @return array
      */
-    public function test_user_update_profile_success()
+    public function list_test_case_validate_input_user_update_profile()
     {
-        $body = [
-            "name" => "Top",
-            "gender" => 1,
-            "dob" => "1995-02-22",
-            'phone' => '0123456781',
-            'address' => 'Da Nang',
+        return [
+            [
+                [
+                    "name" => "quan1",
+                    "gender" => "3",
+                    "dob" => "1995-03-222"
+                ],
+                [
+                    "name" =>  [
+                        "The name format is invalid.",
+                    ],
+                    "gender" =>  [
+                        "The gender field must be true or false.",
+                    ],
+                    "dob" => [
+                        "The dob does not match the format Y-m-d."
+                    ],
+                ]
+            ],
+            [
+                [
+                    "name" => "",
+                    "phone" => "01234"
+                ],
+                [
+                    "name" => [
+                        "The name field is required."
+                    ],
+                    "phone" => [
+                        "The phone must be between 8 and 12 digits."
+                    ]
+                ]
+            ],
+
         ];
-        $response = $this->json('PATCH', '/api/profile', $body);
-        $response->assertStatus(200)
-            ->assertJsonFragment([
-                'name' => 'Top',
-                'email' => 'quan@gmail.com',
-                'gender' => '1',
-                'dob' => '1995-02-22',
-                'phone' => '0123456781',
-                'address' => 'Da Nang',
-            ])
-            ->assertJsonStructure($this->json_structure_user_update_profile_success());
+    }
+
+    /**
+     * @param string body
+     * @param string message
+     * @dataProvider list_test_case_validate_input_user_update_profile
+     */
+    public function test_user_update_profile_error($body, $message)
+    {
+        $response = $this->json('PUT', '/api/profile', $body);
+        $response->assertStatus(422)
+            ->assertJsonFragment($message)
+            ->assertJsonStructure($this->json_structure_user_update_profile_error());
     }
 }
