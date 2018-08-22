@@ -27,8 +27,17 @@ class AuthController extends BaseController
     {
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
-        if (User::create($data)) {
-            return $this->successResponse(User::latest()->first(), Response::HTTP_CREATED);
+        $user = User::make($data);
+        if ($user->save()) {
+            $tokenResult = $user->createToken(config('define.access_token'));
+            $token = $tokenResult->token;
+            $token->save();
+            return $this->successResponse([
+                'user' => $user,
+                'access_token' => $tokenResult->accessToken,
+                'token_type' => 'Bearer',
+                'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
+            ], Response::HTTP_CREATED);
         }
         return $this->errorResponse(__('api/user.login.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
