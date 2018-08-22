@@ -10,28 +10,25 @@
         <h2><i class="fa fa-lock"></i>@lang('user/change_password.change_password')</h2>
       </div>
       <div class="form-group">
-        <label>@lang('user/change_password.old_password')</label>
+        <label>@lang('user/change_password.current_password')</label>
         <input class="form-control" type="password" name="current_password">
-        <div class="invalid-feedback" role="alert">
-          <strong></strong>
+        <div class="invalid-feedback font-weight-bold" role="alert">
         </div>
       </div>
       <div class="form-group">
         <label>@lang('user/change_password.new_password')</label>
         <input class="form-control" type="password" name="new_password">
-        <div class="invalid-feedback" role="alert">
-          <strong></strong>
+        <div class="invalid-feedback font-weight-bold" role="alert">
         </div>
       </div>
       <div class="form-group">
         <label>@lang('user/change_password.confirm_new_password')</label>
         <input class="form-control" type="password" name="new_password_confirmation">
-        <div class="invalid-feedback" role="alert">
-          <strong></strong>
+        <div class="invalid-feedback font-weight-bold" role="alert">
         </div>
       </div>
       <div id="js-alert-block" class="alert alert-success d-none"></div>
-      <p><a id="btn-submit" href="#" class="btn_1 medium mb-3">@lang('Change')</a></p>
+      <p><a id="btn-submit" href="#" class="btn_1 medium mb-3">@lang('user/change_password.update')</a></p>
     </div>
   </div>
 </div>
