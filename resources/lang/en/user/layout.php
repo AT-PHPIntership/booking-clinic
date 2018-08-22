@@ -10,6 +10,7 @@ return [
         'clinic_types' => 'Clinic types',
         'logout' => 'Logout',
         'profile' => 'My profile',
+        'change_password' => 'Change password'
     ],
 
 

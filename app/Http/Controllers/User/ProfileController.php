@@ -16,4 +16,14 @@ class ProfileController extends Controller
     {
         return view('user.profile');
     }
+
+    /**
+    * Display change password form.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function showChangePasswordForm()
+    {
+        return view('user.change_password');
+    }
 }
