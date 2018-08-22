@@ -65,6 +65,8 @@
   <script src="{{ asset('js/user/auth/logged.js') }}"></script>
   {{-- DISPLAY CLINICTYPE ON NAVBAR SCRIPTS --}}
   <script src="{{ asset('js/user/clinic_type.js') }}"></script>
+  {{-- TRANSFORM FILE LANG IN JS --}}
+  <script src="{{ asset('js/user/message.js') }}"></script>
   @yield('additional_js')
 </body>
 
