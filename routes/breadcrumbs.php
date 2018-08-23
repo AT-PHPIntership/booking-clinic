@@ -101,3 +101,9 @@
         $breadcrumbs->parent('user.profile');
         $breadcrumbs->push(__('user/breadcrumb.change_password'), route('user.change_password'));
     });
+
+    // Edit Profile
+    Breadcrumbs::register('user.edit_profile', function ($breadcrumbs) {
+        $breadcrumbs->parent('user.profile');
+        $breadcrumbs->push(__('user/breadcrumb.edit'), route('user.edit_profile'));
+    });

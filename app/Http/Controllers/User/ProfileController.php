@@ -18,12 +18,22 @@ class ProfileController extends Controller
     }
 
     /**
-    * Display change password form.
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Display change password form.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function showChangePasswordForm()
     {
         return view('user.change_password');
+    }
+
+    /**
+     * Display edit profile form
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showEditProfileForm()
+    {
+        return view('user.edit_profile');
     }
 }
