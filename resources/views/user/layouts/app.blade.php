@@ -27,6 +27,7 @@
 
   <!-- YOUR CUSTOM CSS -->
   <link href="{{ asset('css/user/custom.css') }}" rel="stylesheet">
+  @yield('additional_css')
 
 </head>
 
