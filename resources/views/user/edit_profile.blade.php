@@ -21,8 +21,6 @@
         <div class="form-group">
           <label>@lang('user/profile.fields.email')</label>
           <input name="email" class="form-control" disabled>
-          <div class="invalid-feedback font-weight-bold" role="alert">
-          </div>
         </div>
       </div>
     </div>
@@ -40,11 +38,11 @@
         <div class="form-group">
           <label>@lang('user/profile.fields.gender')</label>
           <div class="form-check">
-            <input class="form-check-input " type="radio" name="gender" id="gender-male" value="1">
+            <input class="form-check-input " type="radio" name="gender" id="gender-male" value="{{ \App\User::GENDER_MALE }}">
             <label class="form-check-label" for="gender-male">@lang('user/profile.gender.male')</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="gender-female" value="0">
+          <input class="form-check-input" type="radio" name="gender" id="gender-female" value="{{ \App\User::GENDER_FEMALE }}">
             <label class="form-check-label" for="gender-female">@lang('user/profile.gender.female')</label>
           </div>
           <div class="invalid-feedback font-weight-bold" role="alert">
