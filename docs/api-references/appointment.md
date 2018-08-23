@@ -13,7 +13,7 @@ User create appointment
 | Key | Value |Description|
 |---|---|---|
 |description|Text|Appointment description|
-|clinic_id|Number|The clinic is booked appointment|
+|clinic_id|Number|ID of clinic is booked appointment|
 |book_time|Date Time|Appointment book time format(Y-m-d H:i:s)
 #### Response
 * _Success_
