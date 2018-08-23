@@ -50,6 +50,9 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('login', 'AuthController@showLoginForm')->name('login');
     Route::get('register', 'AuthController@showRegisterForm')->name('register');
-    Route::get('profile', 'ProfileController@index')->name('profile');
     Route::resource('clinics', 'ClinicController')->only(['index', 'show']);
+    Route::group(['prefix' => 'profile'], function() {
+        Route::get('/', 'ProfileController@index')->name('profile');
+        Route::get('change-password', 'ProfileController@showChangePasswordForm')->name('change_password');
+    });
 });

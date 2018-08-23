@@ -95,3 +95,9 @@
         $breadcrumbs->parent('user.home');
         $breadcrumbs->push(__('user/breadcrumb.profile'), route('user.profile'));
     });
+
+    //Change password
+    Breadcrumbs::register('user.change_password', function ($breadcrumbs) {
+        $breadcrumbs->parent('user.profile');
+        $breadcrumbs->push(__('user/breadcrumb.change_password'), route('user.change_password'));
+    });
