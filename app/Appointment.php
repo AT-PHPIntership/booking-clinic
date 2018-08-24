@@ -97,19 +97,29 @@ class Appointment extends Model
     /**
      * Filter the appointment.
      *
-     * @param mixed                    $query   query
-     * @param \Illuminate\Http\Request $request request
+     * @param mixed $query query
      *
      * @return void
      */
-    public function scopeFilter($query, Request $request)
+    public function scopeFilter($query)
     {
+        $request = request();
         if ($request->has('status')) {
             $query->where('status', $request->status);
         }
 
         if ($request->has('from') && $request->has('to')) {
             $query->whereBetween('book_time', [$request->from, $request->to]);
+        }
+
+        if ($request->has('clinic_id')) {
+            $query->where('clinic_id', $request->clinic_id);
+        }
+
+        if ($request->has('sort_by')) {
+            $column = $request->sort_by;
+            $order = $request->has('order') ? $request->order : 'ASC';
+            $query->orderBy($column, $order);
         }
     }
 

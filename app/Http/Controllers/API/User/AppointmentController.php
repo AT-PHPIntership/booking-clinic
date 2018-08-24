@@ -11,6 +11,20 @@ use Carbon\Carbon;
 
 class AppointmentController extends BaseController
 {
+    /**
+     * Get list appointments
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $perpage = getPerPage();
+        $appointments = request()->user()->appointments()
+            ->with('clinic:id,name')->filter()
+            ->paginate($perpage);
+        $appointments = $this->formatPaginate($appointments);
+        return $this->showAll($appointments);
+    }
 
     /**
      * Store new appointment.
