@@ -18,6 +18,15 @@ class GetListClinicsTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+    }
+
+    /**
+     * Init sample records of clinics for testing
+     *
+     * @return void
+     */
+    private function initDataSample()
+    {
         factory(\App\Clinic::class, self::NUMBER_CLINIC_CREATE)->create()->each(function ($u) {
             $u->images()->saveMany(factory(\App\ClinicImage::class, self::NUMBER_IMAGE_PER_CLINIC)->make());
         });
@@ -81,17 +90,47 @@ class GetListClinicsTest extends TestCase
     }
 
     /**
+     * Return structure of json empty data.
+     *
+     * @return array
+     */
+    public function json_structure_list_clinics_empty()
+    {
+        return [
+            'result' => [
+                'paginator' => [
+                    'current_page',
+                    'first_page_url',
+                    'from',
+                    'last_page',
+                    'last_page_url',
+                    'next_page_url',
+                    'path',
+                    'per_page',
+                    'prev_page_url',
+                    'to',
+                    'total'
+                ],
+                'data' => []
+            ],
+            'code'
+        ];
+    }
+
+    /**
      * Test it can get list clinic.
      *
      * @return void
      */
     public function test_it_can_get_list_clinics()
     {
-        $clinic = \App\Clinic::with('images', 'clinicType:id,name')->find(1);
-        $this->json('GET', '/api/clinics')
-            ->assertStatus(200)
-            ->assertJsonStructure($this->json_structure_list_clinics())
-            ->assertJsonFragment([
+        $this->initDataSample();
+        $response = $this->json('GET', '/api/clinics');
+        $response->assertStatus(200)
+            ->assertJsonStructure($this->json_structure_list_clinics());
+        $data = json_decode($response->getContent())->result->data;
+        foreach ($data as $clinic) {
+            $arrayCompare = [
                 'id' => $clinic->id,
                 'name' => $clinic->name,
                 'email' => $clinic->email,
@@ -100,12 +139,9 @@ class GetListClinicsTest extends TestCase
                 'description' => $clinic->description,
                 'lat' => $clinic->lat,
                 'lng' => $clinic->lng,
-                'path' => $clinic->images[0]->path,
-                'clinic_type' => [
-                    'id' => $clinic->clinicType->id,
-                    'name' => $clinic->clinicType->name
-                ]
-            ]);
+            ];
+            $this->assertDatabaseHas('clinics', $arrayCompare);
+        }
     }
 
     /**
@@ -115,11 +151,38 @@ class GetListClinicsTest extends TestCase
      */
     public function test_it_can_get_list_clinics_with_filter()
     {
-        $clinic = \App\Clinic::with('images', 'clinicType:id,name')->orderBy('name', 'ASC')->skip(self::NUMBER_CLINIC_PERPAGE)->take(1)->first();
-        $this->json('GET', '/api/clinics?page=2&sort_by=name')
-            ->assertStatus(200)
-            ->assertJsonStructure($this->json_structure_list_clinics())
-            ->assertJsonFragment([
+        $this->initDataSample();
+        $dataTest = [
+            'page' => 2,
+            'sortBy' => 'name'
+        ];
+        $clinics = \App\Clinic::with('images', 'clinicType:id,name')->orderBy('name', 'ASC')
+            ->skip(self::NUMBER_CLINIC_PERPAGE * ($dataTest['page'] - 1))
+            ->take(self::NUMBER_CLINIC_PERPAGE)
+            ->get();
+        $response = $this->json('GET', '/api/clinics?page=' . $dataTest['page'] . '&sort_by=' . $dataTest['sortBy'] . '');
+        $response->assertStatus(200)
+            ->assertJsonStructure($this->json_structure_list_clinics());
+        $data = json_decode($response->getContent())->result->data;
+        foreach ($data as $key => $clinicJson) {
+            $arrayCompareJson = [
+                'id' => $clinicJson->id,
+                'name' => $clinicJson->name,
+                'email' => $clinicJson->email,
+                'phone' => $clinicJson->phone,
+                'address' => $clinicJson->address,
+                'description' => $clinicJson->description,
+                'lat' => $clinicJson->lat,
+                'lng' => $clinicJson->lng,
+                'path' => $clinicJson->images[0]->path,
+                'clinic_type' => [
+                    'id' => $clinicJson->clinic_type->id,
+                    'name' => $clinicJson->clinic_type->name
+                ]
+            ];
+
+            $clinic = $clinics[$key];
+            $arrayCompareDB = [
                 'id' => $clinic->id,
                 'name' => $clinic->name,
                 'email' => $clinic->email,
@@ -133,6 +196,38 @@ class GetListClinicsTest extends TestCase
                     'id' => $clinic->clinicType->id,
                     'name' => $clinic->clinicType->name
                 ]
-            ]);
+            ];
+            $this->assertEquals($arrayCompareJson, $arrayCompareDB);
+        }
+    }
+
+    /**
+     * Test paginate
+     *
+     * @return void
+     */
+    public function testJsonPaginate()
+    {
+        $this->initDataSample();
+        $dataTest = [
+            'perpage' => 5,
+            'page' => 2
+        ];
+        $response = $this->json('GET', '/api/clinics?perpage=' . $dataTest['perpage'] . '&page=' . $dataTest['page'] . '');
+        $paginator = json_decode($response->getContent())->result->paginator;
+        $this->assertEquals($paginator->per_page, $dataTest['perpage']);
+        $this->assertEquals($paginator->current_page, $dataTest['page']);
+    }
+
+    /**
+     * Test it can not show list clinic with empty data.
+     *
+     * @return void
+     */
+    public function test_it_can_not_show_with_empty_data()
+    {
+        $response = $this->json('GET', '/api/clinics');
+        $response->assertStatus(200)
+            ->assertJsonStructure($this->json_structure_list_clinics_empty());
     }
 }
