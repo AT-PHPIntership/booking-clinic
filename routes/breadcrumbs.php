@@ -107,3 +107,9 @@
         $breadcrumbs->parent('user.profile');
         $breadcrumbs->push(__('user/breadcrumb.edit'), route('user.edit_profile'));
     });
+
+    //Booking appointment
+    Breadcrumbs::register('user.booking', function ($breadcrumbs) {
+        $breadcrumbs->parent('user.home');
+        $breadcrumbs->push(__('user/breadcrumb.booking'), route('user.booking'));
+    });

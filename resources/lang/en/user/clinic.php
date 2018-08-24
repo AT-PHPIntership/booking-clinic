@@ -74,6 +74,8 @@ return [
                 'heading' => 'Select your time'
             ],
             'btn_booking' => 'Book Now'
-        ]
+        ],
+        'please_login' => 'Please login to booking! Go to',
+        'login_page' => 'login page',
     ]
 ];

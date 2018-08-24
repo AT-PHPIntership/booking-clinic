@@ -224,7 +224,8 @@
 
             </form>
             <hr>
-            <p class="text-center"><a href="booking-page.html" class="btn_1 medium">{{ __('user/clinic.show.booking_tab.btn_booking') }}</a></p>
+            <p id="login-message" class="text-center font-weight-bold d-none">{{ __('user/clinic.show.please_login') }} <a href="{{ route('user.login') }}">{{ __('user/clinic.show.login_page') }}</a></p>
+            <p id="btn-booking" class="text-center d-none"><a href="booking-page.html" class="btn_1 medium">{{ __('user/clinic.show.booking_tab.btn_booking') }}</a></p>
           </div>
           <!-- /tab_2 -->
 
@@ -255,8 +256,9 @@
       daysOfWeekDisabled: [0,6],
       weekStart: 1,
       format: "yyyy-mm-dd",
-      datesDisabled: ["2017/10/20", "2017/11/21", "2017/12/21", "2018/01/21", "2018/02/21", "2018/03/21"],
+      startDate: '+1d',
     });
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="{{ asset('js/user/booking_datetime.js') }}"></script>
 @endsection
