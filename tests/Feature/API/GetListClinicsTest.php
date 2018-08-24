@@ -15,11 +15,6 @@ class GetListClinicsTest extends TestCase
     private const NUMBER_IMAGE_PER_CLINIC = 3;
     private const NUMBER_CLINIC_PERPAGE = 15;
 
-    public function setUp()
-    {
-        parent::setUp();
-    }
-
     /**
      * Init sample records of clinics for testing
      *
@@ -160,7 +155,7 @@ class GetListClinicsTest extends TestCase
             ->skip(self::NUMBER_CLINIC_PERPAGE * ($dataTest['page'] - 1))
             ->take(self::NUMBER_CLINIC_PERPAGE)
             ->get();
-        $response = $this->json('GET', '/api/clinics?page=' . $dataTest['page'] . '&sort_by=' . $dataTest['sortBy'] . '');
+        $response = $this->json('GET', '/api/clinics?page=' . $dataTest['page'] . '&sort_by=' . $dataTest['sortBy']);
         $response->assertStatus(200)
             ->assertJsonStructure($this->json_structure_list_clinics());
         $data = json_decode($response->getContent())->result->data;
@@ -181,20 +176,20 @@ class GetListClinicsTest extends TestCase
                 ]
             ];
 
-            $clinic = $clinics[$key];
+            $clinicDB = $clinics[$key];
             $arrayCompareDB = [
-                'id' => $clinic->id,
-                'name' => $clinic->name,
-                'email' => $clinic->email,
-                'phone' => $clinic->phone,
-                'address' => $clinic->address,
-                'description' => $clinic->description,
-                'lat' => $clinic->lat,
-                'lng' => $clinic->lng,
-                'path' => $clinic->images[0]->path,
+                'id' => $clinicDB->id,
+                'name' => $clinicDB->name,
+                'email' => $clinicDB->email,
+                'phone' => $clinicDB->phone,
+                'address' => $clinicDB->address,
+                'description' => $clinicDB->description,
+                'lat' => $clinicDB->lat,
+                'lng' => $clinicDB->lng,
+                'path' => $clinicDB->images[0]->path,
                 'clinic_type' => [
-                    'id' => $clinic->clinicType->id,
-                    'name' => $clinic->clinicType->name
+                    'id' => $clinicDB->clinicType->id,
+                    'name' => $clinicDB->clinicType->name
                 ]
             ];
             $this->assertEquals($arrayCompareJson, $arrayCompareDB);
@@ -213,7 +208,7 @@ class GetListClinicsTest extends TestCase
             'perpage' => 5,
             'page' => 2
         ];
-        $response = $this->json('GET', '/api/clinics?perpage=' . $dataTest['perpage'] . '&page=' . $dataTest['page'] . '');
+        $response = $this->json('GET', '/api/clinics?perpage=' . $dataTest['perpage'] . '&page=' . $dataTest['page']);
         $paginator = json_decode($response->getContent())->result->paginator;
         $this->assertEquals($paginator->per_page, $dataTest['perpage']);
         $this->assertEquals($paginator->current_page, $dataTest['page']);
