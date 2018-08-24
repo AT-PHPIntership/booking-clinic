@@ -15,16 +15,6 @@ class GetListClinicsTest extends TestCase
     private const NUMBER_IMAGE_PER_CLINIC = 3;
     private const NUMBER_CLINIC_PERPAGE = 15;
 
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
-
     public function setUp()
     {
         parent::setUp();
