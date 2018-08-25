@@ -3,6 +3,18 @@
 /*============================================================================================*/
 
   /*
+   * Overwrite strip_list class
+   */
+  .strip_list {
+    background-color:  #e9ecef;
+  }
+  .strip_list ul {
+    border-top: 1px solid rgba(0,0,0,.3);
+  }
+  .strip_list small {
+      color: #dc3545;
+  }
+  /*
    * Button cancel confirmed or pending appointments
    */
 
@@ -10,7 +22,7 @@
     border: 2px solid #e74e84;
     font-weight: 500;
     color: #e74e84;
-    background-color: #fff;
+    background-color: #e9ecef;
     cursor: pointer;
     padding: 5px 20px;
     transition: all .3s ease-in-out;
@@ -47,7 +59,7 @@
    */
 
   .status {
-    font-weight: 300;
+    font-weight: 500;
     cursor: pointer;
     transition: all .3s ease-in-out;
     -webkit-border-radius: 30px;
