@@ -37,5 +37,8 @@ return [
     ],
     'error' => [
         '500' => 'Internal server error!'
+    ],
+    'cancel_appointment' => [
+        'fail' => 'Cancel appointment fail'
     ]
 ];

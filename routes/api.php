@@ -27,6 +27,7 @@ Route::group(['as' => 'api.'], function() {
             Route::put('password', 'AuthController@changePassword')->name('password');
             Route::put('profile', 'ProfileController@update')->name('update_profile');
             Route::apiResource('appointments', 'AppointmentController');
+            Route::put('appointments/{appointment}/cancel', 'AppointmentController@cancel')->name('appointments.cancel');
         });
     });
 });
