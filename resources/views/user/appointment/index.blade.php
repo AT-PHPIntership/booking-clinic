@@ -41,6 +41,6 @@
 @section('additional_js')
 
 <!-- SPECIFIC SCRIPTS -->
-<script src="{{ asset('js/custom/paginate.js') }}"></script>
+<script src="{{ asset('js/user/custom/paginate.js') }}"></script>
 <script src="{{ asset('js/user/appointments_index.js') }}"></script>
 @endsection
