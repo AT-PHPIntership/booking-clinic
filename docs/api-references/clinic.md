@@ -19,6 +19,7 @@ Get list clinics
 | page | int | Page number|
 | sort_by | string | Sort by `name`, `email`, `created_at` ... |
 | order | string | Sort order (`ASC`, `DESC`) |
+| search | string | Search with `name`, `clinic_type` |
 
 #### Example
 | URL | Description |
@@ -27,6 +28,7 @@ Get list clinics
 | /api/clinics?clinic_type_id=2 | Get clinics belong to clinic type has id = 2 |
 | /api/clinics?sort_by=name | Get clinics with sorted name and order ASC |
 | /api/clinics?clinic_type_id=1&sort_by=created_at&order=DESC&perpage=2 | Get newest clinics has clinic_type_id = 1 and number of record each page is 2 |
+| /api/clinics?search=something | Search clinic with keyword `something` |
 
 #### Response
 ```json
