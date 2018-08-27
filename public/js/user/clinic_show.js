@@ -12,7 +12,6 @@ function getClinicDetail() {
 }
 
 function showClinicDetail(data) {
-  console.log(data.images.length);
   $('#clinic-name').html(data.name);
   $('#clinic-type-name').html(data.clinic_type.name);
   $('#clinic-address').html(data.address);
@@ -31,7 +30,7 @@ function showClinicDetail(data) {
 
   $('#clinic-avatar').attr('src', avatarPath);
 
-  if(data.images.length > 0 ){
+  if(data.images.length){
     renderImagePreview(data.images);
   }
 
@@ -42,7 +41,7 @@ function renderImagePreview(images){
   firstIndicator = carousel.find('.carousel-indicators li:first-child');
   firstDivImage = carousel.find('.carousel-item:first-child');
   for (var i = 0; i < images.length; i++) {
-    if (i != 0) {
+    if (i) {
       firstIndicator.clone().appendTo(firstIndicator.parent());
       firstDivImage.clone().appendTo(firstDivImage.parent());
     }
@@ -63,19 +62,27 @@ function getClinicIdFromUrl(){
   return id;
 }
 
-function successUserLocation(position) {
-  var lat = position.coords.latitude;
-  var long = position.coords.longitude;
-  console.log('Your latitude is :'+lat+' and longitude is '+long);
-}
-
-
-function successFunction(position) {
-  var lat = position.coords.latitude;
-  var long = position.coords.longitude;
-  console.log('Your latitude is :'+lat+' and longitude is '+long);
+function askLocation(){
+  $('#clinic-location').on('click', function(e){
+    e.preventDefault();
+    hrefMapDefault = this.href;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position){
+          var lat = position.coords.latitude;
+          var long = position.coords.longitude;
+          var indexSplash = hrefMapDefault.lastIndexOf('/');
+          // example: https://www.google.com/maps/dir//10.8142,106.6438 to https://www.google.com/maps/dir//16.0790392,108.2436948/10.8142,106.6438
+          var yourLocationURL = hrefMapDefault.substr(0, indexSplash) + lat + ',' + long + '/' + hrefMapDefault.substr(indexSplash + 1);
+          window.open(yourLocationURL, '_blank').focus();
+      }, function(error){
+        window.open(hrefMapDefault, '_blank').focus();
+      });
+    }
+  });
 }
 
 $(document).ready(function() {
   getClinicDetail();
+  askLocation();
 });
