@@ -60,6 +60,12 @@ function renderImagePreview(images){
 function getClinicIdFromUrl(){
   var url = window.location.pathname;
   var id = url.substring(url.lastIndexOf('/') + 1);
+  return validateIdFromUrl(id);
+}
+
+function validateIdFromUrl(id){
+  id = id.replace(/\D+/g, '');
+  history.pushState(null, null, id);
   return id;
 }
 
