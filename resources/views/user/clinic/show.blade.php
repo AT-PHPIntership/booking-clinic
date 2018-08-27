@@ -8,7 +8,7 @@
     <aside class="col-xl-3 col-lg-4" id="sidebar">
       <div class="box_profile">
         <figure>
-          <img src="{{ asset('images/user/doctor_listing_2.jpg') }}" alt="" class="img-fluid">
+          <img id="clinic-avatar" src="{{ asset('images/user/doctor_listing_2.jpg') }}" alt="" class="img-fluid">
         </figure>
         <small id="clinic-type-name">Primary care - Internist</small>
         <h1 id="clinic-name">DR. Julia Jhones</h1>
@@ -30,7 +30,7 @@
           <li><h6>{{ __('user/clinic.show.info_box.phone') }}</h6><a href="tel://000434323342" id="clinic-phone">+00043 4323342</a></li>
           <li><h6>{{ __('user/clinic.show.info_box.email') }}</h6><a href="mailto:abc@gmail.com" id="clinic-email">abc@gmail.com</a></li>
         </ul>
-        <div class="text-center"><a href="https://www.google.com/maps/dir//Assistance+–+Hôpitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/" class="btn_1 outline" target="_blank"><i class="icon_pin"></i> {{ __('user/clinic.show.info_box.view_map') }}</a></div>
+        <div class="text-center"><a id="clinic-location" href="https://www.google.com/maps/dir//Assistance+–+Hôpitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/" class="btn_1 outline" target="_blank"><i class="icon_pin"></i> {{ __('user/clinic.show.info_box.view_map') }}</a></div>
       </div>
     </aside>
     <!-- /asdide -->
@@ -86,7 +86,7 @@
 
             <hr>
 
-            <div class="d-none">
+            <div id="carousel" class="d-none">
               <div class="indent_title_in">
                 <i class="pe-7s-photo"></i>
                 <h3>{{ __('user/clinic.show.info_tab.section_3.title') }}</h3>
@@ -97,7 +97,7 @@
                 <div class="row" style="width:500px;">
                   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item">
@@ -261,4 +261,5 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="{{ asset('js/user/booking_datetime.js') }}"></script>
+  <script src="{{ asset('js/user/clinic_show.js') }}"></script>
 @endsection

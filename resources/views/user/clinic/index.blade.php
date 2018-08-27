@@ -67,7 +67,7 @@
       <div class="box_list wow fadeIn">
         <a href="#0" class="wish_bt"></a>
         <figure>
-          <a href="detail-page.html"><img class="img-fluid clinic-image" alt="" style="object-fit:cover;height:300px">
+          <a class="clinic-detail" href="detail-page.html"><img class="img-fluid clinic-image" alt="" style="object-fit:cover;height:300px">
             <div class="preview"><span>{{ __('user/clinic.index.clinic_item.read_more') }}</span></div>
           </a>
         </figure>
