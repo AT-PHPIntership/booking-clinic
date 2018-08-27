@@ -34,6 +34,7 @@ function showClinicDetail(data) {
     renderImagePreview(data.images);
   }
 
+  $('.invisible').toggleClass('invisible');
 }
 
 function renderImagePreview(images){

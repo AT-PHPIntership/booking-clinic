@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container margin_60">
+<div class="container margin_60 invisible">
   <div class="row">
 
     <aside class="col-xl-3 col-lg-4" id="sidebar">
