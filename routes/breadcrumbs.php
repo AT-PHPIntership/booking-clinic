@@ -109,6 +109,11 @@
     });
 
     //Booking appointment
+    Breadcrumbs::register('user.appointments.index', function ($breadcrumbs) {
+        $breadcrumbs->parent('user.home');
+        $breadcrumbs->push(__('user/breadcrumb.appointments.index'), route('user.appointments.index'));
+    });
+
     Breadcrumbs::register('user.booking', function ($breadcrumbs) {
         $breadcrumbs->parent('user.home');
         $breadcrumbs->push(__('user/breadcrumb.booking'), route('user.booking'));

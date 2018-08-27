@@ -56,6 +56,7 @@
             <li id="js-navbar-user" class="d-none">
               <span><a href="#"><i class="icon-user"></i><strong></strong></a></span>
               <ul>
+                <li><a href="{{ route('user.appointments.index') }}"><i class="icon-th-large"></i>{{ __('user/layout.navbar.my_appointments') }}</a></li>
                 <li><a href="{{ route('user.profile') }}"><i class="icon-info-circled-alt"></i>{{ __('user/layout.navbar.profile') }}</a></li>
                 <li><a href="{{ route('user.change_password') }}"><i class="icon-edit"></i>{{ __('user/layout.navbar.change_password') }}</a></li>
                 <li><a id="btn-logout" href="#"><i class="icon-logout-1"></i>{{ __('user/layout.navbar.logout') }}</a></li>
