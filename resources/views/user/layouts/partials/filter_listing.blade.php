@@ -28,7 +28,7 @@
           <option value="0" data-href="?perpage=5">5</option>
           <option value="1" data-href="?perpage=10">10</option>
           <option value="3" data-href="?perpage=15">15</option>
-          <option value="3" data-href="?perpage=20">20</option>
+          <option value="4" data-href="?perpage=20">20</option>
         </select>
       </li>
     </ul>

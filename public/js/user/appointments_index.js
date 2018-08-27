@@ -14,6 +14,7 @@ function getAppointments() {
 }
 
 function getAppointmentsSuccess(res) {
+  updateNumberResult(res.result.paginator);
   showPaginates(res.result.paginator);
   showAppointments(res.result.data);
 }
@@ -25,7 +26,7 @@ function showAppointments(appointments) {
     currentAppointment.find('.clinic-name').text(appointment.clinic.name);
 
     let currentStatus = appointment.status;
-    if (currentStatus == STATUS_LABELS[STATUS_CONFIRMED] || currentStatus == STATUS_LABELS[STATUS_PENDING]) {
+    if (currentStatus == STATUS_LABELS_LANG.pending || currentStatus == STATUS_LABELS_LANG.confirmed) {
       currentAppointment.find('.cancel-button').toggleClass('invisible');
     }
 

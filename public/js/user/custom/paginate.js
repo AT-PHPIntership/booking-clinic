@@ -93,3 +93,11 @@ function clickPaginate() {
     getAppointments();
   });
 }
+/**
+ * Show result number on filter result
+ */
+function updateNumberResult(paginator)  {
+    $('#js_count span:first-child').html(paginator.from);
+    $('#js_count span:nth-child(2)').html(paginator.to);
+    $('#js_count span:nth-child(3)').html(paginator.total);
+  }

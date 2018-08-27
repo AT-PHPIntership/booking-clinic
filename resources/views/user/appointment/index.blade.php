@@ -35,6 +35,8 @@
 
 @section('content')
 
+@include('user.layouts.partials.results')
+
 @include('user.layouts.partials.filter_listing', ['options' => $options])
 
 <div class="container margin_60_35">
