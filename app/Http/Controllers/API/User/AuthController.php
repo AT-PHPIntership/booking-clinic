@@ -98,4 +98,38 @@ class AuthController extends BaseController
         }
         return $this->errorResponse(__('api/user.change_password.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    /**
+     * Obtain the user information from facebook and login.
+     *
+     * @param \Illuminate\Http\Request; $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loginFacebook(Request $request)
+    {
+        $user = User::firstOrNew([
+            'email' => $request->email,
+            'provider_id' => $request->id
+        ]);
+
+        if (!$user->exists) {
+            $user->name = $request->name;
+            $user->password = str_random();
+        }
+
+        if ($user->save()) {
+            $tokenResult = $user->createToken(config('define.access_token'));
+            $token = $tokenResult->token;
+            $token->save();
+
+            return $this->successResponse([
+                'access_token' => $tokenResult->accessToken,
+                'token_type' => 'Bearer',
+                'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
+            ], Response::HTTP_OK);
+        }
+
+        return $this->errorResponse(__('api/user.error.500'), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 }
