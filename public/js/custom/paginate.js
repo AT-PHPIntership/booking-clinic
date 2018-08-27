@@ -22,8 +22,6 @@ function showPaginates(paginator) {
   $('#pag-index .page-item').remove();    //remove old paginate link
   $('#js-pagination > .page-item').removeClass('disabled');   // remove old disabled first, privious, last, next paginate link
 
-
-
   //clone html index pag and set href
 
   for (var i = 1; i <= paginator.last_page; i++) {

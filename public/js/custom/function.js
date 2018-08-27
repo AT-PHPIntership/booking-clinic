@@ -5,17 +5,10 @@ const STATUS_CONFIRMED = 1;
 const STATUS_COMPLETED = 2;
 const STATUS_CANCEL = 3;
 
-
 function getDateTime(dateTime) {
-  let year = dateTime.substring(0, 4);
-  let month = dateTime.substring(5, 7);
-  let date = dateTime.substring(8, 10);
-  let h = dateTime.substring(11, 13);
-  let i = dateTime.substring(14, 16);
-  if (h > 12) {
-    h -= 12;
-    var s = 'pm';
-  } else
-    var s = 'am';
-  return { day: date + '/' + month + '/' + year, time: h + ':' + i + s };
+  let dateTimeFormat = new Date(dateTime);
+  let date = dateTimeFormat.toLocaleDateString();
+  let time = dateTimeFormat.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric'})
+  return { day: date, time: time };
 }
+
