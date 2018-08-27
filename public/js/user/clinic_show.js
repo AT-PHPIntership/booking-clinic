@@ -6,6 +6,9 @@ function getClinicDetail() {
   .done(function (response) {
     showClinicDetail(response.result);
   })
+  .fail(function(response) {
+    window.location.replace(route('user.error'));
+  })
 }
 
 function showClinicDetail(data) {
