@@ -2,13 +2,13 @@
 
 @php
     $options = [
-        'latest_book_time' => [
-            'href' => '?sort_by=book_time&order=DESC',
-            'text' => __('user/filter.appointment.latest_book_time')
-        ],
         'latest_created_at' => [
             'href' => '?sort_by=created_at&order=DESC',
             'text' => __('user/filter.appointment.latest_created_at')
+        ],
+        'latest_book_time' => [
+            'href' => '?sort_by=book_time&order=DESC',
+            'text' => __('user/filter.appointment.latest_book_time')
         ],
         'status' => [
             'href' =>'?sort_by=status',

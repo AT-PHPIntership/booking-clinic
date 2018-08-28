@@ -4,5 +4,6 @@ return [
     'to' => 'to',
     'from' => 'from',
     'of' => 'of',
-    'results' => 'results'
+    'results' => 'results',
+    'placehoder' => 'Ex. Clinic types, Name, Clinic...'
 ];

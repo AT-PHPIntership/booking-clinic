@@ -55,8 +55,12 @@ function getPagiURL(i) {
  * Get query strings from URL on browser and map them to be params in API.
  *
  */
-function getQueryString() {
-  return window.location.search;
+function getQueryString()
+{
+    if (!window.location.search) {
+        return '?sort_by=created_at&order=DESC&perpage=5'
+    }
+    return window.location.search;
 }
 
 function getCurrentPaginatorPage(paginator) {

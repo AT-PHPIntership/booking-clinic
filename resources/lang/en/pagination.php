@@ -15,9 +15,5 @@ return [
 
     'previous' => '&laquo; Previous',
     'next' => 'Next &raquo;',
-    'default_query' => [
-        'order_by' => '?sort_by=id',
-        'perpage' => '&perpage=15',
-    ]
 
 ];

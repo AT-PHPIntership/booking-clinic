@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-6">
         <div class="search_bar_list">
-          <input type="text" class="form-control" placeholder="Ex. Clinic types, Name, Clinic...">
+          <input type="text" class="form-control" placeholder="{{ __('user/result.placehoder') }}">
           <input type="submit" value="Search">
         </div>
       </div>

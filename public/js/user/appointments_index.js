@@ -54,24 +54,37 @@ function removeOldPage() {
  * Action when select filter
  */
 function filter() {
-  let queryOption = Lang.messages[Lang.getLocale() + '.pagination'].default_query;
+  let queryOption = {
+      order_by: '?sort_by=created_at&order=DESC',
+      perpage: '&perpage=5',
+  };
 
   $.each(queryOption, function (key, value) {
     let suffixId = $(`select[name=${key}]`).attr('sb');
 
     $(`#sbOptions_${suffixId} li a`).click(function (e) {
       e.preventDefault();
-      let currentOption = $(this).attr('href').substring(1);    // Remove '#' character
-
-      queryOption[key] = $(`select[sb=${suffixId}] option[value=${currentOption}]`).data("href");  // Get data-href when chose option filter
-      history.pushState({}, '', window.location.pathname + queryOption.order_by + '&' + queryOption.perpage.substring(1)); //Set queryOption to URL before call Ajax
+      queryOption[key] = $(this).attr('rel');  // Get query when chose option filter
+      history.pushState({}, '', window.location.pathname + queryOption.order_by + '&' + queryOption.perpage); //Set queryOption to URL before call Ajax
       removeOldPage();
       getAppointments();
     });
   })
 }
+
 $(document).ready(function () {
   getAppointments();
-  clickPaginate();
+
+  // Redirect page using ajax
+  $(document).on('click', '.page-link', function (e) {
+    e.preventDefault();
+    let nextPageHref = $(this).attr("href");
+    let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
+
+    removeOldPage();
+    history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
+    getAppointments();
+  });
+
   filter();
 });
