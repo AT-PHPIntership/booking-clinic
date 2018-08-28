@@ -15,19 +15,19 @@
             'text' => __('user/filter.appointment.status')
         ],
         'pending' => [
-            'href' => '?status=0',
+            'href' => '?status=' . App\Appointment::STATUS_PENDING,
             'text' => __('user/filter.appointment.pending')
         ],
         'confirmed' => [
-            'href' => '?status=1',
+            'href' => '?status=' . App\Appointment::STATUS_CONFIRMED,
             'text' => __('user/filter.appointment.confirmed')
         ],
         'completed' => [
-            'href' => '?status=2',
+            'href' => '?status=' . App\Appointment::STATUS_COMPLETED,
             'text' => __('user/filter.appointment.completed')
         ],
         'cancel' => [
-            'href' => '?status=2',
+            'href' => '?status=' . App\Appointment::STATUS_CANCEL,
             'text' => __('user/filter.appointment.cancel')
         ]
    ]
