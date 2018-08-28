@@ -57,10 +57,8 @@ class AppointmentController extends BaseController
     {
         $appointment = Appointment::find($id);
         if ($appointment) {
-            $statusCode = $appointment->status_code;
-            if (request()->user()->id == $appointment->user->id
-                && ($statusCode == Appointment::STATUS_PENDING
-                || $statusCode == Appointment::STATUS_CONFIRMED)) {
+            if (request()->user()->id == $appointment->user->id &&
+                ($appointment->isPending() || $appointment->isConfirmed())) {
                 $appointment->status = Appointment::STATUS_CANCEL;
                 if ($appointment->save()) {
                     return $this->successResponse($appointment, Response::HTTP_OK);
