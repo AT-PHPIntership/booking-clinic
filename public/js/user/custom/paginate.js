@@ -55,8 +55,12 @@ function getPagiURL(i) {
  * Get query strings from URL on browser and map them to be params in API.
  *
  */
-function getQueryString() {
-  return window.location.search;
+function getQueryString()
+{
+    if (!window.location.search) {
+        return '?sort_by=created_at&order=DESC&perpage=5'
+    }
+    return window.location.search;
 }
 
 function getCurrentPaginatorPage(paginator) {
@@ -78,3 +82,26 @@ function getPreviousPaginatorPage(paginator) {
   }
   return currentPage;
 }
+
+/**
+ * action when click paginate link
+ */
+function clickPaginate() {
+  $(document).on('click', '.page-link', function (e) {
+    e.preventDefault();
+    let nextPageHref = $(this).attr("href");
+    let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
+
+    removeOldPage();
+    history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
+    getAppointments();
+  });
+}
+/**
+ * Show result number on filter result
+ */
+function updateNumberResult(paginator)  {
+    $('#js_count span:first-child').html(paginator.from);
+    $('#js_count span:nth-child(2)').html(paginator.to);
+    $('#js_count span:nth-child(3)').html(paginator.total);
+  }

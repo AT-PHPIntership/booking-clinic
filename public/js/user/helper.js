@@ -1,4 +1,4 @@
-const STATUS_COLOR = ['warning', 'primary', 'success', 'danger'];
+const STATUS_COLOR = ['danger', 'success', 'primary', 'warning'];
 const STATUS_LABELS_LANG = Lang.messages[Lang.getLocale() + '.api.appointment'].status;
 const STATUS_LABELS = $.map(STATUS_LABELS_LANG, function(element) { return element; });
 const STATUS_PENDING = 0;

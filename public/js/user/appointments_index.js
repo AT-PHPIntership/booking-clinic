@@ -14,6 +14,7 @@ function getAppointments() {
 }
 
 function getAppointmentsSuccess(res) {
+  updateNumberResult(res.result.paginator);
   showPaginates(res.result.paginator);
   showAppointments(res.result.data);
 }
@@ -25,7 +26,7 @@ function showAppointments(appointments) {
     currentAppointment.find('.clinic-name').text(appointment.clinic.name);
 
     let currentStatus = appointment.status;
-    if (currentStatus == STATUS_LABELS[STATUS_CONFIRMED] || currentStatus == STATUS_LABELS[STATUS_PENDING]) {
+    if (currentStatus == STATUS_LABELS_LANG.pending || currentStatus == STATUS_LABELS_LANG.confirmed) {
       currentAppointment.find('.cancel-button').toggleClass('invisible');
     }
 
@@ -43,13 +44,32 @@ function showAppointments(appointments) {
 /**
  * Remove old paginate before call Ajax
  */
-function removeOldPage(nextLinkPage) {
-  let nextPageHref = nextLinkPage.attr("href");
-  let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
-  history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
+function removeOldPage() {
   let currentPageElement = $('.appointment:first-child').clone();
   $('.appointment').remove();
   currentPageElement.appendTo('#appointments');
+}
+
+/**
+ * Action when select filter
+ */
+function filter() {
+  let queryOption = {
+      order_by: '?sort_by=created_at&order=DESC',
+      perpage: '&perpage=5',
+  };
+
+  $.each(queryOption, function (key, value) {
+    let suffixId = $(`select[name=${key}]`).attr('sb');
+
+    $(`#sbOptions_${suffixId} li a`).click(function (e) {
+      e.preventDefault();
+      queryOption[key] = $(this).attr('rel');  // Get query when chose option filter
+      history.pushState({}, '', window.location.pathname + queryOption.order_by + '&' + queryOption.perpage); //Set queryOption to URL before call Ajax
+      removeOldPage();
+      getAppointments();
+    });
+  })
 }
 
 $(document).ready(function () {
@@ -58,7 +78,13 @@ $(document).ready(function () {
   // Redirect page using ajax
   $(document).on('click', '.page-link', function (e) {
     e.preventDefault();
-    removeOldPage($(this));
+    let nextPageHref = $(this).attr("href");
+    let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
+
+    removeOldPage();
+    history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
     getAppointments();
   });
+
+  filter();
 });

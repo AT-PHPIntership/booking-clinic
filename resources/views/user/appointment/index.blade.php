@@ -1,8 +1,43 @@
 @extends('user.layouts.app')
 
+@php
+    $options = [
+        'latest_created_at' => [
+            'href' => '?sort_by=created_at&order=DESC',
+            'text' => __('user/filter.appointment.latest_created_at')
+        ],
+        'latest_book_time' => [
+            'href' => '?sort_by=book_time&order=DESC',
+            'text' => __('user/filter.appointment.latest_book_time')
+        ],
+        'status' => [
+            'href' =>'?sort_by=status',
+            'text' => __('user/filter.appointment.status')
+        ],
+        'pending' => [
+            'href' => '?status=' . App\Appointment::STATUS_PENDING,
+            'text' => __('user/filter.appointment.pending')
+        ],
+        'confirmed' => [
+            'href' => '?status=' . App\Appointment::STATUS_CONFIRMED,
+            'text' => __('user/filter.appointment.confirmed')
+        ],
+        'completed' => [
+            'href' => '?status=' . App\Appointment::STATUS_COMPLETED,
+            'text' => __('user/filter.appointment.completed')
+        ],
+        'cancel' => [
+            'href' => '?status=' . App\Appointment::STATUS_CANCEL,
+            'text' => __('user/filter.appointment.cancel')
+        ]
+   ]
+@endphp
+
 @section('content')
 
-@include('user.layouts.partials.filter_listing')
+@include('user.layouts.partials.results')
+
+@include('user.layouts.partials.filter_listing', ['options' => $options])
 
 <div class="container margin_60_35">
   <div class="row">
