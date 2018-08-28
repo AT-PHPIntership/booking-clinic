@@ -34,5 +34,8 @@ return [
     ],
     'update' => [
         'fail' => 'Edit profile fail'
+    ],
+    'error' => [
+        '500' => 'Internal server error!'
     ]
 ];

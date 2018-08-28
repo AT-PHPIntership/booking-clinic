@@ -21,6 +21,7 @@ Route::group(['as' => 'api.'], function() {
         Route::apiResource('clinics', 'ClinicController')->only(['index', 'show']);
         Route::post('login', 'AuthController@login')->name('login');
         Route::post('register', 'AuthController@register')->name('register');
+        Route::post('facebook/login', 'AuthController@loginFacebook')->name('facebook.login') ;
         Route::group(['middleware' => 'auth:api'], function() {
             Route::post('logout', 'AuthController@logout')->name('logout');
             Route::put('password', 'AuthController@changePassword')->name('password');

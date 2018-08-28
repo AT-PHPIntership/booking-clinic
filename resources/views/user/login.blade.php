@@ -38,6 +38,7 @@
     <p class="text-center link_bright">@lang('user/login.not_have_account') <a href="{{ route('user.register') }}"><strong>@lang('user/login.register_now')</strong></a></p>
     </div>
     <!-- /login -->
+    <input type="hidden" name="app_id" value="{{ env('FACEBOOK_ID') }}">
   </div>
 </div>
 @endsection
