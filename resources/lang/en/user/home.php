@@ -3,7 +3,7 @@
 return [
     'section_search' => [
         'heading' => 'Find a Clinic!',
-        'description' => 'Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.',
+        'description' => 'Welcome to Booking Clinic, you can search by enter some keyword.',
         'placeholder' => 'Ex. Name, Specialization ....',
         'all' => 'All',
         'doctor' => 'Doctor',
