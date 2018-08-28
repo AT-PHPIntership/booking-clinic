@@ -57,13 +57,13 @@ function filter() {
   let queryOption = Lang.messages[Lang.getLocale() + '.pagination'].default_query;
 
   $.each(queryOption, function (key, value) {
-    let suffixeId = $(`select[name=${key}]`).attr('sb');
+    let suffixId = $(`select[name=${key}]`).attr('sb');
 
-    $(`#sbOptions_${suffixeId} li a`).click(function (e) {
+    $(`#sbOptions_${suffixId} li a`).click(function (e) {
       e.preventDefault();
-      let currentOption = $(this).attr('href').substring(1);    // Remove '?' character
+      let currentOption = $(this).attr('href').substring(1);    // Remove '#' character
 
-      queryOption[key] = $(`select[sb=${suffixeId}] option[value=${currentOption}]`).data("href");  // Get data-href when chose option filter
+      queryOption[key] = $(`select[sb=${suffixId}] option[value=${currentOption}]`).data("href");  // Get data-href when chose option filter
       history.pushState({}, '', window.location.pathname + queryOption.order_by + '&' + queryOption.perpage.substring(1)); //Set queryOption to URL before call Ajax
       removeOldPage();
       getAppointments();
