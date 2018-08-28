@@ -91,21 +91,10 @@
       </div>
     </div>
 
-   </div>
-   <!-- /row -->
+  </div>
+  <!-- /row -->
 
-   <nav aria-label="" class="add_top_20">
-     <ul class="pagination pagination-sm" id="js-pagination-clinic">
-        <li class="page-item"><a class="page-link">{{ __('user/clinic.index.paginator.first_page') }}</a></li>
-        <li class="page-item"><a class="page-link">{{ __('user/clinic.index.paginator.previous_page') }}</a></li>
-        <div class="pagination pagination-sm" id="pag-index-clinic">
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-        </div>
-        <li class="page-item"><a class="page-link">{{ __('user/clinic.index.paginator.next_page') }}</a></li>
-        <li class="page-item"><a class="page-link">{{ __('user/clinic.index.paginator.last_page') }}</a></li>
-     </ul>
-   </nav>
-   <!-- /pagination -->
+  @include('user.layouts.partials.paginate')
  </div>
  <!-- /col -->
 
@@ -128,5 +117,6 @@
   <script src="http://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY') }}"></script>
   <script src="{{ asset('js/user/map_listing.js') }}"></script>
   <script src="{{ asset('js/user/infobox.js') }}"></script>
+  <script src="{{ asset('js/user/custom/paginate.js') }}"></script>
   <script src="{{ asset('js/user/clinics_index.js') }}"></script>
 @endsection
