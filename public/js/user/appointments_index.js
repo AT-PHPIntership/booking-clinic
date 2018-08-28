@@ -23,6 +23,7 @@ function showAppointments(appointments) {
   $.each(appointments, function (index, appointment) {
     $('.appointment:first-child').clone().appendTo('#appointments');
     currentAppointment = $('.appointment:last-child');
+    currentAppointment.attr('id', `appointment-${appointment.id}`);
     currentAppointment.find('.clinic-name').text(appointment.clinic.name);
 
     let currentStatus = appointment.status;
@@ -71,6 +72,35 @@ function filter() {
     });
   })
 }
+function cancelAppointment(id) {
+  const token = getToken();
+  $.ajax({
+    headers: {
+      Accept: 'application/json',
+      Authorization: 'Bearer '  + token
+    },
+    url: route('api.appointments.cancel', id),
+    type: 'PUT'
+  })
+  .done(cancelAppointmentSuccess)
+  .fail(function(res) {
+    $.alert({
+      title: Lang.get('user/appointment.cancel.title'),
+      theme: 'material',
+      content: res.responseJSON.error,
+    });
+  });
+}
+
+function cancelAppointmentSuccess(res) {
+    let currentId = res.result.id;
+    let currentStatus = res.result.status;
+
+    $(`#appointment-${currentId} .cancel-button`).addClass('invisible');
+    $(`#appointment-${currentId} .status`)
+      .addClass(`btn-${STATUS_COLOR[$.inArray(currentStatus, STATUS_LABELS)]}`)
+      .text(currentStatus);
+}
 
 $(document).ready(function () {
   getAppointments();
@@ -87,4 +117,30 @@ $(document).ready(function () {
   });
 
   filter();
+
+  // Cancel pending or confirmed appointment.
+  $(document).on('click', '.cancel-button', function (e) {
+    e.preventDefault();
+    let appointmentId = $(this).closest('.appointment').attr('id');
+
+    appointmentId = appointmentId.split('-')[1];
+    $.confirm({
+      title: Lang.get('user/appointment.cancel.title'),
+      theme: 'material',
+      content: Lang.get('user/appointment.cancel.confirm'),
+      autoClose: 'cancel|10000',
+      buttons: {
+        confirm: {
+          btnClass: 'btn-blue',
+          action: function () {
+            cancelAppointment(appointmentId);
+          }
+        },
+        cancel: {
+          btnClass: 'btn-red',
+          action: function () { },
+        }
+      }
+    });
+  });
 });
