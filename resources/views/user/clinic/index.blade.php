@@ -42,7 +42,7 @@
           <p style="height:76px" class="clinic-description"></p>
         </div>
         <ul>
-          <li><a href="#0" onclick="onHtmlClick('Doctors', 0)"><i class="icon_pin_alt"></i>{{ __('user/clinic.index.clinic_item.view_map') }}</a></li>
+          <li><a class="clinic-show-map" href="#0" onclick="onHtmlClick('Doctors', 0)"><i class="icon_pin_alt"></i>{{ __('user/clinic.index.clinic_item.view_map') }}</a></li>
           <li>
             <a href="https://www.google.com/maps/dir//Assistance+–+Hôpitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/" target="_blank"><i class="icon_pin_alt"></i>
             {{ __('user/clinic.index.clinic_item.direction') }}
@@ -77,7 +77,7 @@
 
   <!-- SPECIFIC SCRIPTS -->
   <script src="http://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY') }}"></script>
-  <script src="{{ asset('js/user/map_listing.js') }}"></script>
+  {{-- <script src="{{ asset('js/user/map_listing.js') }}"></script> --}}
   <script src="{{ asset('js/user/infobox.js') }}"></script>
   <script src="{{ asset('js/user/custom/paginate.js') }}"></script>
   <script src="{{ asset('js/user/clinics_index.js') }}"></script>
