@@ -71,35 +71,34 @@ function filter() {
       getAppointments();
     });
   })
-
+}
 function cancelAppointment(id) {
-  const token = getToken();
-  $.ajax({
-    headers: {
-      Accept: 'application/json',
-      Authorization: 'Bearer '  + token
-    },
-    url: route('api.appointments.cancel', id),
-    type: 'PUT'
-  })
-  .done(cancelAppointmentSuccess)
-  .fail(function(res) {
-    $.alert({
-      title: 'Alert!',
-      theme: 'material',
-      content: res.responseJSON.error,
+    const token = getToken();
+    $.ajax({
+        headers: {
+            Accept: 'application/json',
+            Authorization: 'Bearer '  + token
+        },
+        url: route('api.appointments.cancel', id),
+        type: 'PUT'
+    })
+    .done(cancelAppointmentSuccess)
+    .fail(function(res) {
+        $.alert({
+            title: 'Alert!',
+            theme: 'material',
+            content: res.responseJSON.error,
+        });
     });
-  });
 }
 
 function cancelAppointmentSuccess(res) {
-  let currentId = res.result.id;
-  let currentStatus = res.result.status;
-
-  $(`#appointment-${currentId} .cancel-button`).addClass('invisible');
-  $(`#appointment-${currentId} .status`)
-    .addClass(`btn-${STATUS_COLOR[$.inArray(currentStatus, STATUS_LABELS)]}`)
-    .text(currentStatus);
+    let currentId = res.result.id;
+    let currentStatus = res.result.status;
+    $(`#appointment-${currentId} .cancel-button`).addClass('invisible');
+    $(`#appointment-${currentId} .status`)
+      .addClass(`btn-${STATUS_COLOR[$.inArray(currentStatus, STATUS_LABELS)]}`)
+      .text(currentStatus);
 }
 
 $(document).ready(function () {

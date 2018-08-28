@@ -78,9 +78,8 @@
 @endsection
 
 @section('additional_js')
-
 <!-- SPECIFIC SCRIPTS -->
-<script src="{{ asset('js/user/custom/paginate.js') }}"></script>
 <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
+<script src="{{ asset('js/user/custom/paginate.js') }}"></script>
 <script src="{{ asset('js/user/appointments_index.js') }}"></script>
 @endsection

@@ -6,6 +6,8 @@ return [
     'cancel_button' => 'Cancel',
     'detail' => 'Detail',
     'cancel' => [
-        'confirm' => 'Do you want cancel this appointment!'
+        'confirm' => 'Do you want cancel this appointment?',
+        'title' => 'Appointment',
+        'error' => 'Error',
     ]
 ];
