@@ -7,8 +7,7 @@ function getClinics() {
     type: 'GET',
   })
   .done(function (response) {
-    console.log(response);
-    updateNumberClinic(response.result.paginator);
+    updateNumberResult(response.result.paginator);
     showPaginates(response.result.paginator);
     showClinics(response.result.data);
   });
@@ -34,9 +33,26 @@ function renderClinicsHTML(numberOfClinics) {
   }
 }
 
-function updateNumberClinic(paginator)  {
-  $('#js_count_clinic span:first-child').html((paginator.from !=null) ? (paginator.to - paginator.from + 1) : 0);
-  $('#js_count_clinic span:nth-child(2)').html(paginator.total);
+/**
+ * Action when select filter
+ */
+function filter() {
+  let queryOption = {
+      order_by: '?sort_by=created_at&order=DESC',
+      perpage: '&perpage=5',
+  };
+
+  $.each(queryOption, function (key, value) {
+    let suffixId = $(`select[name=${key}]`).attr('sb');
+
+    $(`#sbOptions_${suffixId} li a`).click(function (e) {
+      e.preventDefault();
+      queryOption[key] = $(this).attr('rel');  // Get query when chose option filter
+      history.pushState({}, '', window.location.pathname + queryOption.order_by + '&' + queryOption.perpage); //Set queryOption to URL before call Ajax
+      removeOldPage();
+      getClinics();
+    });
+  })
 }
 
 // misc functions
@@ -74,4 +90,6 @@ $(document).ready(function() {
     history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
     getClinics();
   });
+
+  filter();
 });
