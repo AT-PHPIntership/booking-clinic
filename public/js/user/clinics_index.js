@@ -34,10 +34,6 @@ function renderClinicsHTML(numberOfClinics) {
   }
 }
 
-function getPagiURL(i) {
-  return PREFIX_LINK + '?' + PAGE_LANG + '=' + i;
-}
-
 function updateNumberClinic(paginator)  {
   $('#js_count_clinic span:first-child').html((paginator.from !=null) ? (paginator.to - paginator.from + 1) : 0);
   $('#js_count_clinic span:nth-child(2)').html(paginator.total);
@@ -60,9 +56,6 @@ function trimDescription (str) {
  * Remove old paginate before call Ajax
  */
 function removeOldPage(nextLinkPage) {
-  let nextPageHref = nextLinkPage.attr("href");
-  let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
-  history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
   let currentPageElement = $('.clinic-item:first-child').clone();
   $('.clinic-item').remove();
   currentPageElement.appendTo('#js-clinic');
@@ -74,7 +67,11 @@ $(document).ready(function() {
   // Redirect page using ajax
   $(document).on('click', '.page-link', function (e) {
     e.preventDefault();
-    removeOldPage($(this));
+    let nextPageHref = $(this).attr("href");
+    let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
+
+    removeOldPage();
+    history.pushState({}, '', window.location.pathname + nextPageQuery); //Set query to URL before call Ajax
     getClinics();
   });
 });
