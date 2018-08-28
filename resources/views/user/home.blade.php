@@ -62,7 +62,7 @@
     </div>
   </div>
   <!-- /row -->
-  <p class="text-center"><a href="list.html" class="btn_1 medium">Find Clinic</a></p>
+  <p class="text-center"><a href="{{ route('user.clinics.index') }}" class="btn_1 medium">@lang('user/home.section_main.find_clinic')</a></p>
 
 </div>
 <!-- /container -->

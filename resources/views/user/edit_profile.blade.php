@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container margin_60">
   <!-- Breadcrumbs-->
   {{ Breadcrumbs::render('user.edit_profile') }}
   <div class="box_general padding_bottom">
@@ -29,7 +29,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>@lang('user/profile.fields.dob')</label>
-          <input name="dob" class="form-control">
+          <input type="date" name="dob" class="form-control">
           <div class="invalid-feedback font-weight-bold" role="alert">
           </div>
         </div>

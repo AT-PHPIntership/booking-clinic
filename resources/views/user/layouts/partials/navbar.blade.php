@@ -22,36 +22,11 @@
         <nav id="menu" class="main-menu">
           <ul>
             <li>
-              <span><a href="#0">Home</a></span>
-              <ul>
-                <li><a href="index-2.html">Home Default</a></li>
-                <li><a href="index-3.html">Home Version 2</a></li>
-                <li><a href="index-4.html">Home Version 3</a></li>
-                <li><a href="index-5.html">Home Version 4</a></li>
-                <li><a href="index-6.html">Revolution Slider</a></li>
-                <li><a href="index-7.html">With Cookie Bar (EU law)</a></li>
-              </ul>
+              <span><a href="{{ route('user.home') }}">{{ __('user/layout.navbar.home') }}</a></span>
             </li>
             <li>
               <span><a href="{{ route('user.clinics.index') }}">{{  __('user/layout.navbar.clinic_types') }}</a></span>
               <ul id="js-clinic-types"></ul>
-            </li>
-            <li>
-              <span><a href="#0">Extra Elements</a></span>
-              <ul>
-                <li><a href="detail-page-working-booking.html">Detail working booking</a></li>
-                <li><a href="booking-page.html">Booking page</a></li>
-                <li><a href="confirm.html">Confirm page</a></li>
-                <li><a href="faq.html">Faq page</a></li>
-                <li><a href="coming_soon/index.html">Coming soon</a></li>
-                 <li><a href="pricing-tables.html">Responsive pricing tables</a></li>
-                 <li><a href="pricing-tables-2.html">Responsive pricing tables 2</a></li>
-                 <li><a href="register-doctor-working.html">Working doctor register</a></li>
-                <li><a href="icon-pack-1.html">Icon pack 1</a></li>
-                <li><a href="icon-pack-2.html">Icon pack 2</a></li>
-                <li><a href="icon-pack-3.html">Icon pack 3</a></li>
-                <li><a href="404.html">404 page</a></li>
-              </ul>
             </li>
             <li id="js-navbar-user" class="d-none">
               <span><a href="#"><i class="icon-user"></i><strong></strong></a></span>
