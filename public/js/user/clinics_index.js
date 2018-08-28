@@ -97,3 +97,14 @@ $(document).ready(function() {
 
   filter();
 });
+
+function getAvatarClinic(clinic) {
+  avatarPath = '';
+  if (typeof clinic.images[0] !== 'undefined') {
+    avatarPath = clinic.images[0].path;
+  }
+  else {
+    avatarPath = `/images/clinic-${Math.floor(Math.random() * 5) + 1}.png`;
+  }
+  return avatarPath;
+}
