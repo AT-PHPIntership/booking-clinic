@@ -20,6 +20,7 @@ function showClinics(data) {
     clinicItemHTML.find('.clinic-name').html(clinic.name);
     clinicItemHTML.find('.clinic-description').html(trimDescription(clinic.description));
     clinicItemHTML.find('.clinic-image').attr('src', `/images/clinic-${Math.floor(Math.random() * 5) + 1}.png`);
+    clinicItemHTML.find('.clinic-detail').attr('href', route('user.clinics.show', clinic.id));
   });
 
   $('#js-clinic').toggleClass('d-none');

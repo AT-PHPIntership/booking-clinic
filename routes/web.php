@@ -59,4 +59,7 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
         Route::get('edit', 'ProfileController@showEditProfileForm')->name('edit_profile');
     });
     Route::resource('appointments', 'AppointmentController')->only(['index', 'show']);
+    Route::get('404',function() {
+        return view('user.error.404');
+    })->name('error');
 });
