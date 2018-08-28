@@ -147,4 +147,44 @@ class Appointment extends Model
     {
         return $query->where('status', $status);
     }
+
+    /**
+     * Check status is pending.
+     *
+     * @return boolean
+     */
+    public function isPending()
+    {
+        return $this->status == self::STATUS_LABELS[self::STATUS_PENDING];
+    }
+
+    /**
+     * Check status is confirmed.
+     *
+     * @return boolean
+     */
+    public function isConfirmed()
+    {
+        return $this->status == self::STATUS_LABELS[self::STATUS_CONFIRMED];
+    }
+
+    /**
+     * Check status is completed.
+     *
+     * @return boolean
+     */
+    public function isCompleted()
+    {
+        return $this->status == self::STATUS_LABELS[self::STATUS_COMPLETED];
+    }
+
+    /**
+     * Check status is cancel.
+     *
+     * @return boolean
+     */
+    public function isCancel()
+    {
+        return $this->status == self::STATUS_LABELS[self::STATUS_CANCEL];
+    }
 }

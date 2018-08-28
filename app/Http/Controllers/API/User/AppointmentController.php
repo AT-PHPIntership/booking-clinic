@@ -45,4 +45,26 @@ class AppointmentController extends BaseController
         }
         return $this->errorResponse(__('api/appointment.store.fail'), Response::HTTP_BAD_REQUEST);
     }
+
+    /**
+     * User can cancel a specify pending or confirmed appointment.
+     *
+     * @param int $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel($id)
+    {
+        $appointment = Appointment::find($id);
+        if ($appointment) {
+            if (request()->user()->id == $appointment->user->id &&
+                ($appointment->isPending() || $appointment->isConfirmed())) {
+                $appointment->status = Appointment::STATUS_CANCEL;
+                if ($appointment->save()) {
+                    return $this->successResponse($appointment, Response::HTTP_OK);
+                }
+            }
+        }
+        return $this->errorResponse(__('api/user.cancel_appointment.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 }

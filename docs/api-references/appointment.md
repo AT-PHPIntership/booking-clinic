@@ -177,3 +177,37 @@ User create appointment
     }
 }
 ```
+## `PUT` user cancel appointemnt
+```
+/api/appointments/{appointment}/cancel
+```
+User cancel specify pending or confirmed appointment
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+|Authorization|Bearer {{token}}
+* _Success_
+```json
+{
+    "result": {
+        "id": 208,
+        "description": "7",
+        "status": "Cancel",
+        "clinic_id": 41,
+        "user_id": 174,
+        "book_time": "2018-08-25 06:18:20",
+        "created_at": "2018-08-23 13:59:54",
+        "updated_at": "2018-08-26 17:06:06",
+        "deleted_at": null
+    },
+    "code": 200
+}
+```
+* _Fail_
+```json
+{
+    "error": "Cancel appointment fail",
+    "code": 500
+}
+```
