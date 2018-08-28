@@ -22,8 +22,9 @@ function showClinics(data) {
     let clinicItemHTML = $('#js-clinic').find('.clinic-item:nth-child('+ (index + 1) + ')');
     clinicItemHTML.find('.clinic-name').html(clinic.name);
     clinicItemHTML.find('.clinic-description').html(trimDescription(clinic.description));
-    clinicItemHTML.find('.clinic-image').attr('src', `/images/clinic-${Math.floor(Math.random() * 5) + 1}.png`);
+    clinicItemHTML.find('.clinic-image').attr('src', getAvatarClinic(clinic));
     clinicItemHTML.find('.clinic-detail').attr('href', route('user.clinics.show', clinic.id));
+    clinicItemHTML.find('.clinic-type-name').html(clinic.clinic_type.name);
     clinicItemHTML.find('.clinic-show-map').attr('onclick', `onHtmlClick('Doctors', ${index})`);
   });
 
