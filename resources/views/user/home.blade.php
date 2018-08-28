@@ -4,28 +4,28 @@
 
 <div class="hero_home version_1">
   <div class="content">
-    <h3>Find a Clinic!</h3>
+    <h3>@lang('user/home.section_search.heading')</h3>
     <p>
-      Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
+      @lang('user/home.section_search.description')
     </p>
-    <form method="post" action="http://www.ansonika.com/findoctor/list.html">
+    <form method="GET" action="{{ route('user.clinics.index') }}">
       <div id="custom-search-input">
         <div class="input-group">
-          <input type="text" class=" search-query" placeholder="Ex. Name, Specialization ....">
+          <input type="text" class="search-query" name="search" placeholder="@lang('user/home.section_search.placeholder')">
           <input type="submit" class="btn_search" value="Search">
         </div>
         <ul>
           <li>
             <input type="radio" id="all" name="radio_search" value="all" checked>
-            <label for="all">All</label>
+            <label for="all">@lang('user/home.section_search.all')</label>
           </li>
           <li>
             <input type="radio" id="doctor" name="radio_search" value="doctor">
-            <label for="doctor">Doctor</label>
+            <label for="doctor">@lang('user/home.section_search.doctor')</label>
           </li>
           <li>
             <input type="radio" id="clinic" name="radio_search" value="clinic">
-            <label for="clinic">Clinic</label>
+            <label for="clinic">@lang('user/home.section_search.clinic')</label>
           </li>
         </ul>
       </div>
