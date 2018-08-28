@@ -74,13 +74,13 @@
 @endsection
 
 @section('additional_css')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+  <link rel="stylesheet" href="{{ asset('css/jquery-confirm.min.css') }}">
 @endsection
 
 @section('additional_js')
 
 <!-- SPECIFIC SCRIPTS -->
 <script src="{{ asset('js/user/custom/paginate.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
 <script src="{{ asset('js/user/appointments_index.js') }}"></script>
 @endsection
