@@ -13,5 +13,10 @@ return [
         'confirmed' => 'Confirmed',
         'completed' => 'Completed',
         'cancel' => 'Cancel'
+    ],
+    'clinic' => [
+        'latest_clinic' => 'Latest opened',
+        'name_az' => 'Name A-Z',
+        'name_za' => 'Name Z-A'
     ]
 ];

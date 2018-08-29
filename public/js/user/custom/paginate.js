@@ -46,7 +46,7 @@ function showPaginates(paginator) {
 }
 
 function getPagiURL(i) {
-    let query = new URLSearchParams(window.location.search);
+    let query = new URLSearchParams(getQueryString());
     query.delete(PAGE); //Delete param Page in query in URL
   return window.location.pathname + '?' + query + '&' + PAGE + '=' + i;
 }
