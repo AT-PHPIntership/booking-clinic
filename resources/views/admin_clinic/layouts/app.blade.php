@@ -25,12 +25,14 @@
         </main>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="{{ asset('js/admin/dashboard.js') }}"></script>
+    @routes
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/admin/message.js') }}"></script>
+    <script src="{{ asset('js/admin/dashboard.js') }}"></script>
     <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script src="{{ asset('js/feather.min.js') }}"></script>
     <script>
       feather.replace()
     </script>
