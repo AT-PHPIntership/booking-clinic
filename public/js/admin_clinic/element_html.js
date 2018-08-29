@@ -12,7 +12,7 @@ function showExamination(res) {
             </div>
             <div class="form-group">
               <label>${Lang.get('admin_clinic/examination.fields.diagnostic')}</label>
-              <input type="text" name="diagnostic" class="name form-control" value="${res.diagnostic}" readonly />
+              <input type="text" name="diagnostic" class="form-control" value="${res.diagnostic}" readonly />
             </div>
             <div class="form-group">
               <label>${Lang.get('admin_clinic/examination.fields.result')}</label>
@@ -20,7 +20,7 @@ function showExamination(res) {
             </div>
             <div class="form-group">
               <label>${Lang.get('admin_clinic/examination.fields.created_at')}</label>
-              <input type="text" name="created_at" class="name form-control" value="${res.created_at}" readonly />
+              <input type="text" name="created_at" class="form-control" value="${res.created_at}" readonly />
             </div>
           </div>`;
 }
@@ -31,7 +31,7 @@ function showExamination(res) {
 function showFormCreateExamination() {
   return `<div class="form-group">
             <label>${Lang.get('admin_clinic/examination.fields.diagnostic')}</label>
-            <input type="text" placeholder="${Lang.get('admin_clinic/examination.fields.diagnostic')}" name="diagnostic" class="name form-control" required />
+            <input type="text" placeholder="${Lang.get('admin_clinic/examination.fields.diagnostic')}" name="diagnostic" class="form-control" required />
           </div>
           <div class="form-group">
             <label>${Lang.get('admin_clinic/examination.fields.result')}</label>
