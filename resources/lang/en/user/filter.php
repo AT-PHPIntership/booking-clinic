@@ -15,7 +15,7 @@ return [
         'cancel' => 'Cancel'
     ],
     'clinic' => [
-        'latest_clinic' => 'Latest clinic opened',
+        'latest_clinic' => 'Latest opened',
         'name_az' => 'Name A-Z',
         'name_za' => 'Name Z-A'
     ]

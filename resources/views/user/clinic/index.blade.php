@@ -39,10 +39,7 @@
         <div class="wrapper">
           <small class="clinic-type-name"></small>
           <h3 class="clinic-name"></h3>
-
           <p style="height:76px" class="clinic-description"></p>
-          <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
-          <a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="/images/user/badges/badge_1.svg" width="15" height="15" alt=""></a>
         </div>
         <ul>
           <li><a href="#0" onclick="onHtmlClick('Doctors', 0)"><i class="icon_pin_alt"></i>{{ __('user/clinic.index.clinic_item.view_map') }}</a></li>
@@ -51,7 +48,7 @@
             {{ __('user/clinic.index.clinic_item.direction') }}
             </a>
           </li>
-          <li><a href="detail-page.html">{{ __('user/clinic.index.clinic_item.book') }}</a></li>
+          <li><a class="clinic-detail" href="detail-page.html">{{ __('user/clinic.index.clinic_item.book') }}</a></li>
         </ul>
       </div>
     </div>

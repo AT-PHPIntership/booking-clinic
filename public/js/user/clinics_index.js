@@ -14,6 +14,7 @@ function getClinics() {
 }
 
 function showClinics(data) {
+  $('#toTop').click();
   renderClinicsHTML(data.length);
   data.forEach((clinic, index)=>{
     let clinicItemHTML = $('#js-clinic').find('.clinic-item:nth-child('+ (index + 1) + ')');
@@ -27,9 +28,9 @@ function showClinics(data) {
 }
 
 function renderClinicsHTML(numberOfClinics) {
-  clinicItem = $('#js-clinic').html();
+  clinicItem = $('.clinic-item:first-child');
   for (var i = 0; i < numberOfClinics - 1; i++) {
-    $('#js-clinic').append(clinicItem);
+    clinicItem.clone().appendTo('#js-clinic');
   }
 }
 
