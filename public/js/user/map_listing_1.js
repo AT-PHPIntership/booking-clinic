@@ -1,11 +1,10 @@
-// 'use strict';
+'use strict';
 /** @type {!Array} */
 var _0xbaa2 = ["prototype", "forEach", "length", "call", "Dr. Jhoanna Steel", "img/doctor_listing_1.jpg", "Psicologist - Pediatrician", "detail-page.html", "35 Newtownards Road, Belfast, BT4.", "", "+3934245255", "Dr. Robert Carl", "Psicologist", "Dr. Mark Twain", "Primary Care", "maps", "ROADMAP", "MapTypeId", "DROPDOWN_MENU", "MapTypeControlStyle", "LEFT_CENTER", "ControlPosition", "TOP_RIGHT", "LARGE", "ZoomControlStyle", "RIGHT_BOTTOM", "landscape", "#FFBB00", "road.highway", "#FFC200", "road.arterial",
 "#FF0300", "road.local", "water", "#0078FF", "poi", "#00FF6A", "map_listing", "getElementById", "location_latitude", "location_longitude", "/images/user/pin/", ".png", "undefined", "push", "click", "open", "setCenter", "addListener", "event", "setMap", "Animation", "setAnimation", "remove", "div.infoBox", '<div class="marker_info">', "<figure><a href=", "url_detail", '><img src="', "map_image_url", '" alt="Image"></a></figure>', "<small>", "type", "</small>", "<h3><a href=", ">", "name_point", "</a></h3>",
 "<span>", "description_point", "</span>", '<div class="marker_tools">', '<form action="http://maps.google.com/maps" method="get" target="_blank" style="display:inline-block""><input name="saddr" value="', "get_directions_start_address", '" type="hidden"><input type="hidden" name="daddr" value="', ",", '"><button type="submit" value="Get directions" class="btn_infobox_get_directions">Directions</button></form>', '<a href="tel://', "phone", '" class="btn_infobox_phone">', "</a>", "</div>", "img/close_infobox.png",
 "floatPane", "trigger"];
 
-initContruct();
 var mapObject;
 /** @type {!Array} */
 var markers = [];
@@ -13,7 +12,6 @@ var markers = [];
 var markersData = {
   "Doctors" : []
 };
-initMarkersData(clinicsData);
 
 var mapOptions;
 initMapOptions();
@@ -21,7 +19,9 @@ initMapOptions();
 var marker;
 mapObject = new google[_0xbaa2[15]].Map(document[_0xbaa2[38]](_0xbaa2[37]), mapOptions);
 var key;
-initMarker();
+// initMarkersData(clinicsData);
+// initContruct();
+// initMarker();
 /**
  * @return {undefined}
  */
@@ -103,7 +103,7 @@ function initContruct() {
 function initMarkersData(data) {
   markersData['Doctors'] = [];
   data.forEach(clinic => {
-    clinicObj = {
+    var clinicObj = {
       name : clinic.name,
       location_latitude : +clinic.lat,
       location_longitude : +clinic.lng,
@@ -122,7 +122,7 @@ function initMarkersData(data) {
 function initMapOptions() {
   mapOptions = {
     zoom : 10,
-    center : new google[_0xbaa2[15]].LatLng(48.865633, 2.321236),
+    center : new google[_0xbaa2[15]].LatLng(16.06143, 108.23837),
     mapTypeId : google[_0xbaa2[15]][_0xbaa2[17]][_0xbaa2[16]],
     mapTypeControl : false,
     mapTypeControlOptions : {
@@ -218,6 +218,9 @@ function initMapOptions() {
 }
 
 function initMarker() {
+  hideAllMarkers();
+  closeInfoBox();
+  markers['Doctors'] = [];
   for (key in markersData) {
     markersData[key][_0xbaa2[1]](function(address) {
       marker = new google[_0xbaa2[15]].Marker({

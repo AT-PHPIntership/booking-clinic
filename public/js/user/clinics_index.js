@@ -10,8 +10,11 @@ function getClinics() {
     updateNumberResult(response.result.paginator);
     showPaginates(response.result.paginator);
     showClinics(response.result.data);
-    clinicsData = response.result.data;
-    $.getScript("/js/user/map_listing_1.js");
+    // clinicsData =
+    // $.getScript("/js/user/map_listing_1.js");
+    initContruct();
+    initMarkersData(response.result.data);
+    initMarker();
   });
 }
 

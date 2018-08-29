@@ -77,7 +77,7 @@
 
   <!-- SPECIFIC SCRIPTS -->
   <script src="http://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY') }}"></script>
-  {{-- <script src="{{ asset('js/user/map_listing.js') }}"></script> --}}
+  <script src="{{ asset('js/user/map_listing_1.js') }}"></script>
   <script src="{{ asset('js/user/infobox.js') }}"></script>
   <script src="{{ asset('js/user/custom/paginate.js') }}"></script>
   <script src="{{ asset('js/user/clinics_index.js') }}"></script>
