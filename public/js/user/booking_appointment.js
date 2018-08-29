@@ -50,6 +50,8 @@ function showBookingInfo() {
   $('input[name=address]').val(user.address);
   $('#booking-date').html(appointment.date);
   $('#booking-time').html(appointment.time);
+  $('#booking-name').html(appointment.name);
+  $('#booking-phone').html(appointment.phone);
 }
 
 $(document).ready(function() {
@@ -63,7 +65,7 @@ $(document).ready(function() {
   $('#btn-confirm').click(function(e) {
     e.preventDefault();
     if (confirm(Lang.get('user/booking.confirm_message'))) {
-      let description = $('#description').html();
+      let description = $('#description').val();
       let appointment = getAppointment();
       let clinicId = appointment.clinic_id;
       let bookTime = appointment.date + ' ' + appointment.time + ':00'; // format yyyy-mm-dd hh:mm:ss

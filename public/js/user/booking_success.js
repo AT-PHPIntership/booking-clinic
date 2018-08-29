@@ -5,6 +5,6 @@ $(document).ready(function() {
   $('#user-email').html(user.email);
 
   setTimeout(function() {
-    window.location.replace(route('user.home'));
+    window.location.replace(route('user.appointments.index'));
   }, 5000);
 });

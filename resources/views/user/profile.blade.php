@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container margin_60">
   <!-- Breadcrumbs-->
   {{ Breadcrumbs::render('user.profile') }}
   <div class="box_general padding_bottom">

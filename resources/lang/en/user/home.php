@@ -8,5 +8,8 @@ return [
         'all' => 'All',
         'doctor' => 'Doctor',
         'clinic' => 'Clinic',
+    ],
+    'section_main' => [
+        'find_clinic' => 'Find Clinic',
     ]
 ];
