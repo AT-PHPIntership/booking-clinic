@@ -16,7 +16,8 @@ return [
         ],
         'js' => [
             'page' => 'page'
-        ]
+        ],
+        'error' => 'No clinics found'
     ],
     'show' => [
         'info_box' => [
