@@ -13,7 +13,9 @@ $factory->define(App\Clinic::class, function (Faker $faker) {
         'description' => $faker->text,
         'lat' => $faker->latitude($min = -90, $max = 90),
         'lng' => $faker->longitude($min = -180, $max = 180),
-        'clinic_type_id' => factory(App\ClinicType::class)->create()->id,
+        'clinic_type_id' => function() {
+            return factory(App\ClinicType::class)->create()->id;
+        },
         'slug' => $slug,
     ];
 });

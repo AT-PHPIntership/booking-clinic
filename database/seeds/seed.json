@@ -1,0 +1,219 @@
+[
+    {
+        "name" : "Phòng khám Vietlife MR",
+        "address": "14 Phạm Văn Đồng, An Hải Bắc, Sơn Trà, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0729343",
+        "lng": "108.2289683",
+        "clinic_type_id": "3"
+    },
+    {
+        "name" : "Phòng khám Bác sĩ Vũ Thị Thanh Thủy",
+        "address": "491 Ngô Quyền, An Hải Bắc, Sơn Trà, Đà Nẵng 550000, Vietnam",
+        "lat": "16.070833",
+        "lng": "108.2292923",
+        "clinic_type_id": "3"
+    },
+    {
+        "name" : "Phòng Mạch - Bác sĩ Nguyễn Thị Bích Vân",
+        "address": "16-30 Quang Trung, Thạch Thang, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0752271",
+        "lng": "108.2202422",
+        "clinic_type_id": "2"
+    },
+    {
+        "name" : "Phòng khám đa khoa Gia Nguyên",
+        "address": "111-87 Lê Lợi, Thạch Thang, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0759248",
+        "lng": "108.2176166",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Phòng khám 116 Nguyễn Lân",
+        "address": "75-49 Nguyễn Du, Thạch Thang, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0786718",
+        "lng": "108.218362",
+        "clinic_type_id": "4"
+    },
+    {
+        "name" : "Phòng khám Đa khoa Thủ Dầu Một ",
+        "address": "21-1 Lý Thường Kiệt, Thạch Thang, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0803848",
+        "lng": "108.2199715",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Phòng khám Đa khoa Đông Phương",
+        "address": "Phan Kế Bính, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0823655",
+        "lng": "108.2160672",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Trung tâm sức khỏe Nam giới Men's Health",
+        "address": "49-43 Đống Đa, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0814842",
+        "lng": "108.2170821",
+        "clinic_type_id": "7"
+    },
+    {
+        "name" : "Phòng khám Sản phụ khoa - Nam khoa 36",
+        "address": "63-61 Đống Đa, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0806538",
+        "lng": "108.2164963",
+        "clinic_type_id": "3"
+    },
+    {
+        "name" : "Phòng khám Đa khoa Đại Đông",
+        "address": "160-192 Đống Đa, Thạch Thang, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0790108",
+        "lng": "108.2153829",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Phòng khám Đa khoa Thủ đô",
+        "address": "Nguyễn Đôn Tiết, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0809319",
+        "lng": "108.2153128",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Phòng khám 5D - Chuyên Sản phụ khoa - Hiếm muộn",
+        "address": "71-89 Thanh Sơn, Thanh Bình, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0816747",
+        "lng": "108.2122985",
+        "clinic_type_id": "2"
+    },
+    {
+        "name" : "Phòng khám Nam khoa - Bác sĩ Bình Dân",
+        "address": "171-155 Đương Nguyễn Tất Thành, Thanh Bình, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0822191",
+        "lng": "108.2104213",
+        "clinic_type_id": "7"
+    },
+    {
+        "name" : "Phòng khám 387 Kim Mã",
+        "address": "152 Thanh Thủy, Thanh Bình, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.083752",
+        "lng": "108.2122249",
+        "clinic_type_id": "6"
+    },
+    {
+        "name" : "Phòng Khám theo yêu cầu - Bệnh viện Phụ sản Trung ương",
+        "address": "20-38 Hàn Mặc Tử, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0846667",
+        "lng": "108.2168042",
+        "clinic_type_id": "5"
+    },
+    {
+        "name" : "Nha khoa Thẩm mỹ Hàn Lâm",
+        "address": "134-184 Đường 3 Tháng 2, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0864065",
+        "lng": "108.2154566",
+        "clinic_type_id": "4"
+    },
+    {
+        "name" : "Phòng Khám bệnh số 1 - Bệnh viện Đại học Y Hà Nội",
+        "address": "60-86 Cao Xuân Dục, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0881213",
+        "lng": "108.2158493",
+        "clinic_type_id": "4"
+    },
+    {
+        "name" : "Phòng khám Đa khoa Hoàng long",
+        "address": "78-57 Xuân Diệu, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0886741",
+        "lng": "108.2175363",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Phòng khám Đa khoa Thăng long ",
+        "address": "Như Nguyệt, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0893226",
+        "lng": "108.2180091",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Phòng khám Da liễu - Bác sĩ Trần Ngọc Ánh",
+        "address": "1 Lê Khắc Cần, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0859008",
+        "lng": "108.2151957",
+        "clinic_type_id": "7"
+    },
+    {
+        "name" : "Nha khoa Star",
+        "address": "Xuân Diệu, Thuận Phước, Hải Châu, Đà Nẵng 550000, Vietnam",
+        "lat": "16.090188",
+        "lng": "108.2149804",
+        "clinic_type_id": "4"
+    },
+    {
+        "name" : "Phòng khám Nhi Quận 7 (Bác sĩ Nhi Đồng 2)",
+        "address": "5-3 Trần Cao Vân, Tam Thuận, Thanh Khê, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0729831",
+        "lng": "108.2088873",
+        "clinic_type_id": "6"
+    },
+    {
+        "name" : "Phòng khám 548",
+        "address": "277-265 Hải Phòng, Thanh Khê, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0710332",
+        "lng": "108.2077196",
+        "clinic_type_id": "2"
+    },
+    {
+        "name" : "Phòng khám Royal",
+        "address": "385-373 Lê Duẩn, Tân Chính, Thanh Khê, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0679421",
+        "lng": "108.2061851",
+        "clinic_type_id": "5"
+    },
+    {
+        "name" : "Phòng khám Da liễu",
+        "address": "106-132 Nguyễn Văn Linh, Đà Nẵng 550000, Vietnam",
+        "lat": "16.0602874",
+        "lng": "108.2110423",
+        "clinic_type_id": "2"
+    },
+    {
+        "name" : "Phòng Khám Hồng Phước Đường",
+        "address": "20, Đường Nguyễn Thị Định, Sơn Trà, Đà Nẵng",
+        "lat": "16.0832991",
+        "lng": "108.1629512",
+        "clinic_type_id": "4"
+    },
+    {
+        "name" : "Family Medical Practice",
+        "address": "96-98 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng 550000",
+        "lat": "16.0606169",
+        "lng": "108.1449402",
+        "clinic_type_id": "5"
+    },
+    {
+        "name" : "Phòng Khám Phụ Khoa - Bs Đặng Kim Anh",
+        "address": "49 Phan Bội Châu, Thạch Thang, Hải Châu, Đà Nẵng 550000",
+        "lat": "16.0781325",
+        "lng": "108.151493",
+        "clinic_type_id": "2"
+    },
+    {
+        "name" : "Clinic Dr. Tuan Mechanical - Bones - Joints Danang",
+        "address": "94 Hải Phòng, Thạch Thang, Hải Châu, Đà Nẵng 550000",
+        "lat": "16.0722992",
+        "lng": "108.1472487",
+        "clinic_type_id": "5"
+    },
+    {
+        "name" : "Phòng Chẩn Trị Đông Y Quảng Tế Đường",
+        "address": "10, Đường Phan Kế Bính, Thuận Phước, Hải Châu, Đà Nẵng",
+        "lat": "16.0821059",
+        "lng": "108.148537",
+        "clinic_type_id": "1"
+    },
+    {
+        "name" : "Phòng Khám Phụ Khoa - Bs Lê Quang Tài",
+        "address": "36 Pasteur, Hải Châu 1, Hải Châu, Đà Nẵng 550000",
+        "lat": "16.0701089",
+        "lng": "108.1491545",
+        "clinic_type_id": "3"
+    }
+]
