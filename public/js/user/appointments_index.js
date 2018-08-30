@@ -109,8 +109,7 @@ function cancelAppointmentSuccess(res) {
 }
 
 // Show examination result completed appointment
-function showResult(id)
-{
+function showResult(id) {
   const token = getToken();
   $.ajax({
     headers: {
@@ -132,8 +131,7 @@ function showResult(id)
   });
 }
 
-function showResultSuccess(res)
-{
+function showResultSuccess(res) {
   $('input[name="clinic-name"]').attr('value', res.result.clinic.name);
   $('input[name="clinic-email"]').attr('value', res.result.clinic.email);
   $('input[name="clinic-address"]').attr('value', res.result.clinic.address);
@@ -145,9 +143,8 @@ function showResultSuccess(res)
 }
 
 // Redirect page using ajax
-function clickPaginate()
-{
-  $(document).on('click', '.page-link', function (e) {
+function clickPaginate() {
+  $(document).on('click', '.page-link', function(e) {
     e.preventDefault();
     let nextPageHref = $(this).attr("href");
     let nextPageQuery = nextPageHref.substring(nextPageHref.indexOf('?'));
@@ -158,8 +155,7 @@ function clickPaginate()
   });
 }
 
-function clickCancel()
-{
+function clickCancel() {
   $(document).on('click', '.cancel-button', function (e) {
     e.preventDefault();
     let appointmentId = $(this).closest('.appointment').attr('id');
@@ -179,16 +175,15 @@ function clickCancel()
         },
         cancel: {
           btnClass: 'btn-red',
-          action: function () { },
+          action: function() { },
         }
       }
     });
   });
 }
 
-function clickShowResult()
-{
-  $(document).on('click', '.result-button', function (e) {
+function clickShowResult() {
+  $(document).on('click', '.result-button', function(e) {
     e.preventDefault();
     let appointmentId = $(this).closest('.appointment').attr('id');
 
@@ -205,7 +200,7 @@ function clickShowResult()
   });
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
   getAppointments();
   clickPaginate();
   filter();
