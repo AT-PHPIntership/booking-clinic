@@ -57,6 +57,7 @@
   </div>
   <!-- /row -->
 
+  <h4 id="error-message" class="d-none">{{ __('user/clinic.index.error') }}</h4>
   @include('user.layouts.partials.paginate')
  </div>
  <!-- /col -->

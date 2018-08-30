@@ -16,6 +16,12 @@ function getClinics() {
 
 function showClinics(data) {
   $('#toTop').click();
+  if (!data.length) {
+    $('#js-clinic').addClass('d-none');
+    $('#error-message').removeClass('d-none');
+    return;
+  }
+
   renderClinicsHTML(data.length);
   data.forEach((clinic, index)=>{
     let clinicItemHTML = $('#js-clinic').find('.clinic-item:nth-child('+ (index + 1) + ')');
@@ -28,6 +34,7 @@ function showClinics(data) {
   });
 
   $('#js-clinic').removeClass('d-none');
+  $('#error-message').addClass('d-none');
 }
 
 function renderClinicsHTML(numberOfClinics) {
@@ -78,11 +85,11 @@ function fillInputSearchFromUrl() {
  * Set default filter when search is triggered
  */
 function setDefaultFilterValueWithSearch() {
-  //default perpage: 15
+  //default perpage: 15 if type sth and 5 if empty field
   var suffixId = $('select[name="perpage"]').attr('sb');
-  var valuePerpage = $(`#sbOptions_${suffixId} li:nth-child(3) a`).html();
+  var valuePerpage = !getSearchQuery() ? 5 : 15;
   $(`#sbSelector_${suffixId}`).html(valuePerpage);
-  queryOption['perpage'] = 'perpage=15';
+  queryOption['perpage'] = 'perpage=' + valuePerpage;
 
   //default sort_by :first option
   suffixId = $('select[name="order_by"]').attr('sb');
@@ -100,7 +107,7 @@ function searchEvent(){
   });
 
   $('.search_bar_list input[name="search"]').keydown('click', function(e){
-    if (e.keyCode==13) { //enter keyCode
+    if (e.keyCode == 13) { //enter keyCode
       searchAction();
     }
   });
@@ -121,7 +128,7 @@ function getSearchQuery(withFilter = false){
   var continueQuery = withFilter ? '&' : '';
   var searchValue =  $('.search_bar_list input[name="search"]').val();
   if (!searchValue.length) {
-    return '' + continueQuery;
+    return continueQuery;
   }
   return questionMark + 'search=' + searchValue + continueQuery;
 }
