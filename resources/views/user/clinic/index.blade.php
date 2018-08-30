@@ -43,7 +43,7 @@
           <p style="height:76px" class="clinic-description"></p>
         </div>
         <ul>
-          <li><a href="#0" onclick="onHtmlClick('Doctors', 0)"><i class="icon_pin_alt"></i>{{ __('user/clinic.index.clinic_item.view_map') }}</a></li>
+          <li><a class="clinic-show-map" href="javascript:void(0)" onclick="onHtmlClick('Clinics', 0)"><i class="icon_pin_alt"></i>{{ __('user/clinic.index.clinic_item.view_map') }}</a></li>
           <li>
             <a href="https://www.google.com/maps/dir//Assistance+–+Hôpitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/" target="_blank"><i class="icon_pin_alt"></i>
             {{ __('user/clinic.index.clinic_item.direction') }}

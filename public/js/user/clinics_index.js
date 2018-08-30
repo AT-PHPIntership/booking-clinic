@@ -10,6 +10,7 @@ function getClinics() {
     updateNumberResult(response.result.paginator);
     showPaginates(response.result.paginator);
     showClinics(response.result.data);
+    showMap(response.result.data);
   });
 }
 
@@ -20,8 +21,10 @@ function showClinics(data) {
     let clinicItemHTML = $('#js-clinic').find('.clinic-item:nth-child('+ (index + 1) + ')');
     clinicItemHTML.find('.clinic-name').html(clinic.name);
     clinicItemHTML.find('.clinic-description').html(trimDescription(clinic.description));
-    clinicItemHTML.find('.clinic-image').attr('src', `/images/clinic-${Math.floor(Math.random() * 5) + 1}.png`);
+    clinicItemHTML.find('.clinic-image').attr('src', getAvatarClinic(clinic));
     clinicItemHTML.find('.clinic-detail').attr('href', route('user.clinics.show', clinic.id));
+    clinicItemHTML.find('.clinic-type-name').html(clinic.clinic_type.name);
+    clinicItemHTML.find('.clinic-show-map').attr('onclick', `onHtmlClick('Clinics', ${index})`);
   });
 
   $('#js-clinic').removeClass('d-none');
@@ -56,6 +59,12 @@ function filter() {
   })
 }
 
+function showMap(clinics) {
+  initContruct();
+  initMarkersData(clinics);
+  initMarker();
+}
+
 // misc functions
 
 function trimDescription (str) {
@@ -67,6 +76,22 @@ function trimDescription (str) {
     str = listWords.join(" ") + "...";
   }
   return str;
+}
+
+/**
+ * Get path image from a clinic. If not found, get default image from resource
+ *
+ * @param {*} clinic
+ */
+function getAvatarClinic(clinic) {
+  avatarPath = '';
+  if (clinic.images.length) {
+    avatarPath = clinic.images[0].path;
+  }
+  else {
+    avatarPath = `/images/clinic-${Math.floor(Math.random() * 5) + 1}.png`;
+  }
+  return avatarPath;
 }
 
 /**
