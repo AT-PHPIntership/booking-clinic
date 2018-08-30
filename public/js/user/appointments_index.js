@@ -24,7 +24,8 @@ function showAppointments(appointments) {
     $('.appointment:first-child').clone().appendTo('#appointments');
     currentAppointment = $('.appointment:last-child');
     currentAppointment.attr('id', `appointment-${appointment.id}`);
-    currentAppointment.find('.clinic-name').text(appointment.clinic.name);
+    currentAppointment.find('.clinic-name').attr('href', route('user.clinics.show', appointment.clinic.id))
+      .text(appointment.clinic.name);
 
     let currentStatus = appointment.status;
     if (currentStatus == STATUS_LABELS_LANG.pending || currentStatus == STATUS_LABELS_LANG.confirmed) {

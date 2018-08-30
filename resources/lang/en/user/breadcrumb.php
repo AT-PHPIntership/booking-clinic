@@ -8,5 +8,8 @@ return [
     'booking' => 'Booking appointment',
     'appointments' => [
         'index' => 'Appointments'
+    ],
+    'clinics' => [
+        'index' => 'Clinics'
     ]
 ];

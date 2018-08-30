@@ -11,9 +11,7 @@
   .strip_list ul {
     border-top: 1px solid rgba(0,0,0,.3);
   }
-  .strip_list small {
-      color: #dc3545;
-  }
+
   /*
    * Button in appointment
    */
@@ -85,4 +83,8 @@
 
   .show-more:focus {
     color: #e74e84
+  }
+
+  .clinic-name {
+      color: #3f4079;
   }
