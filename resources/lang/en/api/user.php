@@ -40,5 +40,8 @@ return [
     ],
     'cancel_appointment' => [
         'fail' => 'Cancel appointment fail'
+    ],
+    'get_result' => [
+        'fail' => 'Get result examination fail'
     ]
 ];

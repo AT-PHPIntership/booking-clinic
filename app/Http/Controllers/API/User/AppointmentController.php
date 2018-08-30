@@ -67,4 +67,26 @@ class AppointmentController extends BaseController
         }
         return $this->errorResponse(__('api/user.cancel_appointment.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    /**
+     * Get examination result of compeleted appointment
+     *
+     * @param int $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getResult($id)
+    {
+        $appointment = Appointment::find($id);
+        if ($appointment) {
+            if (request()->user()->id == $appointment->user->id && $appointment->isCompleted()) {
+                return $this->successResponse([
+                    'clinic' => $appointment->clinic,
+                    'examination' => $appointment->examination,
+                    'user' => $appointment->user
+                ], Response::HTTP_OK);
+            }
+        }
+        return $this->errorResponse(__('api/user.get_result.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 }

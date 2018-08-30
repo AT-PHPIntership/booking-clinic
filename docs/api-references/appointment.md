@@ -211,3 +211,64 @@ User cancel specify pending or confirmed appointment
     "code": 500
 }
 ```
+
+## `GET` examiantion  result
+```
+/api/appointments/{appointment}/result
+```
+Get examination result of completed appointment
+#### Request Headers
+| Key | Value |
+|---|---|
+|Accept|application/json
+|Authorization|Bearer {{token}}
+* _Success_
+```json
+{
+    "result": {
+        "clinic": {
+            "id": 41,
+            "name": "Gisselle Lang",
+            "email": "clinic@gmail.com",
+            "phone": "0573371536",
+            "address": "740 Carleton CornersLake Jeffereyton, MS 61731-1014",
+            "description": "Iusto nam in dolor minus. Et voluptatem placeat modi. Quisquam nostrum et odit aut non in eum. A eos laudantium ipsa cumque.",
+            "lat": "83.496707",
+            "lng": "165.437675",
+            "slug": "gisselle-lang",
+            "clinic_type_id": 48,
+            "deleted_at": null,
+            "created_at": "2018-08-19 21:56:44",
+            "updated_at": "2018-08-19 21:56:44"
+        },
+        "examination": {
+            "id": 34,
+            "diagnostic": "top123",
+            "result": "321top",
+            "appointment_id": 216,
+            "created_at": "2018-08-28 22:39:19",
+            "updated_at": "2018-08-28 22:39:19",
+            "deleted_at": null
+        },
+        "user": {
+            "id": 174,
+            "name": "toptopxxxxxx top",
+            "email": "zero8@gmail.com",
+            "gender": 0,
+            "dob": null,
+            "phone": null,
+            "address": "da nang11s",
+            "created_at": "2018-08-21 22:06:32",
+            "updated_at": "2018-08-22 14:10:47"
+        }
+    },
+    "code": 200
+}
+```
+* _Error_
+```json
+{
+    "error": "Get result examination fail",
+    "code": 500
+}
+```

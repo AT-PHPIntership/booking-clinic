@@ -47,7 +47,8 @@
         <div class="strip_list wow fadeIn animated appointment pl-4 pb-0 d-none">
           <small>{{ __('user/appointment.clinic_label') }}</small>
           <h3 class="clinic-name"></h3>
-          <p class="description"></p>
+          <p class="des description"></p>
+          <a href="#" class="show-more">{{ __('user/appointment.show_more') }}</a>
           <ul class="m-0 pl-0">
             <li class="book-date">{{ __('user/appointment.book_date') }}<strong></strong></li>
             <li class="book-time">{{ __('user/appointment.time') }}<strong></strong></li>
@@ -55,8 +56,8 @@
               <label class="status mb-0 btn btn-sm p-0 pl-2 pr-2"></label>
             </li>
             <li>
-              <button class="cancel-button invisible">{{ __('user/appointment.cancel_button') }}</button>
-              <a href="detail-page.html">{{ __('user/appointment.detail') }}</a>
+              <button class="button cancel-button d-none">{{ __('user/appointment.cancel_button') }}</button>
+              <button class="button result-button d-none">{{ __('user/appointment.result_button') }}</button>
             </li>
           </ul>
         </div>
@@ -81,5 +82,6 @@
 <!-- SPECIFIC SCRIPTS -->
 <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
 <script src="{{ asset('js/user/custom/paginate.js') }}"></script>
+<script src="{{ asset('js/user/element_html.js') }}"></script>
 <script src="{{ asset('js/user/appointments_index.js') }}"></script>
 @endsection
