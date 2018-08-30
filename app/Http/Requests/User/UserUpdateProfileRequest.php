@@ -24,7 +24,7 @@ class UserUpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|regex:/^[a-zA-Z\s]+$/',
+            'name' => 'required|string',
             'address' => 'nullable|string|max:255',
             'dob' => 'nullable|date_format:"Y-m-d"',
             'phone' => 'nullable|numeric|digits_between:8,12',
