@@ -131,7 +131,7 @@ function initMarkersData(data) {
  */
 function initMapOptions() {
   mapOptions = {
-    zoom : 10,
+    zoom : 14,
     center : new google[shortWord[15]].LatLng(16.06143, 108.23837),
     mapTypeId : google[shortWord[15]][shortWord[17]][shortWord[16]],
     mapTypeControl : false,
