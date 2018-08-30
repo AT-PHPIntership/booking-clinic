@@ -41,9 +41,9 @@ function renderClinicsHTML(numberOfClinics) {
  * Action when select filter
  */
 function filter() {
-  let queryOption = {
-      order_by: '?sort_by=created_at&order=DESC',
-      perpage: '&perpage=5',
+  queryOption = {
+      order_by: 'sort_by=created_at&order=DESC',
+      perpage: 'perpage=5',
   };
 
   $.each(queryOption, function (key, value) {
@@ -52,11 +52,78 @@ function filter() {
     $(`#sbOptions_${suffixId} li a`).click(function (e) {
       e.preventDefault();
       queryOption[key] = $(this).attr('rel');  // Get query when chose option filter
-      history.pushState({}, '', window.location.pathname + queryOption.order_by + '&' + queryOption.perpage); //Set queryOption to URL before call Ajax
+      history.pushState({}, '', window.location.pathname + '?' + getSearchQuery(true) + queryOption.order_by + '&' + queryOption.perpage); //Set queryOption to URL before call Ajax
       removeOldPage();
       getClinics();
     });
   })
+}
+
+/**
+ * Auto fill query search to input field, if user type search query from URL
+ * Set perpage default in search function is 15 items
+ */
+function fillInputSearchFromUrl() {
+  let query = new URLSearchParams(getQueryString());
+  if (query.has('search')) {
+    $('.search_bar_list input[name="search"]').val(query.get('search'));
+    if (!query.has('perpage')) {
+      let suffixId = $('select[name="perpage"]').attr('sb');
+      $(`#sbSelector_${suffixId}`).html(15);
+    }
+  }
+}
+
+/**
+ * Set default filter when search is triggered
+ */
+function setDefaultFilterValueWithSearch() {
+  //default perpage: 15
+  var suffixId = $('select[name="perpage"]').attr('sb');
+  var valuePerpage = $(`#sbOptions_${suffixId} li:nth-child(3) a`).html();
+  $(`#sbSelector_${suffixId}`).html(valuePerpage);
+  queryOption['perpage'] = 'perpage=15';
+
+  //default sort_by :first option
+  suffixId = $('select[name="order_by"]').attr('sb');
+  var valuePerpage = $(`#sbOptions_${suffixId} li:first-child a`).html();
+  $(`#sbSelector_${suffixId}`).html(valuePerpage);
+  queryOption['order_by'] = 'sort_by=created_at&order=DESC';
+}
+
+/**
+ * Set event listener for input search: click Search either press Enter
+ */
+function searchEvent(){
+  $('.search_bar_list input[type="submit"]').on('click', function(){
+    searchAction();
+  });
+
+  $('.search_bar_list input[name="search"]').keydown('click', function(e){
+    if (e.keyCode==13) { //enter keyCode
+      searchAction();
+    }
+  });
+}
+
+function searchAction(){
+  removeOldPage();
+  history.pushState({}, '', window.location.pathname + getSearchQuery()); //Set query to URL before call Ajax
+  getClinics();
+  setDefaultFilterValueWithSearch();
+}
+
+/**
+ *  Get query from input search and mapping with filters to url
+ */
+function getSearchQuery(withFilter = false){
+  var questionMark = withFilter ? '' : '?';
+  var continueQuery = withFilter ? '&' : '';
+  var searchValue =  $('.search_bar_list input[name="search"]').val();
+  if (!searchValue.length) {
+    return '' + continueQuery;
+  }
+  return questionMark + 'search=' + searchValue + continueQuery;
 }
 
 function showMap(clinics) {
@@ -118,4 +185,6 @@ $(document).ready(function() {
   });
 
   filter();
+  searchEvent();
+  fillInputSearchFromUrl();
 });

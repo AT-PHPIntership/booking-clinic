@@ -3,15 +3,15 @@
 @php
     $options = [
         'latest_clinic' => [
-            'href' => '?sort_by=created_at&order=DESC',
+            'href' => 'sort_by=created_at&order=DESC',
             'text' => __('user/filter.clinic.latest_clinic')
         ],
         'name_az' => [
-            'href' => '?sort_by=name&order=ASC',
+            'href' => 'sort_by=name&order=ASC',
             'text' => __('user/filter.clinic.name_az')
         ],
         'name_za' => [
-            'href' => '?sort_by=name&order=DESC',
+            'href' => 'sort_by=name&order=DESC',
             'text' => __('user/filter.clinic.name_za')
         ],
    ]
