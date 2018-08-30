@@ -34,7 +34,6 @@ class UserChangePassRequest extends FormRequest
                 'required',
                 'string',
                 'confirmed',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/',
                 'different:current_password'
             ]
         ];

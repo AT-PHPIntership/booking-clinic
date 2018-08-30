@@ -93,14 +93,10 @@ class UserUpdateProfileTest extends TestCase
         return [
             [
                 [
-                    "name" => "quan1",
                     "gender" => "3",
                     "dob" => "1995-03-222"
                 ],
                 [
-                    "name" =>  [
-                        "The name format is invalid.",
-                    ],
                     "gender" =>  [
                         "The gender field must be true or false.",
                     ],
