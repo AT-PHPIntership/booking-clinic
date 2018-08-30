@@ -46,7 +46,7 @@
       <div id="appointments" class="col-lg-8 offset-lg-2">
         <div class="strip_list wow fadeIn animated appointment pl-4 pb-0 d-none">
           <small>{{ __('user/appointment.clinic_label') }}</small>
-          <h3 class="clinic-name"></h3>
+          <h3><a href="#" class="clinic-name"></a></h3>
           <p class="des description"></p>
           <a href="#" class="show-more">{{ __('user/appointment.show_more') }}</a>
           <ul class="m-0 pl-0">

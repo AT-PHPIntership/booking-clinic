@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container margin_60 invisible">
+  {{ Breadcrumbs::render('user.clinics.show', request()->segment(2)) }}
   <div class="row">
 
     <aside class="col-xl-3 col-lg-4" id="sidebar">

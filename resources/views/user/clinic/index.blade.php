@@ -24,6 +24,7 @@
 @include('user.layouts.partials.filter_listing', ['options' => $options])
 
 <div class="container margin_60_35">
+  {{ Breadcrumbs::render('user.clinics.index') }}
 <div class="row">
  <div class="col-lg-8">
    <div class="row d-none" id="js-clinic">

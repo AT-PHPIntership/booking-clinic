@@ -118,3 +118,17 @@
         $breadcrumbs->parent('user.home');
         $breadcrumbs->push(__('user/breadcrumb.booking'), route('user.booking'));
     });
+
+    // Clinic
+    Breadcrumbs::register('user.clinics.index', function($breadcrumbs) {
+        $breadcrumbs->parent('user.home');
+        $breadcrumbs->push(__('user/breadcrumb.clinics.index'), route('user.clinics.index'));
+    });
+
+    Breadcrumbs::register('user.clinics.show', function ($breadcrumbs, $id) {
+        $breadcrumbs->parent('user.clinics.index');
+        $clinic = App\Clinic::find($id);
+        if ($clinic) {
+            $breadcrumbs->push($clinic->name, route('user.clinics.show', $id));
+        }
+    });
