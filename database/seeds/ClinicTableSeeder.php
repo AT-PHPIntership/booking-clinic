@@ -34,5 +34,11 @@ class ClinicTableSeeder extends Seeder
                 'clinic_id' => $clinic->id
             ]);
         }
+
+        App\Appointment::status(App\Appointment::STATUS_COMPLETED)
+            ->each(function ($appointment) {
+                $exam = factory(App\Examination::class)->make(['appointment_id' => $appointment->id]);
+                $appointment->examination()->save($exam);
+            });
     }
 }
