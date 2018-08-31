@@ -29,10 +29,10 @@ class ModifyUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('gender')->default(null)->change();
-            $table->date('dob')->nullable(false)->change();
-            $table->string('phone', 20)->nullable(false)->change();
-            $table->string('address')->nullable(false)->change();
+            $table->boolean('gender')->change();
+            $table->date('dob')->change();
+            $table->string('phone', 20)->change();
+            $table->string('address')->change();
         });
     }
 }
