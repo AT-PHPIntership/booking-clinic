@@ -13,7 +13,7 @@ $(document).ready(function() {
       }
     });
     $.confirm({
-      title: Lang.get('admin_clinic/appointment.title'),
+      title: Lang.get('admin_clinic/appointment.index.title'),
       theme: 'dark',
       content: Lang.get('admin_clinic/appointment.cancel'),
       buttons: {
