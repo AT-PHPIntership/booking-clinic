@@ -14,7 +14,7 @@ $(document).ready(function() {
     e.preventDefault();
     let url = window.location.href;
     let clinic_id = url.substring(url.lastIndexOf('/') + 1);
-    let date = $('#calendar').datepicker('getDate');
+    let date = $('#calendar').datepicker('getUTCDates')[0];
     let time = $('input[name=radio_time]:checked').val();
     let phone = $('#clinic-phone').html();
     let name = $('#clinic-name').html();
