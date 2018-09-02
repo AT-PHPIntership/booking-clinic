@@ -55,7 +55,7 @@ function showExamiantionResult() {
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="font-weight-bold">${Lang.get('user/appointment.result.description')}</label>
-                  <textarea class="form-control" name="descsription" disabled rows="3">aasasdasdasdaasasdasdas</textarea>
+                  <textarea class="form-control" name="descsription" disabled rows="3"></textarea>
                 </div>
               </div>
             </div>
