@@ -19,7 +19,7 @@ return [
         'patient' => 'Patient',
         'diagnostic' => 'Diagnostic',
         'created_at' => 'Created at',
-        'description' => 'Description'
+        'result' => 'Result'
     ],
     'show_more' => 'Show more'
 ];

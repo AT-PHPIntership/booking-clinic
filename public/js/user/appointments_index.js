@@ -140,7 +140,7 @@ function showResultSuccess(res) {
   $('input[name="user-email"]').attr('value', res.result.user.email);
   $('input[name="diagnostic"]').attr('value', res.result.examination.diagnostic);
   $('input[name="created-at"]').attr('value', res.result.examination.created_at);
-  $('textarea[name="descsription"]').text(res.result.examination.descsription);
+  $('textarea[name="result"]').text(res.result.examination.result);
 }
 
 // Redirect page using ajax
