@@ -146,3 +146,12 @@ body {
     font-size: 12px;
     text-transform: uppercase;
   }
+.view-more {
+    overflow: hidden;
+    line-height: 25px;
+    height: 25px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}

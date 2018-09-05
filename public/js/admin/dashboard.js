@@ -65,3 +65,9 @@ $(document).ready(function() {
     $(this).css("background-color", STATUS_COLOR[$(this).val()]);
   });
 });
+
+$('.show-more').click(function(e) {
+//   debugger;
+  e.preventDefault();
+  $(this).next().toggleClass('show-more');
+});

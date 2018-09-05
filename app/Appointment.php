@@ -121,6 +121,13 @@ class Appointment extends Model
             $order = $request->has('order') ? $request->order : 'ASC';
             $query->orderBy($column, $order);
         }
+
+        if ($request->has('search')) {
+            $keyword = request()->search;
+            $query->whereHas('user', function($query) use($keyword) {
+                $query->where('name', 'like', '%' . $keyword . '%%');
+            });
+        }
     }
 
      /**
