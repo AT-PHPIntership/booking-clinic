@@ -1,6 +1,13 @@
+const maxHeight = 25;
 $(document).ready(function() {
   $('.status-pending').each(function() {
     $(this).css("background-color", STATUS_COLOR[STATUS_PENDING]);
+  });
+  $('p').each(function() {
+    if (+$(this).css('height').split('px')[0] > maxHeight) {
+      $(this).addClass('view-more');
+      $(this).next().toggleClass('d-none');
+    }
   });
 
   var slug = $("#slug").val();
@@ -40,4 +47,8 @@ $(document).ready(function() {
       }
     });
   });
+});
+$(document).on('click', '.show-more', function(e) {
+  e.preventDefault();
+  $(this).prev().toggleClass('view-more');
 });

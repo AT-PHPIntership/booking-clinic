@@ -67,7 +67,6 @@ $(document).ready(function() {
 });
 
 $('.show-more').click(function(e) {
-//   debugger;
   e.preventDefault();
   $(this).next().toggleClass('show-more');
 });

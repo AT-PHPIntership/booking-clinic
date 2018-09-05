@@ -81,7 +81,10 @@
           <tr>
             <td>{{ $i++ }}</td>
             <td class="text-nowrap">{{ $appointment->user->name }}</td>
-            <td>{{ $appointment->description }}</td>
+            <td>
+              <p class="mb-0">{{ $appointment->description }}</p>
+              <a href="#" class="show-more d-none">@lang('admin_clinic/dashboard.show_more')</a>
+            </td>
             <td class="text-nowrap">{{ $appointment->book_time }}</td>
             <td class="container">
               <input type="text" class="col-md-4 d-inline form-control text-body font-weight-bold status-pending"
@@ -92,6 +95,10 @@
               <button id="cancel-{{ $appointment->id }}" class="btn btn-outline-danger cancel">
                 <i class="fas fa-times"></i>
               </button>
+              <a href="{{ route('admin_clinic.appointments.show', [$clinic->slug, $appointment->id]) }}"
+                  class="btn btn-outline-primary">
+                  <i class="fas fa-info-circle"></i>
+              </a>
             </td>
           </tr>
         @endforeach

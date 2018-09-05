@@ -155,3 +155,8 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
+.view-more ~ a {
+    font-size: .75rem;
+    font-weight: bold;
+    text-decoration: none;
+}
