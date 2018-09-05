@@ -11,8 +11,13 @@ class UserListAppointmentTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = \App\User::first()->appointments()
-            ->saveMany(factory(\App\Appointment::class, 20)->make());
+        $user = \App\User::first();
+        $appointments = factory(\App\Appointment::class, 20)->make([
+            'clinic_id' => App\Clinic::pluck('id')->random(),
+            'user_id' => $user->id
+            ]);
+        $user->appointments()->saveMany($appointments);
+
         App\Appointment::status(App\Appointment::STATUS_COMPLETED)
             ->each(function($appointment) {
                 $exam = factory(\App\Examination::class)->make(['appointment_id' =>$appointment->id]);
