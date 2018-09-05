@@ -6,7 +6,10 @@ return [
         'heading' => 'List clinics',
         'edit' => 'Edit',
         'delete' => 'Delete',
-        'show' => 'Show'
+        'show' => 'Show',
+        'filter' => 'Type filter',
+        'all' => 'All',
+        'search' => 'Search',
     ],
     'create' => [
         'title' => 'Clinic',

@@ -16,7 +16,7 @@ class ClinicTypeController extends Controller
      */
     public function index()
     {
-        $clinicTypes = ClinicType::all();
+        $clinicTypes = ClinicType::latest()->get();
         return view('admin.clinic_types.index', compact('clinicTypes'));
     }
 
