@@ -39,7 +39,7 @@
             <div class="card-body-icon">
               <i class="fas fa-book"></i>
             </div>
-            <div class="mr-5 font-weight-bold"><span></span> @lang('admin_clinic/dashboard.examinations')</div>
+            <div class="mr-5 font-weight-bold"><span>{{ $count['countCompleted'] }}</span> @lang('admin_clinic/dashboard.examinations')</div>
           </div>
           <a class="card-footer text-white clearfix small z-1" href="#">
             <span class="float-left"> @lang('admin_clinic/dashboard.views')</span>
