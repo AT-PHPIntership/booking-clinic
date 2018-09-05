@@ -43,10 +43,13 @@
       <input id="slug" type="hidden" name="slug" value="{{ $slug }}">
       <div class="col-sm-10">
         <select id="appointment-{{ $appointment->id }}" class="col-md-3 d-inline custom-select text-body font-weight-bold text-center status-select" required name="status">
-
           {{-- Admin can change status from Confirmed to Cancel in list appointments page --}}
           @if ($appointment->isConfirmed())
             <option value="{{ App\Appointment::STATUS_CONFIRMED }}" selected>@lang('admin_clinic/appointment.status.confirmed')</option>
+            <option value="{{ App\Appointment::STATUS_CANCEL }}">@lang('admin_clinic/appointment.status.cancel')</option>
+          @elseif ($appointment->isPending())
+            <option value="{{ $appointment->status_code }}" selected>{{ $appointment->status }}</option>
+            <option value="{{ App\Appointment::STATUS_CONFIRMED }}">@lang('admin_clinic/appointment.status.confirmed')</option>
             <option value="{{ App\Appointment::STATUS_CANCEL }}">@lang('admin_clinic/appointment.status.cancel')</option>
           @else
             <option value="{{ $appointment->status_code }}" selected>{{ $appointment->status }}</option>
@@ -55,7 +58,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="dob" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.examination.heading')</label>
+      <label for="examination" class="col-sm-2 col-form-label font-weight-bold">@lang('admin_clinic/appointment.examination.heading')</label>
       <div class="col-sm-10">
         @if ($appointment->isConfirmed())
           <button id="create-examination"class="btn btn-primary col-md-3 text-body font-weight-bold text-left">{{ __('admin_clinic/examination.add') }}</button>

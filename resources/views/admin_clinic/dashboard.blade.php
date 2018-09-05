@@ -62,24 +62,27 @@
   <input id="count" type="hidden" name="count" data-pending="{{ $count['countPending'] }}" data-confirmed="{{ $count['countConfirmed'] }}"
     data-completed="{{ $count['countCompleted'] }}" data-cancel="{{ $count['countCancel'] }}">
   <div class="table-responsive">
-    <table class="table table-striped table-sm text-nowrap">
+    <table class="table table-striped table-sm">
       <thead>
         <tr>
           <th>#</th>
           <th>@lang('admin_clinic/appointment.fields.user_name')</th>
-          <th>@lang('admin_clinic/appointment.fields.created_at')</th>
+          <th class="w-50">@lang('admin_clinic/appointment.fields.description')</th>
           <th>@lang('admin_clinic/appointment.fields.book_time')</th>
           <th>@lang('admin_clinic/appointment.fields.status')</th>
         </tr>
       </thead>
       <tbody>
         <input id="slug" type="hidden" name="slug" value="{{ $clinic->slug }}">
+        @php
+          $i = 1;
+        @endphp
         @foreach($appointments as $appointment)
           <tr>
-            <td>{{ $appointment->id }}</td>
-            <td>{{ $appointment->user->name }}</td>
-            <td>{{ $appointment->book_time }}</td>
-            <td>{{ $appointment->created_at }}</td>
+            <td>{{ $i++ }}</td>
+            <td class="text-nowrap">{{ $appointment->user->name }}</td>
+            <td>{{ $appointment->description }}</td>
+            <td class="text-nowrap">{{ $appointment->book_time }}</td>
             <td class="container">
               <input type="text" class="col-md-4 d-inline form-control text-body font-weight-bold status-pending"
                 readonly name="status" value="{{ $appointment->status }}">
