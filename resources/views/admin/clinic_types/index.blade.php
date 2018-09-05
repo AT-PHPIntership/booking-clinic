@@ -28,9 +28,12 @@
         </tr>
       </thead>
       <tbody>
+        @php
+          $index = 1;
+        @endphp
         @foreach($clinicTypes as $type)
           <tr>
-            <td>{{ $type->id }}</td>
+            <td>{{ $index++ }}</td>
             <td>{{ $type->name }}</td>
             <td>{{ $type->created_at }}</td>
             <td>
