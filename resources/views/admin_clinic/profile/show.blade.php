@@ -14,7 +14,7 @@
     <div class="row">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-edit"></i>
+        <i class="fas fa-edit">Edit</i>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="{{ route('admin_clinic.profile.edit', $clinic->slug) }}"><i class="fas fa-home"> {{ __('admin_clinic/profile.show.link_to_edit.clinic') }}</i></a>
