@@ -42,7 +42,6 @@
           <th>#</th>
           <th>{{ __('admin/clinic.fields.clinic_type') }}</th>
           <th>{{ __('admin/clinic.fields.name') }}</th>
-          <th>{{ __('admin/clinic.fields.address') }}</th>
           <th>{{ __('admin/clinic.fields.phone') }}</th>
           <th>{{ __('admin/clinic.index.edit') }}</th>
           <th>{{ __('admin/clinic.index.delete') }}</th>
@@ -59,7 +58,6 @@
             <td>{{ $index++ }}</td>
             <td>{{ $clinic->clinicType->name }}</td>
             <td>{{ $clinic->name }}</td>
-            <td>{{ $clinic->address }}</td>
             <td>{{ $clinic->phone }}</td>
             <td>
               <a href="{{ route('admin.clinics.edit', $clinic->id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-edit"></i></a>
