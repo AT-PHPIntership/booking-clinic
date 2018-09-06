@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('a[data-toggle="collapse"]').click(function() {
     $("html, body").animate({ scrollTop: $(document).height() }, 1000); //auto scolldown when click button show examiantion
   });
-  $("#create-examination").click(function(e) {
+  $(document).on('click', "#create-examination", function(e) {
     let slug = $("#slug").val();
     appointmentId = $('.status-select').attr('id').substring(12);
 

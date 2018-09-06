@@ -9,12 +9,12 @@
 @endsection
 
 @section('content')
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">@lang('admin_clinic/appointment.index.heading')</h1>
     <div class="input-group col-md-6">
       <form class="form-inline" action="{{ route('admin_clinic.appointments.index', ['slug' => request('slug')]) }}" method="GET">
         <input type="date" name="from" class="form-control" value="{{ request('from') }}">
-        <input type="date" name="to" class="form-control" value="{{ request('to') }}">
+        <input type="date" name="to" class="form-control pr-2" value="{{ request('to') }}">
         <div class="input-group-append">
           <button type="submit" class="btn btn-outline-secondary" href="#">@lang('admin_clinic/appointment.index.search')</button>
         </div>
@@ -25,13 +25,28 @@
         {{ request()->has('status') ? App\Appointment::STATUS_LABELS[request('status')] : __('admin_clinic/appointment.index.filter') }}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to')]) }}">@lang('admin_clinic/appointment.index.status.all')</a>
+        <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index',
+          ['slug' => request('slug'),
+          'from' => request('from'), 'to' => request('to'),
+          'search' => request('search')]) }}">@lang('admin_clinic/appointment.index.status.all')</a>
         @foreach (App\Appointment::STATUS_LABELS as $key => $status)
           @if ($key != App\Appointment::STATUS_PENDING)
-            <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index', ['slug' => request('slug'), 'from' => request('from'), 'to' => request('to'), 'status' => $key]) }}">{{ $status }} </a>
+            <a class="dropdown-item" href="{{ route('admin_clinic.appointments.index',
+            ['slug' => request('slug'),
+            'from' => request('from'), 'to' => request('to'),
+            'search' => request('search'),
+            'status' => $key]) }}">{{ $status }} </a>
           @endif
         @endforeach
       </div>
+    </div>
+    <div class="input-group offset-lg-4">
+      <form class="form-inline col-md-12 pl-0" action="{{ route('admin_clinic.appointments.index', ['slug' => request('slug')]) }}" method="GET">
+        <input type="text" name="search" class="form-control col-lg-7" value="{{ request('search') }}">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-secondary" href="#">@lang('admin_clinic/appointment.index.search')</button>
+        </div>
+      </form>
     </div>
   </div>
   @include('admin_clinic.layouts.partials.block-flash')

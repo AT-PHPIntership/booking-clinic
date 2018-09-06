@@ -1,11 +1,11 @@
-$(document).ready(function() {
+var oldStt = $(".status-select").val();
 
+$(document).ready(function() {
   $(".status-select").change(function(e) {
     e.preventDefault();
     var ele = $(this);
     var appointmentId = ele.attr('id').substring(12);
     var slug = $("#slug").val();
-    var status = STATUS_CANCEL;
 
     $.ajaxSetup({
       headers: {
@@ -20,6 +20,7 @@ $(document).ready(function() {
         confirm: {
           btnClass: 'btn-blue',
           action: function() {
+          let status = ele.val();
           ele.after('<i class="fa fa-spinner fa-pulse fa-2x fa-fw margin-bottom"></i>')
           var doneStatus = function() {
             // delete sync icon and show success message in 2 seconds, remove option Confirmed when chose option Cancel
@@ -30,16 +31,21 @@ $(document).ready(function() {
             ele.next().remove();
             }, 2000);
             ele.children("option:nth-child(1)").remove();
-            $('#create-examination').remove();
+            if (status == STATUS_CANCEL) {
+              $('#create-examination').remove();
+            }
+            if (status == STATUS_CONFIRMED) {
+              $('label[for=examination]').next()
+                .append(`<button id="create-examination"class="btn btn-primary col-md-3 text-body font-weight-bold text-left">${Lang.get('admin_clinic/examination.add')}</button>`)
+            }
           };
           updateAppointmentStatus(slug, appointmentId, status, doneStatus)   ;
           },
         },
         cancel: function() {
-
           // set right color and value for option Confirmed when cancel select
-          ele.css("background-color", STATUS_COLOR[STATUS_CONFIRMED]);
-          ele.val(STATUS_CONFIRMED);
+          ele.css("background-color", STATUS_COLOR[oldStt]);
+          ele.val(oldStt);
         },
       }
     });

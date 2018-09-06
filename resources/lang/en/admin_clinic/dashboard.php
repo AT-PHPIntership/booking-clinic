@@ -10,4 +10,5 @@ return [
     'views' => 'View Detail',
     'confirm' => 'Confirm appointment',
     'cancel' => 'Cancel appointment',
+    'show_more' => 'Show more'
 ];
