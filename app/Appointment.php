@@ -125,7 +125,7 @@ class Appointment extends Model
         if ($request->has('search')) {
             $keyword = request()->search;
             $query->whereHas('user', function ($query) use ($keyword) {
-                $query->where('name', 'like', '%' . $keyword . '%%');
+                $query->where('name', 'like', '%' . $keyword . '%');
             });
         }
     }
