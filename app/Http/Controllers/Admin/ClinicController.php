@@ -20,7 +20,7 @@ class ClinicController extends Controller
      */
     public function index()
     {
-        $clinics = Clinic::latest()->with('clinicType')->paginate();
+        $clinics = Clinic::latest()->filter()->with('clinicType')->paginate();
         return view('admin.clinics.index', ['clinics' => $clinics]);
     }
 

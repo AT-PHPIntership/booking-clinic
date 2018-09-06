@@ -142,6 +142,9 @@ function showMap(clinics) {
 // misc functions
 
 function trimDescription (str) {
+  if (!str) {
+    return '';
+  }
   maxWord = 20;
   numberOfWord = str.trim().split(/\s+/).length;
   if (numberOfWord > maxWord) { //cut limit 20 word
