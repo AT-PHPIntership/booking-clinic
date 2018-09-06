@@ -51,4 +51,29 @@ class User extends Authenticatable
     {
         return $this->hasMany(Appointment::class);
     }
+
+            /**
+     * Scope filter for user
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilter($query)
+    {
+        $request = request();
+        if ($request->has('sort_by')) {
+            $column = $request->sort_by;
+            $order = $request->has('order') ? $request->order : 'ASC';
+            $query->orderBy($column, $order);
+        }
+        if ($request->has('gender')) {
+            $query->where('gender', $request->gender);
+        }
+        if ($request->has('search')) {
+            $keyword = $request->search;
+            $query->where('name', 'like', '%'.$keyword.'%')
+                ->orWhere('email', 'like', '%'.$keyword.'%');
+        }
+    }
 }

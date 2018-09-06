@@ -11,6 +11,39 @@
 @section('content')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">@lang('admin/user.index.heading')</h1>
+    <div class="input-group col-md-6">
+      <form class="form-inline" action="{{ route('admin.users.index') }}" method="GET">
+        <input type="text" name="search" class="form-control" value="{{ request('search') }}">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-secondary" href="#">{{ __('admin/clinic.index.search') }}</button>
+        </div>
+      </form>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filters
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{ route('admin.users.index',
+          ['search' => request('search'),
+          'sort_by' => 'name',
+          'order' => 'ASC']) }}">NAME A-Z</a>
+        <a class="dropdown-item" href="{{ route('admin.users.index',
+        ['search' => request('search'),
+        'sort_by' => 'name',
+        'order' => 'DESC']) }}">NAME Z-A</a>
+        <a class="dropdown-item" href="{{ route('admin.users.index',
+        ['search' => request('search'),
+        'sort_by' => 'name',
+        'order' => 'ASC',
+        'gender' => App\User::GENDER_FEMALE]) }}">Female</a>
+        <a class="dropdown-item" href="{{ route('admin.users.index',
+        ['search' => request('search'),
+        'sort_by' => 'name',
+        'order' => 'ASC',
+        'gender' => App\User::GENDER_MALE]) }}">Male</a>
+      </div>
+    </div>
   </div>
   <div class="table-responsive">
     <table class="table table-striped table-sm text-nowrap">
@@ -45,6 +78,6 @@
     </table>
   </div>
   <div class="d-flex justify-content-center mt-2">
-    {{ $users->links() }}
+    {{ $users->appends(['search' => request()->get('search')])->links() }}
   </div>
 @endsection
