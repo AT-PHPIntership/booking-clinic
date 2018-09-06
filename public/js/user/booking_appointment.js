@@ -66,6 +66,10 @@ $(document).ready(function() {
     e.preventDefault();
     if (confirm(Lang.get('user/booking.confirm_message'))) {
       let description = $('#description').val();
+      if (!description) {
+        alert('Please fill description!');
+        return;
+      }
       let appointment = getAppointment();
       let clinicId = appointment.clinic_id;
       let bookTime = appointment.date + ' ' + appointment.time + ':00'; // format yyyy-mm-dd hh:mm:ss
