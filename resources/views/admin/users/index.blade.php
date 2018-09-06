@@ -78,6 +78,9 @@
     </table>
   </div>
   <div class="d-flex justify-content-center mt-2">
-    {{ $users->appends(['search' => request()->get('search')])->links() }}
+    {{ $users->appends(['search' => request()->get('search'),
+        'sort_by' => request()->get('sort_by'),
+        'order' => request()->get('order'),
+        'gender' => request()->get('gender')])->links() }}
   </div>
 @endsection

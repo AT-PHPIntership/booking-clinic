@@ -100,7 +100,9 @@
       </table>
   </div>
   <div class="d-flex justify-content-center mt-2">
-    {{ $appointments->links() }}
+    {{ $appointments->appends(['search' => request()->get('search'),
+        'status_id' => request()->get('status_id'),
+        'status' => request()->get('status')])->links() }}
   </div>
 @endsection
 
