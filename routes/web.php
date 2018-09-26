@@ -64,3 +64,9 @@ Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
         return view('user.error.404');
     })->name('error');
 });
+
+//Socket
+
+Route::get('socket', 'SocketController@index');
+Route::post('sendmessage', 'SocketController@sendMessage');
+Route::get('writemessage', 'SocketController@writemessage');
