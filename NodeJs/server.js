@@ -27,8 +27,22 @@ var app = express();
 
 var server = http.createServer(app);
 
-require('./real_time')(app, server, redis);
+// require('./real_time')(app, server, redis);
 
 server.listen(3000, function () {
  console.log('Express server listening on port 3000');
-})
+});
+var io = require('socket.io').listen(server);
+    io.on('connection', function (socket) {
+        var redisClient = redis.createClient();
+          redisClient.subscribe('message');
+
+          redisClient.on("message", function(channel, message) {
+            console.log("mew message in queue "+ message + channel);
+            socket.emit(channel, message);
+          });
+          // end connect
+          socket.on('disconnect', function() {
+            redisClient.quit();
+          });
+    });

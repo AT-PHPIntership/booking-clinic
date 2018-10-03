@@ -6,9 +6,17 @@ module.exports = function (app, server, redis) {
         var redisClient = redis.createClient();
           redisClient.subscribe('message');
 
-          redisClient.on("message", function(channel, message) {
-            console.log("mew message in queue "+ message + "channel");
+          redisClient.on("EURJPY", function(channel, message) {
+            console.log("mew message in queue "+ message + channel);
             socket.emit(channel, message);
+          });
+          redisClient.on("JPYEUR", function(channel, message) {
+            console.log("mew message in queue "+ message + channel);
+            socket.emit(channel, message);
+          });
+          // end connect
+          socket.on('disconnect', function() {
+            redisClient.quit();
           });
     });
 };

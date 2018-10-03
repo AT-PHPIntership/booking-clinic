@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0dd57ba8628adaad41bc9f4cde5873b2",
+    "content-hash": "0bbef74e0df6ff35f0654060478b78c7",
     "packages": [
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -1875,6 +1875,54 @@
             "time": "2018-07-15T17:25:16+00:00"
         },
         {
+            "name": "oneforge/forexquotes",
+            "version": "2.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1Forge/php-forex-quotes.git",
+                "reference": "30a91958290fad94d8a89a799f3376df197a9e80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1Forge/php-forex-quotes/zipball/30a91958290fad94d8a89a799f3376df197a9e80",
+                "reference": "30a91958290fad94d8a89a799f3376df197a9e80",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "6.3.*",
+                "php": ">=5.6.4",
+                "wisembly/elephant.io": "^3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "OneForge\\ForexQuotes": "lib/"
+                },
+                "psr-4": {
+                    "OneForge\\ForexQuotes\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "1Forge",
+                    "email": "contact@1forge.com"
+                }
+            ],
+            "description": "Library to fetch and parse realtime Forex quotes and convert currencies",
+            "homepage": "http://1forge.com",
+            "keywords": [
+                "api",
+                "forex",
+                "quotes",
+                "realtime"
+            ],
+            "time": "2018-04-21T15:27:15+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v9.99.99",
             "source": {
@@ -3590,6 +3638,72 @@
                 "environment"
             ],
             "time": "2018-07-01T10:25:50+00:00"
+        },
+        {
+            "name": "wisembly/elephant.io",
+            "version": "v3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Wisembly/elephant.io.git",
+                "reference": "9d56f409fe231a906af87005f83a135565632d3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Wisembly/elephant.io/zipball/9d56f409fe231a906af87005f83a135565632d3f",
+                "reference": "9d56f409fe231a906af87005f83a135565632d3f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ElephantIO\\": [
+                        "src/",
+                        "test/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baptiste Clavié",
+                    "email": "baptiste@wisembly.com",
+                    "homepage": "http://baptiste.xn--clavi-fsa.net/",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Guillaume Potier",
+                    "email": "guillaume@wisembly.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ludovic Barreca",
+                    "email": "ludogp2@gmail.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Elephant.IO Community",
+                    "role": "Contributors :)"
+                }
+            ],
+            "description": "Send events to a websocket real time engine though PHP",
+            "homepage": "http://elephant.io",
+            "keywords": [
+                "dialog",
+                "nodejs",
+                "real time",
+                "websocket"
+            ],
+            "time": "2017-09-10T20:38:38+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

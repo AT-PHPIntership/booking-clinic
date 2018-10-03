@@ -14,6 +14,7 @@
         "laravel/tinker": "^1.0",
         "maddhatter/laravel-fullcalendar": "^1.3",
         "mariuzzo/laravel-js-localization": "^1.4",
+        "oneforge/forexquotes": "^2.0",
         "predis/predis": "^1.1",
         "tightenco/ziggy": "^0.6.7"
     },
