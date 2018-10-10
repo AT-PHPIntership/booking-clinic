@@ -39,34 +39,41 @@ class StartForgeClient extends Command
      */
     public function handle()
     {
-        // $key= env('FOREX_KEY');
-        // dd($key);
+        $key= env('FOREX_KEY');
         $client = new ForexDataClient('Ddi7WvLYENQl4Cqhpom8YIbeRldaA6mx');
+        $redis = LRedis::connection();
 
         //Handle incoming price updates from the server
-       $client->onUpdate(function($symbol, $data)
-       {
-            $redis = LRedis::connection();
-            $redis->publish('message', json_encode($data));
-       });
+        $client->onUpdate(function($symbol, $data) use ($redis)
+        {
+            $date = date_create();
+            $time = date_timestamp_get($date);
+            $data['time'] = $time;
+            \Log::info($data);
+            $redis->publish("message", json_encode([
+                'channel' => $symbol,
+                'data' => $data
+            ]));
+        });
 
        //Handle non-price update messages
-       $client->onMessage(function($message)
-       {
-           echo $message;
-       });
-       //Connect to the server
-       $client->connect(function($client)
-       {
+        $client->onMessage(function($message)
+        {
+            echo $message;
+        });
+
+        //Connect to the server
+        $client->connect(function($client)
+        {
            //Subscribe to a single currency pair
-           $client->subscribeTo('EURUSD');
+            // $client->subscribeTo('EURUSD');
            //Subscribe to an array of currency pairs
-           // $client->subscribeTo([
-           //     'USDJPY',
-           //     'JPYUSD',
-           //     'EURJPY',
-           //     'JPYEUR'
-           // ]);
+           $client->subscribeTo([
+               'USDJPY',
+               'JPYUSD',
+               'EURJPY',
+               'JPYEUR'
+           ]);
            // //Subscribe to all currency pairs
            // $client->subscribeToAll();
            // //Unsubscribe from a single currency pair
@@ -79,6 +86,6 @@ class StartForgeClient extends Command
            // ]);
            // //Unsubscribe from all currency pairs
            // $client->unsubscribeFromAll();
-       });
+        });
     }
 }

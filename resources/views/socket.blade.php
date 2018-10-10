@@ -20,6 +20,7 @@
 
 
     <script>
+    // alert('dd');
         var getUrlParameter = function getUrlParameter(sParam) {
             var sPageURL = decodeURIComponent(window.location.search.substring(1)),
                 sURLVariables = sPageURL.split('&'),
@@ -36,20 +37,26 @@
         };
         var channel= getUrlParameter('channel');
         // alert(channel);
-        // $(document).ready(function(){
-            var socket = io.connect('http://clinic.com:3000/');
+        var socket = io.connect('http://clinic.com:3000/');
+        console.log(socket);
+        // socket.emit('join', []);
+        socket.on('connect', function() {
+           // Connected, let's sign-up for to receive messages for this room
+           // console.log('join');
+           socket.emit('rooms', [channel]);
+        });
 
-            socket.on('message', function (data) {
-                // console.log('dđ');
-                var arrayv= JSON.parse(data);
-                $('#type').html(arrayv.symbol);
-                $('#bid').html(arrayv.bid);
-                $('#ask').html(arrayv.ask);
-                $('#price').html(arrayv.price);
-                console.log(arrayv);
-                // $( "#messages" ).append( "<p>"+data+"</p>" );
-              });
-        // });
+        socket.on('message', function(data) {
+           console.log('Incoming message:', data);
+            // var arrayv= JSON.parse(data);
+            $('#type').html(data.symbol);
+            $('#bid').html(data.bid);
+            $('#ask').html(data.ask);
+            $('#price').html(data.price);
+            // console.log(data);
+            // $( "#messages" ).append( "<p>"+data+"</p>" );
+        });
+
     </script>
 
 @endsection
